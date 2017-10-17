@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by anonymous (http://jsbin.com/yibuhacowo/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <p id="ax">ax</p>
+  <p id="ay">ay</p>
+  <p id="az">az</p>
+  <script src="https://mz4u.net/libs/gc/polyfill.js"></script>
+  <script src="https://mz4u.net/libs/gc/i2c-grove-accelerometer.js"></script>
+<script id="jsbin-javascript">
+// i2c-grove-accelerometer Driver:
+// <script src="https://mz4u.net/libs/gc/i2c-grove-accelerometer.js"><\/script>
+
+var ax = document.querySelector('#ax');
+var ay = document.querySelector('#ay');
+var az = document.querySelector('#az');
+  
+navigator.requestI2CAccess().then((i2cAccess)=>{
+  var port = i2cAccess.ports.get(1);
+  var groveaccelerometer = new GROVEACCELEROMETER(port,0x53);
+  groveaccelerometer.init().then(()=>{
+    setInterval(()=>{
+      groveaccelerometer.read().then((values)=>{
+        ax.innerHTML = values.x ? values.x : ax.innerHTML;
+        ay.innerHTML = values.y ? values.y : ay.innerHTML;
+        az.innerHTML = values.z ? values.z : az.innerHTML;
+      });
+    },1000);
+  });
+});
+
+</script>
+</body>
+</html>

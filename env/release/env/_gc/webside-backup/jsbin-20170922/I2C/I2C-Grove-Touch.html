@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by anonymous (http://jsbin.com/lewuwimisu/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<div id="touch">dist</div>
+</body>
+<script src="https://mz4u.net/libs/gc/polyfill.js"></script>
+<script src="https://mz4u.net/libs/gc/i2c-grove-touch.js"></script>
+<script id="jsbin-javascript">
+// i2c-grove-touch Driver:
+// <script src="https://mz4u.net/libs/gc/i2c-grove-touch.js"><\/script>
+
+
+navigator.requestI2CAccess().then((i2cAccess)=>{
+  var port = i2cAccess.ports.get(1);
+  var touchSensor = new GroveTouch(port,0x5a);
+  touchSensor.init().then(()=>{
+    setInterval(()=>{
+      touchSensor.read().then(ch => {
+        document.getElementById("touch").innerHTML = JSON.stringify(ch);
+      });
+    },100);
+  });
+});
+
+</script>
+</body>
+</html>

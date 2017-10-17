@@ -1,0 +1,13 @@
+{
+  "name": "srv",
+  "version": "0.2.0",
+  "description": "server for Web GPIO/I2C API",
+  "main": "srv.js",
+  "dependencies": {
+    "gpio": "^0.2.7",
+    "raspi": "^5.0.1",
+    "raspi-i2c": "^6.0.0",
+    "date-utils": "^1.2.21",
+    "ws": "^3.1.0"
+  }
+}

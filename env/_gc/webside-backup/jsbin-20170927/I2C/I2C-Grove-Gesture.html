@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by anonymous (http://jsbin.com/hewetagazo/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>I2C-Grove-Gesture</title>
+</head>
+<body>
+<h3 id="head">TEST</h3>
+<script src="https://mz4u.net/libs/gc2/polyfill.js"></script>
+<script src="https://mz4u.net/libs/gc2/i2c-grove-gesture.js"></script>
+<script id="jsbin-javascript">
+// i2c-grove-gesture Driver:
+// <script src="https://mz4u.net/libs/gc2/i2c-grove-gesture.js"><\/script>
+
+var head = document.querySelector('#head');
+head.innerHTML = "started";
+
+navigator.requestI2CAccess().then(function(i2cAccess) {
+  head.innerHTML = "initializing...";
+  var port = i2cAccess.ports.get(1);
+  var gesture = new PAJ7620(port,0x73);
+  gesture.init().then(function(){
+    setInterval(function(){
+      gesture.read().then(function(v){
+        head.innerHTML = v;
+      });
+    },1000);
+  },function(v){
+    head.innerHTML = "initialization faild!";
+  });  
+});
+</script>
+</body>
+</html>
