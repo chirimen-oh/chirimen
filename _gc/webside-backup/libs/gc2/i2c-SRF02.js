@@ -23,7 +23,7 @@ SRF02.prototype = {
         this.i2cSlave.write8(0x00, 0x51).then((v) => {
           setTimeout(()=>{
             this.i2cSlave.read16(0x02).then( (v) =>{
-              var h = (v & 0x00FF) << 8;
+              var h = (v & 0x007F) << 8;
               var l = (v & 0xFF00) >> 8;
               var res = h + l;
               if(res >= 16 && res <= 600){
