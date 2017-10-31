@@ -10,7 +10,7 @@ under construction...
 
 # Version
 
-2017/10/17
+2017/10/30 (RC)
 
 # Licenses
 
