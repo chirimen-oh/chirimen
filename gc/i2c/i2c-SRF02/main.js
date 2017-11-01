@@ -10,9 +10,7 @@ window.addEventListener('load', function (){
       setInterval(() => {
         srf02.read().then((value) => {
 //          console.log('value:', value);
-          if(value > 6 && value < 600){
-            head.innerHTML = value+"cm";
-          }
+          head.innerHTML = value+"cm";
         }, (err) => {
           if(err.code != 4){
             head.innerHTML = "ERROR";
