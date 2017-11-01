@@ -26,7 +26,7 @@ SRF02.prototype = {
               var h = (v & 0x007F) << 8;
               var l = (v & 0xFF00) >> 8;
               var res = h + l;
-              if(res > 6 && res <= 600){
+              if(res >= 16 && res <= 600){
                 resolve(res);
               }else{
                 var err = {code:4, message:"out of range error: "+res+"cm"};
