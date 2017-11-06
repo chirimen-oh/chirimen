@@ -39,7 +39,7 @@ ADS1015.prototype = {
             this.i2cSlave.read16(0).then((v) =>{
               var vH = (v & 0x00ff) << 8;
               var vL = (v >> 8)& 0x00ffff;
-              var value = (vH | vL);
+              var value = (vH | vL) >> 4;
               resolve(value);
             },(err) => {
               console.log("ADS1015.read: read16(0) error"+err.message);
