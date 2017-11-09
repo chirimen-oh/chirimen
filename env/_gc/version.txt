@@ -1,1 +1,0 @@
-CHIRIMEN for Raspberry Pi 3 emv.version : 17/10/17:14:09:50

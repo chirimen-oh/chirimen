@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by anonymous (http://jsbin.com/rifugopeko/2/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>I2C-PCA9685</title>
+</head>
+<body>
+<h3 id="head">TEST</h3>
+<script src="https://mz4u.net/libs/gc2/polyfill.js"></script>
+<script src="https://mz4u.net/libs/gc2/i2c-PCA9685.js"></script>
+<script id="jsbin-javascript">
+// i2c-PCA9685 Driver:
+// <script src="https://mz4u.net/libs/gc2/i2c-PCA9685.js"><\/script>
+
+var head = document.querySelector('#head');
+
+navigator.requestI2CAccess().then((i2cAccess)=>{
+  var port = i2cAccess.ports.get(1);
+  var pcs9685 = new PCA9685(port,0x40);
+  var angle = 90;
+  pcs9685.init(0.00050,0.00240,180).then(()=>{
+    setInterval(()=>{
+      angle = (angle<=10) ? 170 : 10;
+      pcs9685.setServo(0,angle).then(()=>{
+        head.innerHTML = angle;
+      });
+    },1000);
+  });
+});
+</script>
+</body>
+</html>

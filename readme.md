@@ -4,13 +4,13 @@
 
 `CHIRIMEN for Raspberry Pi 3` is an IoT programing environment for bigenner.
 
-![wallpaper](./env/_gc/wallpaper/wallpaper-720P.png)
+![wallpaper](./_gc/wallpaper/wallpaper-720P.png)
 
 under construction...
 
 # Version
 
-2017/10/17
+2017/10/30 (RC)
 
 # Licenses
 
