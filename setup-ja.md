@@ -1,4 +1,4 @@
-last update : 2017.10.27
+last update : 2017.12.26
 
 # CHIRIMEN for Raspberry Pi 3 セットアップ
 
@@ -25,28 +25,19 @@ CHIRIMEN for Raspberry Pi 3 (旧称：green CHIRIMEN) のセットアップ方�
 
 ## 2-1. OSダウンロード
 
-2017.09.07時点での最新版
-2017-09-07-raspbian-stretch.img
+2017.12.26時点での最新版
+2017-11-29-raspbian-stretch.img
 をインストールする
 
 http://qiita.com/ttyokoyama/items/7afe6404fd8d3e910d09
 
 などを参考に、以下実施
 
-## 2-2. SDカードフォーマット
+## 2-2. SDカードへimageのコピー
 
-「ディスクユーティリティ」などでFAT32にフォーマット。
+[Etcher](https://etcher.io/) で焼くと速い。
 
-## 2-3. SDカードへのコピー
-
-$ sudo dd bs=1m if=./2017-09-07-raspbian-stretch.img of=/dev/disk2
-
-でやると、遅い。
-
-Macの人は、[Etcher](https://etcher.io/)
-で焼くと速い。
-
-## 2-4. ディスプレイ解像度
+## 2-3. ディスプレイ解像度
 
 Preference > Raspberry Pi Configuration 起動
 System タブの Resolution の項をから
@@ -56,22 +47,46 @@ System タブの Resolution の項をから
 hdmi_force_hotplug=1
 hdmi_group=2
 hdmi_mode=85
+hdmi_drive=2
 
 > とりあえず、一旦720Pで話を進めます。
 
-## 2-5. apt を最新に
+## 2-4. apt を最新に
 
 > $ sudo apt-get update
 > $ sudo apt-get upgrade
 
-## 2-6. 日本語化
+## 2-5. 日本語化
 
 下記記事を参考に日本語環境を整える
 
 https://www.rs-online.com/designspark/raspberry-pi-japanese
 
-fontを入れて
+### 2-5.1. localの設定
+
+> sudo raspi-config
+
+`4 Localisation Options` > `I1 Change locale` から下記を選択。
+
+en_GB.UTF-8 UTF-8 
+ja_JP.EUC-JP EUC-JP
+ja_JP.UTF-8 UTF-8
+
 Localeを ja-jp-utf8にして再起動
+
+### 2-5.2. Fontのインストール
+
+1) debianのフォント
+
+> sudo apt-get install ttf-kochi-gothic xfonts-intl-japanese xfonts-intl-japanese-big xfonts-kaname
+
+2) Google notoフォント
+
+> sudo apt-get install fonts-noto
+
+いずれかお好きな方で。(12/27版のimageではnotoフォントを採用)
+
+### 2-5.3. 日本語IMEのインストール
 
 続けて下記記事を参考に、日本語IMEを入れる。
 
@@ -82,7 +97,7 @@ http://raspi-studio.hatenablog.com/entry/2016/05/14/203420
 
 これで[半角/全角/漢字]と書いたキーを押すことで日本語入力もできるようになる
 
-## 2-7. キーボードの設定
+## 2-6. キーボードの設定
 
 下記手順は、日本語用キーボードの場合。
 
@@ -122,30 +137,53 @@ http://raspi-studio.hatenablog.com/entry/2016/05/14/203420
 
 で再起動しとく。
 
-## 2-8. pi ユーザーのパスワード設定
+## 2-7. pi ユーザーのパスワード設定
 
 sudo rasp-config から Change User Password で変える。
 
 > 展開しているimageのパスワードは { rasp } になっています。
 
-## 2-9. node.js のインストール
+## 2-8. node.js のインストール
 
 http://qiita.com/setouchi/items/437e4b62e4210871496f
 
-を参考に 6.11.3 を入れる。
-(安定板で最終まで行ってるので)
+を参考に 6.12.2 を入れる。
 
 > $ sudo apt-get install -y nodejs npm
 > $ sudo npm cache clean
 > $ sudo npm install n -g
-> $ sudo n 6.11.3
+> $ sudo n 6.12.2
 
 これで、
 
-- node.js v6.11.3
+- node.js v6.12.2
 - npm     v3.10.10
 
 が入る。
+
+## 2-9. I2C/カメラの有効化
+
+> sudo raspi-config
+
+から、
+
+`5 Interfacing Options` > `P1 Camera` と `P5 I2C` をenableにする。
+
+再起動後、Pi Cameraをブラウザから利用可能にするために、追加で下記設定を行う。
+
+https://reprage.com/post/pi-camera-module-in-the-browser
+
+を参考に、下記コマンドを入力後再起動する。
+
+> echo 'options bcm2835-v4l2 gst_v4l2src_is_broken=1' | sudo tee -a /etc/modprobe.d/bcm2835-v4l2.conf
+> echo 'bcm2835-v4l2' | sudo tee -a /etc/modules-load.d/modules.conf
+
+これにより、
+
+http://akizukidenshi.com/catalog/g/gM-10518/
+http://akizukidenshi.com/catalog/g/gM-10476/
+
+を利用してブラウザから `getUserMedia()`によるビデオストリームの取得が可能になる。
 
 # 3. CHIRIMEN for Raspberry Pi 3 環境設定
 
@@ -153,7 +191,7 @@ http://qiita.com/setouchi/items/437e4b62e4210871496f
 
 CHIRIMEN for Raspberry Pi 環境ファイルは下記ファイルで構成される
 
-### gc.zip  : ~/Desktop/gc/ に配置するファイルのアーカイブ。(プログラミング学習者が閲覧するファイル)
+### 3-1-1. gc.zip  : ~/Desktop/gc/ に配置するファイルのアーカイブ。(プログラミング学習者が閲覧するファイル)
 
 アーカイブには下記フォルダが含まれる
 
@@ -161,8 +199,9 @@ CHIRIMEN for Raspberry Pi 環境ファイルは下記ファイルで構成され
 - i2c  : Web I2C API のexample集。回路図とサンプルコードのセット
 - polyfill : Web GPIO API / Web I2C API の polyfill
 - drivers : i2cフォルダ配下のexampleから利用される各I2Cモジュールのドライバライブラリ 
+- top : CHIRIMEN for Raspberry Pi 3の自動起動ローカルサイト
 
-### _gc.zip : ~/_gc/ に配置するファイルのアーカイブ。(プログラミング学習者が閲覧する必要のないファイル)
+### 3-1-2. _gc.zip : ~/_gc/ に配置するファイルのアーカイブ。(プログラミング学習者が閲覧する必要のないファイル)
 
 アーカイブには下記フォルダが含まれる
 
@@ -171,26 +210,25 @@ CHIRIMEN for Raspberry Pi 環境ファイルは下記ファイルで構成され
 - wallpaper : 壁紙
 - webside-backup : オンラインexampleのバックアップファイル
 
-
 ## 3-2. ~/_gc/ の設定手順
 
 
-### _gc.zip ダウンロード (URLは暫定)
+### 3-2-1. _gc.zip ダウンロード (URLは暫定)
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc2/env/_gc.zip
+> $ wget https://mz4u.net/libs/gc3/env/_gc.zip
 > $ unzip ./_gc.zip
 
 ※URLは暫定です。
 
-### Serverへ関連モジュールインストール
+### 3-2-2. Serverへ関連モジュールインストール
 
 > $ cd ~/_gc/srv
 > $ npm i
 
 これでサーバーの起動に必要なモジュールがインストールされます。
 
-### Serverの自動起動設定
+### 3-2-3. Serverの自動起動設定
 
 forever を入れる。
 
@@ -207,36 +245,99 @@ forever を入れる。
 上記記載後、保存する。
 保存後再起動すると、サーバが自動起動する。
 
-### Server再起動スクリプトのシンボリックリンクをdesktopに
+### 3-2-4. Server再起動スクリプトのシンボリックリンクをdesktopに
 
 ln -s ~/_gc/srv/reset.sh ~/Desktop/reset.sh
 
-### 壁紙の導入
+### 3-2-5. 壁紙の導入
 
 デスクトップ上で右クリックしてコンテキストメニューを開き、
 「デスクトップの設定」を選ぶ。
 「picture」から `~/_gc/wallpaper/wallpaper-720p.png` を選択する。
 
-### Bookmarkの導入
+### 3-2-6. Bookmarkの導入
 
 Chromeのブックマークマネージャから、下記ファイルをインポートする。
 `~/_gc/bookmark/bookmarks_2017_09_22.html`
 
-## ~/Desktop/gc/ の設定 
+## 3-3. ~/Desktop/gc/ の設定 
 
-### gc.zip ダウンロード (URLは暫定)
+### 3-3-1. gc.zip ダウンロード (URLは暫定) と配置
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc2/env/gc.zip
+> $ wget https://mz4u.net/libs/gc3/env/gc.zip
 > $ unzip ./gc.zip -d ~/Desktop
 
 ※URLは暫定です。
 
+### 3-3-2. 自動起動ローカルサイトの設定
+
+#### 3-3-2-1. Apache設定
+
+##### 3-3-2-1-1. インストール
+
+> sudo apt-get install apache2
+
+で apacheをインストールする。
+
+##### 3-3-2-1-2. ドキュメントルートの変更
+
+インストール後、
+
+> sudo nano /etc/apache2/sites-available/000-default.conf
+
+で、`DocumentRoot` を `/home/pi/Desktop/gc` に変更する。
+
+> sudo nano /etc/apache2/apache2.conf
+
+`<Directory /var/www/>` を、 `<Directory /home/pi/Desktop/gc/>`
+
+に変更する。
+
+##### 3-3-2-1-3. SSLの設定
+
+> sudo apt-get install libapache2-mod-ssl
+
+> cd /etc/apache2/sites-available
+> cp default-ssl.conf vhost-ssl.conf  
+> sudo nano vhost-ssl.conf
+
+SSLCertificateFile /home/pi/_gc/srv/crt/server.crt
+SSLCertificateKeyFile /home/pi/_gc/srv/crt/server.key
+
+を追記後保存。
+
+> sudo a2ensite vhost-ssl
+> sudo a2enmod ssl
+> sudo systemctl restart apache2
+
+でapacheを再起動する。(まだ証明書を入れてないので意味はない)
+
+#### 3-3-2-2. 自動起動設定
+
+> nano ~/.config/lxsession/LXDE-pi/autostart
+
+で開いた設定ファイルの最後の行に下記を追加
+
+@/usr/bin/chromium-browser https://localhost/top
+
+#### 3-3-2-3. ブラウザへ証明書をインポート
+
+localhost用の証明書をブラウザへインポートすることでセキュリティエラーを抑止する。
+
+1. chromium-browserを起動し、`設定` > `詳細設定` > `プライバシーとセキュリティ` を開く
+2. `証明書の管理` を開く
+3. `認証局`　タブから `インポート`
+4. ファイルから、`~/_gc/srv/crt/ca.crt` を選択
+5. 認証局ダイアログが表示されるので、信頼の設定全てにチェックを入入りれて `OK`をクリック。
+
+これで、`org-TripArts`がインポートされる。
+
 # 4. 追加設定 (Option)
 
-以下はOptionです。
+以下の手順はOptionです。
 
-## imageサイズの圧縮
+## 4-1. imageサイズの圧縮
 
 imageサイズの圧縮のため、下記サイトを参考に不要なアプリを削除する。
 
@@ -247,7 +348,7 @@ imageサイズの圧縮のため、下記サイトを参考に不要なアプリ
 > $ sudo apt-get clean
 > $ sudo apt-get autoremove
 
-## 不要プロセスの停止
+## 4-2. 不要プロセスの停止
 
 パフォーマンス向上のため、下記サイトを不要なプロセスを停止する。
 
@@ -259,6 +360,23 @@ chkconfigで、下記を停止
 - lightdm
 - triggerhappy
 - avahi-daemon
+
+## 4-3. ブラウザのハードウエアアクセラレーションの停止
+
+現時点のRaspberry Pi + Chromium BrowserではWebGLが正常に動作しないため、ハードウエアアクセラレーションOFFにしておきます。
+これによりPixi.js等の描画系ライブラリでcanvasでの描画にフォールバック動作できるようになります。
+
+chromium-browserを起動し、`設定` > `詳細設定` > `システム` の `ハードウエアアクセラレーションが使用可能な場合は使用する` を`OFF` にします。
+
+ブラウザを再起動します。
+
+## 4-4. USBマイクの有効化
+
+USBマイクを利用する場合、下記を参考に有効化してください。
+
+http://kyochika-labo.hatenablog.com/entry/RaspberryPi_record_voice
+
+※USBマイクによっては利用できない可能性があります。
 
 以上
 
