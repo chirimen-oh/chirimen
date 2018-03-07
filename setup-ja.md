@@ -216,7 +216,7 @@ CHIRIMEN for Raspberry Pi 環境ファイルは下記ファイルで構成され
 ### 3-2-1. _gc.zip ダウンロード (URLは暫定)
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc3/env/_gc.zip
+> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/_gc.zip
 > $ unzip ./_gc.zip
 
 ※URLは暫定です。
@@ -265,7 +265,7 @@ Chromeのブックマークマネージャから、下記ファイルをイン�
 ### 3-3-1. gc.zip ダウンロード (URLは暫定) と配置
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc3/env/gc.zip
+> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/gc.zip
 > $ unzip ./gc.zip -d ~/Desktop
 
 ※URLは暫定です。

@@ -218,7 +218,7 @@ The following folder is included in the archive
 ### 3-2-1. Download _gc.zip file (temporary URL)
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc2/env/_gc.zip
+> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/_gc.zip
 > $ unzip ./_gc.zip
 
 ※Temporary URL
@@ -267,7 +267,7 @@ Import the following file from Chrome's bookmark manager.
 ### 3-3-1. Download gc.zip (temporary URL)
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc2/env/gc.zip
+> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/gc.zip
 > $ unzip ./gc.zip -d ~/Desktop
 
 ※Temporary URL
