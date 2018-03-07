@@ -377,6 +377,20 @@ http://kyochika-labo.hatenablog.com/entry/RaspberryPi_record_voice
 
 ※USBマイクによっては利用できない可能性があります。
 
+## 4-5. Web Bluetooth APIの有効化
+
+Web Bluetooth APIを利用する場合、下記手順で設定してください。
+
+1. chromium-browserを起動し、`chrome://flags` にアクセスする
+2. "Experimental Web Platform features" という項目を探し、 [有効] に切り替えてブラウザを再起動
+
+### 4-5-1. Web Bluetooth API有効無効の確認方法
+
+1. ブラウザを起動後、F12キーを押してコンソールを起動します。
+2. コンソールに `navigator.bluetooth`と入力します。
+3. 入力の結果、"▶ Bluetooth {}" が返ってくればWeb Bluetooth APIは有効になっています。一方で "undefined" になる場合は無効です。
+
+
 以上
 
 

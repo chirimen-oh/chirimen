@@ -379,6 +379,22 @@ http://kyochika-labo.hatenablog.com/entry/RaspberryPi_record_voice
 
 ※There is a possibility that it can not be used depending on the USB mike.
 
+## 4-5. Enanble Web Bluetooth API
+
+To use the Web Bluetooth API, please follow the procedure below.
+
+1. Launch chromium-browser and access `chrome: // flags`.
+2. Search the item "Experimental Web Platform features", switch to "Enabled" and restart the browser.
+
+### 4-5-1. How to check Web Bluetooth API enabled or disabled
+
+You can check if Web Bluetooth API is available by following procedure.
+
+1. After launching the browser, press the F12 key to start the console.
+2. Enter `navigator.bluetooth` in the console.
+3. As a result of input, if "▶ Bluetooth {}" is returned, Web Bluetooth API is enabled. On the other hand, it is invalid if it becomes "undefined".
+
+
 That's all.
 
 
