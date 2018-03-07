@@ -144,21 +144,21 @@ type to sudo rasp-config and Change User Password.
 
 > This image default password is { rasp } .
 
-## 2-9. Install node.js
+## 2-8. Install node.js
 
 http://qiita.com/setouchi/items/437e4b62e4210871496f
 
-Refer to this and install 6.12.2.
+Refer to this and install 8.10.0.
 
 > $ sudo apt-get install -y nodejs npm
 > $ sudo npm cache clean
 > $ sudo npm install n -g
-> $ sudo n 6.12.2
+> $ sudo n 8.10.0
 
 This install version
 
-- node.js v6.12.2
-- npm     v3.10.10
+- node.js v8.10.0
+- npm     v5.6.0
 
 
 ## 2-9. enable I2C/camera
@@ -358,7 +358,6 @@ To improve performance, stop unnecessary processes.
 
 Stop from chkconfig
 
-- dphys-swapfile
 - lightdm
 - triggerhappy
 - avahi-daemon
