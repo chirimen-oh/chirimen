@@ -147,17 +147,17 @@ sudo rasp-config から Change User Password で変える。
 
 http://qiita.com/setouchi/items/437e4b62e4210871496f
 
-を参考に 6.12.2 を入れる。
+を参考に 8.10.0 を入れる。
 
 > $ sudo apt-get install -y nodejs npm
 > $ sudo npm cache clean
 > $ sudo npm install n -g
-> $ sudo n 6.12.2
+> $ sudo n 8.10.0
 
 これで、
 
-- node.js v6.12.2
-- npm     v3.10.10
+- node.js v8.10.0
+- npm     v5.6.0
 
 が入る。
 
@@ -216,7 +216,7 @@ CHIRIMEN for Raspberry Pi 環境ファイルは下記ファイルで構成され
 ### 3-2-1. _gc.zip ダウンロード (URLは暫定)
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc3/env/_gc.zip
+> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/_gc.zip
 > $ unzip ./_gc.zip
 
 ※URLは暫定です。
@@ -265,7 +265,7 @@ Chromeのブックマークマネージャから、下記ファイルをイン�
 ### 3-3-1. gc.zip ダウンロード (URLは暫定) と配置
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc3/env/gc.zip
+> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/gc.zip
 > $ unzip ./gc.zip -d ~/Desktop
 
 ※URLは暫定です。
@@ -356,7 +356,6 @@ imageサイズの圧縮のため、下記サイトを参考に不要なアプリ
 
 chkconfigで、下記を停止
 
-- dphys-swapfile
 - lightdm
 - triggerhappy
 - avahi-daemon
@@ -377,6 +376,20 @@ USBマイクを利用する場合、下記を参考に有効化してくださ�
 http://kyochika-labo.hatenablog.com/entry/RaspberryPi_record_voice
 
 ※USBマイクによっては利用できない可能性があります。
+
+## 4-5. Web Bluetooth APIの有効化
+
+Web Bluetooth APIを利用する場合、下記手順で設定してください。
+
+1. chromium-browserを起動し、`chrome://flags` にアクセスする
+2. "Experimental Web Platform features" という項目を探し、 [有効] に切り替えてブラウザを再起動
+
+### 4-5-1. Web Bluetooth API有効無効の確認方法
+
+1. ブラウザを起動後、F12キーを押してコンソールを起動します。
+2. コンソールに `navigator.bluetooth`と入力します。
+3. 入力の結果、"▶ Bluetooth {}" が返ってくればWeb Bluetooth APIは有効になっています。一方で "undefined" になる場合は無効です。
+
 
 以上
 

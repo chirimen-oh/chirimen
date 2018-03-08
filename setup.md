@@ -144,21 +144,21 @@ type to sudo rasp-config and Change User Password.
 
 > This image default password is { rasp } .
 
-## 2-9. Install node.js
+## 2-8. Install node.js
 
 http://qiita.com/setouchi/items/437e4b62e4210871496f
 
-Refer to this and install 6.12.2.
+Refer to this and install 8.10.0.
 
 > $ sudo apt-get install -y nodejs npm
 > $ sudo npm cache clean
 > $ sudo npm install n -g
-> $ sudo n 6.12.2
+> $ sudo n 8.10.0
 
 This install version
 
-- node.js v6.12.2
-- npm     v3.10.10
+- node.js v8.10.0
+- npm     v5.6.0
 
 
 ## 2-9. enable I2C/camera
@@ -218,7 +218,7 @@ The following folder is included in the archive
 ### 3-2-1. Download _gc.zip file (temporary URL)
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc2/env/_gc.zip
+> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/_gc.zip
 > $ unzip ./_gc.zip
 
 ※Temporary URL
@@ -267,7 +267,7 @@ Import the following file from Chrome's bookmark manager.
 ### 3-3-1. Download gc.zip (temporary URL)
 
 > cd ~
-> $ wget https://mz4u.net/libs/gc2/env/gc.zip
+> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/gc.zip
 > $ unzip ./gc.zip -d ~/Desktop
 
 ※Temporary URL
@@ -358,7 +358,6 @@ To improve performance, stop unnecessary processes.
 
 Stop from chkconfig
 
-- dphys-swapfile
 - lightdm
 - triggerhappy
 - avahi-daemon
@@ -379,6 +378,22 @@ When using a USB mike, please activate it with reference to the following.
 http://kyochika-labo.hatenablog.com/entry/RaspberryPi_record_voice
 
 ※There is a possibility that it can not be used depending on the USB mike.
+
+## 4-5. Enanble Web Bluetooth API
+
+To use the Web Bluetooth API, please follow the procedure below.
+
+1. Launch chromium-browser and access `chrome: // flags`.
+2. Search the item "Experimental Web Platform features", switch to "Enabled" and restart the browser.
+
+### 4-5-1. How to check Web Bluetooth API enabled or disabled
+
+You can check if Web Bluetooth API is available by following procedure.
+
+1. After launching the browser, press the F12 key to start the console.
+2. Enter `navigator.bluetooth` in the console.
+3. As a result of input, if "▶ Bluetooth {}" is returned, Web Bluetooth API is enabled. On the other hand, it is invalid if it becomes "undefined".
+
 
 That's all.
 
