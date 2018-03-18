@@ -21,7 +21,7 @@ body{
 .outwrap{
   width:890px;
   padding:10px;
-  margin:0 auto; 
+  margin:0 auto;
   margin-bottom:20px;
 }
 .outgpio{
@@ -35,21 +35,21 @@ body{
   flex-direction:row;
   flex-wrap:wrap;
   width:870px;
-  margin:0 auto; 
+  margin:0 auto;
 }
 .colwrap{
   display:flex;
   flex-direction:column;
   flex-wrap:wrap;
   width:870px;
-  margin:0 auto; 
+  margin:0 auto;
 }
 .topwrap{
   display:flex;
   flex-direction:column;
   flex-wrap:wrap;
   width:870px;
-  margin:0 auto; 
+  margin:0 auto;
   margin-top:10px;
 }
 .twrap{
@@ -152,7 +152,7 @@ parts,sumally{
   display:inline-block;
   width:32px;
   height:32px;
-  background:url(./img/parts.png);    
+  background:url(./img/parts.png);
   background-size:contain;
   vertical-align:middle;
 }
@@ -162,7 +162,7 @@ parts,sumally{
   display:inline-block;
   width:32px;
   height:32px;
-  background:url(./img/sumally.png);    
+  background:url(./img/sumally.png);
   background-size:contain;
   vertical-align:middle;
 }
@@ -430,7 +430,7 @@ parts,sumally{
     <h3 class="parts">使用パーツ</h3>
     <div class="desc">
       <ul>
-        <li><a href="http://akizukidenshi.com/catalog/g/gK-08316/"> 
+        <li><a href="http://akizukidenshi.com/catalog/g/gK-08316/">
 I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span style="font-size:11px">(※製品パッケージに付属の細いケーブルをブレッドボードに刺せるようにするため、ピンヘッダをハンダ付けするかQIコネクタを圧着する等の加工が必要です)</span></li>
         <li>ジャンパー（メス・メス）ケーブル x 4</li>
       </ul>
@@ -492,6 +492,33 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </ul>
     </div>
   </div>
+
+  <div class="cwrap">
+    <div class="title">I2C-stepping-motor</div>
+    <div class="linkwrap">
+      <div class="linkicon schematic"><a href="../../i2c/i2c-stepping-motor/schematic.png" target="_blank">回路図</a></div>
+      <div class="linkicon local"><a href="../../i2c/i2c-stepping-motor/" target="_blank">Local</a></div>
+    </div>
+    <h3 class="sumally">概要</h3>
+    <div class="desc">Arduinoとモータードライバを経由してステッピングモータを動かすサンプルです。ステッピングモータを回すには細かなタイミングでの処理が必要になります。
+      ここでは Arduino にその処理を任せ、I2C経由で CHIRIMEN からコマンドを送る事でステッピングモータを回します。</div>
+    <h3 class="parts">使用パーツ</h3>
+    <div class="desc">
+      <ul>
+        <li><a href="https://www.switch-science.com/catalog/789/">Arduino UNO Rev.3</a> x 1</li>
+        <li><a href="https://www.switch-science.com/catalog/2242/">EasyDriver ステッピングモータドライバ</a> x 1</li>
+        <li><a href="http://akizukidenshi.com/catalog/g/gM-05825/">I2Cバス用双方向電圧レベル変換モジュール(FXMA2102)</a> x 1</li>
+        <li><a href="http://akizukidenshi.com/catalog/g/gP-05372/">バイポーラ　ステッピングモーターSM-42BYG011</a> x 1</li>
+        <li><a href="https://www.switch-science.com/catalog/1410/">ACアダプター 12V/1.5A</a> x 1</li>
+        <li><a href="https://www.switch-science.com/catalog/2321/">DCプラグ変換ケーブル（QIオス）</a> x 1</li>
+        <li>AE-FXMA2102とEasyDriverをブレッドボードに載せる場合:ジャンパー（オス・メス）ケーブル x 7、(オス・オス) x 7<br/>
+        モーターのワイヤーは圧着やはんだ付けで処理する必要があります。<br/>
+        また、Arduino には <a href="https://github.com/g200kg/arduino-stepping-motor">arduino-stepping-motor</a> のスケッチを書き込んでおきます。
+        <br></li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 </div>
 <div id="bwrap">
