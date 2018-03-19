@@ -7,8 +7,9 @@ var SteppingMotor = function(i2cPort,slaveAddress){
 SteppingMotor.prototype = {
   init: function(){
     return new Promise((resolve, reject)=>{
-      this.i2cPort.open(this.slaveAddress).then((i2cSlave)=>{
+      this.i2cPort.open(this.slaveAddress).then(async (i2cSlave)=>{
         this.i2cSlave = i2cSlave;
+        await this.i2cSlave.write16(0x03,0);
         console.log("init ok:"+this.i2cSlave);
         resolve();
       },(err)=>{
