@@ -497,15 +497,14 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
   </div>
 
   <div class="cwrap">
-    <div class="title">I2C-stepping-motor</div>
+    <div class="title">I2C-arduino-steppingMotor</div>
     <div class="linkwrap">
-      <div class="linkicon schematic"><a href="../../i2c/i2c-stepping-motor/schematic.png" target="_blank">回路図</a></div>
-      <div class="linkicon local"><a href="../../i2c/i2c-stepping-motor/" target="_blank">Local</a></div>
-      <div class="linkicon api"><a href="../../i2c/i2c-stepping-motor/api.html" target="_blank">API</a></div>
+      <div class="linkicon schematic"><a href="../../i2c/i2c-arduino-steppingMotor/schematic.png" target="_blank">回路図</a></div>
+      <div class="linkicon local"><a href="../../i2c/i2c-arduino-steppingMotor/" target="_blank">Local</a></div>
+      <div class="linkicon api"><a href="../../i2c/i2c-arduino-steppingMotor/api.html" target="_blank">API</a></div>
     </div>
     <h3 class="sumally">概要</h3>
-    <div class="desc">Arduinoとモータードライバを経由してステッピングモータを動かすサンプルです。ステッピングモータを回すには細かなタイミングでの処理が必要になります。
-      ここでは Arduino にその処理を任せ、I2C経由で CHIRIMEN からコマンドを送る事でステッピングモータを回します。</div>
+    <div class="desc">Arduinoとモータードライバを経由してステッピングモータを動かすサンプルです。ステッピングモータを回すために必要なタイミングの制御に Arduino を I2C デバイスとして使用しています。このサンプルでは回転方向を反転させながら2回転ずつモーターを回します。</div>
     <h3 class="parts">使用パーツ</h3>
     <div class="desc">
       <ul>

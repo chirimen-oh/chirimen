@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-    <title>i2c-Stepping-motor</title>
+    <title>i2c-arduino-steppingMotor</title>
     <script src="../../polyfill/polyfill.js"></script>
-    <script src="../../drivers/i2c-stepping-motor.js"></script>
+    <script src="../../drivers/i2c-arduino-steppingMotor.js"></script>
     <script src="./main.js"></script>
     <style>
       body{
@@ -50,11 +50,11 @@
     </style>
   </head>
   <body>
-    <h1>CHIRIMEN : i2c-stepping-motor.js API</h1>
+    <h1>CHIRIMEN : i2c-arduino-steppingMotor.js API</h1>
     <div id="contents">
     <h2>はじめに</h2>
     <p>
-      これは CHIRIMEN for Raspberry Pi でステッピングモータを制御する i2c-stepping-motor.js の API リファレンスです。<br/>
+      これは CHIRIMEN for Raspberry Pi でステッピングモータを制御する i2c-arduino-steppingMotor.js の API リファレンスです。<br/>
       動作させるには CHIRIMEN for Raspberry Pi と、ステッピングモータ、EasyDriver 等のステッピングモータドライバモジュール、<a href="https://github.com/g200kg/arduino-stepping-motor" target="_blank">arduino-stepping-motor</a>のスケッチを書き込んだ Arduino を適切に接続している事が必要です。ステッピングモータドライバモジュールは、CLK と DIR で制御されるものを前提としています。Arduino は I2C スレーブデバイスとして動作し、CHIRIMEN は I2C インターフェースを通じてコマンドを発行します。
     </p>
     <p>
