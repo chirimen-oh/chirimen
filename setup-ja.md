@@ -139,7 +139,7 @@ http://raspi-studio.hatenablog.com/entry/2016/05/14/203420
 
 ## 2-7. pi ユーザーのパスワード設定
 
-sudo rasp-config から Change User Password で変える。
+sudo raspi-config から Change User Password で変える。
 
 > 展開しているimageのパスワードは { rasp } になっています。
 
