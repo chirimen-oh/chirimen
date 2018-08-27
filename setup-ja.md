@@ -44,17 +44,21 @@ System タブの Resolution の項をから
 1080P→「DMT mode 82 1920x1080 60Hz 16:9」を選ぶ。
 720Pにするには、SDカードのルートにある `config.txt` から直接設定変更する
 
+```
 hdmi_force_hotplug=1
 hdmi_group=2
 hdmi_mode=85
 hdmi_drive=2
+```
 
 > とりあえず、一旦720Pで話を進めます。
 
 ## 2-4. apt を最新に
 
-> $ sudo apt-get update
-> $ sudo apt-get upgrade
+```
+sudo apt-get update
+sudo apt-get upgrade
+```
 
 ## 2-5. 日本語化
 
@@ -64,13 +68,17 @@ https://www.rs-online.com/designspark/raspberry-pi-japanese
 
 ### 2-5.1. localの設定
 
-> sudo raspi-config
+```
+sudo raspi-config
+```
 
 `4 Localisation Options` > `I1 Change locale` から下記を選択。
 
+```
 en_GB.UTF-8 UTF-8 
 ja_JP.EUC-JP EUC-JP
 ja_JP.UTF-8 UTF-8
+```
 
 Localeを ja-jp-utf8にして再起動
 
@@ -78,11 +86,15 @@ Localeを ja-jp-utf8にして再起動
 
 1) debianのフォント
 
-> sudo apt-get install ttf-kochi-gothic xfonts-intl-japanese xfonts-intl-japanese-big xfonts-kaname
+```
+sudo apt-get install ttf-kochi-gothic xfonts-intl-japanese xfonts-intl-japanese-big xfonts-kaname
+```
 
 2) Google notoフォント
 
-> sudo apt-get install fonts-noto
+```
+sudo apt-get install fonts-noto
+```
 
 いずれかお好きな方で。(12/27版のimageではnotoフォントを採用)
 
@@ -92,8 +104,10 @@ Localeを ja-jp-utf8にして再起動
 
 http://raspi-studio.hatenablog.com/entry/2016/05/14/203420
 
-> $ sudo apt-get install uim uim-mozc
-> $ sudo reboot
+```
+sudo apt-get install uim uim-mozc
+sudo reboot
+```
 
 これで[半角/全角/漢字]と書いたキーを押すことで日本語入力もできるようになる
 
@@ -101,7 +115,9 @@ http://raspi-studio.hatenablog.com/entry/2016/05/14/203420
 
 下記手順は、日本語用キーボードの場合。
 
-> $ sudo raspi-config
+```
+sudo raspi-config
+```
 
 で設定画面起動後、
 
@@ -133,13 +149,11 @@ http://raspi-studio.hatenablog.com/entry/2016/05/14/203420
 
 を選んで終了。
 
-> $ sudo reboot 
-
-で再起動しとく。
+最後にここで `sudo reboot` で再起動しておく。
 
 ## 2-7. pi ユーザーのパスワード設定
 
-sudo raspi-config から Change User Password で変える。
+`sudo raspi-config` から `Change User Password` で変える。
 
 > 展開しているimageのパスワードは { rasp } になっています。
 
@@ -149,10 +163,12 @@ http://qiita.com/setouchi/items/437e4b62e4210871496f
 
 を参考に 8.10.0 を入れる。
 
-> $ sudo apt-get install -y nodejs npm
-> $ sudo npm cache clean
-> $ sudo npm install n -g
-> $ sudo n 8.10.0
+```
+sudo apt-get install -y nodejs npm
+sudo npm cache clean
+sudo npm install n -g
+sudo n 8.10.0
+```
 
 これで、
 
@@ -163,11 +179,11 @@ http://qiita.com/setouchi/items/437e4b62e4210871496f
 
 ## 2-9. I2C/カメラの有効化
 
-> sudo raspi-config
+```
+sudo raspi-config
+```
 
-から、
-
-`5 Interfacing Options` > `P1 Camera` と `P5 I2C` をenableにする。
+から `5 Interfacing Options` > `P1 Camera` と `P5 I2C` をenableにする。
 
 再起動後、Pi Cameraをブラウザから利用可能にするために、追加で下記設定を行う。
 
@@ -175,15 +191,17 @@ https://reprage.com/post/pi-camera-module-in-the-browser
 
 を参考に、下記コマンドを入力後再起動する。
 
-> echo 'options bcm2835-v4l2 gst_v4l2src_is_broken=1' | sudo tee -a /etc/modprobe.d/bcm2835-v4l2.conf
-> echo 'bcm2835-v4l2' | sudo tee -a /etc/modules-load.d/modules.conf
+```
+echo 'options bcm2835-v4l2 gst_v4l2src_is_broken=1' | sudo tee -a /etc/modprobe.d/bcm2835-v4l2.conf
+echo 'bcm2835-v4l2' | sudo tee -a /etc/modules-load.d/modules.conf
+```
 
 これにより、
 
 http://akizukidenshi.com/catalog/g/gM-10518/
 http://akizukidenshi.com/catalog/g/gM-10476/
 
-を利用してブラウザから `getUserMedia()`によるビデオストリームの取得が可能になる。
+を利用してブラウザから `getUserMedia()` によるビデオストリームの取得が可能になる。
 
 # 3. CHIRIMEN for Raspberry Pi 3 環境設定
 
@@ -215,16 +233,20 @@ CHIRIMEN for Raspberry Pi 環境ファイルは下記ファイルで構成され
 
 ### 3-2-1. _gc.zip ダウンロード (URLは暫定)
 
-> cd ~
-> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/_gc.zip
-> $ unzip ./_gc.zip
+```
+cd ~
+wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/_gc.zip
+unzip ./_gc.zip
+```
 
 ※URLは暫定です。
 
 ### 3-2-2. Serverへ関連モジュールインストール
 
-> $ cd ~/_gc/srv
-> $ npm i
+```
+cd ~/_gc/srv
+npm i
+```
 
 これでサーバーの起動に必要なモジュールがインストールされます。
 
@@ -232,22 +254,30 @@ CHIRIMEN for Raspberry Pi 環境ファイルは下記ファイルで構成され
 
 forever を入れる。
 
-> $　sudo npm i forever -g
+```
+sudo npm i forever -g
+```
 
 次に crontabを設定。
 
-> $ crontab -e
+```
+crontab -e
+```
 
 下記を追加する。
 
+```
 @reboot sudo -u pi /home/pi/_gc/srv/startup.sh
+```
 
 上記記載後、保存する。
 保存後再起動すると、サーバが自動起動する。
 
 ### 3-2-4. Server再起動スクリプトのシンボリックリンクをdesktopに
 
+```
 ln -s ~/_gc/srv/reset.sh ~/Desktop/reset.sh
+```
 
 ### 3-2-5. 壁紙の導入
 
@@ -264,9 +294,11 @@ Chromeのブックマークマネージャから、下記ファイルをイン�
 
 ### 3-3-1. gc.zip ダウンロード (URLは暫定) と配置
 
-> cd ~
-> $ wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/gc.zip
-> $ unzip ./gc.zip -d ~/Desktop
+```
+cd ~
+wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/gc.zip
+unzip ./gc.zip -d ~/Desktop
+```
 
 ※URLは暫定です。
 
@@ -276,7 +308,9 @@ Chromeのブックマークマネージャから、下記ファイルをイン�
 
 ##### 3-3-2-1-1. インストール
 
-> sudo apt-get install apache2
+```
+sudo apt-get install apache2
+```
 
 で apacheをインストールする。
 
@@ -284,11 +318,15 @@ Chromeのブックマークマネージャから、下記ファイルをイン�
 
 インストール後、
 
-> sudo nano /etc/apache2/sites-available/000-default.conf
+```
+sudo nano /etc/apache2/sites-available/000-default.conf
+```
 
 で、`DocumentRoot` を `/home/pi/Desktop/gc` に変更する。
 
-> sudo nano /etc/apache2/apache2.conf
+```
+sudo nano /etc/apache2/apache2.conf
+```
 
 `<Directory /var/www/>` を、 `<Directory /home/pi/Desktop/gc/>`
 
@@ -296,30 +334,40 @@ Chromeのブックマークマネージャから、下記ファイルをイン�
 
 ##### 3-3-2-1-3. SSLの設定
 
-> sudo apt-get install libapache2-mod-ssl
+```
+sudo apt-get install libapache2-mod-ssl
 
-> cd /etc/apache2/sites-available
-> cp default-ssl.conf vhost-ssl.conf  
-> sudo nano vhost-ssl.conf
+cd /etc/apache2/sites-available
+cp default-ssl.conf vhost-ssl.conf  
+sudo nano vhost-ssl.conf
+```
 
+vhost-ssl.conf には次の 2 行を追加する:
+
+```
 SSLCertificateFile /home/pi/_gc/srv/crt/server.crt
 SSLCertificateKeyFile /home/pi/_gc/srv/crt/server.key
+```
 
-を追記後保存。
+```
+sudo a2ensite vhost-ssl
+sudo a2enmod ssl
+sudo systemctl restart apache2
+```
 
-> sudo a2ensite vhost-ssl
-> sudo a2enmod ssl
-> sudo systemctl restart apache2
-
-でapacheを再起動する。(まだ証明書を入れてないので意味はない)
+で apache を再起動する。(まだ証明書を入れてないので意味はない)
 
 #### 3-3-2-2. 自動起動設定
 
-> nano ~/.config/lxsession/LXDE-pi/autostart
+```
+nano ~/.config/lxsession/LXDE-pi/autostart
+```
 
 で開いた設定ファイルの最後の行に下記を追加
 
+```
 @/usr/bin/chromium-browser https://localhost/top
+```
 
 #### 3-3-2-3. ブラウザへ証明書をインポート
 
@@ -343,18 +391,22 @@ imageサイズの圧縮のため、下記サイトを参考に不要なアプリ
 
 10/17版では下記を実施してある
 
-> $ sudo apt-get purge wolfram-engine
-> $ sudo apt-get remove --purge libreoffice*
-> $ sudo apt-get clean
-> $ sudo apt-get autoremove
+```
+$ sudo apt-get purge wolfram-engine
+$ sudo apt-get remove --purge libreoffice*
+$ sudo apt-get clean
+$ sudo apt-get autoremove
+```
 
 ## 4-2. 不要プロセスの停止
 
 パフォーマンス向上のため、下記サイトを不要なプロセスを停止する。
 
-> $ sudo apt-get install chkconfig
+```
+sudo apt-get install chkconfig
+```
 
-chkconfigで、下記を停止
+`chkconfig` で、下記を停止
 
 - lightdm
 - triggerhappy
@@ -365,7 +417,7 @@ chkconfigで、下記を停止
 現時点のRaspberry Pi + Chromium BrowserではWebGLが正常に動作しないため、ハードウエアアクセラレーションOFFにしておきます。
 これによりPixi.js等の描画系ライブラリでcanvasでの描画にフォールバック動作できるようになります。
 
-chromium-browserを起動し、`設定` > `詳細設定` > `システム` の `ハードウエアアクセラレーションが使用可能な場合は使用する` を`OFF` にします。
+chromium-browser を起動し、`設定` > `詳細設定` > `システム` の `ハードウエアアクセラレーションが使用可能な場合は使用する` を`OFF` にします。
 
 ブラウザを再起動します。
 
