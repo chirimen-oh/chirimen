@@ -1,17 +1,34 @@
-'use strict';
+"use strict";
 
-window.addEventListener('load', function (){
-  var head = document.querySelector('#head');
-  navigator.requestI2CAccess().then((i2cAccess)=>{
+var head;
+window.addEventListener(
+  "load",
+  function() {
+    head = document.querySelector("#head");
+    mainFunction();
+  },
+  false
+);
+
+async function mainFunction() {
+  try {
+    var i2cAccess = await navigator.requestI2CAccess();
     var port = i2cAccess.ports.get(1);
-    var adt7410 = new ADT7410(port,0x48);
-    adt7410.init().then(()=>{
-      setInterval(()=>{
-        adt7410.read().then((value)=>{
-//          console.log('value:', value);
-          head.innerHTML = value ? value : head.innerHTML;
-        });
-      },1000);
-    });
-  }).catch(e=> console.error('error', e));
-}, false);
+    var adt7410 = new ADT7410(port, 0x48);
+    await adt7410.init();
+    while (1) {
+      var value = await adt7410.read();
+      // console.log('value:', value);
+      head.innerHTML = value ? value : head.innerHTML;
+      await sleep(1000);
+    }
+  } catch (error) {
+    console.error("error", error);
+  }
+}
+
+function sleep(ms) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, ms);
+  });
+}

@@ -1,22 +1,40 @@
-'use strict';
+"use strict";
 
-window.addEventListener('load', function (){
-  var ax = document.querySelector('#ax');
-  var ay = document.querySelector('#ay');
-  var az = document.querySelector('#az');
-  
-  navigator.requestI2CAccess().then((i2cAccess)=>{
-    var port = i2cAccess.ports.get(1);
-    var groveaccelerometer = new GROVEACCELEROMETER(port,0x53);
-    groveaccelerometer.init().then(()=>{
-      setInterval(()=>{
-        groveaccelerometer.read().then((values)=>{
-//          console.log('values(x,y,z):', values.x,values.y,values.z);
-          ax.innerHTML = values.x ? values.x : ax.innerHTML;
-          ay.innerHTML = values.y ? values.y : ay.innerHTML;
-          az.innerHTML = values.z ? values.z : az.innerHTML;
-        });
-      },1000);
-    });
-  }).catch(e=> console.error('error', e));
-}, false);
+var ax, ay, az;
+window.addEventListener(
+  "load",
+  function() {
+    ax = document.querySelector("#ax");
+    ay = document.querySelector("#ay");
+    az = document.querySelector("#az");
+
+    mainFunction();
+  },
+  false
+);
+
+async function mainFunction() {
+  var i2cAccess = await navigator.requestI2CAccess();
+  var port = i2cAccess.ports.get(1);
+  var groveAccelerometer = new GROVEACCELEROMETER(port, 0x53);
+  await groveAccelerometer.init();
+
+  while (1) {
+    try {
+      var values = await groveAccelerometer.read();
+      ax.innerHTML = values.x ? values.x : ax.innerHTML;
+      ay.innerHTML = values.y ? values.y : ay.innerHTML;
+      az.innerHTML = values.z ? values.z : az.innerHTML;
+    } catch (err) {
+      console.log("READ ERROR:" + err);
+    }
+
+    await sleep(1000);
+  }
+}
+
+function sleep(ms) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, ms);
+  });
+}

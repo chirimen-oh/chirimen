@@ -1,25 +1,41 @@
-'use strict';
+"use strict";
 
-window.addEventListener('load', function (){
-  var head = document.querySelector('#head');
+var head;
+
+window.addEventListener(
+  "load",
+  function() {
+    head = document.querySelector("#head");
+
+    mainFunction();
+  },
+  false
+);
+
+async function mainFunction() {
   head.innerHTML = "started";
-  navigator.requestI2CAccess().then((i2cAccess)=> {
-    head.innerHTML = "initializing...";
+  var i2cAccess = await navigator.requestI2CAccess();
+  head.innerHTML = "initializing...";
+  try {
     var port = i2cAccess.ports.get(1);
-    var disp = new OledDisplay(port);
-    disp.init().then(async ()=>{
-      disp.initQ();
-      disp.clearDisplayQ();
-      await disp.playSequence();
-      head.innerHTML = "drawing text...";
-      disp.drawStringQ(0,0,"hello");
-      disp.drawStringQ(1,0,"Real");
-      disp.drawStringQ(2,0,"World");
-      await disp.playSequence();
-      head.innerHTML = "completed";
-    });
-  }).catch((e)=>{
-    console.error('I2C bus error!', e);
-    head.innerHTML = e;
+    var display = new OledDisplay(port);
+    await display.init();
+    display.clearDisplayQ();
+    await display.playSequence();
+    head.innerHTML = "drawing text...";
+    display.drawStringQ(0, 0, "hello");
+    display.drawStringQ(1, 0, "Real");
+    display.drawStringQ(2, 0, "World");
+    await display.playSequence();
+    head.innerHTML = "completed";
+  } catch (error) {
+    console.error("I2C bus error!", error);
+    head.innerHTML = error;
+  }
+}
+
+function sleep(ms) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, ms);
   });
-}, false);
+}
