@@ -13,7 +13,7 @@ window.addEventListener('load', function (){
         buttonPort.export("in")
       ]).then(()=>{
         buttonPort.onchange = function(v){
-//          console.log("button is pushed!");
+          console.log("button is pushed!");
           v = v ? 0 : 1;
           ledPort.write(v);
         }

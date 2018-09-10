@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>GPIO-Multi-Blink</title>
+</head>
+<body>
+<script src="https://mz4u.net/libs/gc2/polyfill.js"></script>
+<script src="mb.js"></script>
+
+<input type="button" onclick="startFlash()" value="start flash"></input>
+<input type="button" onclick="allOn()" value="ALL ON"></input>
+<input type="button" onclick="setLed('1,0,0,1,0,0,0,0')" value="RED"></input>
+<input type="button" onclick="setLed('0,1,0,0,1,0,0,0')" value="GREEN"></input>
+<input type="button" onclick="setLed('0,0,1,0,0,1,0,0')" value="BLUE"></input>
+<input type="button" onclick="setLed('1,0,1,1,0,1,0,0')" value="MAGENTA"></input>
+<input type="button" onclick="setLed('1,1,0,1,1,0,0,0')" value="YELLOW"></input>
+<input type="button" onclick="setLed('0,1,1,0,1,1,0,0')" value="CYAN"></input>
+<input type="button" onclick="allOff()" value="ALL OFF"></input>
+
+</body>
+</html>
