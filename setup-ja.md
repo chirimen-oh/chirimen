@@ -1,8 +1,10 @@
-last update : 2017.12.26
+last update : 2018.9.10
 
 # CHIRIMEN for Raspberry Pi 3 セットアップ
 
-CHIRIMEN for Raspberry Pi 3 (旧称：green CHIRIMEN) のセットアップ方法について書きます。
+CHIRIMEN for Raspberry Pi 3のセットアップ方法(OSイメージの作成方法)について書きます。
+
+なお、CHIRIMEN for Raspberry Pi 3 の[ セットアップ済みSDイメージを使う場合](https://gist.github.com/tadfmac/527b31a463df0c9de8c30a598872344d)、このドキュメントの手順は不要です。
 
 1. 用意するもの
 2. Raspberry Pi 3 環境設定
@@ -23,15 +25,15 @@ CHIRIMEN for Raspberry Pi 3 (旧称：green CHIRIMEN) のセットアップ方�
 
 # 2. Raspberry Pi 3 環境設定
 
-## 2-1. OSダウンロード
+## 2-1. Raspbian OSダウンロード
 
-2017.12.26時点での最新版
-2017-11-29-raspbian-stretch.img
-をインストールする
 
-http://qiita.com/ttyokoyama/items/7afe6404fd8d3e910d09
+* http://qiita.com/ttyokoyama/items/7afe6404fd8d3e910d09
+* https://deviceplus.jp/hobby/raspberrypi_entry_057/
 
-などを参考に、以下実施
+などを参考に、以下実施 
+
+*なお、本ドキュメントでは2017.12.26時点での最新版(2017-11-29-raspbian-stretch.img)をで確認しています。また、with PIXEL(デスクトップ環境入り)を使います。*
 
 ## 2-2. SDカードへimageのコピー
 
