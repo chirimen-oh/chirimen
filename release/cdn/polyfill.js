@@ -42,9 +42,10 @@ bone = (()=> {
         this.status = 2;
         this.waitQueue = [];
       };
-      this.wss.onerror = function (error) {
+      this.wss.onerror = error => {
         errLog("ws error: "+error);
-        for(var cnt=0;cnt < this.waitQueue.length;cnt++){
+        var length = this.waitQueue ? this.waitQueue.length : 0;
+        for(var cnt=0;cnt < length;cnt++){
           if(typeof this.waitQueue[cnt] === 'function'){
             this.waitQueue[cnt](false); 
           }
@@ -533,6 +534,8 @@ if (!navigator.requestI2CAccess) {
         var i2cAccess = new I2CAccess();
         infoLog("I2CAccess.resolve");
         resolve(i2cAccess);
+      }).catch(e=>{
+        reject(e);
       });
     });
   };
@@ -546,6 +549,8 @@ if (!navigator.requestGPIOAccess) {
         var gpioAccess = new GPIOAccess();
         infoLog("gpioAccess.resolve");
         resolve(gpioAccess);
+      }).catch(e=>{
+        reject(e);
       });
     });
   };
