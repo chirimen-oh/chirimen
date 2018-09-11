@@ -1,0 +1,348 @@
+{
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "name": "Top",
+            "type": "url",
+            "url": "https://localhost/top/"
+         }, {
+            "name": "JS Bin",
+            "type": "url",
+            "url": "https://jsbin.com/"
+         }, {
+            "name": "JSFiddle",
+            "type": "url",
+            "url": "https://jsfiddle.net/"
+         }, {
+            "children": [ {
+               "name": "Examples",
+               "type": "url",
+               "url": "https://localhost/top/examples/"
+            }, {
+               "children": [ {
+                  "name": "GPIO-Blink",
+                  "type": "url",
+                  "url": "https://localhost/gpio/LEDblink/"
+               }, {
+                  "name": "GPIO-Button",
+                  "type": "url",
+                  "url": "https://localhost/gpio/button/"
+               }, {
+                  "name": "GPIO-readGpioValue",
+                  "type": "url",
+                  "url": "https://localhost/gpio/readGpioValue/"
+               }, {
+                  "name": "GPIO-pirSensor",
+                  "type": "url",
+                  "url": "https://localhost/gpio/pirSensor/"
+               }, {
+                  "name": "GPIO-MultiBlinkAll",
+                  "type": "url",
+                  "url": "https://localhost/gpio/MultiBlinkAll/"
+               } ],
+               "name": "GPIO-LOCAL",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "name": "I2C-ADT7410",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-ADT7410"
+               }, {
+                  "name": "I2C-Grove-Accelerometer",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-grove-accelerometer"
+               }, {
+                  "name": "I2C-Grove-Gesture",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-grove-gesture"
+               }, {
+                  "name": "I2C-Grove-Light",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-grove-light"
+               }, {
+                  "name": "I2C-Grove-OledDisplay",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-grove-oledDisplay"
+               }, {
+                  "name": "I2C-Grove-Touch",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-grove-touch"
+               }, {
+                  "name": "I2C-PCA9685",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-PCA9685"
+               }, {
+                  "name": "I2C-ADS1015",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-ADS1015"
+               }, {
+                  "name": "I2C-GP2Y0E03",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-GP2Y0E03"
+               }, {
+                  "name": "I2C-S11059",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-S11059"
+               }, {
+                  "name": "I2C-VEML6070",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-VEML6070"
+               }, {
+                  "name": "I2C-multi-sensors",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-multi-sensors"
+               }, {
+                  "name": "I2C-canzasi-blink",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-canzasi-blink"
+               }, {
+                  "name": "I2C-arduino-steppingMotor",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-arduino-steppingMotor"
+               } ],
+               "name": "I2C-LOCAL",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "name": "GPIO-Blink - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/GPIO-Blink.html"
+               }, {
+                  "name": "GPIO-Button - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/GPIO-Button.html"
+               }, {
+                  "name": "GPIO-readGpioValue - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/GPIO-readGpioValue.html"
+               }, {
+                  "name": "GPIO-pirSensor - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/GPIO-pirSensor.html"
+               }, {
+                  "name": "GPIO-MultiBlinkAll - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/GPIO-MultiBlinkAll.html"
+               } ],
+               "name": "GPIO-JSBIN",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "name": "I2C-ADT7410 - JS Bin ",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-ADT7410.html"
+               }, {
+                  "name": "I2C-Grove-Accelerometer - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-Grove-Accelerometer.html"
+               }, {
+                  "name": "I2C-Grove-Gesture - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-Grove-Gesture.html"
+               }, {
+                  "name": "I2C-Grove-Light - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-Grove-Light.html"
+               }, {
+                  "name": "I2C-Grove-OledDisplay - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-Grove-OledDisplay.html"
+               }, {
+                  "name": "I2C-Grove-Touch - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-Grove-Touch.html"
+               }, {
+                  "name": "I2C-PCA9685 - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-PCA9685.html"
+               }, {
+                  "name": "I2C-ADS1015 - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-ADS1015.html"
+               }, {
+                  "name": "I2C-GP2Y0E03 - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-GP2Y0E03.html"
+               }, {
+                  "name": "I2C-S11059 - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-S11059.html"
+               }, {
+                  "name": "I2C-VEML6070 - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-VEML6070.html"
+               }, {
+                  "name": "I2C-multi-sensors - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-multi-sensors.html"
+               }, {
+                  "name": "I2C-canzasi-blink - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-canzasi-blink.html"
+               }, {
+                  "name": "I2C-arduino-steppingMotor - JS Bin",
+                  "type": "url",
+                  "url": "https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-arduino-steppingMotor.html"
+               } ],
+               "name": "I2C-JSBIN",
+               "type": "folder"
+            } ],
+            "name": "examples",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "name": "Raspberry Pi ",
+               "type": "url",
+               "url": "https://www.raspberrypi.org/"
+            }, {
+               "name": "CHIRIMEN Open Hardware",
+               "type": "url",
+               "url": "https://chirimen.org/"
+            }, {
+               "name": "GitHub - chirimen-oh/chirimen-raspi3",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/chirimen-raspi3"
+            }, {
+               "name": "Webリンク集(wiki)",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/chirimen-raspi3/wiki"
+            }, {
+               "children": [ {
+                  "name": "MDN ウェブドキュメント",
+                  "type": "url",
+                  "url": "https://developer.mozilla.org/ja/"
+               }, {
+                  "name": "ウェブ開発を学ぶ | MDN",
+                  "type": "url",
+                  "url": "https://developer.mozilla.org/ja/docs/Learn"
+               }, {
+                  "name": "Tutorials | MDN",
+                  "type": "url",
+                  "url": "https://developer.mozilla.org/ja/docs/Web/Tutorials"
+               }, {
+                  "name": "Web 技術のリファレンス | MDN",
+                  "type": "url",
+                  "url": "https://developer.mozilla.org/ja/docs/Web/Reference"
+               } ],
+               "name": "Basics",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "name": "Web GPIO API Specification (Draft)",
+                  "type": "url",
+                  "url": "https://rawgit.com/browserobo/WebGPIO/master/index.html"
+               }, {
+                  "name": "Web I2C API Specification (Draft)",
+                  "type": "url",
+                  "url": "https://rawgit.com/browserobo/WebI2C/master/index.html"
+               }, {
+                  "name": "Web Bluetooth API (Draft)",
+                  "type": "url",
+                  "url": "https://tkybpp.github.io/web-bluetooth-jp/"
+               } ],
+               "name": "Specs",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "name": "WebBluetoothAPIを使ってブラウザからBLEデバイスを操作する - Qiita",
+                  "type": "url",
+                  "url": "http://qiita.com/tky_bpp/items/f2db61ee8caac8eec031"
+               }, {
+                  "name": "Web Bluetooth Samples",
+                  "type": "url",
+                  "url": "https://googlechrome.github.io/samples/web-bluetooth/"
+               }, {
+                  "name": "Web Bluetooth / Device Info Sample",
+                  "type": "url",
+                  "url": "https://googlechrome.github.io/samples/web-bluetooth/device-info.html"
+               }, {
+                  "name": "Control a PLAYBULB candle with Web Bluetooth",
+                  "type": "url",
+                  "url": "https://codelabs.developers.google.com/codelabs/candle-bluetooth/#0"
+               }, {
+                  "name": "PLAYBULB Candle Demo",
+                  "type": "url",
+                  "url": "https://googlecodelabs.github.io/candle-bluetooth/"
+               }, {
+                  "name": "Web Bluetooth API - Web APIs | MDN",
+                  "type": "url",
+                  "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API"
+               } ],
+               "name": "WebBluetooth",
+               "type": "folder"
+            }, {
+               "children": [ {
+                  "name": "セキュリティーエラー対処方法",
+                  "type": "url",
+                  "url": "https://qiita.com/tadfmac/items/2d7929fe3560c77fe867"
+               }, {
+                  "name": "https://localhost:33330(セキュリティエラー解除)",
+                  "type": "url",
+                  "url": "https://localhost:33330/"
+               } ],
+               "name": "Troubleshooting",
+               "type": "folder"
+            } ],
+            "name": "references",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "name": "INDEX",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/"
+            },{
+               "name": "Hello World",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/section0.md"
+            }, {
+               "name": "チュートリアル 1. GPIO編",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/section1.md"
+            }, {
+               "name": "チュートリアル 2. I2C基本編",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/section2.md"
+            }, {
+               "name": "チュートリアル 3. I2C応用編",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/section3.md"
+            }, {
+               "name": "チュートリアル 4. GPIO/I2C編　まとめ",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/section4.md"
+            }, {
+               "name": "チュートリアル 5. WebBluetooth編",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/section5.md"
+            }, {
+               "name": "チュートリアル 6. ステッピングモーター編",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/section6.md"
+            }, {
+               "name": "Appendix JavaScript 1 Day 講習",
+               "type": "url",
+               "url": "https://webiotmakers.github.io/static/docs/maebashi-js.pdf"
+            }, {
+               "name": "Appendix 非同期処理 (async await版)",
+               "type": "url",
+               "url": "https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/appendix0.md"
+            } ],
+            "name": "tutorials",
+            "type": "folder"
+         } ],
+         "name": "ブックマーク バー",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "name": "その他のブックマーク",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "name": "モバイルのブックマーク",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}
