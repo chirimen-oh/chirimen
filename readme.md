@@ -10,7 +10,16 @@ under construction...
 
 # Version
 
-2018/03/08
+2018/03/10
+
+# To Release
+run release.sh
+
+# To Build CHIRIMEN Environment on raspbian
+## Manually
+Refer  [setup-ja.md](setup-ja.md), or [setup.md](setup.md) .
+## Automatically
+TBD
 
 # Licenses
 
