@@ -292,6 +292,10 @@ ln -s ~/_gc/srv/reset.sh ~/Desktop/reset.sh
 Chromeのブックマークマネージャから、下記ファイルをインポートする。
 `~/_gc/bookmark/bookmarks_2017_09_22.html`
 
+もしくは、
+
+`~/_gc/bookmark/Bookmarks` を `/home/pi/.config/chromium/Default/Bookmarks` へコピーする。
+
 ## 3-3. ~/Desktop/gc/ の設定 
 
 ### 3-3-1. gc.zip ダウンロード (URLは暫定) と配置
