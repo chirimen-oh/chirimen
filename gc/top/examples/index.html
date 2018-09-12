@@ -193,6 +193,7 @@ parts,sumally{
   <div class="colwrap">
     <div class="twrap gpio">
       <h1 id="gpioExamples">GPIO Examples (<a href="https://rawgit.com/browserobo/WebGPIO/master/index.html">API Spec</a>)</h1>
+      <span style="font-size:11px;">Tips: デスクトップのピン配置図を見ながら配線するとミスしにくくなります。 </span>
     </div>
   </div>
   
@@ -297,27 +298,26 @@ parts,sumally{
       </div>
     </div>
     
-    <!-- TBD wait for GPIO in bug fix
     <div class="cwrap">
       <div class="title">GPIO-buttonAll</div>
       <div class="linkwrap">
-        <div class="linkicon schematic"><a href="." target="_blank">回路図</a></div>
+        <div class="linkicon schematic"><a href="../../gpio/buttonAll/buttonAll.png" target="_blank">回路図</a></div>
         <div class="linkicon local"><a href="../../gpio/buttonAll/" target="_blank">Local</a></div>
-        <div class="linkicon jsbin"><a href="https://jsbin.com/suzetumupe/edit?html,js,output" target="_blank">JSBin</a></div>
+        <div class="linkicon jsbin"><a href="https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/GPIO-buttonAll.html" target="_blank">JSBin</a></div>
       </div>
       <h3 class="sumally">概要</h3>
-      <div class="desc">大量のタクトスイッチの入力を得ます</div>
+      <div class="desc">大量のタクトスイッチの入力を得ます。GPIO4, 5, 6はPull Up, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27はPull Downであることに注意してタクトスイッチを接続します。</div>
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
+      Note: 下記はすべてのポートにスイッチをつけた場合　必要に応じて省略してください。
         <ul>
-          <li>タクトスイッチ x 8</li>
+          <li>タクトスイッチ x 17</li>
           <li>ジャンパー（オス・メス）ケーブル x 9</li>
-          <li>ジャンパー（オス・オス）ケーブル x 8</li>
+          <li>ジャンパー（オス・オス）ケーブル x 19</li>
           <li>ブレッドボード x 1</li>
         </ul>
       </div>
     </div>
-    -->
     
   </div>
 </div>
@@ -326,6 +326,7 @@ parts,sumally{
   <div class="colwrap">
     <div class="twrap i2c">
       <h1 id="i2cExamples">I2C Examples (<a href="https://rawgit.com/browserobo/WebI2C/master/index.html">API Spec</a>)</h1>
+       <span style="font-size:11px;">Tips: i2cdetectコマンドでI2Cバスの状態を確認するとデバッグがしやすくなります。 </span><code>i2cdetect -y -r 1</code>
     </div>
   </div>
   
@@ -338,7 +339,10 @@ parts,sumally{
         <div class="linkicon jsbin"><a href="https://rawgit.com/chirimen-oh/tutorials/master/RaspberryPi/examples/JSBinLinks/I2C-ADT7410.html" target="_blank">JSBin</a></div>
       </div>
       <h3 class="sumally">概要</h3>
-      <div class="desc">I2C接続の温度センサー「ADT7410」を用いて温度を計測し表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください。 <br><span style="font-size:11px;">※ジャンパー（メス・メス）ケーブルに直接刺すために、パッケージに付属の細ピンヘッダではなく標準サイズのピンヘッダを付けてください）</span></div>
+      <div class="desc">I2C接続の温度センサー「ADT7410」を用いて温度を計測し表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください。 <br>
+        <span>詳しくは、<a href="https://github.com/chirimen-oh/tutorials/blob/master/RaspberryPi/JA/section1.md">チュートリアル2</a>を参照ください。</span><br>
+        <span style="font-size:11px;">※ジャンパー（メス・メス）ケーブルに直接刺すために、パッケージに付属の細ピンヘッダではなく標準サイズのピンヘッダを付けてください）</span><br>
+      </div>
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
         <ul>

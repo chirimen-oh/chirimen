@@ -9,7 +9,7 @@ async function initPorts(){
 	var gpioAccess = await navigator.requestGPIOAccess();
 //        console.log("GPIO ready!");
 	var ports = [];
-	for ( var i = 0 ; i < 3 ; i++){ // 当面は4,5,6ポートのみ
+	for ( var i = 0 ; i < portAddrs.length ; i++){ 
 		ports[i] = gpioAccess.ports.get(portAddrs[i]);
 		await ports[i].export("in");
 		ports[i].onchange = function(prt){
