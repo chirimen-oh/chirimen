@@ -425,11 +425,6 @@ function processOne(connection,u8mes){
           logout("export:done: port="+portnum+" direction="+portdata.direction);
 
           if(portdata.direction == 1){
-            portdata.exportobj._get((value)=>{
-              portdata.value = value;
-              ans = createAnswer(u8mes,[1]);
-              resolve(ans);
-            });
             portdata.exportobj.on("change",(val)=>{
               // [0] Change Callback (2)
               // [1] session id LSB (0)
@@ -446,6 +441,8 @@ function processOne(connection,u8mes){
               conn.ws.send(mes);
               mes = null;
             });
+            ans = createAnswer(u8mes,[1]);
+            resolve(ans);
           }else{
             //         0     : export      : [4] result (1:OK, 0:NG)
             ans = createAnswer(u8mes,[1]);
