@@ -10,6 +10,9 @@ sudo xset -dpms
 sudo xset s noblank
 # スリープを無効
 sudo sed '1s/$/ consoleblank=0/' /boot/cmdline.txt | sudo tee /tmp/cmdline && sudo cat /tmp/cmdline | sudo tee /boot/cmdline.txt && sudo rm -f /tmp/cmdline
+echo '@xset s off' >> /home/pi/.config/lxsession/LXDE-pi/autostart
+echo '@xset -dpms' >> /home/pi/.config/lxsession/LXDE-pi/autostart
+echo '@xset s noblank' >> /home/pi/.config/lxsession/LXDE-pi/autostart
 # 軽量化
 sudo apt-get -y purge wolfram-engine
 sudo apt-get -y purge minecraft-pi
