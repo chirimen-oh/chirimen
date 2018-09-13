@@ -10,16 +10,17 @@ under construction...
 
 # Version
 
-2018/09/12
-
-# To Release
-run release.sh
+2018/09/13
 
 # To Build CHIRIMEN Environment on raspbian
+## Automatically
+Execute [`setup.sh`](setup.sh) on Raspbian with Desktop.
+
 ## Manually
 Refer  [setup-ja.md](setup-ja.md), or [setup.md](setup.md) .
-## Automatically
-TBD
+
+# To Release
+Refer https://github.com/chirimen-oh/chirimen-raspi3/wiki/Release
 
 # Licenses
 
