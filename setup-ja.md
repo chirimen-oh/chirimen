@@ -33,7 +33,7 @@ CHIRIMEN for Raspberry Pi 3のセットアップ方法(OSイメージの作成�
 
 などを参考に、以下実施 
 
-*なお、本ドキュメントでは2017.12.26時点での最新版(2017-11-29-raspbian-stretch.img)をで確認しています。また、with PIXEL(デスクトップ環境入り)を使います。*
+*なお、本ドキュメントでは2018.9.12時点での最新版(2018-06-27-raspbian-stretch.img)で確認しています。また、with Desktop(デスクトップ環境入り)を使います。*
 
 ## 2-2. SDカードへimageのコピー
 
@@ -288,11 +288,6 @@ ln -s ~/_gc/srv/reset.sh ~/Desktop/reset.sh
 「picture」から `~/_gc/wallpaper/wallpaper-720p.png` を選択する。
 
 ### 3-2-6. Bookmarkの導入
-
-Chromeのブックマークマネージャから、下記ファイルをインポートする。
-`~/_gc/bookmark/bookmarks_2017_09_22.html`
-
-もしくは、
 
 `~/_gc/bookmark/Bookmarks` を `/home/pi/.config/chromium/Default/Bookmarks` へコピーする。
 
