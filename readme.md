@@ -14,7 +14,7 @@ under construction...
 
 # To Build CHIRIMEN Environment on raspbian
 ## Automatically
-Execute [`setup.sh`](setup.sh) on Raspbian with Desktop.
+Execute [`setup.sh`](setup.sh) on Raspbian with Desktop. (Note: default passwd is changed to `rasp`)
 
 ## Manually
 Refer  [setup-ja.md](setup-ja.md), or [setup.md](setup.md) .
