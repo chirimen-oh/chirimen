@@ -1,24 +1,29 @@
 'use strict';
 
+var ledPort,switchPort; // LEDとスイッチの付いているポート
+
 window.addEventListener('load', function (){
-  navigator.requestGPIOAccess().then(
-    function(gpioAccess) {
-//        console.log("GPIO ready!");
-      return gpioAccess;
-    }).then(gpio=>{
-      var ledPort = gpio.ports.get(26);
-      var buttonPort = gpio.ports.get(5);
-      return Promise.all([
-        ledPort.export("out"),
-        buttonPort.export("in")
-      ]).then(()=>{
-        buttonPort.onchange = function(v){
-          console.log("button is pushed!");
-          v = v ? 0 : 1;
-          ledPort.write(v);
-        }
-      });
-  }).catch(error=>{
-    console.log("Failed to get GPIO access catch: " + error.message);
-  });
+	initGPIO();
 }, false);
+
+
+function ledOnOff(v){
+	if(v === 0){
+		ledPort.write(0);
+	} else {
+		ledPort.write(1);
+	}
+}
+
+async function initGPIO(){
+	var gpioAccess = await navigator.requestGPIOAccess();
+	ledPort = gpioAccess.ports.get(26); // LEDのPort
+	await ledPort.export("out");
+	switchPort = gpioAccess.ports.get(5); // タクトスイッチのPort
+	await switchPort.export("in");
+	switchPort.onchange = function(val){
+		// Port 5の状態を読み込む  
+		val ^= 1; // switchはPullupなのでOFFで1。LEDはOFFで0なので反転させる
+		ledOnOff(val);
+	}
+}
