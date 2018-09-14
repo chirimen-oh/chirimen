@@ -6,11 +6,11 @@
 
 ![wallpaper](./_gc/wallpaper/wallpaper-720P.png)
 
-under construction...
+Always under construction...
 
 # Version
 
-2018/09/13
+2018/09/14
 
 # To Build CHIRIMEN Environment on raspbian
 ## Automatically
