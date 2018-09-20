@@ -50,7 +50,8 @@ function testNext(){
 	if (currentTest >= testPages.length ){
 		currentTest = 0;
 	}
-	tName.innerHTML=(testPages[currentTest].split("/"))[1];
+	var bv = testPages[currentTest].split("/");
+	tName.innerHTML=bv[bv.length-1];
 	var src = testPages[currentTest]+"/index.html";
 	ifr.src=src;
 }
