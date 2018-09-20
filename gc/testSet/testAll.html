@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<script>
+var testPages=[
+	"../gpio/MultiBlinkAll",
+	"../gpio/buttonAll",
+	"../i2c/i2c-ADS1015",
+	"i2c-ADT7410_49",
+	"../i2c/i2c-GP2Y0E03",
+	"../i2c/i2c-grove-accelerometer",
+	"../i2c/i2c-grove-gesture",
+	"../i2c/i2c-grove-light",
+	"../i2c/i2c-grove-oledDisplay",
+	"../i2c/i2c-grove-touch",
+	"i2c-PCA9685_41",
+	"../i2c/i2c-S11059",
+	"../i2c/i2c-VEML6070"];
+
+var ifr,tName;
+
+onload=function(){
+	ifr = document.getElementById("target");
+	ifr.onload=forceScrollToBottom;
+	tName = document.getElementById("testName");
+	var btns = document.getElementById("btn");
+	for ( var i = 0 ; i < testPages.length ; i++ ){
+		var btn = document.createElement("input");
+		btn.type="button";
+		btn.value=(testPages[i].split("/"))[1];
+		btn.name=testPages[i];
+		btn.addEventListener("click",changeTest);
+		btns.appendChild(btn);
+	}
+}
+
+function changeTest(evt){
+	var src = evt.srcElement.name+"/index.html";
+	ifr.src=src;
+	tName.innerHTML=evt.srcElement.value;
+}
+
+function forceScrollToBottom(evt){
+	ifr.contentWindow.scrollTo(0,1000);
+}
+
+var currentTest = -1;
+function testNext(){
+	++ currentTest;
+	if (currentTest >= testPages.length ){
+		currentTest = 0;
+	}
+	tName.innerHTML=(testPages[currentTest].split("/"))[1];
+	var src = testPages[currentTest]+"/index.html";
+	ifr.src=src;
+}
+
+</script>
+<body>
+<div id="btn"></div>
+<div>
+<input type="button" value="nextTest" onClick="testNext()"/>
+<span id="testName"></span>
+<iframe id="target" style="width:100%;height:300px">
+</body>
+</html>
