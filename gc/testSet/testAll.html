@@ -26,7 +26,8 @@ onload=function(){
 	for ( var i = 0 ; i < testPages.length ; i++ ){
 		var btn = document.createElement("input");
 		btn.type="button";
-		btn.value=(testPages[i].split("/"))[1];
+		var bv = testPages[i].split("/");
+		btn.value=bv[bv.length-1];
 		btn.name=testPages[i];
 		btn.addEventListener("click",changeTest);
 		btns.appendChild(btn);
