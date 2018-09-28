@@ -12,6 +12,8 @@ PCA9685.prototype = {
     return new Promise((resolve)=>{setTimeout(resolve,ms);});
   },
   init: function(minPulse,maxPulse,angleRange,noSetZero){
+  // minPulse,maxPulse: in sec
+  // angleRange : -angleRange to +angleRange degrees
     if(this.minPulse && this.maxPulse && this.angleRange){
       console.log("alredy set param");
     }
@@ -21,9 +23,9 @@ PCA9685.prototype = {
       this.angleRange = angleRange;
 //      console.log("set servo setting.");
     }else{
-      this.minPulse = 0.0005;
-      this.maxPulse = 0.0024;
-      this.angleRange = 180;
+      this.minPulse = 0.0011;
+      this.maxPulse = 0.0019;
+      this.angleRange = 30.0;
 //      console.log("set defaul servo setting.");
     }
 
@@ -61,11 +63,23 @@ PCA9685.prototype = {
       maxPulse = this.maxPulse;
       pulseRange = maxPulse - minPulse;
       angleRange = this.angleRange;
-      console.log(minPulse,maxPulse,angleRange,pulseRange);
+//      console.log(minPulse,maxPulse,angleRange,pulseRange);
     }else{
       console.log("wrong param.");
     }
-    var pulse = minPulse + angle / angleRange * pulseRange;
+    if ( angle < -angleRange){
+        angle = -angleRange;
+    } else if ( angle > angleRange ){
+        angle = angleRange;
+    }
+    if ( servoPort < 0){
+        servoPort = 0;
+    } else if ( servoPort > 15 ){
+        servoPort = 15;
+    }
+
+    var pulse = ((minPulse + maxPulse) + angle / angleRange * pulseRange ) / 2.0;
+    console.log("pulse:",pulse*1000," msec");
     var ticks = Math.round(pulse / tickSec);
     
     var tickH = (( ticks >> 8 ) & 0x0f);
