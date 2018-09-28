@@ -14,15 +14,16 @@ async function mainFunction() {
   var i2cAccess = await navigator.requestI2CAccess();
   try {
     var port = i2cAccess.ports.get(1);
-    var pcs9685 = new PCA9685(port, 0x40);
-    var angle = 90;
+    var pca9685 = new PCA9685(port, 0x40);
+    var angle = 0;
     // console.log("angle"+angle);
     // servo setting for sg90
-    await pcs9685.init(0.0005, 0.0024, 180);
+    // Servo PWM pulse: min=0.0011[sec], max=0.0019[sec] angle=+-60[deg]
+    await pca9685.init(0.001, 0.002, 30);
     while (1) {
-      angle = angle <= 10 ? 170 : 10;
+      angle = angle <= -30 ? 30 : -30;
       // console.log("angle"+angle);
-      await pcs9685.setServo(0, angle);
+      await pca9685.setServo(0, angle);
       // console.log('value:', angle);
       head.innerHTML = angle;
       await sleep(1000);
