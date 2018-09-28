@@ -39,6 +39,10 @@
                   "name": "GPIO-MultiBlinkAll",
                   "type": "url",
                   "url": "https://localhost/gpio/MultiBlinkAll/"
+               }, {
+                  "name": "GPIO-buttonAll",
+                  "type": "url",
+                  "url": "https://localhost/gpio/buttonAll/"
                } ],
                "name": "GPIO-LOCAL",
                "type": "folder"
@@ -123,6 +127,10 @@
                   "name": "GPIO-MultiBlinkAll - JS Bin",
                   "type": "url",
                   "url": "https://r.chirimen.org/gpio-multiblinkall"
+               }, {
+                  "name": "GPIO-buttonAll - JS Bin",
+                  "type": "url",
+                  "url": "https://r.chirimen.org/gpio-buttonall"
                } ],
                "name": "GPIO-JSBIN",
                "type": "folder"
