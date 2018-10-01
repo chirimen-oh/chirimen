@@ -17,6 +17,9 @@ Execute [`./setup.sh`](setup.sh) on Raspbian with Desktop. (**Note: default pass
 ## Setup Manually
 Refer [setup-ja.md](setup-ja.md), or [setup.md](setup.md).
 
+## View top page content of chirimen environment on github
+[Access this page](http://chirimen.org/chirimen-raspi3/gc/top/) via github pages.
+
 # Files and Directories
 
 - _gc/
