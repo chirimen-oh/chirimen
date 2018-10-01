@@ -329,7 +329,7 @@
             }, {
                "name": "Appendix JavaScript 1 Day 講習",
                "type": "url",
-               "url": "https://webiotmakers.github.io/static/docs/maebashi-js.pdf"
+               "url": "https://webiotmakers.github.io/static/docs/2017/maebashi-js.pdf"
             }, {
                "name": "Appendix 非同期処理 (async await版)",
                "type": "url",
