@@ -557,3 +557,17 @@ if (!navigator.requestGPIOAccess) {
 }
 
 })()
+
+//////////////////////////////////////////////////////////////////////////
+// common utility functions
+
+/**
+ * Utility function for async/await code.
+ * @param {number} ms - milliseconds to wait
+ * @return {Promise} A promise to be resolved after ms milliseconds later.
+ */
+function sleep(ms) {
+  return new Promise(function(resolve) {
+    setTimeout(resolve, ms);
+  });
+}

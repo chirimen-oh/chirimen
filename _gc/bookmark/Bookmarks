@@ -297,35 +297,35 @@
             "children": [ {
                "name": "INDEX",
                "type": "url",
-               "url": "https://chirimen.org/tutorials/RaspberryPi/JA/"
+               "url": "https://tutorial.chirimen.org/"
             },{
                "name": "Hello World",
                "type": "url",
-               "url": "https://chirimen.org/tutorials/RaspberryPi/JA/section0.html"
+               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section0.html"
             }, {
                "name": "チュートリアル 1. GPIO編",
                "type": "url",
-               "url": "https://chirimen.org/tutorials/RaspberryPi/JA/section1.html"
+               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section1.html"
             }, {
                "name": "チュートリアル 2. I2C基本編",
                "type": "url",
-               "url": "https://chirimen.org/tutorials/RaspberryPi/JA/section2.html"
+               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section2.html"
             }, {
                "name": "チュートリアル 3. I2C応用編",
                "type": "url",
-               "url": "https://chirimen.org/tutorials/RaspberryPi/JA/section3.html"
+               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section3.html"
             }, {
                "name": "チュートリアル 4. GPIO/I2C編　まとめ",
                "type": "url",
-               "url": "https://chirimen.org/tutorials/RaspberryPi/JA/section4.html"
+               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section4.html"
             }, {
                "name": "チュートリアル 5. WebBluetooth編",
                "type": "url",
-               "url": "https://chirimen.org/tutorials/RaspberryPi/JA/section5.html"
+               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section5.html"
             }, {
                "name": "チュートリアル 6. ステッピングモーター編",
                "type": "url",
-               "url": "https://chirimen.org/tutorials/RaspberryPi/JA/section6.html"
+               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section6.html"
             }, {
                "name": "Appendix JavaScript 1 Day 講習",
                "type": "url",
@@ -333,7 +333,7 @@
             }, {
                "name": "Appendix 非同期処理 (async await版)",
                "type": "url",
-               "url": "https://chirimen.org/tutorials/RaspberryPi/JA/appendix0.html"
+               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/appendix0.html"
             } ],
             "name": "tutorials",
             "type": "folder"
