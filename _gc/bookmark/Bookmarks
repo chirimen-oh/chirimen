@@ -295,7 +295,7 @@
             "type": "folder"
          }, {
             "children": [ {
-               "name": "INDEX",
+               "name": "チュートリアル",
                "type": "url",
                "url": "https://tutorial.chirimen.org/"
             },{
