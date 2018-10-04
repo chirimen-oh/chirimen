@@ -150,7 +150,7 @@
                }, {
                   "name": "I2C-Grove-Light - JS Bin",
                   "type": "url",
-                  "url": "https://r.chirimen.org"
+                  "url": "https://r.chirimen.org/i2c-grove-light"
                }, {
                   "name": "I2C-Grove-OledDisplay - JS Bin",
                   "type": "url",
