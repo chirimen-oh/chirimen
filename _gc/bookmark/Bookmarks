@@ -238,11 +238,11 @@
                "children": [ {
                   "name": "Web GPIO API Specification (Draft)",
                   "type": "url",
-                  "url": "https://rawgit.com/browserobo/WebGPIO/master/index.html"
+                  "url": "http://webapi.link/gpio"
                }, {
                   "name": "Web I2C API Specification (Draft)",
                   "type": "url",
-                  "url": "https://rawgit.com/browserobo/WebI2C/master/index.html"
+                  "url": "http://webapi.link/i2c"
                }, {
                   "name": "Web Bluetooth API (Draft)",
                   "type": "url",
