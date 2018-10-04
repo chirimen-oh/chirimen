@@ -301,39 +301,39 @@
             },{
                "name": "Hello World",
                "type": "url",
-               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section0.html"
+               "url": "https://r.chirimen.org/tutorial0"
             }, {
                "name": "チュートリアル 1. GPIO編",
                "type": "url",
-               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section1.html"
+               "url": "https://r.chirimen.org/tutorial1"
             }, {
                "name": "チュートリアル 2. I2C基本編",
                "type": "url",
-               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section2.html"
+               "url": "https://r.chirimen.org/tutorial2"
             }, {
                "name": "チュートリアル 3. I2C応用編",
                "type": "url",
-               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section3.html"
+               "url": "https://r.chirimen.org/tutorial3"
             }, {
                "name": "チュートリアル 4. GPIO/I2C編　まとめ",
                "type": "url",
-               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section4.html"
+               "url": "https://r.chirimen.org/tutorial4"
             }, {
                "name": "チュートリアル 5. WebBluetooth編",
                "type": "url",
-               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section5.html"
+               "url": "https://r.chirimen.org/tutorial5"
             }, {
                "name": "チュートリアル 6. ステッピングモーター編",
                "type": "url",
-               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/section6.html"
+               "url": "https://r.chirimen.org/tutorial6"
             }, {
                "name": "Appendix JavaScript 1 Day 講習",
                "type": "url",
-               "url": "https://webiotmakers.github.io/static/docs/2017/maebashi-js.pdf"
+               "url": "https://r.chirimen.org/1dayjs"
             }, {
                "name": "Appendix 非同期処理 (async await版)",
                "type": "url",
-               "url": "https://tutorial.chirimen.org/RaspberryPi/JA/appendix0.html"
+               "url": "https://r.chirimen.org/appendix0"
             } ],
             "name": "tutorials",
             "type": "folder"
