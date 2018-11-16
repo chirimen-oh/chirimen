@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>GPIO-HBridge</title>
+</head>
+<body>
+<script src="../../../polyfill/polyfill.js"></script>
+<script src="hb.js"></script>
+<h1>GPIO H-Bridge Motor drive (no PWM)</h1>
+<!-- http://www.kaltpost.de/?page_id=12 -->
+<p>Connect H-Bridge Motor Driver to GPIO 20,21</p>
+<input type="button" onclick="free()" value="FREE"></input>
+<input type="button" onclick="fwd()" value="FOWARD"></input>
+<input type="button" onclick="rev()" value="REVERSE"></input>
+<input type="button" onclick="brake()" value="BRAKE"></input>
+<div>
+<table>
+<td>TB6612FNG</td><td><img src="TB6612FNG.png" height="400"></td></tr>
+<td>L298N</td><td><img src="L298N.png" height="400"></td></tr>
+</div>
+</body>
+</html>
