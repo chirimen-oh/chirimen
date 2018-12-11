@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+  <title>i2c-MPU9250</title>
+  <script src="../../../polyfill/polyfill.js"></script>
+  <script src="../../drivers/i2c-MPU6500.js"></script>
+  <script src="../../drivers/i2c-AK8963.js"></script>
+  <script src="./mainMpu92.js"></script>
+  <style>
+    table,p {
+      color: blue;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    img {
+      position: absolute;
+      top: 50px;
+      right: 0px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="schematic.png" width="400">
+  <p id="head">MPU-9250</p>
+  <table>
+  <tr><td>temp</td><td id="temp"></td></tr>
+  <tr><td>Gx</td><td id="gx"></td></tr>
+  <tr><td>Gy</td><td id="gy"></td></tr>
+  <tr><td>Gz</td><td id="gz"></td></tr>
+  <tr><td>Rx</td><td id="rx"></td></tr>
+  <tr><td>Ry</td><td id="ry"></td></tr>
+  <tr><td>Rz</td><td id="rz"></td></tr>
+  <tr><td>Hx</td><td id="hx"></td></tr>
+  <tr><td>Hy</td><td id="hy"></td></tr>
+  <tr><td>Hz</td><td id="hz"></td></tr>
+  </table>
+</body>
+
+</html>

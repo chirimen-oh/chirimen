@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>NEOPIXEL_I2C Example</title>
+</head>
+<body>
+<script src="../../../polyfill/polyfill.js"></script>
+<script src="../../drivers/i2c-NEOPIXEL_I2C.js"></script>
+<script src="npi2c.js"></script>
+<h1>NEOPIXEL_I2C Example</h1>
+<img src="NOEPIXEL_I2C.png" height="400"/>
+<div>
+<input type="button" onclick="setGlobalColor(0x20,0x00,0x00)" value="R"></input>
+<input type="button" onclick="setGlobalColor(0x00,0x20,0x00)" value="G"></input>
+<input type="button" onclick="setGlobalColor(0x00,0x00,0x20)" value="B"></input>
+<input type="button" onclick="setGlobalColor(0x00,0x00,0x00)" value="OFF"></input>
+<br>
+<input type="button" onclick="setPattern0()" value="PATTERN0"></input>
+<input type="button" onclick="setPattern1()" value="PATTERN1"></input>
+<input type="button" onclick="setPattern2()" value="PATTERN2"></input>
+<input type="button" onclick="setPattern3()" value="PATTERN3"></input>
+</div>
+</body>
+</html>

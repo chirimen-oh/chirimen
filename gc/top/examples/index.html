@@ -284,7 +284,7 @@ parts,sumally{
       <div class="desc">
         <ul>
           <li>人感センサー (KP-IR412) x 1 
-          <ul><li><span class="note">Note: より安価な<a href="https://www.amazon.co.jp/s/ref=nb_sb_noss_2?field-keywords=HC-SR501">ジェネリック部品(HC-SR501)</a>も同様に使用できました。ジャンパーとボリュームは初期設定のままで確認</span></li></ul>
+          <ul><li><span class="note">Note: より安価な<a href="https://www.amazon.co.jp/s/?field-keywords=HC-SR501">ジェネリック部品(HC-SR501)</a>も同様に使用できました。ジャンパーとボリュームは初期設定のままで確認</span></li></ul>
           <li>ジャンパー（オス・メス）ケーブル x 6</li>
           <li>ブレッドボード x 1</li>
         </ul>
@@ -468,7 +468,7 @@ parts,sumally{
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
         <ul>
-          <li><a href="https://www.switch-science.com/catalog/961/">PCA9685搭載16チャネル PWM/サーボ ドライバー (I2C接続)</a> x 1</li>
+          <li><a href="https://www.switch-science.com/catalog/961/">PCA9685搭載16チャネル PWM/サーボ ドライバー (I2C接続)</a> x 1　<span class="note">(<a href="https://www.amazon.co.jp/s/?field-keywords=PCA9685">互換品</a>もあり)</span></li>
           <li><a href="http://akizukidenshi.com/catalog/g/gM-08761/">マイクロサーボ SG-90</a> x 1</li>
           <li>ジャンパー（メス・メス）ケーブル x 4</li>
         </ul>
@@ -653,7 +653,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
         <ul>
-          <li><a href="https://www.amazon.co.jp/s/ref=sr_st_relevanceblender?keywords=BME280">BME280 温度・湿度・気圧 センサ ブレイクアウト</a> x 1 </li>
+          <li><a href="https://www.amazon.co.jp/s/?keywords=BME280">BME280 温度・湿度・気圧 センサ ブレイクアウト</a> x 1 </li>
           <li>ジャンパー（メス・メス）ケーブル x 4</li>
         </ul>
       </div>
@@ -672,7 +672,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
         <ul>
-          <li><a href="https://www.amazon.co.jp/s/ref=nb_sb_noss_2?field-keywords=MPU6050">MPU6050 ３軸ジャイロ＋３軸加速度センサ ブレイクアウト</a> x 1 </li>
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=MPU6050">MPU6050 ３軸ジャイロ＋３軸加速度センサ ブレイクアウト</a> x 1 </li>
           <li>ジャンパー（メス・メス）ケーブル x 4</li>
         </ul>
       </div>
@@ -682,31 +682,33 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     <div class="cwrap">
       <div class="title">GPIO-HBridge</div>
       <div class="linkwrap">
-        <div class="linkicon schematic"><a href="../../contrib/examples/gpio-HBridge/TB6612FNG.png" target="_blank">回路図 TB6612FNG使用</a></div>
-        <div class="linkicon schematic"><a href="../../contrib/examples/gpio-HBridge/L298N.png" target="_blank">回路図 L298N使用</a></div>
+        <div class="linkicon schematic"><a href="../../contrib/examples/gpio-HBridge/HBridge_TB6612FNG.png" target="_blank">回路図 TB6612FNG使用</a></div>
+        <div class="linkicon schematic"><a href="../../contrib/examples/gpio-HBridge/HBridge_L298N.png" target="_blank">回路図 L298N使用</a></div>
         <div class="linkicon local"><a href="../../contrib/examples/gpio-HBridge/index.html" target="_blank">Local</a></div>
-        <div class="linkicon jsbin"><a href="https://r.chirimen.org/i2c-hbridge" target="_blank">JSBin</a></div>
+        <div class="linkicon jsbin"><a href="https://r.chirimen.org/gpio-hbridge" target="_blank">JSBin</a></div>
       </div>
       <h3 class="sumally">概要</h3>
-      <div class="desc">GPIO接続のH-BridgeモータドライバでDCモータの正転・逆転制御を可能にします</div>
+      <div class="desc">GPIO接続のH-BridgeモータドライバでDCモータの正転・逆転制御を可能にします。<br><span class="note">モータードライバ基板としては他に<a href="https://www.amazon.co.jp/s/?field-keywords=L9110S">L9110S</a>, <a href="https://www.amazon.co.jp/dp/B078X88R27">MX1508</a>などで動作実績がありあす</span></div>
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
       <ul>
         <li>TB6612FNGを使用する場合
         <ul>
           <li><a href="https://www.switch-science.com/catalog/3586/">TB6612FNG ブレイクアウト</a> x 1 </li>
-          <li>ジャンパー（メス・オス）ケーブル x 5</li>
+          <li>ジャンパー（メス・オス）ケーブル x 4</li>
           <li>ジャンパー（オス・オス）ケーブル x 3</li>
           <li>ブレッドボード x 1</li>
-          <li>DCモータ(5V) x 1</li>
+          <li>DCモータ(6V) x 1</li>
+          <li>モータ用電源(6V) x 1</li>
         </ul>
-       </ul>
         <li>L298Nを使用する場合
         <ul>
-          <li><a href="https://www.amazon.co.jp/KKHMF-%E3%83%87%E3%83%A5%E3%82%A2%E3%83%ABH%E3%83%96%E3%83%AA%E3%83%83%E3%82%B8-DC%E3%82%B9%E3%83%86%E3%83%83%E3%83%97-%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AD%E3%83%BC%E3%83%A9%E3%83%BC-Arduino%E3%81%A8%E4%BA%92%E6%8F%9B/dp/B076CLK3GQ/">L298N搭載モータドライバ基板</a> x 1 </li>
-          <li>ジャンパー（メス・メス）ケーブル x 2</li>
-          <li>ジャンパー（メス・オス）ケーブル x 2</li>
-          <li>DCモータ(5V) x 1</li>
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=L298N">L298N搭載モータドライバ基板</a> x 1 </li>
+          <li>ジャンパー（メス・オス）ケーブル x 3</li>
+          <li>ジャンパーピン（モータードライバに付属） x 1</li>
+          <li>DCモータ(6V) x 1</li>
+          <li>モータ用電源(6V) x 1</li>
+          <li><span class="note">モータの電源が6V未満のものの場合、モータ電源(+12V)からロジック電源を供給するジャンパピン(GNDと+12V端子付近にある)を外し+5V端子にロジック電源を供給する</span></li>
         </ul>
        </ul>
       </div>
@@ -725,7 +727,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
         <ul>
-          <li><a href="https://www.amazon.co.jp/s/ref=sr_st_relevanceblender?keywords=BMP180">BMP180 温度・気圧 センサ ブレイクアウト</a> x 1 </li> (注:BMP280とは異なります。)
+          <li><a href="https://www.amazon.co.jp/s/?keywords=BMP180">BMP180 温度・気圧 センサ ブレイクアウト</a> x 1 </li> (注:BMP280とは異なります。)
           <li>ジャンパー（メス・メス）ケーブル x 4</li>
         </ul>
       </div>
@@ -752,11 +754,119 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     </div>
     
     
+    <div class="cwrap">
+      <div class="title">I2C-BMP280</div>
+      <div class="linkwrap">
+        <div class="linkicon schematic"><a href="../../contrib/examples/i2c-BMP280/schematic.png" target="_blank">回路図</a></div>
+        <div class="linkicon local"><a href="../../contrib/examples/i2c-BMP280/bmp280.html" target="_blank">Local</a></div>
+        <div class="linkicon jsbin"><a href="https://r.chirimen.org/i2c-bmp280" target="_blank">JSBin</a></div>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続の温度・気圧　複合センサーで取得した値を表示します。（BMP280は、BMP180とは別のデバイスです）</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?keywords=BMP280">BMP280 温度・気圧 センサ ブレイクアウト</a> x 1 </li> (注:BMP180とは異なります。)
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
+  
+  
+    <div class="cwrap">
+      <div class="title">I2C-MPU9250</div>
+      <div class="linkwrap">
+        <div class="linkicon schematic"><a href="../../contrib/examples/i2c-MPU9250/schematic.png" target="_blank">回路図</a></div>
+        <div class="linkicon local"><a href="../../contrib/examples/i2c-MPU9250/mpu92.html" target="_blank">Local</a></div>
+        <div class="linkicon jsbin"><a href="https://r.chirimen.org/i2c-mpu9250" target="_blank">JSBin</a></div>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続の３軸ジャイロ＋３軸加速度＋３軸磁気　複合センサーで取得した値を表示します。<br>
+      <span class="note">このセンサーは、MPU6500(３軸ジャイロ＋３軸加速度)とAK8963(３軸磁気)という二つのI2Cセンサが１パッケージに封入された複合センサです。適切に初期化されるとこれら２個のI2Cスレーブデバイスが出現します</span></div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=MPU9250">MPU9250 ３軸ジャイロ＋３軸加速度＋３軸磁気センサ ブレイクアウト</a> x 1 </li>
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
+  
+  
+    <div class="cwrap">
+      <div class="title">GPIO-I2C-PWMHBridge その１</div>
+      <div class="linkwrap">
+        <div class="linkicon schematic"><a href="../../contrib/examples/gpio-i2c-PWMHBridge1/PWMHBridge.png" target="_blank">回路図</a></div>
+        <div class="linkicon local"><a href="../../contrib/examples/gpio-i2c-PWMHBridge1/index.html" target="_blank">Local</a></div>
+        <div class="linkicon jsbin"><a href="https://r.chirimen.org/gpio-i2c-pwmhbridge" target="_blank">JSBin</a></div>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">GPIO接続のH-Bridgeモータドライバ及びI2C接続のPWMドライバPCA9685でDCモータの正転・逆転さらに速度制御を可能にします。<br><span class="note">H-BridgeモータドライバはL298N以外にTB6612FNGでも動作実績あり</span></div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=L298N">L298N搭載モータドライバ基板</a> x 1 </li>
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=PCA9685">PCA9685搭載PWMドライバ基板</a> x 1 </li>
+          <li>ジャンパー（メス・メス）ケーブル x 7</li>
+          <li>ジャンパー（メス・オス）ケーブル x 1</li>
+          <li>DCモータ(6V) x 1 </li>
+          <li>モータ用電源(6V) x 1</li>
+        </ul>
+      </div>
+    </div>
+  
+  
+    <div class="cwrap">
+      <div class="title">GPIO-I2C-PWMHBridge その２</div>
+      <div class="linkwrap">
+        <div class="linkicon schematic"><a href="../../contrib/examples/gpio-i2c-PWMHBridge2/PWMHBridge2.png" target="_blank">回路図</a></div>
+        <div class="linkicon local"><a href="../../contrib/examples/gpio-i2c-PWMHBridge2/index.html" target="_blank">Local</a></div>
+        <div class="linkicon jsbin"><a href="https://r.chirimen.org/gpio-i2c-pwmhbridge2" target="_blank">JSBin</a></div>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">H-BridgeモータドライバとPWMドライバPCA9685でDCモータの正逆転速度制御をします。こちらの回路ではPWM信号を2つ使います。<BR>PWM端子やENABLE端子などを持たないコントローラにも応用できます。<BR><span class="note">L298N以外に、L9110S, MX1508などでの動作実績あり</span></div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=L298N">L298N搭載モータドライバ基板</a> x 1 </li>
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=PCA9685">PCA9685搭載PWMドライバ基板</a> x 1 </li>
+          <li>ジャンパー（メス・メス）ケーブル x 6</li>
+          <li>ジャンパー（メス・オス）ケーブル x 1</li>
+          <li>ジャンパーピン（モータードライバに付属） x 1</li>
+          <li>DCモータ(5V) x 1 </li>
+        </ul>
+      </div>
+    </div>
+  
+  
+    <div class="cwrap">
+      <div class="title">I2C-NOEPIXEL_I2C</div>
+      <div class="linkwrap">
+        <div class="linkicon schematic"><a href="../../contrib/examples/i2c-NEOPIXEL_I2C/NOEPIXEL_I2C.png" target="_blank">回路図</a></div>
+        <div class="linkicon local"><a href="../../contrib/examples/i2c-NEOPIXEL_I2C/index.html" target="_blank">Local</a></div>
+        <div class="linkicon jsbin"><a href="https://r.chirimen.org/i2c-neopixel_i2c" target="_blank">JSBin</a></div>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc"><a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels">Neopixel LED</a> (シンプルな配線の多数のLEDの発光を個々に制御できるフルカラーLED)をATTINY85をI2Cコントローラにして使用します。ATTINY85には<a href="https://gist.github.com/satakagi/608f6c2c963c8e9453864f11b6fb1f3d#file-readme-md">ここで紹介されているファームウェア</a>を焼いておく必要があります。<br><span class="note">簡単に組み立てられるようにしたオープンソースハードのコントローラモジュールを開発中</span></div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li>ATTINY85 x 1 </li>
+          <li>I2Cレベルコンバータ x 1 </li>
+          <li>Neopixel LEDモジュール(<a href="https://www.amazon.co.jp/dp/B01MYT6JH9/">テープ</a>や<a href="https://www.amazon.co.jp/dp/B07CHDBW38/">マトリクス</a>、<a href="https://www.amazon.co.jp/dp/B07926DQWQ/">リング</a>などがあります。LED150連程度までのものに対応) x 1</li>
+          <li>10KΩ抵抗 x 1</li>
+          <li>0.1μFセラミックコンデンサ x 1</li>
+          <li>配線・ブレッドボード類 x 1式 </li>
+        </ul>
+      </div>
+    </div>
+    
+    
   </div>
 </div>
 
 <div id="bwrap">
-  <div id="bfooter">CHIRIMEN for Raspberry Pi ver.2018/11/21</div>
+  <div id="bfooter">CHIRIMEN for Raspberry Pi ver.2018/12/11</div>
 </div>
 
 </body>

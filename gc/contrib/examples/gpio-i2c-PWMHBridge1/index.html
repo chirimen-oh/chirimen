@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>GPIO-I2C-PWMHBridge</title>
+</head>
+<body>
+<script src="../../../polyfill/polyfill.js"></script>
+<script src="../../drivers/i2c-PCA9685_PWM.js"></script>
+<script src="pwhb.js"></script>
+<h1>GPIO H-Bridge Motor drive (with PWM)</h1>
+<input type="button" onclick="free()" value="BRAKE"></input>
+<input type="button" onclick="fwd()" value="FOWARD"></input>
+<input type="button" onclick="rev()" value="REVERSE"></input>
+<!-- <input type="button" onclick="brake()" value="BRAKE"></input> L298NではGPIO 0,0でもブレーキモードになるらしい -->
+<br>
+<input type="button" onclick="pwm(0)" value="0%(FREE)"></input> <!-- PWM 0%を指定することでフリーになるらしい -->
+<input type="button" onclick="pwm(0.2)" value="20%"></input>
+<input type="button" onclick="pwm(0.4)" value="40%"></input>
+<input type="button" onclick="pwm(0.6)" value="60%"></input>
+<input type="button" onclick="pwm(0.8)" value="80%"></input>
+<input type="button" onclick="pwm(1.0)" value="100%"></input>
+
+
+<div>
+<img src="PWMHBridge.png" height="500">
+</div>
+</body>
+</html>
