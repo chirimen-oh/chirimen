@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+  <title>i2c-PFC8591</title>
+  <script src="../../../polyfill/polyfill.js"></script>
+  <script src="../../drivers/i2c-PCF8591.js"></script>
+  <script src="./mainPcf.js"></script>
+  <style>
+    table,p {
+      color: blue;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    img {
+      position: absolute;
+      top: 50px;
+      right: 0px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <p id="head">PCF8591</p>
+  <img src="schematic.png" width="400"/>
+  <table>
+  <tr><td>ADC0</td><td id="adc0"></td></tr>
+  <tr><td>ADC1</td><td id="adc1"></td></tr>
+  <tr><td>ADC2</td><td id="adc2"></td></tr>
+  <tr><td>ADC3</td><td id="adc3"></td></tr>
+  <tr><td>DAC</td><td id="dac">
+  	<input type="button" value="0V" onClick="dac(0)"/>
+  	<input type="button" value="1.1V" onClick="dac(1.1)"/>
+  	<input type="button" value="2.2V" onClick="dac(2.2)"/>
+  	<input type="button" value="3.3V" onClick="dac(3.3)"/>
+  </td></tr>
+  </table>
+</body>
+
+</html>

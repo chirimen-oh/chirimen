@@ -9,7 +9,7 @@ var NEOPIXEL_I2C = function(i2cPort,slaveAddress){
 	} else {
 		this.slaveAddress = 0x41;
 	}
-	this.N_LEDS = 64;
+	this.N_LEDS = 160;
 	this.GLOBALMODE = false;
 	this.pixRegStart = 0x04;
 };
@@ -18,7 +18,10 @@ NEOPIXEL_I2C.prototype = {
 	sleep: function(ms){
 		return new Promise((resolve)=>{setTimeout(resolve,ms);});
 	},
-	init: async function(){
+	init: async function(N_LEDS){
+		if ( N_LEDS ){
+			this.N_LEDS = N_LEDS;
+		}
 		
 		var i2cSlave = await this.i2cPort.open(this.slaveAddress);
 		this.i2cSlave = i2cSlave;
@@ -49,21 +52,28 @@ NEOPIXEL_I2C.prototype = {
 		await this.i2cSlave.write8( pixelNumber * 3 + 2 + this.pixRegStart , blue& 0xff );
 	},
 	setPixels: async function(rgbArray,startPixel){
-		if (rgbArray.length + startPixel >this.N_LEDS){
-			throw Error("pixelNumber overflow");
+		if (rgbArray.length/3 + startPixel >this.N_LEDS){
+			throw Error("pixelNumber overflow : rgbArray.length , startPixel , this.N_LEDS: " + rgbArray.length +","+ startPixel +","+ this.N_LEDS );
 		}
 		var startAddr = this.pixRegStart;
 		if (startPixel){
-			startAddr += startPixel;
+			startAddr += startPixel*3;
 		}
+		
+		if ( this.GLOBALMODE ){
+			await this.i2cSlave.write8(0x00,0x01);
+			this.GLOBALMODE = false;
+		}
+		
 		var data = [];
 		data.push(startAddr);
 		for ( var i = 0 ; i <rgbArray.length ; i++){
 			data.push(rgbArray[i]);
-		}
-		if ( this.GLOBALMODE ){
-			await this.i2cSlave.write8(0x00,0x01);
-			this.GLOBALMODE = false;
+			if ( startAddr + i == 254 ){ // レジスタとして見えるピクセルの末尾でいったん書き出し(polifill srvのuint8バグ回避
+				await this.i2cSlave.writeBytes(data);
+				data = [];
+				data.push(255); // 末尾ギリギリからさらに書き出す
+			}
 		}
 		await this.i2cSlave.writeBytes(data);
 	},

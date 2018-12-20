@@ -842,7 +842,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     <div class="cwrap">
       <div class="title">I2C-NOEPIXEL_I2C</div>
       <div class="linkwrap">
-        <div class="linkicon schematic"><a href="../../contrib/examples/i2c-NEOPIXEL_I2C/NOEPIXEL_I2C.png" target="_blank">回路図</a></div>
+        <div class="linkicon schematic"><a href="../../contrib/examples/i2c-NEOPIXEL_I2C/NOEPIXEL_I2C.png" target="_blank">回路図(ブレッドボード組み)</a></div>
+        <div class="linkicon schematic"><a href="../../contrib/examples/i2c-NEOPIXEL_I2C/NOEPIXEL_I2C_BRD.png" target="_blank">回路図(専用ボード)</a></div>
         <div class="linkicon local"><a href="../../contrib/examples/i2c-NEOPIXEL_I2C/index.html" target="_blank">Local</a></div>
         <div class="linkicon jsbin"><a href="https://r.chirimen.org/i2c-neopixel_i2c" target="_blank">JSBin</a></div>
       </div>
@@ -860,6 +861,33 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
+  
+  
+    <div class="cwrap">
+      <div class="title">I2C-PCF8591</div>
+      <div class="linkwrap">
+        <div class="linkicon schematic"><a href="../../contrib/examples/i2c-PCF8591/schematic.png" target="_blank">回路図</a></div>
+        <div class="linkicon local"><a href="../../contrib/examples/i2c-PCF8591/index.html" target="_blank">Local</a></div>
+        <div class="linkicon jsbin"><a href="https://r.chirimen.org/i2c-pcf8591" target="_blank">JSBin</a></div>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続の8ビットAD,DAコンバータPCF8591を使います。<BR><span class="note">このボードには、以下の部品が搭載されており、ジャンパ設定によりこれらの素子が使えます（工場出荷時はジャンパ設定状態)</span></div>
+      <ul class="note">
+      <li>AIN0: 可変抵抗器 (オームの法則で電圧を出力)
+      <li>AIN1: CDS (光の強度が増加すると電気抵抗が低下する素子)
+      <li>AIN2: サーミスタ (温度変化に対して電気抵抗が変化する素子)
+      <li>AOUT: LED (AIN3にDACの値を入れることもできる(回路図参照))
+      </ul>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="http://www.aitendo.com/product/10190">PCF8591ブレークアウト基板</a> x 1 </li>
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
+  
+  
     
     
   </div>
