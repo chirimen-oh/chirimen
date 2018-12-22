@@ -1,0 +1,56 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+  <title>i2c-ADS1115</title>
+  <script src="../../../polyfill/polyfill.js"></script>
+  <script src="../../drivers/i2c-ADS1x15.js"></script>
+  <script src="./main.js"></script>
+  <style>
+    p {
+      color: blue;
+      text-align: center;
+      font-size: 24px;
+    }
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <P><a href="https://www.adafruit.com/product/1083" target="_blank">ADS1115 16-BIT 4ch ADC</a></P>
+  <img src="./schematic.png" height="400px">
+  <table>
+  <tr>
+  <td>
+  <span id="rawData0">init</span>
+  <br>
+  <span id="voltage0">init</span>
+  </td>
+  <td>
+  <span id="rawData1">init</span>
+  <br>
+  <span id="voltage1">init</span>
+  </td>
+  <td>
+  <span id="rawData2">init</span>
+  <br>
+  <span id="voltage2">init</span>
+  </td>
+  <td>
+  <span id="rawData3">init</span>
+  <br>
+  <span id="voltage3">init</span>
+  </td>
+  <tr>
+  </table>
+</body>
+
+</html>
