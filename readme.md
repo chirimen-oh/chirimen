@@ -12,7 +12,9 @@ Always under construction...
 
 # How To Setup CHIRIMEN Environment on raspbian
 ## Setup Automatically
-Execute [`./setup.sh`](setup.sh) on Raspbian with Desktop. (**Note: default passwd will be changed to `rasp`**)
+Execute [`./setup.sh`](setup.sh) on Raspbian with Desktop.  
+At the end of the script you need to select the dialog with OK. Automatic reboot is successful.  
+(**Note: default passwd will be changed to `rasp`**)
 
 ## Setup Manually
 Refer [setup-ja.md](setup-ja.md), or [setup.md](setup.md).

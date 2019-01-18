@@ -10,14 +10,17 @@ sudo xset -dpms
 sudo xset s noblank
 # スリープを無効
 sudo sed '1s/$/ consoleblank=0/' /boot/cmdline.txt | sudo tee /tmp/cmdline && sudo cat /tmp/cmdline | sudo tee /boot/cmdline.txt && sudo rm -f /tmp/cmdline
-echo '@xset s off' >> /home/pi/.config/lxsession/LXDE-pi/autostart
-echo '@xset -dpms' >> /home/pi/.config/lxsession/LXDE-pi/autostart
-echo '@xset s noblank' >> /home/pi/.config/lxsession/LXDE-pi/autostart
+
+echo '@xset s off' | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
+echo '@xset -dpms' | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
+echo '@xset s noblank' | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
+
+# upgradeを保留に変更
+echo raspberrypi-ui-mods hold | sudo dpkg --set-selections
+# 必要な項目をインストール
+sudo apt-get install at-spi2-core
+
 # 軽量化
-sudo apt-get -y purge wolfram-engine
-sudo apt-get -y purge minecraft-pi
-sudo apt-get -y purge scratch
-sudo apt-get -y purge scratch2
 sudo apt-get -y remove --purge libreoffice*
 sudo apt-get -y clean
 sudo apt-get -y autoremove
@@ -39,9 +42,9 @@ sudo apt-get -y autoremove
 echo -e 'hdmi_force_hotplug=1\nhdmi_group=2\nhdmi_mode=85\nhdmi_drive=2\n' | sudo tee -a /boot/config.txt
 
 # 日本語設定
-sudo sed 's/#\sen_GB\.UTF-8\sUTF-8/en_GB\.UTF-8 UTF-8/g' /etc/locale.gen | sudo tee /tmp/locale && sudo cat /tmp/locale | sudo tee /etc/locale.gen && rm -f /tmp/locale
-sudo sed 's/#\sja_JP\.EUC-JP\sEUC-JP/ja_JP\.EUC-JP EUC-JP/g' /etc/locale.gen  | sudo tee /tmp/locale && sudo cat /tmp/locale | sudo tee /etc/locale.gen && rm -f /tmp/locale
-sudo sed 's/#\sja_JP\.UTF-8\sUTF-8/ja_JP\.UTF-8 UTF-8/g' /etc/locale.gen  | sudo tee /tmp/locale && sudo cat /tmp/locale | sudo tee /etc/locale.gen && rm -f /tmp/locale
+sudo sed 's/#\sen_GB\.UTF-8\sUTF-8/en_GB\.UTF-8 UTF-8/g' /etc/locale.gen | sudo tee /tmp/locale && sudo cat /tmp/locale | sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
+sudo sed 's/#\sja_JP\.EUC-JP\sEUC-JP/ja_JP\.EUC-JP EUC-JP/g' /etc/locale.gen  | sudo tee /tmp/locale && sudo cat /tmp/locale | sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
+sudo sed 's/#\sja_JP\.UTF-8\sUTF-8/ja_JP\.UTF-8 UTF-8/g' /etc/locale.gen  | sudo tee /tmp/locale && sudo cat /tmp/locale | sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
 sudo locale-gen ja_JP.UTF-8
 sudo update-locale LANG=ja_JP.UTF-8
 
@@ -101,7 +104,7 @@ sudo sed 's/\/etc\/ssl\/private\/ssl-cert-snakeoil\.key/\/home\/pi\/_gc\/srv\/cr
 sudo a2ensite vhost-ssl
 sudo a2enmod ssl
 sudo systemctl restart apache2
-echo '@/usr/bin/chromium-browser https://localhost/top --enable-experimental-web-platform-features' >> /home/pi/.config/lxsession/LXDE-pi/autostart
+echo '@/usr/bin/chromium-browser https://localhost/top --enable-experimental-web-platform-features' | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
 sudo sed 's/Exec=\/usr\/bin\/x-www-browser\s%u/Exec=\/usr\/bin\/x-www-browser --enable-experimental-web-platform-features %u/g' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop | sudo tee /tmp/xbrowser && sudo cat /tmp/xbrowser | sudo tee /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop && sudo rm -f /tmp/xbrowser
 sudo sed 's/Exec=chromium-browser/Exec=chromium-browser --enable-experimental-web-platform-features/g' /usr/share/applications/chromium-browser.desktop | sudo tee /tmp/chbrowser && sudo cat /tmp/chbrowser | sudo tee /usr/share/applications/chromium-browser.desktop && sudo rm -f /tmp/chbrowser
 
@@ -128,4 +131,14 @@ cd /home/pi/Applications/arduino/
 rm -f /home/pi/arduino-1.8.6-linuxarm.tar.xz
 cd /home/pi/
 
-reboot
+# upgradeを保留を解除
+echo raspberrypi-ui-mods install | sudo dpkg --set-selections
+# 上をアップグレード
+sudo apt-get -y upgrade
+
+
+####
+# 最後にダイアログをOKにしてrebootして完了
+####
+
+sudo reboot
