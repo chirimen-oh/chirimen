@@ -79,6 +79,15 @@ sudo npm i eslint prettier -g
 /usr/share/code-oss/bin/code-oss --install-extension dbaeumer.vscode-eslint
 /usr/share/code-oss/bin/code-oss --install-extension esbenp.prettier-vscode
 
+# JSのデフォルトをcode-ossに
+cat << EOS > /home/pi/.config/mimeapps.list
+[Added Associations]
+application/javascript=code-oss.desktop;
+
+[Default Applications]
+application/javascript=code-oss.desktop;
+EOS
+
 # カメラを有効化
 sudo raspi-config nonint do_camera 0
 echo 'options bcm2835-v4l2 gst_v4l2src_is_broken=1' | sudo tee -a /etc/modprobe.d/bcm2835-v4l2.conf
