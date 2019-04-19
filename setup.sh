@@ -72,7 +72,7 @@ sudo raspi-config nonint do_configure_keyboard jp
 # node.jsのインストール
 sudo npm cache clean
 sudo npm install n -g
-sudo n 8.10.0
+sudo n 10.15.3
 sudo npm i eslint prettier -g
 
 # code-oss extension
