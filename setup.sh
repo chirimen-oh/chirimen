@@ -9,7 +9,9 @@ sudo xset s off
 sudo xset -dpms
 sudo xset s noblank
 # スリープを無効
-sudo sed '1s/$/ consoleblank=0/' /boot/cmdline.txt | sudo tee /tmp/cmdline && sudo cat /tmp/cmdline | sudo tee /boot/cmdline.txt && sudo rm -f /tmp/cmdline
+sudo sed '1s/$/ consoleblank=0/' /boot/cmdline.txt |\
+    sudo tee /tmp/cmdline && sudo cat /tmp/cmdline |\
+    sudo tee /boot/cmdline.txt && sudo rm -f /tmp/cmdline
 
 echo '@xset s off' | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
 echo '@xset -dpms' | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
@@ -38,13 +40,26 @@ sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs npm apac
 sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs npm apache2 vim emacs libnss3-tools
 sudo apt-get -y autoremove
 
-# ディスプレイ解像度設定
-echo -e 'hdmi_force_hotplug=1\nhdmi_group=2\nhdmi_mode=85\nhdmi_drive=2\n' | sudo tee -a /boot/config.txt
+# VS code (code-ossのインストール)
+# 最新版だと動かないのでバージョンダウンして固定
+wget -qO - https://packagecloud.io/headmelted/codebuilds/gpgkey | sudo apt-key add -
+sudo apt-get update
+sudo dpkg --configure -a
+curl -s https://code.headmelted.com/installers/apt.sh | sudo bash
+sudo apt-get -y remove code-oss
+sudo apt-get -y install code-oss=1.29.0-1539702286
+sudo apt-mark hold code-oss
 
 # 日本語設定
-sudo sed 's/#\sen_GB\.UTF-8\sUTF-8/en_GB\.UTF-8 UTF-8/g' /etc/locale.gen | sudo tee /tmp/locale && sudo cat /tmp/locale | sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
-sudo sed 's/#\sja_JP\.EUC-JP\sEUC-JP/ja_JP\.EUC-JP EUC-JP/g' /etc/locale.gen  | sudo tee /tmp/locale && sudo cat /tmp/locale | sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
-sudo sed 's/#\sja_JP\.UTF-8\sUTF-8/ja_JP\.UTF-8 UTF-8/g' /etc/locale.gen  | sudo tee /tmp/locale && sudo cat /tmp/locale | sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
+sudo sed 's/#\sen_GB\.UTF-8\sUTF-8/en_GB\.UTF-8 UTF-8/g' /etc/locale.gen |\
+    sudo tee /tmp/locale && sudo cat /tmp/locale |\
+    sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
+sudo sed 's/#\sja_JP\.EUC-JP\sEUC-JP/ja_JP\.EUC-JP EUC-JP/g' /etc/locale.gen  |\
+    sudo tee /tmp/locale && sudo cat /tmp/locale |\
+    sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
+sudo sed 's/#\sja_JP\.UTF-8\sUTF-8/ja_JP\.UTF-8 UTF-8/g' /etc/locale.gen  |\
+    sudo tee /tmp/locale && sudo cat /tmp/locale |\
+    sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
 sudo locale-gen ja_JP.UTF-8
 sudo update-locale LANG=ja_JP.UTF-8
 
@@ -54,13 +69,24 @@ sudo raspi-config nonint do_change_timezone Japan
 # キーボード設定
 sudo raspi-config nonint do_configure_keyboard jp
 
-# パスワードの変更
-echo 'pi:rasp' | sudo chpasswd
-
 # node.jsのインストール
 sudo npm cache clean
 sudo npm install n -g
-sudo n 8.10.0
+sudo n 10.15.3
+sudo npm i eslint prettier -g
+
+# code-oss extension
+/usr/share/code-oss/bin/code-oss --install-extension dbaeumer.vscode-eslint
+/usr/share/code-oss/bin/code-oss --install-extension esbenp.prettier-vscode
+
+# JSのデフォルトをcode-ossに
+cat << EOS > /home/pi/.config/mimeapps.list
+[Added Associations]
+application/javascript=code-oss.desktop;
+
+[Default Applications]
+application/javascript=code-oss.desktop;
+EOS
 
 # カメラを有効化
 sudo raspi-config nonint do_camera 0
@@ -95,18 +121,32 @@ wget https://downloads.arduino.cc/arduino-1.8.6-linuxarm.tar.xz
 unzip ./gc.zip -d /home/pi/Desktop
 # chromiumの起動待ち
 sleep 120s
-sudo sed 's/\/var\/www\/html/\/home\/pi\/Desktop\/gc/g' /etc/apache2/sites-available/000-default.conf  | sudo tee /tmp/apache-default && sudo cat /tmp/apache-default | sudo tee /etc/apache2/sites-available/000-default.conf && sudo rm -f /tmp/apache-default
-sudo sed 's/\/var\/www\//\/home\/pi\/Desktop\/gc/g' /etc/apache2/apache2.conf | sudo tee /tmp/apache && sudo cat /tmp/apache | sudo tee /etc/apache2/apache2.conf && sudo rm -f /tmp/apache
+sudo sed 's/\/var\/www\/html/\/home\/pi\/Desktop\/gc/g' /etc/apache2/sites-available/000-default.conf |\
+    sudo tee /tmp/apache-default && sudo cat /tmp/apache-default |\
+    sudo tee /etc/apache2/sites-available/000-default.conf && sudo rm -f /tmp/apache-default
+sudo sed 's/\/var\/www\//\/home\/pi\/Desktop\/gc/g' /etc/apache2/apache2.conf |\
+    sudo tee /tmp/apache && sudo cat /tmp/apache |\
+    sudo tee /etc/apache2/apache2.conf && sudo rm -f /tmp/apache
 sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/vhost-ssl.conf
-sudo sed 's/\/var\/www\/html/\/home\/pi\/Desktop\/gc/g' /etc/apache2/sites-available/vhost-ssl.conf  | sudo tee /tmp/vhost && sudo cat /tmp/vhost | sudo tee /etc/apache2/sites-available/vhost-ssl.conf && sudo rm -f /tmp/vhost
-sudo sed 's/\/etc\/ssl\/certs\/ssl-cert-snakeoil\.pem/\/home\/pi\/_gc\/srv\/crt\/server\.crt/g' /etc/apache2/sites-available/vhost-ssl.conf | sudo tee /tmp/vhost && sudo cat /tmp/vhost | sudo tee /etc/apache2/sites-available/vhost-ssl.conf && sudo rm -f /tmp/vhost
-sudo sed 's/\/etc\/ssl\/private\/ssl-cert-snakeoil\.key/\/home\/pi\/_gc\/srv\/crt\/server\.key/g' /etc/apache2/sites-available/vhost-ssl.conf | sudo tee /tmp/vhost && sudo cat /tmp/vhost | sudo tee /etc/apache2/sites-available/vhost-ssl.conf && sudo rm -f /tmp/vhost
+sudo sed 's/\/var\/www\/html/\/home\/pi\/Desktop\/gc/g' /etc/apache2/sites-available/vhost-ssl.conf |\
+    sudo tee /tmp/vhost && sudo cat /tmp/vhost |\
+    sudo tee /etc/apache2/sites-available/vhost-ssl.conf && sudo rm -f /tmp/vhost
+sudo sed 's/\/etc\/ssl\/certs\/ssl-cert-snakeoil\.pem/\/home\/pi\/_gc\/srv\/crt\/server\.crt/g' /etc/apache2/sites-available/vhost-ssl.conf |\
+    sudo tee /tmp/vhost && sudo cat /tmp/vhost |\
+    sudo tee /etc/apache2/sites-available/vhost-ssl.conf && sudo rm -f /tmp/vhost
+sudo sed 's/\/etc\/ssl\/private\/ssl-cert-snakeoil\.key/\/home\/pi\/_gc\/srv\/crt\/server\.key/g' /etc/apache2/sites-available/vhost-ssl.conf |\
+    sudo tee /tmp/vhost && sudo cat /tmp/vhost |\
+    sudo tee /etc/apache2/sites-available/vhost-ssl.conf && sudo rm -f /tmp/vhost
 sudo a2ensite vhost-ssl
 sudo a2enmod ssl
 sudo systemctl restart apache2
 echo '@/usr/bin/chromium-browser https://localhost/top --enable-experimental-web-platform-features' | sudo tee -a /etc/xdg/lxsession/LXDE-pi/autostart
-sudo sed 's/Exec=\/usr\/bin\/x-www-browser\s%u/Exec=\/usr\/bin\/x-www-browser --enable-experimental-web-platform-features %u/g' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop | sudo tee /tmp/xbrowser && sudo cat /tmp/xbrowser | sudo tee /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop && sudo rm -f /tmp/xbrowser
-sudo sed 's/Exec=chromium-browser/Exec=chromium-browser --enable-experimental-web-platform-features/g' /usr/share/applications/chromium-browser.desktop | sudo tee /tmp/chbrowser && sudo cat /tmp/chbrowser | sudo tee /usr/share/applications/chromium-browser.desktop && sudo rm -f /tmp/chbrowser
+sudo sed 's/Exec=\/usr\/bin\/x-www-browser\s%u/Exec=\/usr\/bin\/x-www-browser --enable-experimental-web-platform-features %u/g' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop |\
+    sudo tee /tmp/xbrowser && sudo cat /tmp/xbrowser |\
+    sudo tee /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop && sudo rm -f /tmp/xbrowser
+sudo sed 's/Exec=chromium-browser/Exec=chromium-browser --enable-experimental-web-platform-features/g' /usr/share/applications/chromium-browser.desktop |\
+    sudo tee /tmp/chbrowser && sudo cat /tmp/chbrowser |\
+    sudo tee /usr/share/applications/chromium-browser.desktop && sudo rm -f /tmp/chbrowser
 
 # 証明書追加
 certfile="/home/pi/_gc/srv/crt/ca.crt"
