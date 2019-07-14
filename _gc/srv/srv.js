@@ -553,6 +553,7 @@ function processOne(connection,u8mes){
       logout("0x21:["+session+"]: addr="+addr+" size="+size+" buff.len"+(u8mes.length-6));
       if((u8mes.length - 6) != size){
         temp.delete(addr);
+        processQueue = [];
         reject("write size is not valid!");
       }
       var buffer = new Buffer(size);
@@ -619,6 +620,7 @@ function processOne(connection,u8mes){
       break;
     }
     default:
+      processQueue = [];
       reject("invalid API Request: ["+func+"]");
       break;
     } // switch()
