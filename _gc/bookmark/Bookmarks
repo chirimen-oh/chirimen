@@ -299,33 +299,29 @@
                "type": "url",
                "url": "https://tutorial.chirimen.org/"
             },{
-               "name": "Hello World",
+               "name": "Hello Real World",
+               "type": "url",
+               "url": "https://r.chirimen.org/hello"
+            }, {
+               "name": "0. L チカしてみよう (初めての GPIO)",
                "type": "url",
                "url": "https://r.chirimen.org/tutorial0"
             }, {
-               "name": "チュートリアル 1. GPIO編",
+               "name": "1. GPIO の使い方",
                "type": "url",
                "url": "https://r.chirimen.org/tutorial1"
             }, {
-               "name": "チュートリアル 2. I2C基本編",
+               "name": "2. センサーを使ってみよう (初めての I2C)",
                "type": "url",
                "url": "https://r.chirimen.org/tutorial2"
             }, {
-               "name": "チュートリアル 3. I2C応用編",
+               "name": "3. I2C の使い方",
                "type": "url",
                "url": "https://r.chirimen.org/tutorial3"
             }, {
-               "name": "チュートリアル 4. GPIO/I2C編　まとめ",
+               "name": "4. GPIO/I2C のまとめ",
                "type": "url",
                "url": "https://r.chirimen.org/tutorial4"
-            }, {
-               "name": "チュートリアル 5. WebBluetooth編",
-               "type": "url",
-               "url": "https://r.chirimen.org/tutorial5"
-            }, {
-               "name": "チュートリアル 6. ステッピングモーター編",
-               "type": "url",
-               "url": "https://r.chirimen.org/tutorial6"
             }, {
                "name": "Appendix JavaScript 1 Day 講習",
                "type": "url",
