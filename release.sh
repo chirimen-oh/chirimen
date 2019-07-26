@@ -4,7 +4,7 @@ mkdir release
 rm -f ./release/version.txt
 rm -f ./_gc/version.txt
 rm -f ./gc/version.txt
-date +"CHIRIMEN for Raspberry Pi 3 emv.version : %y/%m/%d:%H:%M:%S" >./release/version.txt
+date +"CHIRIMEN for Raspberry Pi 3 env.version : %y/%m/%d:%H:%M:%S" >./release/version.txt
 cp ./release/version.txt ./_gc/version.txt
 cp ./release/version.txt ./gc/version.txt
 
