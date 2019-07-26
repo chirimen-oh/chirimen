@@ -66,6 +66,7 @@ body{
   text-align:center;
   color:white;
   margin:0 auto;
+  background-color:green;
 }
 img{
   display:block;
@@ -74,6 +75,14 @@ img{
 }
 </style>
 </head>
+<script>
+onload=async function(){
+    var res = await fetch("../version.txt");
+    var verStr = await res.text();
+    bfooter.innerText=verStr;
+    
+}
+</script>
 <body>
 <div id="outwrap">
   <div id="twrap">
@@ -101,6 +110,7 @@ img{
       </div>
     </div>
   </div>
+  <span id="bfooter"></span>
 </div>
 </body>
 </html>
