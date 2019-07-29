@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 HOME_DIR=/opt/buildhome/
+REPO_DIR=`git rev-parse --show-toplevel`
+BASE_DIR=`pwd`
+
 PUBLISH_DIR=${BASE_DIR}/public
 
 rm -rf ${PUBLISH_DIR}
