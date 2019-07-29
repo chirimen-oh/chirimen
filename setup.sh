@@ -101,7 +101,7 @@ sudo raspi-config nonint do_i2c 0
 
 # _gc設定
 cd /home/pi/
-wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/_gc.zip
+wget https://r.chirimen.org/_gc.zip
 unzip ./_gc.zip
 cd /home/pi/_gc/srv
 npm i
@@ -118,7 +118,7 @@ pcmanfm --set-wallpaper /home/pi/_gc/wallpaper/wallpaper-720P.png
 # gc設定
 chromium-browser &
 cd /home/pi/
-wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/release/env/gc.zip
+wget https://r.chirimen.org/gc.zip
 # chromiumの起動待ちダウンロード
 wget https://downloads.arduino.cc/arduino-1.8.6-linuxarm.tar.xz
 unzip ./gc.zip -d /home/pi/Desktop
