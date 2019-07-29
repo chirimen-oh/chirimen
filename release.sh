@@ -20,8 +20,8 @@ date +"CHIRIMEN for Raspberry Pi 3 env.version : %y/%m/%d:%H:%M:%S" > ${PUBLISH_
 cp ${PUBLISH_DIR}/version.txt ${BASE_DIR}/_gc/version.txt
 cp ${PUBLISH_DIR}/version.txt ${BASE_DIR}/gc/version.txt
 
-zip -r ${PUBLISH_DIR}/gc.zip ${BASE_DIR}/gc/
-zip -r ${PUBLISH_DIR}/_gc.zip ${BASE_DIR}/_gc/
+zip -r ${PUBLISH_DIR}/gc.zip ./gc/
+zip -r ${PUBLISH_DIR}/_gc.zip ./_gc/
 
 zip --delete ${PUBLISH_DIR}/gc.zip "*__MACOSX*"
 zip --delete ${PUBLISH_DIR}/_gc.zip "*__MACOSX*"
