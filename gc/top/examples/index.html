@@ -184,6 +184,14 @@ parts,sumally{
   vertical-align:middle;
 }
 </style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if (location.host !== "chirimen.org") return;
+    document
+      .querySelectorAll(".hide-on-production")
+      .forEach(node => node.hidden = true);
+  });
+</script>
 </head>
 <body>
 
@@ -195,9 +203,8 @@ parts,sumally{
         <li><a href="#gpioExamples">Basic GPIO Examples</a>
         <li><a href="#i2cExamples">Basic I2C Examples</a>
         <li><a href="#advanced">Advanced Examples</a>
-        <li><a href="https://chirimen.org/chirimen-raspi3/gc/top/examples/">Latest version of this page on chirimen.org</a>
+        <li class="hide-on-production"><a href="https://chirimen.org/chirimen-raspi3/gc/top/examples/">Latest version of this page on chirimen.org</a>
       </ul>
-      <p>Note: Localの内容はデスクトップのgcフォルダーにあります</p> 
     </div>
   </div>
 </div>
@@ -209,7 +216,7 @@ parts,sumally{
       <span style="font-size:11px;">Tips: デスクトップのピン配置図を見ながら配線するとミスしにくくなります。 </span>
     </div>
   </div>
-  
+
   <div class="rowwrap">
     <div class="cwrap" id="GPIO-Blink">
       <div class="title">GPIO-Blink</div>
@@ -270,7 +277,7 @@ parts,sumally{
         </ul>
       </div>
     </div>
-    
+
     <div class="cwrap" id="GPIO-pirSensor">
       <div class="title">GPIO-pirSensor</div>
       <div class="linkwrap">
@@ -283,14 +290,14 @@ parts,sumally{
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
         <ul>
-          <li>人感センサー (KP-IR412) x 1 
+          <li>人感センサー (KP-IR412) x 1
           <ul><li><span class="note">Note: より安価な<a href="https://www.amazon.co.jp/s/?field-keywords=HC-SR501">ジェネリック部品(HC-SR501)</a>も同様に使用できました。ジャンパーとボリュームは初期設定のままで確認</span></li></ul>
           <li>ジャンパー（オス・メス）ケーブル x 6</li>
           <li>ブレッドボード x 1</li>
         </ul>
       </div>
     </div>
-    
+
     <div class="cwrap" id="GPIO-MultiBlinkAll">
       <div class="title">GPIO-MultiBlinkAll</div>
       <div class="linkwrap">
@@ -311,7 +318,7 @@ parts,sumally{
         </ul>
       </div>
     </div>
-    
+
     <div class="cwrap" id="GPIO-buttonAll">
       <div class="title">GPIO-buttonAll</div>
       <div class="linkwrap">
@@ -332,7 +339,7 @@ parts,sumally{
         </ul>
       </div>
     </div>
-    
+
   </div>
 </div>
 
@@ -343,7 +350,7 @@ parts,sumally{
        <span style="font-size:11px;">Tips: i2cdetectコマンドでI2Cバスの状態を確認するとデバッグがしやすくなります。 </span><code>i2cdetect -y -r 1</code>
     </div>
   </div>
-  
+
   <div class="rowwrap">
     <div class="cwrap" id="I2C-ADT7410">
       <div class="title">I2C-ADT7410</div>
@@ -582,7 +589,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
 
   </div>
 </div>
-  
+
 <div class="outwrap outadvanced">
   <div class="colwrap">
     <div class="twrap advanced">
@@ -590,7 +597,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
        <span style="font-size:11px;">上級者用・公式な動作が未検証のExample集です。</span>
     </div>
   </div>
-  
+
   <div class="rowwrap">
     <div class="cwrap" id="I2C-canzasi-blink">
       <div class="title">I2C-canzasi-blink</div>
@@ -638,9 +645,9 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-    
-  
-  
+
+
+
     <div class="cwrap" id="I2C-BME280">
       <div class="title">I2C-BME280</div>
       <div class="linkwrap">
@@ -658,8 +665,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-  
-  
+
+
     <div class="cwrap" id="I2C-MPU6050">
       <div class="title">I2C-MPU6050</div>
       <div class="linkwrap">
@@ -677,8 +684,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-  
-  
+
+
     <div class="cwrap" id="GPIO-HBridge">
       <div class="title">GPIO-HBridge</div>
       <div class="linkwrap">
@@ -713,8 +720,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
        </ul>
       </div>
     </div>
-    
-    
+
+
     <div class="cwrap" id="I2C-BMP180">
       <div class="title">I2C-BMP180</div>
       <div class="linkwrap">
@@ -732,8 +739,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-    
-    
+
+
     <div class="cwrap" id="I2C-VL53L0X">
       <div class="title">I2C-VL53L0X</div>
       <div class="linkwrap">
@@ -752,8 +759,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-    
-    
+
+
     <div class="cwrap" id="I2C-BMP280">
       <div class="title">I2C-BMP280</div>
       <div class="linkwrap">
@@ -771,8 +778,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-  
-  
+
+
     <div class="cwrap" id="I2C-MPU9250">
       <div class="title">I2C-MPU9250</div>
       <div class="linkwrap">
@@ -791,8 +798,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-  
-  
+
+
     <div class="cwrap" id="GPIO-I2C-PWMHBridge-1">
       <div class="title">GPIO-I2C-PWMHBridge その１</div>
       <div class="linkwrap">
@@ -814,8 +821,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-  
-  
+
+
     <div class="cwrap" id="GPIO-I2C-PWMHBridge-2">
       <div class="title">GPIO-I2C-PWMHBridge その２</div>
       <div class="linkwrap">
@@ -837,8 +844,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-  
-  
+
+
     <div class="cwrap" id="I2C-NEOPIXEL_I2C">
       <div class="title">I2C-NEOPIXEL_I2C</div>
       <div class="linkwrap">
@@ -861,8 +868,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-  
-  
+
+
     <div class="cwrap" id="I2C-PCF8591">
       <div class="title">I2C-PCF8591</div>
       <div class="linkwrap">
@@ -886,8 +893,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-  
-  
+
+
     <div class="cwrap" id="I2C-ADS1115">
       <div class="title">I2C-ADS1115</div>
       <div class="linkwrap">
@@ -909,8 +916,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-    
-    
+
+
     <div class="cwrap">
       <div class="title"><a href="https://chirimen.org/chirimen-micro-bit/">CHIRIMEN with micro:bit</a></div>
       <div class="linkwrap">
@@ -940,7 +947,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-    
+
     <div class="cwrap" id="I2C-detect">
       <div class="title">I2C-detect</div>
       <div class="linkwrap">
@@ -949,8 +956,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <h3 class="sumally">概要</h3>
       <div class="desc">ウェブアプリ版のi2cdetect機能です。<br>i2cデバイスの接続状態をウェブブラウザ上で見ることができます。</div>
     </div>
-    
-    
+
+
     <div class="cwrap" id="I2C-AMG8833">
       <div class="title">I2C-AMG8833</div>
       <div class="linkwrap">
@@ -968,9 +975,9 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-    
-    
-    
+
+
+
   </div>
 </div>
 
