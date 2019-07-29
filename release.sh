@@ -16,7 +16,7 @@ mkdir -p ${PUBLISH_DIR}
 
 rm -f ${BASE_DIR}/_gc/version.txt
 rm -f ${BASE_DIR}/gc/version.txt
-date +"CHIRIMEN for Raspberry Pi 3 env.version : %y/%m/%d:%H:%M:%S" > ${PUBLISH_DIR}/version.txt
+date +"CHIRIMEN for Raspberry Pi env.version : %y/%m/%d %H:%M" > ${PUBLISH_DIR}/version.txt
 cp ${PUBLISH_DIR}/version.txt ${BASE_DIR}/_gc/version.txt
 cp ${PUBLISH_DIR}/version.txt ${BASE_DIR}/gc/version.txt
 
