@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
+#
+# create gc.zip, _gc.zip and version.txt
+# https://r.chirimen.org/gc  -> https://chirimen-raspi3-gc.netlify.com/gc.zip
+# https://r.chirimen.org/_gc -> https://chirimen-raspi3-gc.netlify.com/_gc.zip
+# netlify deploy logs: https://app.netlify.com/sites/chirimen-raspi3-gc/deploys
 
 HOME_DIR=/opt/buildhome/
 REPO_DIR=`git rev-parse --show-toplevel`
