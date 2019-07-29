@@ -1,31 +1,28 @@
-rm -rf ./release
-mkdir release
+#!/usr/bin/env bash
 
-rm -f ./release/version.txt
+HOME_DIR=/opt/buildhome/
+PUBLISH_DIR=${BASE_DIR}/public
+
+rm -rf ${PUBLISH_DIR}
+mkdir -p ${PUBLISH_DIR}
+
 rm -f ./_gc/version.txt
 rm -f ./gc/version.txt
-date +"CHIRIMEN for Raspberry Pi 3 env.version : %y/%m/%d:%H:%M:%S" >./release/version.txt
-cp ./release/version.txt ./_gc/version.txt
-cp ./release/version.txt ./gc/version.txt
+date +"CHIRIMEN for Raspberry Pi 3 env.version : %y/%m/%d:%H:%M:%S" > ${PUBLISH_DIR}/version.txt
+cp ${PUBLISH_DIR}/version.txt ./_gc/version.txt
+cp ${PUBLISH_DIR}/version.txt ./gc/version.txt
 
-rm -rf ./release/env
-mkdir ./release/env
+zip -r ${PUBLISH_DIR}/gc.zip ./gc/
+zip -r ${PUBLISH_DIR}/_gc.zip ./_gc/
 
-zip -r ./release/env/gc.zip ./gc/
-zip -r ./release/env/_gc.zip ./_gc/
+zip --delete ${PUBLISH_DIR}/gc.zip "*__MACOSX*"
+zip --delete ${PUBLISH_DIR}/_gc.zip "*__MACOSX*"
+zip --delete ${PUBLISH_DIR}/gc.zip "*.DS_Store"
+zip --delete ${PUBLISH_DIR}/_gc.zip "*.DS_Store"
 
-zip --delete ./release/env/gc.zip "*__MACOSX*"
-zip --delete ./release/env/_gc.zip "*__MACOSX*"
-zip --delete ./release/env/gc.zip "*.DS_Store"
-zip --delete ./release/env/_gc.zip "*.DS_Store"
-
-rm -rf ./release/cdn
-mkdir ./release/cdn
-
-
-
-cp ./gc/drivers/*.* ./release/cdn/
-cp ./gc/polyfill/*.* ./release/cdn/
-
-
-
+# polyfill/drivers should be handled by other deployment
+#rm -rf ./release/cdn
+#mkdir ./release/cdn
+#
+#cp ./gc/drivers/*.* ./release/cdn/
+#cp ./gc/polyfill/*.* ./release/cdn/
