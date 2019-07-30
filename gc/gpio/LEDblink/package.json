@@ -1,0 +1,8 @@
+{
+  "name": "led-blink-example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@chirimen-raspi/polyfill": "^1.0.0"
+  }
+}

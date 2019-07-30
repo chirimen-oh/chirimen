@@ -1,0 +1,8 @@
+{
+  "name": "i2c-adt7410-example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@chirimen-raspi/polyfill": "^1.0.0"
+  }
+}

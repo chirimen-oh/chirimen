@@ -1,0 +1,8 @@
+{
+  "name": "read-gpio-value-example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@chirimen-raspi/polyfill": "^1.0.0"
+  }
+}

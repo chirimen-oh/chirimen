@@ -20,8 +20,14 @@ date +"CHIRIMEN for Raspberry Pi env.version : %y/%m/%d %H:%M" > ${PUBLISH_DIR}/
 cp ${PUBLISH_DIR}/version.txt ${BASE_DIR}/_gc/version.txt
 cp ${PUBLISH_DIR}/version.txt ${BASE_DIR}/gc/version.txt
 
-zip -r ${PUBLISH_DIR}/gc.zip ./gc/
-zip -r ${PUBLISH_DIR}/_gc.zip ./_gc/
+find "${BASE_DIR}/gc" \
+  -name package.json \
+  -print0 \
+  | xargs -0 \
+    -I@ sh -c 'npm --prefix "$(dirname -- "@")" install'
+
+zip -r ${PUBLISH_DIR}/gc.zip ${BASE_DIR}/gc
+zip -r ${PUBLISH_DIR}/_gc.zip ${BASE_DIR}/gc
 
 zip --delete ${PUBLISH_DIR}/gc.zip "*__MACOSX*"
 zip --delete ${PUBLISH_DIR}/_gc.zip "*__MACOSX*"

@@ -1,144 +1,253 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1"
+    />
     <title>i2c-arduino-steppingMotor</title>
-    <script src="../../polyfill/polyfill.js"></script>
+    <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
     <script src="../../drivers/i2c-arduino-steppingMotor.js"></script>
     <script src="./main.js"></script>
     <style>
-      body{
-        background:#246;
+      body {
+        background: #246;
       }
-      h1{
-        display:block;
-        font-size:30px;
-        background:#248;
-        color:#fff;
-        padding:10px 30px;
-        margin:0;
-        box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+      h1 {
+        display: block;
+        font-size: 30px;
+        background: #248;
+        color: #fff;
+        padding: 10px 30px;
+        margin: 0;
+        box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
       }
-      h2{
+      h2 {
         text-decoration: underline;
       }
-      #contents{
-        background:#fff;
-        width:80%;
-        padding:5px 30px;
-        margin:10px auto;
+      #contents {
+        background: #fff;
+        width: 80%;
+        padding: 5px 30px;
+        margin: 10px auto;
         box-sizing: border-box;
       }
-      img{
-        display:block;
-        margin-left:auto;
-        margin-right:auto;
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
       }
-      table{
-        background:#dde;
-        margin:4px 0px 4px 20px;
+      table {
+        background: #dde;
+        margin: 4px 0px 4px 20px;
       }
-      table td{
-        border:1px solid #666;
-        padding:8px;
+      table td {
+        border: 1px solid #666;
+        padding: 8px;
       }
-      h3{
-        background:#ddf;
-        padding:2px 20px;
+      h3 {
+        background: #ddf;
+        padding: 2px 20px;
       }
     </style>
   </head>
   <body>
     <h1>CHIRIMEN : i2c-arduino-steppingMotor.js API</h1>
     <div id="contents">
-    <h2>はじめに</h2>
-    <p>
-      これは CHIRIMEN for Raspberry Pi でステッピングモータを制御する i2c-arduino-steppingMotor.js の API リファレンスです。<br/>
-      動作させるには CHIRIMEN for Raspberry Pi と、ステッピングモータ、EasyDriver 等のステッピングモータドライバモジュール、<a href="https://github.com/g200kg/arduino-stepping-motor" target="_blank">arduino-stepping-motor</a>のスケッチを書き込んだ Arduino を適切に接続している事が必要です。ステッピングモータドライバモジュールは、CLK と DIR で制御されるものを前提としています。Arduino は I2C スレーブデバイスとして動作し、CHIRIMEN は I2C インターフェースを通じてコマンドを発行します。
-    </p>
-    <p>
-      このライブラリを使用するには &lt;script src="i2c-stepping-motor.jsへのパス"&gt;&lt;/script&gt; でドライバライブラリを読み込みます。
-    </p>
-    <h2>クラス SteppingMotor</h2>
-    <p>ステッピングモータを制御するためのクラスです。</p>
-    <h3>constructor</h3>
-      <p>new SteppingMotor(port, slaveAddress) により、SteppingMotorを制御するオブジェクトを生成します。
+      <h2>はじめに</h2>
+      <p>
+        これは CHIRIMEN for Raspberry Pi でステッピングモータを制御する
+        i2c-arduino-steppingMotor.js の API リファレンスです。<br />
+        動作させるには CHIRIMEN for Raspberry Pi
+        と、ステッピングモータ、EasyDriver
+        等のステッピングモータドライバモジュール、<a
+          href="https://github.com/g200kg/arduino-stepping-motor"
+          target="_blank"
+          >arduino-stepping-motor</a
+        >のスケッチを書き込んだ Arduino
+        を適切に接続している事が必要です。ステッピングモータドライバモジュールは、CLK
+        と DIR で制御されるものを前提としています。Arduino は I2C
+        スレーブデバイスとして動作し、CHIRIMEN は I2C
+        インターフェースを通じてコマンドを発行します。
+      </p>
+      <p>
+        このライブラリを使用するには &lt;script
+        src="i2c-stepping-motor.jsへのパス"&gt;&lt;/script&gt;
+        でドライバライブラリを読み込みます。
+      </p>
+      <h2>クラス SteppingMotor</h2>
+      <p>ステッピングモータを制御するためのクラスです。</p>
+      <h3>constructor</h3>
+      <p>
+        new SteppingMotor(port, slaveAddress)
+        により、SteppingMotorを制御するオブジェクトを生成します。
       </p>
       <h4>パラメータ</h4>
-        <table>
-          <tr><td>port</td><td>CHIRIMEN の i2cAccess.ports.get() で取得したI2Cポートオブジェクトです。</td></tr>
-          <tr><td>slaveAddress</td><td>I2Cデバイスのスレーブアドレスです。Arduino が arduino-stepping-motor のスケッチをそのまま使用している場合は 0x12 となります。</td></tr>
-        </table>
+      <table>
+        <tr>
+          <td>port</td>
+          <td>
+            CHIRIMEN の i2cAccess.ports.get()
+            で取得したI2Cポートオブジェクトです。
+          </td>
+        </tr>
+        <tr>
+          <td>slaveAddress</td>
+          <td>
+            I2Cデバイスのスレーブアドレスです。Arduino が arduino-stepping-motor
+            のスケッチをそのまま使用している場合は 0x12 となります。
+          </td>
+        </tr>
+      </table>
+
       <h4>戻り値</h4>
-        <p>SteppingMotorオブジェクト</p>
-    <h3>init()</h3>
-      <p>SteppingMotorオブジェクトが使用するI2Cポートの初期化を行います。コンストラクタで SteppingMotor オブジェクトを生成した後、init() で初期化を行う事により実際に使用可能な状態になります。この関数は非同期です。初期化が終了した時点でリゾルブされる Promise を返します。</p>
-      <h4>パラメータ</h4>
-        <p>なし</p>
-      <h4>戻り値</h4>
-        <p>Promise&lt;void&gt;</p>
-    <h3>readStatus()</h3>
-      <p>ステッピングモータの現在の状態を取得します。この関数は非同期です。リゾルブ時の引数としてステッピングモータが現在回転中ならば 1、停止中ならば 0 が渡されます。</p>
-      <h4>パラメータ</h4>
-        <p>なし</p>
-      <h4>戻り値</h4>
-        <p>Promise&lt;status&gt;</p>
-    <h3>move(step)</h3>
-      <p>ステッピングモータを指定のステップ数だけ動かします。step が正の値ならば正方向、負の値ならば逆方向に回転します。この関数は非同期で Promise を返し、Promise は指定のステップ数の回転が終了した時点でリゾルブします。指定可能なステップ数は -0xffff から +0xffff の範囲です。また、ステップ数として -0xffff または 0xffff を指定した場合はステップ数を無視して回り続けます。
-      </p>
-      <p>このステップ数はモータドライバのマイクロステップ動作は関知しません。つまり、モータが 1 回転あたり 200 パルスでモータドライバが 1/8 マイクロステップ動作である場合、move(1600) で 1 回転します。
-      </p>
-      <h4>パラメータ</h4>
-        <table><tr><td>step</td><td>ステップ数</td></tr></table>
-      <h4>戻り値</h4>
-        <p>Promise&lt;void&gt;</p>
-    <h3>abort()</h3>
-      <p>ステッピングモータが現在回転中であれば強制的に停止します。この関数は非同期です。停止処理が完了した時点でリゾルブする Promise を返します。
+      <p>SteppingMotorオブジェクト</p>
+      <h3>init()</h3>
+      <p>
+        SteppingMotorオブジェクトが使用するI2Cポートの初期化を行います。コンストラクタで
+        SteppingMotor オブジェクトを生成した後、init()
+        で初期化を行う事により実際に使用可能な状態になります。この関数は非同期です。初期化が終了した時点でリゾルブされる
+        Promise を返します。
       </p>
       <h4>パラメータ</h4>
-        <p>なし</p>
+      <p>なし</p>
       <h4>戻り値</h4>
-        <p>Promise&lt;void&gt;</p>
-    <h3>setSpeed(speed)</h3>
-      <p>ステッピングモータの回転速度を指定します。この回転速度は次回以降の move() コマンドで使用されると共に、現在既に回転中であれば即時に回転速度を切り替えます。この関数は非同期です。コマンドが実行された時点でリゾルブされる Promise を返します。
-      </p>
-      <p>この回転速度の単位はモータドライバのマイクロステップ動作にかかわらず pulse / sec です。例えばモータが 1 回転あたり 200 パルスでモータドライバが 1/8 マイクロステップ動作の場合、setSpeed(1600) で毎秒 1 回転の速度になります。
-      </p>
-      <h4>パラメータ</h4>
-        <table><tr><td>speed</td><td>回転速度 (pulse / sec)</td></tr></table>
-      <h4>戻り値</h4>
-        <p>Promise&lt;void&gt;</p>
-    <h3>setMinSpeed(speed)</h3>
-      <p>ステッピングモータの最低回転速度を指定します。最低回転速度はモータの回転開始時の加速初期速度、停止時の減速の最終速度として使用されます。setSpeed() コマンドで setMinSpeed() の速度以下を指定した場合は無効となります。
-      この関数は非同期です。コマンドが実行された時点でリゾルブされる Promise を返します。
-      </p>
-      <p>この回転速度の単位はモータドライバのマイクロステップ動作にかかわらず pulse / sec です。例えばモータが 1 回転あたり 200 パルスでモータドライバが 1/8 マイクロステップ動作の場合、setSpeed(1600) で毎秒 1 回転の速度になります。
-    </p>
-    <p>この関数は非同期です。コマンドが実行された時点でリゾルブされる Promise を返します。</p>
-    <h4>パラメータ</h4>
-      <table><tr><td>speed</td><td>回転速度 (pulse / sec)</td></tr></table>
-    <h4>戻り値</h4>
       <p>Promise&lt;void&gt;</p>
-    <h3>setAccelRate(rate)</h3>
-      <p>モータの回転開始/停止時の加減速の速さを指定します。ステッピングモータは回転速度の変化が急激すぎると回転が付いていかず「脱調」という現象が発生します。setAccelRate() を適切に設定する事で指定された速度に対して変化を緩やかにして脱調を抑える事ができます。 rate の単位は msec/kHz で、パルスの周波数が 1kHz あたり変化するために必要な時間(msec)を表します。
+      <h3>readStatus()</h3>
+      <p>
+        ステッピングモータの現在の状態を取得します。この関数は非同期です。リゾルブ時の引数としてステッピングモータが現在回転中ならば
+        1、停止中ならば 0 が渡されます。
       </p>
-      <p>0 を指定した場合は加減速処理は行われず、指定された速度のパルスに即時に変化します。
-      </p>
-      <p>この関数は非同期です。コマンドが実行された時点でリゾルブされる Promise を返します。</p>
       <h4>パラメータ</h4>
-        <table><tr><td>rate</td><td>加減速レート (msec / kHz)</td></tr></table>
+      <p>なし</p>
       <h4>戻り値</h4>
-        <p>Promise&lt;void&gt;</p>
-    <h3>enable(ena)</h3>
-      <p>モータドライバの駆動を開始/停止します。ena が 0 の場合は停止、1 の場合は開始します。モータドライバは init()の後デフォルトで駆動状態にあります。enable(0) でモータドライバの駆動を停止する事でモータはフリーに回転できる状態になります。
+      <p>Promise&lt;status&gt;</p>
+      <h3>move(step)</h3>
+      <p>
+        ステッピングモータを指定のステップ数だけ動かします。step
+        が正の値ならば正方向、負の値ならば逆方向に回転します。この関数は非同期で
+        Promise を返し、Promise
+        は指定のステップ数の回転が終了した時点でリゾルブします。指定可能なステップ数は
+        -0xffff から +0xffff の範囲です。また、ステップ数として -0xffff または
+        0xffff を指定した場合はステップ数を無視して回り続けます。
       </p>
-      <p>この関数は非同期です。コマンドが実行された時点でリゾルブされる Promise を返します。</p>
+      <p>
+        このステップ数はモータドライバのマイクロステップ動作は関知しません。つまり、モータが
+        1 回転あたり 200 パルスでモータドライバが 1/8
+        マイクロステップ動作である場合、move(1600) で 1 回転します。
+      </p>
       <h4>パラメータ</h4>
-        <table><tr><td>ena</td><td>0 または 1</td></tr></table>
-    <h4>戻り値</h4>
-        <p>Promise&lt;void&gt;</p>
-    <hr/>
-  </div>
+      <table>
+        <tr>
+          <td>step</td>
+          <td>ステップ数</td>
+        </tr>
+      </table>
+      <h4>戻り値</h4>
+      <p>Promise&lt;void&gt;</p>
+      <h3>abort()</h3>
+      <p>
+        ステッピングモータが現在回転中であれば強制的に停止します。この関数は非同期です。停止処理が完了した時点でリゾルブする
+        Promise を返します。
+      </p>
+      <h4>パラメータ</h4>
+      <p>なし</p>
+      <h4>戻り値</h4>
+      <p>Promise&lt;void&gt;</p>
+      <h3>setSpeed(speed)</h3>
+      <p>
+        ステッピングモータの回転速度を指定します。この回転速度は次回以降の
+        move()
+        コマンドで使用されると共に、現在既に回転中であれば即時に回転速度を切り替えます。この関数は非同期です。コマンドが実行された時点でリゾルブされる
+        Promise を返します。
+      </p>
+      <p>
+        この回転速度の単位はモータドライバのマイクロステップ動作にかかわらず
+        pulse / sec です。例えばモータが 1 回転あたり 200
+        パルスでモータドライバが 1/8 マイクロステップ動作の場合、setSpeed(1600)
+        で毎秒 1 回転の速度になります。
+      </p>
+      <h4>パラメータ</h4>
+      <table>
+        <tr>
+          <td>speed</td>
+          <td>回転速度 (pulse / sec)</td>
+        </tr>
+      </table>
+      <h4>戻り値</h4>
+      <p>Promise&lt;void&gt;</p>
+      <h3>setMinSpeed(speed)</h3>
+      <p>
+        ステッピングモータの最低回転速度を指定します。最低回転速度はモータの回転開始時の加速初期速度、停止時の減速の最終速度として使用されます。setSpeed()
+        コマンドで setMinSpeed() の速度以下を指定した場合は無効となります。
+        この関数は非同期です。コマンドが実行された時点でリゾルブされる Promise
+        を返します。
+      </p>
+      <p>
+        この回転速度の単位はモータドライバのマイクロステップ動作にかかわらず
+        pulse / sec です。例えばモータが 1 回転あたり 200
+        パルスでモータドライバが 1/8 マイクロステップ動作の場合、setSpeed(1600)
+        で毎秒 1 回転の速度になります。
+      </p>
+      <p>
+        この関数は非同期です。コマンドが実行された時点でリゾルブされる Promise
+        を返します。
+      </p>
+      <h4>パラメータ</h4>
+      <table>
+        <tr>
+          <td>speed</td>
+          <td>回転速度 (pulse / sec)</td>
+        </tr>
+      </table>
+      <h4>戻り値</h4>
+      <p>Promise&lt;void&gt;</p>
+      <h3>setAccelRate(rate)</h3>
+      <p>
+        モータの回転開始/停止時の加減速の速さを指定します。ステッピングモータは回転速度の変化が急激すぎると回転が付いていかず「脱調」という現象が発生します。setAccelRate()
+        を適切に設定する事で指定された速度に対して変化を緩やかにして脱調を抑える事ができます。
+        rate の単位は msec/kHz で、パルスの周波数が 1kHz
+        あたり変化するために必要な時間(msec)を表します。
+      </p>
+      <p>
+        0
+        を指定した場合は加減速処理は行われず、指定された速度のパルスに即時に変化します。
+      </p>
+      <p>
+        この関数は非同期です。コマンドが実行された時点でリゾルブされる Promise
+        を返します。
+      </p>
+      <h4>パラメータ</h4>
+      <table>
+        <tr>
+          <td>rate</td>
+          <td>加減速レート (msec / kHz)</td>
+        </tr>
+      </table>
+      <h4>戻り値</h4>
+      <p>Promise&lt;void&gt;</p>
+      <h3>enable(ena)</h3>
+      <p>
+        モータドライバの駆動を開始/停止します。ena が 0 の場合は停止、1
+        の場合は開始します。モータドライバは
+        init()の後デフォルトで駆動状態にあります。enable(0)
+        でモータドライバの駆動を停止する事でモータはフリーに回転できる状態になります。
+      </p>
+      <p>
+        この関数は非同期です。コマンドが実行された時点でリゾルブされる Promise
+        を返します。
+      </p>
+      <h4>パラメータ</h4>
+      <table>
+        <tr>
+          <td>ena</td>
+          <td>0 または 1</td>
+        </tr>
+      </table>
+      <h4>戻り値</h4>
+      <p>Promise&lt;void&gt;</p>
+      <hr />
+    </div>
   </body>
 </html>

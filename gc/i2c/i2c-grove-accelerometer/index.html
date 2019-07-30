@@ -1,49 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1"
+    />
+    <title>Grove Digital Accelerometer sensor</title>
+    <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
+    <script src="../../drivers/i2c-grove-accelerometer.js"></script>
+    <script src="./main.js"></script>
+    <style>
+      p {
+        color: blue;
+        text-align: center;
+        font-size: 24px;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-  <title>Grove Digital Accelerometer sensor</title>
-  <script src="../../polyfill/polyfill.js"></script>
-  <script src="../../drivers/i2c-grove-accelerometer.js"></script>
-  <script src="./main.js"></script>
-  <style>
-    p {
-      color: blue;
-      text-align: center;
-      font-size: 24px;
-    }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-    img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+      .outer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
-    .outer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+      .inner {
+        font-size: 24px;
+        text-align: center;
+        width: 200px;
+      }
+    </style>
+  </head>
 
-    .inner {
-      font-size: 24px;
-      text-align: center;
-      width: 200px;
-    }
-  </style>
-</head>
-
-<body>
-  <P><a href="http://wiki.seeed.cc/Grove-3-Axis_Digital_Accelerometer-16g/" target="_blank">Grove - 3 Axis Digital Accelerometer
-      (±16g) ADXL345 Version</a></P>
-  <img src="./schematic.png" height="400px">
-  <div class="outer">
-    <div id="ax" class="inner">ax</div>
-    <div id="ay" class="inner">ay</div>
-    <div id="az" class="inner">az</div>
-  </div>
-</body>
-
+  <body>
+    <P
+      ><a
+        href="http://wiki.seeed.cc/Grove-3-Axis_Digital_Accelerometer-16g/"
+        target="_blank"
+        >Grove - 3 Axis Digital Accelerometer (±16g) ADXL345 Version</a
+      ></P
+    >
+    <img src="./schematic.png" height="400px" />
+    <div class="outer">
+      <div id="ax" class="inner">ax</div>
+      <div id="ay" class="inner">ay</div>
+      <div id="az" class="inner">az</div>
+    </div>
+  </body>
 </html>

@@ -1,32 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1"
+    />
+    <title>Test I2C grove touch sensor</title>
+    <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
+    <script src="../../drivers/i2c-grove-touch.js"></script>
+    <script src="./main.js"></script>
+    <style>
+      p {
+        color: blue;
+        text-align: center;
+        font-size: 24px;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-  <title>Test I2C grove touch sensor</title>
-  <script src="../../polyfill/polyfill.js"></script>
-  <script src="../../drivers/i2c-grove-touch.js"></script>
-  <script src="./main.js"></script>
-  <style>
-    p {
-      color: blue;
-      text-align: center;
-      font-size: 24px;
-    }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
 
-    img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
-</head>
-
-<body>
-  <P><a href="http://wiki.seeed.cc/Grove-I2C_Touch_Sensor/" target="_blank">Grove I2C Touch Sensor</a></P>
-  <img src="./schematic.png" height="400px">
-  <div id="debug">dist</div>
-</body>
-
+  <body>
+    <P
+      ><a href="http://wiki.seeed.cc/Grove-I2C_Touch_Sensor/" target="_blank"
+        >Grove I2C Touch Sensor</a
+      ></P
+    >
+    <img src="./schematic.png" height="400px" />
+    <div id="debug">dist</div>
+  </body>
 </html>
