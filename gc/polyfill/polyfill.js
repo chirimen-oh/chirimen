@@ -14,7 +14,7 @@ function errLog(str){
 }
 
 
-bone = (()=> {
+var bone = (()=> {
   function router(){}
   router.prototype = {
     wss : null,
@@ -36,7 +36,7 @@ bone = (()=> {
         infoLog("onopen");
         for(var cnt=0;cnt < this.waitQueue.length;cnt++){
           if(typeof this.waitQueue[cnt] === 'function'){
-            this.waitQueue[cnt](true); 
+            this.waitQueue[cnt](true);
           }
         }
         this.status = 2;
@@ -47,7 +47,7 @@ bone = (()=> {
         var length = this.waitQueue ? this.waitQueue.length : 0;
         for(var cnt=0;cnt < length;cnt++){
           if(typeof this.waitQueue[cnt] === 'function'){
-            this.waitQueue[cnt](false); 
+            this.waitQueue[cnt](false);
           }
         }
         this.status = 0;
@@ -59,7 +59,7 @@ bone = (()=> {
         if(buffer[0] == 1){
           this.receive(buffer);
         }else if(buffer[0] == 2){
-          this.onEvent(buffer);            
+          this.onEvent(buffer);
         }
       };
     },
@@ -78,7 +78,7 @@ bone = (()=> {
         buf[3] = func;
 
         for(var cnt=0;cnt<data.length;cnt++){
-          buf[4+cnt] = data[cnt];        
+          buf[4+cnt] = data[cnt];
         }
         infoLog("send message:"+buf);
         this.queue.set(this.session,(data)=>{
@@ -133,7 +133,7 @@ bone = (()=> {
     // [1] session id LSB (0)
     // [2] session id MSB (0)
     // [3] function id (0x14)
-    // [4] Port Number 
+    // [4] Port Number
     // [5] Value (0:LOW 1:HIGH)
       var key = data[3];
       key = (key << 8)| data[4];
@@ -171,11 +171,11 @@ bone = (()=> {
 
 
 //////////////////////////////////////////////////////////////////////////
-// GPIOAccess 
+// GPIOAccess
 // Raspberry Pi GPIO Port Number
 
-// todo: add portName and pinName 
-var gpioPorts = [4,17,18,27,22,23,24,25,5,6,12,13,19,16,26,20,21]; 
+// todo: add portName and pinName
+var gpioPorts = [4,17,18,27,22,23,24,25,5,6,12,13,19,16,26,20,21];
 
 var GPIOAccess = function () {
   this.init();
@@ -233,7 +233,7 @@ GPIOPort.prototype = {
         if(result[0]==0){
           reject("GPIOPort("+this.portNumber+").export() error");
         }else{
-          resolve(); 
+          resolve();
         }
       },(error)=>{
         reject(error);
@@ -248,7 +248,7 @@ GPIOPort.prototype = {
         if(result[0]==0){
           reject("GPIOPort("+this.portNumber+").read() error");
         }else{
-          resolve(result[1]); 
+          resolve(result[1]);
         }
       },(error)=>{
         reject(error);
@@ -263,7 +263,7 @@ GPIOPort.prototype = {
         if(result[0]==0){
           reject("GPIOPort("+this.portNumber+").write() error");
         }else{
-          resolve(); 
+          resolve();
         }
       },(error)=>{
         reject(error);
@@ -279,7 +279,7 @@ GPIOPort.prototype = {
         if(result[0]==0){
           reject("GPIOPort("+this.portNumber+").unexport() error");
         }else{
-          resolve(); 
+          resolve();
         }
       },(error)=>{
         reject(error);
@@ -289,9 +289,9 @@ GPIOPort.prototype = {
 };
 
 //////////////////////////////////////////////////////////////////////////
-// I2CAccess 
+// I2CAccess
 
-var i2cPorts = [1]; 
+var i2cPorts = [1];
 
 var I2CAccess = function () {
   this.init();
@@ -351,7 +351,7 @@ I2CSlaveDevice.prototype = {
       bone.send(0x20,data).then((result)=>{
         if(result[0] != 0){
           infoLog("I2CSlaveDevice.init() result OK");
-          resolve(this); 
+          resolve(this);
         }else{
           errLog("I2CSlaveDevice.init() result NG");
           reject("I2CSlaveDevice.init() result NG:");
@@ -369,7 +369,7 @@ I2CSlaveDevice.prototype = {
         infoLog("I2CSlaveDevice.read8() result value="+result);
         var readSize = result[0];
         if(readSize == 1){
-          resolve(result[1]); 
+          resolve(result[1]);
         }else{
           reject("read8() readSize unmatch : "+readSize);
         }
@@ -390,7 +390,7 @@ I2CSlaveDevice.prototype = {
           var res_l = result[1];
           var res_h = result[2];
           var res = res_l + (res_h << 8);
-          resolve(res); 
+          resolve(res);
         }else{
           reject("read16() readSize unmatch : "+readSize);
         }
@@ -408,7 +408,7 @@ I2CSlaveDevice.prototype = {
       bone.send(0x21,data).then((result)=>{
         infoLog("I2CSlaveDevice.write8() result value="+result);
         if(result[0] != size){
-          reject("I2CSlaveAddress("+this.slaveAddress+").write8():error")          
+          reject("I2CSlaveAddress("+this.slaveAddress+").write8():error")
         }else{
           resolve();
         }
@@ -428,7 +428,7 @@ I2CSlaveDevice.prototype = {
       bone.send(0x21,data).then((result)=>{
         infoLog("I2CSlaveDevice.write16() result value="+result);
         if(result[0] != size){
-          reject("I2CSlaveAddress("+this.slaveAddress+").write16():error")          
+          reject("I2CSlaveAddress("+this.slaveAddress+").write16():error")
         }else{
           resolve();
         }
@@ -445,7 +445,7 @@ I2CSlaveDevice.prototype = {
         infoLog("I2CSlaveDevice.readByte() result value="+result);
         var readSize = result[0];
         if(readSize == 1){
-          resolve(result[1]); 
+          resolve(result[1]);
         }else{
           reject("readByte() readSize unmatch : "+readSize);
         }
@@ -467,7 +467,7 @@ I2CSlaveDevice.prototype = {
         if(readSize == length){
           var buffer = result;
           buffer.shift();  // readSizeを削除
-          resolve(buffer); 
+          resolve(buffer);
         }else{
           reject("readBytes() readSize unmatch : "+readSize);
         }
@@ -485,7 +485,7 @@ I2CSlaveDevice.prototype = {
       bone.send(0x21,data).then((result)=>{
         infoLog("I2CSlaveDevice.writeByte() result"+result);
         if(result[0] != size){
-          reject("I2CSlaveAddress("+this.slaveAddress+").writeByte():error")          
+          reject("I2CSlaveAddress("+this.slaveAddress+").writeByte():error")
         }else{
           resolve();
         }
@@ -510,7 +510,7 @@ I2CSlaveDevice.prototype = {
         if(result[0] == buffer.length){
           var resbuffer = result;
           resbuffer.shift();  // readSizeを削除
-          resolve(resbuffer); 
+          resolve(resbuffer);
         }else{
           reject("writeBytes() writeSize unmatch : "+result[0]);
         }
@@ -524,7 +524,7 @@ I2CSlaveDevice.prototype = {
 
 
 //////////////////////////////////////////////////////////////////////////
-// navigator 
+// navigator
 
 if (!navigator.requestI2CAccess) {
   navigator.requestI2CAccess = function () {
