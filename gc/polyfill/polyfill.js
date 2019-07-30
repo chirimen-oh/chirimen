@@ -1,5 +1,3 @@
-// Version 2017.12.04
-
 (function(){
 
 var serverURL = "wss://localhost:33330/";
