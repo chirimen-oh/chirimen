@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/polyfill": "^1.0.0"
+    "@chirimen-raspi/polyfill": "^1.0.1"
+  },
+  "devDependencies": {
+    "serve": "^11.1.0"
+  },
+  "scripts": {
+    "start": "serve -p 8080"
   }
 }
