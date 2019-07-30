@@ -185,7 +185,11 @@ parts,sumally{
 }
 </style>
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", async () => {
+    const res = await fetch("../../version.txt");
+    document
+      .querySelector("#bfooter").textContent = await res.text();
+
     if (location.host !== "chirimen.org") return;
     document
       .querySelectorAll(".hide-on-production")
@@ -982,7 +986,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
 </div>
 
 <div id="bwrap">
-  <div id="bfooter">CHIRIMEN for Raspberry Pi ver.2018/12/11</div>
+  <div id="bfooter"></div>
 </div>
 
 </body>
