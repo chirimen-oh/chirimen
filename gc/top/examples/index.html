@@ -20,7 +20,6 @@
       <p>
         CHIRIMEN for Raspberry Pi 3 対応デバイスのドライバ・回路図・サンプルコードをセットにした Example 集です。
       </p>
-      <h2>目次</h2>
       <ul>
         <li><a href="#gpioExamples">Basic GPIO Examples</a>
         <li><a href="#i2cExamples">Basic I2C Examples</a>
@@ -28,14 +27,14 @@
       </ul>
       <h3>アイコンの説明</h3>
       <dl>
-        <dt><a class="linkicon schematic" href="#">回路図</a></dd>
-        <dd>実際の回路の配線のイメージ画像です。</dd>
-        <dt><a class="linkicon local" href="#">デモ</a></dt>
+        <dt><a class="linkicon schematic">回路図</a></dd>
+        <dd>実際の回路の配線のイメージ画像へのリンクです。</dd>
+        <dt><a class="linkicon local">デモ</a></dt>
         <dd><span class="hide-on-production">~/Desktop/gc/ ディレクトリ以下の</span>サンプルコードを実行します。</dd>
-        <dt><a class="linkicon jsbin" href="#">JSBin</a></dt>
-        <dd>JSBinでサンプルコードを編集・実行します。</dd>
-        <dt><a class="linkicon codesandbox" href="#">CSB</a></dt>
-        <dd>CodeSandboxでサンプルコードを編集・実行します。</dd>
+        <dt><a class="linkicon jsbin">JSBin</a></dt>
+        <dd><a href="https://jsbin.com/">JSBin</a> でサンプルコードを開きます。コードを書き換えて Ctrl+S で保存できます。</dd>
+        <dt><a class="linkicon codesandbox">CSB</a></dt>
+        <dd><a href="https://codesandbox.io/">CodeSandbox</a> でサンプルコードを開きます。コードを書き換えて Ctrl+S で保存できます。</dd>
       </dl>
     </div>
   </div>
@@ -55,7 +54,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../gpio/LEDblink/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../gpio/LEDblink/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-blink" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-blink" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-gpio-blink" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">LEDを点滅させます。</div>
@@ -75,7 +75,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../gpio/button/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../gpio/button/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-button" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-button" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-button" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">タクトスイッチを押すとLEDが点灯、離すと消灯します。<br>このサンプルでは、GPIOポートの読み込みに、<b>onchange()</b> を用いています。</div>
@@ -96,7 +97,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../gpio/readGpioValue/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../gpio/readGpioValue/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-readgpiovalue" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-readgpiovalue" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-readgpiovalue" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">タクトスイッチの状態（押されているか、押されていないか）を読み込みコンソールへLog出力します。<br>このサンプルでは、GPIOポートの読み込みを <b>read()</b> を用いたポーリング処理で実現しています。</div>
@@ -115,7 +117,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../gpio/pirSensor/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../gpio/pirSensor/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-pirsensor" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-pirsensor" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-pirsensor" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">人感センサーをGPIOで読み取り、画面に反映させます</div>
@@ -135,7 +138,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="https://gist.github.com/satakagi/24d30e9a5a07ea79554872084ac7c641" target="_blank">解説記事</a>
         <a class="linkicon local" href="../../gpio/MultiBlinkAll/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-multiblinkall" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-multiblinkall" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-multiblinkall" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">大量のLEDをLチカさせます</div>
@@ -156,7 +160,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../gpio/buttonAll/buttonAll.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../gpio/buttonAll/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-buttonall" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-buttonall" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-buttonall" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">大量のタクトスイッチの入力を得ます。GPIO4, 5, 6はPull Up, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27はPull Downであることに注意してタクトスイッチを接続します。</div>
@@ -200,7 +205,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-ADT7410/schematic_warning.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-ADT7410/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-adt7410" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-adt7410" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-adt7410" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の温度センサー「ADT7410」を用いて温度を計測し表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください。 <br>
@@ -221,7 +227,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-grove-accelerometer/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-grove-accelerometer/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-grove-accelerometer" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-grove-accelerometer" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-grove-accelerometer" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の3軸加速度センサーで取得した値を表示します。（このセンサーはGroveケーブル経由で接続します）</div>
@@ -239,7 +246,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-grove-gesture/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-grove-gesture/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-grove-gesture" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-grove-gesture" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-grove-gesture" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続のジェスチャーセンサー（センサーの前で手などを動かすと動かした方向などのモーションを検出するセンサー）の検出結果を表示します。（このセンサーはGroveケーブル経由で接続します）</div>
@@ -257,7 +265,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-grove-light/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-grove-light/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-grove-light" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-grove-light" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-grove-light" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の光センサーで取得した明るさを表示します。（このセンサーはGroveケーブル経由で接続します）</div>
@@ -275,7 +284,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-grove-oledDisplay/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-grove-oledDisplay/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-grove-oleddisplay" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-grove-oleddisplay" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-grove-oleddisplay" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の小さなOLED（有機EL）ディスプレイへ文字を表示します。（このディスプレイはGroveケーブル経由で接続します）</div>
@@ -293,7 +303,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-grove-touch/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-grove-touch/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-grove-touch" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-grove-touch" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-grove-touch" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続のタッチセンサー（静電容量式タッチキー）によるタッチ検出をおこないます。（このセンサーはGroveケーブル経由で接続します）</div>
@@ -311,7 +322,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-PCA9685/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-PCA9685/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-pca9685" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-pca9685" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-pca9685" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続のPWMドライバー経由でサーボモーターを駆動します。（RaspberryからPWMドライバーをI2C接続し、 PWMドライバとサーボモータ、外部電源を接続します。詳細は回路図を参照ください）</div>
@@ -335,7 +347,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-ADS1015/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-ADS1015/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-ads1015" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-ads1015" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-ads1015" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続のADC（アナログ・デジタルコンバータ）経由で可変抵抗器の値を表示します。</div>
@@ -357,7 +370,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-GP2Y0E03/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-GP2Y0E03/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-gp2y0e03" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-gp2y0e03" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-gp2y0e03" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の赤外線測距センサー（センサーから障害物までの距離を測るセンサー）の値を表示します。（このセンサーはGroveケーブル経由で接続します）</div>
@@ -377,7 +391,8 @@
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-S11059/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-S11059/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-s11059" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-s11059" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-s11059" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続のRGBカラーセンサーで取得した値を表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください。 <br><span style="font-size:11px;">※ジャンパー（メス・メス）ケーブルに直接刺すために、パッケージに付属の細ピンヘッダではなく標準サイズのピンヘッダを付けてください）</span></div>
@@ -396,7 +411,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-VEML6070/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-VEML6070/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-veml6070" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-veml6070" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-veml6070" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続のUVセンサー（紫外線の強さを測定することができるセンサー）で取得した値を表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください）<br>なお、必須ではありませんが紫外線ライトがあるとテストが捗ります。</div>
@@ -409,12 +425,33 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
+    <div class="cwrap" id="I2C-VL53L0X">
+        <div class="title">I2C-VL53L0X</div>
+        <div class="linkwrap">
+          <a class="linkicon schematic" href="../../i2c/i2c-VL53L0X/schematic.png" target="_blank">回路図</a>
+          <a class="linkicon local" href="../../i2c/i2c-VL53L0X/VL53L0X.html" target="_blank">デモ</a>
+          <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-vl53l0x" target="_blank">JSBin</a>
+          <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-vl53l0x" target="_blank">CSB</a>
+        </div>
+        <h3 class="sumally">概要</h3>
+        <div class="desc">I2C接続のレーザー距離センサーで取得した値を表示します。<br>
+        GP2Y0E03よりも長距離(最長2m)の測定ができます。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください。製品によってはチップ表面に黄色の保護フィルムがついているものがあります。剥して使用してください。）</div>
+        <h3 class="parts">使用パーツ</h3>
+        <div class="desc">
+          <ul>
+            <li>VL53L0X レーザー距離センサー</a> x 1 (<a href="https://www.amazon.co.jp/s/?field-keywords=VL53L0X">amazon</a>, <a href="http://akizukidenshi.com/catalog/g/gM-12590/">秋月通商</a>)</li>
+            <li>ジャンパー（メス・メス）ケーブル x 4</li>
+          </ul>
+        </div>
+      </div>
+ 
     <div class="cwrap" id="I2C-multi-sensors">
       <div class="title">I2C-multi-sensors</div>
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../i2c/i2c-multi-sensors/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../i2c/i2c-multi-sensors/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-multi-sensors" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-multi-sensors" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-multi-sensors" target="_blank">CSB</a>
      </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">複数のセンサーを組み合わせて利用する場合のサンプルです。ここでは、ADT7410（温度センサー）と、Grove I2C デジタル光センサを接続し、それぞれのセンサーから取得した値を表示しています。複数のセンサーを接続する場合、Grove I2C ハブを利用すると便利です。</div>
@@ -447,7 +484,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-ADS1115/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-ADS1115/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-ads1115" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-ads1115" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-ads1115" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の16bitADC（アナログ・デジタルコンバータ）経由で可変抵抗器の値を表示します。</div>
@@ -471,7 +509,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon schematic" href="../../contrib/examples/i2c-arduino-steppingMotor/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-arduino-steppingMotor/" target="_blank">デモ</a>
         <a class="linkicon api" href="../../i2c/i2c-arduino-steppingMotor/api.html" target="_blank">API</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-arduino-steppingmotor" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-arduino-steppingmotor" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-arduino-steppingmotor" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">Arduinoとモータードライバを経由してステッピングモータを動かすサンプルです。ステッピングモータを回すために必要なタイミングの制御に Arduino を I2C デバイスとして使用しています。このサンプルでは回転方向を反転させながら2回転ずつモーターを回します。</div>
@@ -498,7 +537,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-BME280/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-BME280/bme.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-bme280" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-bme280" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-bme280" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の温度・湿度・気圧　複合センサーで取得した値を表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください）</div>
@@ -517,7 +557,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-BMP180/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-BMP180/bmp.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-bmp180" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-bmp180" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-bmp180" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の温度・気圧　複合センサーで取得した値を表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください）</div>
@@ -536,7 +577,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-BMP280/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-BMP280/bmp280.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-bmp280" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-bmp280" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-bmp280" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の温度・気圧　複合センサーで取得した値を表示します。（BMP280は、BMP180とは別のデバイスです）</div>
@@ -555,7 +597,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-canzasi-blink/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-canzasi-blink/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-canzasi-blink" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-canzasi-blink" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-canzasi-blink" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">Arduino経由でI2Cデバイスが作れるオープンソースハードウエア「<a href="https://github.com/tadfmac/Canzasi">Canzasi</a>」の接続例です。<br><span style="font-size:11px">Canzasiを利用するためには、Arduino UNOとCanzasiボード(非売品。オープンソースデータをもとに自作が必要)が必要です。</span></div>
@@ -576,7 +619,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-MPU6050/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-MPU6050/mpu.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-mpu6050" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-mpu6050" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-mpu6050" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の３軸ジャイロ＋３軸加速度　複合センサーで取得した値を表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください）</div>
@@ -596,7 +640,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon schematic" href="../../contrib/examples/gpio-HBridge/HBridge_TB6612FNG.png" target="_blank">回路図 (TB6612FNG)</a>
         <a class="linkicon schematic" href="../../contrib/examples/gpio-HBridge/HBridge_L298N.png" target="_blank">回路図 (L298N)</a>
         <a class="linkicon local" href="../../contrib/examples/gpio-HBridge/index.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-hbridge" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-hbridge" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-hbridge" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">GPIO接続のH-BridgeモータドライバでDCモータの正転・逆転制御を可能にします。<br><span class="note">モータードライバ基板としては他に<a href="https://www.amazon.co.jp/s/?field-keywords=L9110S">L9110S</a>, <a href="https://www.amazon.co.jp/dp/B078X88R27">MX1508</a>などで動作実績がありあす</span></div>
@@ -631,7 +676,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-MPU9250/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-MPU9250/mpu92.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-mpu9250" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-mpu9250" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-mpu9250" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の３軸ジャイロ＋３軸加速度＋３軸磁気　複合センサーで取得した値を表示します。<br>
@@ -646,32 +692,13 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     </div>
 
 
-    <div class="cwrap" id="I2C-VL53L0X">
-      <div class="title">I2C-VL53L0X</div>
-      <div class="linkwrap">
-        <a class="linkicon schematic" href="../../contrib/examples/i2c-VL53L0X/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/i2c-VL53L0X/VL53L0X.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-vl53l0x" target="_blank">JSBin</a>
-      </div>
-      <h3 class="sumally">概要</h3>
-      <div class="desc">I2C接続のレーザー距離センサーで取得した値を表示します。<br>
-      GP2Y0E03よりも長距離(最長2m)の測定ができます。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください。製品によってはチップ表面に黄色の保護フィルムがついているものがあります。剥して使用してください。）</div>
-      <h3 class="parts">使用パーツ</h3>
-      <div class="desc">
-        <ul>
-          <li>VL53L0X レーザー距離センサー</a> x 1 (<a href="https://www.amazon.co.jp/s/?field-keywords=VL53L0X">amazon</a>, <a href="http://akizukidenshi.com/catalog/g/gM-12590/">秋月通商</a>)</li>
-          <li>ジャンパー（メス・メス）ケーブル x 4</li>
-        </ul>
-      </div>
-    </div>
-
-
     <div class="cwrap" id="GPIO-I2C-PWMHBridge-1">
       <div class="title">GPIO-I2C-PWMHBridge その１</div>
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/gpio-i2c-PWMHBridge1/PWMHBridge.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/gpio-i2c-PWMHBridge1/index.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-i2c-pwmhbridge" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-i2c-pwmhbridge" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-i2c-pwmhbridge" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">GPIO接続のH-Bridgeモータドライバ及びI2C接続のPWMドライバPCA9685でDCモータの正転・逆転さらに速度制御を可能にします。<br><span class="note">H-BridgeモータドライバはL298N以外にTB6612FNGでも動作実績あり</span></div>
@@ -694,7 +721,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/gpio-i2c-PWMHBridge2/PWMHBridge2.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/gpio-i2c-PWMHBridge2/index.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-i2c-pwmhbridge2" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-i2c-pwmhbridge2" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-i2c-pwmhbridge2" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">H-BridgeモータドライバとPWMドライバPCA9685でDCモータの正逆転速度制御をします。こちらの回路ではPWM信号を2つ使います。<BR>PWM端子やENABLE端子などを持たないコントローラにも応用できます。<BR><span class="note">L298N以外に、L9110S, MX1508などでの動作実績あり</span></div>
@@ -718,7 +746,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon schematic" href="../../contrib/examples/i2c-NEOPIXEL_I2C/NEOPIXEL_I2C.png" target="_blank">回路図</a>
         <a class="linkicon schematic" href="../../contrib/examples/i2c-NEOPIXEL_I2C/NEOPIXEL_I2C_BRD.png" target="_blank">回路図(専用ボード)</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-NEOPIXEL_I2C/index.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-neopixel_i2c" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-neopixel_i2c" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-neopixel_i2c" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc"><a href="https://learn.adafruit.com/adafruit-neopixel-uberguide/the-magic-of-neopixels">Neopixel LED</a> (シンプルな配線の多数のLEDの発光を個々に制御できるフルカラーLED)をATTINY85をI2Cコントローラにして使用します。ATTINY85には<a href="https://gist.github.com/satakagi/608f6c2c963c8e9453864f11b6fb1f3d#file-readme-md">ここで紹介されているファームウェア</a>を焼いておく必要があります。<br><span class="note">簡単に組み立てられるようにしたオープンソースハードの<a href="https://gist.github.com/satakagi/608f6c2c963c8e9453864f11b6fb1f3d#%E5%B0%82%E7%94%A8%E3%83%9C%E3%83%BC%E3%83%89">専用コントローラボード</a>もあります</span></div>
@@ -741,7 +770,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-PCF8591/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-PCF8591/index.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-pcf8591" target="_blank">JSBin</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-pcf8591" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-pcf8591" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の8ビットAD,DAコンバータPCF8591を使います。<BR><span class="note">このボードには、以下の部品が搭載されており、ジャンパ設定によりこれらの素子が使えます（工場出荷時はジャンパ設定状態)</span></div>
@@ -797,7 +827,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-AMG8833/AMG8833.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-AMG8833/amg.html" target="_blank">デモ</a>
-<!--        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-amg8833" target="_blank">JSBin</a>-->
+        <!-- <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-amg8833" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-amg8833" target="_blank">CSB</a> -->
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続のサーモグラフィーデバイス AMG8833を使用します。</div>

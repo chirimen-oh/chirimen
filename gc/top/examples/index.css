@@ -57,6 +57,20 @@ h3 {
 }
 .index{
   background-color:rgba(240,240,240,0.8);
+  font-size: 1.2em;
+}
+.index p {
+  line-height: 1.8em;
+  margin: 0.4em 0;
+}
+.index ul {
+  margin: 0 0 0 0.5em;
+}
+.index dt {
+  margin: 0.5em 0 0 0;
+}
+.index dd {
+  margin-inline-start: 40px;
 }
 .outgpio{
   background-color:rgba(192,192,255,0.7);
@@ -175,6 +189,9 @@ li{
 }
 .jsbin{
   background-color:rgb(184, 119, 0);
+}
+.codesandbox{
+  background-color:rgb(64, 169, 243);
 }
 .api{
   background-color:rgb(0, 131, 0);
