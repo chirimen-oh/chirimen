@@ -3,355 +3,11 @@
     "bookmark_bar": {
       "children": [
         {
-          "name": "Top",
-          "type": "url",
-          "url": "https://localhost/top/"
-        },
-        {
-          "name": "JS Bin",
-          "type": "url",
-          "url": "https://jsbin.com/"
-        },
-        {
-          "name": "JSFiddle",
-          "type": "url",
-          "url": "https://jsfiddle.net/"
-        },
-        {
           "children": [
             {
-              "name": "Examples",
+              "name": "CHIRIMEN for Raspberry Pi チュートリアル",
               "type": "url",
-              "url": "https://localhost/top/examples/"
-            },
-            {
-              "children": [
-                {
-                  "name": "GPIO-Blink",
-                  "type": "url",
-                  "url": "https://localhost/gpio/LEDblink/"
-                },
-                {
-                  "name": "GPIO-Button",
-                  "type": "url",
-                  "url": "https://localhost/gpio/button/"
-                },
-                {
-                  "name": "GPIO-readGpioValue",
-                  "type": "url",
-                  "url": "https://localhost/gpio/readGpioValue/"
-                },
-                {
-                  "name": "GPIO-pirSensor",
-                  "type": "url",
-                  "url": "https://localhost/gpio/pirSensor/"
-                },
-                {
-                  "name": "GPIO-MultiBlinkAll",
-                  "type": "url",
-                  "url": "https://localhost/gpio/MultiBlinkAll/"
-                },
-                {
-                  "name": "GPIO-buttonAll",
-                  "type": "url",
-                  "url": "https://localhost/gpio/buttonAll/"
-                }
-              ],
-              "name": "GPIO-LOCAL",
-              "type": "folder"
-            },
-            {
-              "children": [
-                {
-                  "name": "I2C Detect",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-detect"
-                },
-                {
-                  "name": "I2C-ADT7410",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-ADT7410"
-                },
-                {
-                  "name": "I2C-Grove-Accelerometer",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-grove-accelerometer"
-                },
-                {
-                  "name": "I2C-Grove-Gesture",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-grove-gesture"
-                },
-                {
-                  "name": "I2C-Grove-Light",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-grove-light"
-                },
-                {
-                  "name": "I2C-Grove-OledDisplay",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-grove-oledDisplay"
-                },
-                {
-                  "name": "I2C-Grove-Touch",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-grove-touch"
-                },
-                {
-                  "name": "I2C-PCA9685",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-PCA9685"
-                },
-                {
-                  "name": "I2C-ADS1015",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-ADS1015"
-                },
-                {
-                  "name": "I2C-GP2Y0E03",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-GP2Y0E03"
-                },
-                {
-                  "name": "I2C-S11059",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-S11059"
-                },
-                {
-                  "name": "I2C-VEML6070",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-VEML6070"
-                },
-                {
-                  "name": "I2C-multi-sensors",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-multi-sensors"
-                }
-              ],
-              "name": "I2C-LOCAL",
-              "type": "folder"
-            },
-            {
-              "children": [
-                {
-                  "name": "GPIO-Blink - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/gpio-blink"
-                },
-                {
-                  "name": "GPIO-Button - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/gpio-button"
-                },
-                {
-                  "name": "GPIO-readGpioValue - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/gpio-readgpiovalue"
-                },
-                {
-                  "name": "GPIO-pirSensor - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/gpio-pirsensor"
-                },
-                {
-                  "name": "GPIO-MultiBlinkAll - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/gpio-multiblinkall"
-                },
-                {
-                  "name": "GPIO-buttonAll - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/gpio-buttonall"
-                }
-              ],
-              "name": "GPIO-JSBIN",
-              "type": "folder"
-            },
-            {
-              "children": [
-                {
-                  "name": "I2C-ADS1015 - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-ads1015"
-                },
-                {
-                  "name": "I2C-ADT7410 - JS Bin ",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-adt7410"
-                },
-                {
-                  "name": "I2C-Grove-Accelerometer - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-grove-accelerometer"
-                },
-                {
-                  "name": "I2C-Grove-Gesture - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-grove-gesture"
-                },
-                {
-                  "name": "I2C-Grove-Light - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-grove-light"
-                },
-                {
-                  "name": "I2C-Grove-OledDisplay - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-grove-oleddisplay"
-                },
-                {
-                  "name": "I2C-Grove-Touch - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-grove-touch"
-                },
-                {
-                  "name": "I2C-GP2Y0E03 - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-gp2y0e03"
-                },
-                {
-                  "name": "I2C-PCA9685 - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-pca9685"
-                },
-                {
-                  "name": "I2C-S11059 - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-s11059"
-                },
-                {
-                  "name": "I2C-VEML6070 - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-veml6070"
-                },
-                {
-                  "name": "I2C-multi-sensors - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-multi-sensors"
-                }
-              ],
-              "name": "I2C-JSBIN",
-              "type": "folder"
-            }
-          ],
-          "name": "examples",
-          "type": "folder"
-        },
-        {
-          "children": [
-            {
-              "name": "Raspberry Pi ",
-              "type": "url",
-              "url": "https://www.raspberrypi.org/"
-            },
-            {
-              "name": "CHIRIMEN Open Hardware",
-              "type": "url",
-              "url": "https://chirimen.org/"
-            },
-            {
-              "name": "GitHub - chirimen-oh/chirimen-raspi3",
-              "type": "url",
-              "url": "https://github.com/chirimen-oh/chirimen-raspi3"
-            },
-            {
-              "name": "Webリンク集(wiki)",
-              "type": "url",
-              "url": "https://github.com/chirimen-oh/chirimen-raspi3/wiki"
-            },
-            {
-              "children": [
-                {
-                  "name": "MDN ウェブドキュメント",
-                  "type": "url",
-                  "url": "https://developer.mozilla.org/ja/"
-                },
-                {
-                  "name": "ウェブ開発を学ぶ | MDN",
-                  "type": "url",
-                  "url": "https://developer.mozilla.org/ja/docs/Learn"
-                },
-                {
-                  "name": "Tutorials | MDN",
-                  "type": "url",
-                  "url": "https://developer.mozilla.org/ja/docs/Web/Tutorials"
-                },
-                {
-                  "name": "Web 技術のリファレンス | MDN",
-                  "type": "url",
-                  "url": "https://developer.mozilla.org/ja/docs/Web/Reference"
-                }
-              ],
-              "name": "Basics",
-              "type": "folder"
-            },
-            {
-              "children": [
-                {
-                  "name": "Web GPIO API Specification (Draft)",
-                  "type": "url",
-                  "url": "http://webapi.link/gpio"
-                },
-                {
-                  "name": "Web I2C API Specification (Draft)",
-                  "type": "url",
-                  "url": "http://webapi.link/i2c"
-                },
-                {
-                  "name": "Web Bluetooth API (Draft)",
-                  "type": "url",
-                  "url": "https://tkybpp.github.io/web-bluetooth-jp/"
-                }
-              ],
-              "name": "Specs",
-              "type": "folder"
-            },
-            {
-              "children": [
-                {
-                  "name": "WebBluetoothAPIを使ってブラウザからBLEデバイスを操作する - Qiita",
-                  "type": "url",
-                  "url": "http://qiita.com/tky_bpp/items/f2db61ee8caac8eec031"
-                },
-                {
-                  "name": "Web Bluetooth Samples",
-                  "type": "url",
-                  "url": "https://googlechrome.github.io/samples/web-bluetooth/"
-                },
-                {
-                  "name": "Web Bluetooth / Device Info Sample",
-                  "type": "url",
-                  "url": "https://googlechrome.github.io/samples/web-bluetooth/device-info.html"
-                },
-                {
-                  "name": "Control a PLAYBULB candle with Web Bluetooth",
-                  "type": "url",
-                  "url": "https://codelabs.developers.google.com/codelabs/candle-bluetooth/#0"
-                },
-                {
-                  "name": "PLAYBULB Candle Demo",
-                  "type": "url",
-                  "url": "https://googlecodelabs.github.io/candle-bluetooth/"
-                },
-                {
-                  "name": "Web Bluetooth API - Web APIs | MDN",
-                  "type": "url",
-                  "url": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Bluetooth_API"
-                }
-              ],
-              "name": "WebBluetooth",
-              "type": "folder"
-            }
-          ],
-          "name": "references",
-          "type": "folder"
-        },
-        {
-          "children": [
-            {
-              "name": "チュートリアル",
-              "type": "url",
-              "url": "https://tutorial.chirimen.org/"
+              "url": "http://r.chirimen.org/tutorial"
             },
             {
               "name": "Hello Real World",
@@ -382,24 +38,20 @@
               "name": "4. GPIO/I2C のまとめ",
               "type": "url",
               "url": "https://r.chirimen.org/tutorial4"
-            },
-            {
-              "name": "Appendix JavaScript 1 Day 講習",
-              "type": "url",
-              "url": "https://r.chirimen.org/1dayjs"
-            },
-            {
-              "name": "Appendix 非同期処理 (async await版)",
-              "type": "url",
-              "url": "https://r.chirimen.org/appendix0"
-            },
+            }
+          ],
+          "name": "チュートリアル",
+          "type": "folder"
+        },
+        {
+          "children": [
             {
               "name": "良くある質問",
               "type": "url",
               "url": "https://r.chirimen.org/faq"
             },
             {
-              "name": "Tips / テクニック集",
+              "name": "Tips・テクニック",
               "type": "url",
               "url": "https://r.chirimen.org/tips"
             },
@@ -407,10 +59,45 @@
               "name": "デバッグ・トラブルシューティング",
               "type": "url",
               "url": "https://r.chirimen.org/debug"
+            },
+            {
+              "name": "問題の報告",
+              "type": "url",
+              "url": "http://r.chirimen.org/issues"
             }
           ],
-          "name": "tutorials",
+          "name": "ヘルプ",
           "type": "folder"
+        },
+        {
+          "name": "Top",
+          "type": "url",
+          "url": "https://localhost/top/"
+        },
+        {
+          "name": "Examples",
+          "type": "url",
+          "url": "https://localhost/top/examples/"
+        },
+        {
+          "name": "JS Bin",
+          "type": "url",
+          "url": "https://jsbin.com/"
+        },
+        {
+          "name": "JSFiddle",
+          "type": "url",
+          "url": "https://jsfiddle.net/"
+        },
+        {
+          "name": "CodeSandbox",
+          "type": "url",
+          "url": "https://codesandbox.io/"
+        },
+        {
+          "name": "CHIRIMEN Open Hardware",
+          "type": "url",
+          "url": "https://chirimen.org/"
         }
       ],
       "name": "ブックマーク バー",
