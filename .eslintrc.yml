@@ -1,0 +1,12 @@
+extends:
+  - airbnb-base
+  - prettier
+env:
+  browser: true
+plugins:
+  - prettier
+rules:
+  no-var: 0
+  no-await-in-loop: 0
+globals:
+  sleep: true
