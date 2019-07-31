@@ -31,7 +31,7 @@ CHIRIMEN for Raspberry Pi 3のセットアップ方法(OSイメージの作成�
 * http://qiita.com/ttyokoyama/items/7afe6404fd8d3e910d09
 * https://deviceplus.jp/hobby/raspberrypi_entry_057/
 
-などを参考に、以下実施 
+などを参考に、以下実施
 
 *なお、本ドキュメントでは2018.9.12時点での最新版(2018-06-27-raspbian-stretch.img)で確認しています。また、with Desktop(デスクトップ環境入り)を使います。*
 
@@ -77,7 +77,7 @@ sudo raspi-config
 `4 Localisation Options` > `I1 Change locale` から下記を選択。
 
 ```
-en_GB.UTF-8 UTF-8 
+en_GB.UTF-8 UTF-8
 ja_JP.EUC-JP EUC-JP
 ja_JP.UTF-8 UTF-8
 ```
@@ -218,7 +218,6 @@ CHIRIMEN for Raspberry Pi 環境ファイルは下記ファイルで構成され
 - gpio : Web GPIO API のexample集。回路図とサンプルコードのセット
 - i2c  : Web I2C API のexample集。回路図とサンプルコードのセット
 - polyfill : Web GPIO API / Web I2C API の polyfill
-- drivers : i2cフォルダ配下のexampleから利用される各I2Cモジュールのドライバライブラリ 
 - top : CHIRIMEN for Raspberry Pi 3の自動起動ローカルサイト
 
 ### 3-1-2. _gc.zip : ~/_gc/ に配置するファイルのアーカイブ。(プログラミング学習者が閲覧する必要のないファイル)
@@ -291,7 +290,7 @@ ln -s ~/_gc/srv/reset.sh ~/Desktop/reset.sh
 
 `~/_gc/bookmark/Bookmarks` を `/home/pi/.config/chromium/Default/Bookmarks` へコピーする。
 
-## 3-3. ~/Desktop/gc/ の設定 
+## 3-3. ~/Desktop/gc/ の設定
 
 ### 3-3-1. gc.zip ダウンロード (URLは暫定) と配置
 
@@ -339,7 +338,7 @@ sudo nano /etc/apache2/apache2.conf
 sudo apt-get install libapache2-mod-ssl
 
 cd /etc/apache2/sites-available
-cp default-ssl.conf vhost-ssl.conf  
+cp default-ssl.conf vhost-ssl.conf
 sudo nano vhost-ssl.conf
 ```
 
