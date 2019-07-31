@@ -1,14 +1,6 @@
 "use strict";
 
-var head;
-window.addEventListener(
-  "load",
-  function() {
-    head = document.querySelector("#head");
-    mainFunction();
-  },
-  false
-);
+window.addEventListener("load", mainFunction, false);
 
 async function mainFunction() {
   try {
@@ -23,24 +15,18 @@ async function mainFunction() {
       var val1 = await mpu6500.getGyro();
       var val2 = await ak8963.readData();
       // console.log('value:', value);
-    	gx.innerHTML=val0.x;
-    	gy.innerHTML=val0.y;
-    	gz.innerHTML=val0.z;
-    	rx.innerHTML=val1.x;
-    	ry.innerHTML=val1.y;
-    	rz.innerHTML=val1.z;
-    	hx.innerHTML=val2.x;
-    	hy.innerHTML=val2.y;
-    	hz.innerHTML=val2.z;
+      gx.innerHTML = val0.x;
+      gy.innerHTML = val0.y;
+      gz.innerHTML = val0.z;
+      rx.innerHTML = val1.x;
+      ry.innerHTML = val1.y;
+      rz.innerHTML = val1.z;
+      hx.innerHTML = val2.x;
+      hy.innerHTML = val2.y;
+      hz.innerHTML = val2.z;
       await sleep(600);
     }
   } catch (error) {
     console.error("error", error);
   }
-}
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
 }
