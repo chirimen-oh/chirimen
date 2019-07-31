@@ -95,14 +95,6 @@
                   "name": "I2C-multi-sensors",
                   "type": "url",
                   "url": "https://localhost/i2c/i2c-multi-sensors"
-               }, {
-                  "name": "I2C-canzasi-blink",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-canzasi-blink"
-               }, {
-                  "name": "I2C-arduino-steppingMotor",
-                  "type": "url",
-                  "url": "https://localhost/i2c/i2c-arduino-steppingMotor"
                } ],
                "name": "I2C-LOCAL",
                "type": "folder"
@@ -183,14 +175,6 @@
                   "name": "I2C-multi-sensors - JS Bin",
                   "type": "url",
                   "url": "https://r.chirimen.org/i2c-multi-sensors"
-               }, {
-                  "name": "I2C-canzasi-blink - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-canzasi-blink"
-               }, {
-                  "name": "I2C-arduino-steppingMotor - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-arduino-steppingmotor"
                } ],
                "name": "I2C-JSBIN",
                "type": "folder"
