@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
   const res = await fetch("../../version.txt");
-  document.querySelector("#bfooter").textContent = await res.text();
+  document.getElementById("bfooter").textContent = await res.text();
 
   if (location.host !== "chirimen.org") return;
   document
