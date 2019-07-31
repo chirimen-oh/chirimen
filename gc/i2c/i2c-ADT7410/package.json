@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
+    "@chirimen-raspi/chirimen-driver-i2c-adt7410": "^1.0.0",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }
