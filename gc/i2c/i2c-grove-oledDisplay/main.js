@@ -1,18 +1,9 @@
 "use strict";
 
-var head;
-
-window.addEventListener(
-  "load",
-  function() {
-    head = document.querySelector("#head");
-
-    mainFunction();
-  },
-  false
-);
+window.addEventListener("load", mainFunction, false);
 
 async function mainFunction() {
+  var head = document.getElementById("head");
   head.innerHTML = "started";
   var i2cAccess = await navigator.requestI2CAccess();
   head.innerHTML = "initializing...";
@@ -32,10 +23,4 @@ async function mainFunction() {
     console.error("I2C bus error!", error);
     head.innerHTML = error;
   }
-}
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
 }

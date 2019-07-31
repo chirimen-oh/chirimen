@@ -1,17 +1,10 @@
 "use strict";
 
-var valelem;
-window.addEventListener(
-  "load",
-  function() {
-    valelem = document.getElementById("distance");
-    mainFunction();
-  },
-  false
-);
+window.addEventListener("load", mainFunction, false);
 
 async function mainFunction() {
   var sensor_unit;
+  var valelem = document.getElementById("distance");
   try {
     var i2cAccess = await navigator.requestI2CAccess();
     var port = i2cAccess.ports.get(1);
@@ -34,10 +27,4 @@ async function mainFunction() {
   } catch (err) {
     console.log("GP2Y0E03 init error");
   }
-}
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
 }

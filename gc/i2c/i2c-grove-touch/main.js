@@ -24,9 +24,3 @@ async function mainFunction() {
     console.error("error", error);
   }
 }
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
-}

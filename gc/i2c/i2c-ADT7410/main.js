@@ -1,14 +1,6 @@
 "use strict";
 
-var head;
-window.addEventListener(
-  "load",
-  function() {
-    head = document.querySelector("#head");
-    mainFunction();
-  },
-  false
-);
+window.addEventListener("load", mainFunction, false);
 
 async function mainFunction() {
   try {
@@ -25,10 +17,4 @@ async function mainFunction() {
   } catch (error) {
     console.error("error", error);
   }
-}
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
 }

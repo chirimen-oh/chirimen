@@ -35,9 +35,3 @@ async function mainFunction() {
     console.log("requestI2CAccess error");
   }
 }
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
-}

@@ -1,19 +1,11 @@
 "use strict";
 
-var ax, ay, az;
-window.addEventListener(
-  "load",
-  function() {
-    ax = document.querySelector("#ax");
-    ay = document.querySelector("#ay");
-    az = document.querySelector("#az");
-
-    mainFunction();
-  },
-  false
-);
+window.addEventListener("load", mainFunction, false);
 
 async function mainFunction() {
+  var ax = document.getElementById("ax");
+  var ay = document.getElementById("ay");
+  var az = document.getElementById("az");
   var i2cAccess = await navigator.requestI2CAccess();
   var port = i2cAccess.ports.get(1);
   var groveAccelerometer = new GROVEACCELEROMETER(port, 0x53);
@@ -31,10 +23,4 @@ async function mainFunction() {
 
     await sleep(1000);
   }
-}
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
 }

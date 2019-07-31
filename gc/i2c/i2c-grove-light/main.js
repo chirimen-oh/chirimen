@@ -1,17 +1,9 @@
 "use strict";
 
-var head;
-window.addEventListener(
-  "load",
-  function() {
-    head = document.querySelector("#head");
-
-    mainFunction();
-  },
-  false
-);
+window.addEventListener("load", mainFunction, false);
 
 async function mainFunction() {
+  var head = document.getElementById("head");
   var i2cAccess = await navigator.requestI2CAccess();
   var port = i2cAccess.ports.get(1);
   var groveLight = new GROVELIGHT(port, 0x29);
@@ -28,10 +20,4 @@ async function mainFunction() {
       console.log(" Error : ", error);
     }
   }
-}
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
 }

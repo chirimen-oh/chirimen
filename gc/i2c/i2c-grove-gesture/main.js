@@ -58,9 +58,3 @@ async function mainFunction() {
     head.innerHTML = error;
   }
 }
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
-}

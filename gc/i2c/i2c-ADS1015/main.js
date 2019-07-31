@@ -1,14 +1,6 @@
 "use strict";
 
-var head;
-window.addEventListener(
-  "load",
-  function() {
-    head = document.querySelector("#head");
-    mainFunction();
-  },
-  false
-);
+window.addEventListener("load", mainFunction, false);
 
 async function mainFunction() {
   // Initialize WebI2C
@@ -34,10 +26,4 @@ async function mainFunction() {
   } catch (error) {
     console.log("ADS1015.init error" + error.message);
   }
-}
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
 }

@@ -1,17 +1,10 @@
 "use strict";
-var head1, head2;
-window.addEventListener(
-  "load",
-  function() {
-    head1 = document.querySelector("#head1");
-    head2 = document.querySelector("#head2");
 
-    mainFunction();
-  },
-  false
-);
+window.addEventListener("load", mainFunction, false);
 
 async function mainFunction() {
+  var head1 = document.getElementById("head1");
+  var head2 = document.getElementById("head2");
   var i2cAccess = await navigator.requestI2CAccess();
   try {
     var port = i2cAccess.ports.get(1);
@@ -41,10 +34,4 @@ async function mainFunction() {
   } catch (error) {
     console.error("error", error);
   }
-}
-
-function sleep(ms) {
-  return new Promise(function(resolve) {
-    setTimeout(resolve, ms);
-  });
 }
