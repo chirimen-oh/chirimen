@@ -63,6 +63,11 @@
             {
               "children": [
                 {
+                  "name": "I2C Detect",
+                  "type": "url",
+                  "url": "https://localhost/i2c/i2c-detect"
+                },
+                {
                   "name": "I2C-ADT7410",
                   "type": "url",
                   "url": "https://localhost/i2c/i2c-ADT7410"
@@ -165,6 +170,11 @@
             {
               "children": [
                 {
+                  "name": "I2C-ADS1015 - JS Bin",
+                  "type": "url",
+                  "url": "https://r.chirimen.org/i2c-ads1015"
+                },
+                {
                   "name": "I2C-ADT7410 - JS Bin ",
                   "type": "url",
                   "url": "https://r.chirimen.org/i2c-adt7410"
@@ -195,19 +205,14 @@
                   "url": "https://r.chirimen.org/i2c-grove-touch"
                 },
                 {
-                  "name": "I2C-PCA9685 - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-pca9685"
-                },
-                {
-                  "name": "I2C-ADS1015 - JS Bin",
-                  "type": "url",
-                  "url": "https://r.chirimen.org/i2c-ads1015"
-                },
-                {
                   "name": "I2C-GP2Y0E03 - JS Bin",
                   "type": "url",
                   "url": "https://r.chirimen.org/i2c-gp2y0e03"
+                },
+                {
+                  "name": "I2C-PCA9685 - JS Bin",
+                  "type": "url",
+                  "url": "https://r.chirimen.org/i2c-pca9685"
                 },
                 {
                   "name": "I2C-S11059 - JS Bin",
@@ -336,22 +341,6 @@
               ],
               "name": "WebBluetooth",
               "type": "folder"
-            },
-            {
-              "children": [
-                {
-                  "name": "セキュリティーエラー対処方法",
-                  "type": "url",
-                  "url": "https://qiita.com/tadfmac/items/2d7929fe3560c77fe867"
-                },
-                {
-                  "name": "https://localhost:33330(セキュリティエラー解除)",
-                  "type": "url",
-                  "url": "https://localhost:33330/"
-                }
-              ],
-              "name": "Troubleshooting",
-              "type": "folder"
             }
           ],
           "name": "references",
@@ -403,6 +392,21 @@
               "name": "Appendix 非同期処理 (async await版)",
               "type": "url",
               "url": "https://r.chirimen.org/appendix0"
+            },
+            {
+              "name": "良くある質問",
+              "type": "url",
+              "url": "https://r.chirimen.org/faq"
+            },
+            {
+              "name": "Tips / テクニック集",
+              "type": "url",
+              "url": "https://r.chirimen.org/tips"
+            },
+            {
+              "name": "デバッグ・トラブルシューティング",
+              "type": "url",
+              "url": "https://r.chirimen.org/debug"
             }
           ],
           "name": "tutorials",
