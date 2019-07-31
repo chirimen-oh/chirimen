@@ -11,19 +11,19 @@
 @media (min-width: 1501px) {
   :root {
     --outwrap-width: var(--large-width);
-    --cwrap-width: calc((var(--outwrap-width) - 2 * var(--outwrap-padding) - 6 * var(--cwrap-margin)) / 3);
+    --cwrap-width: calc((100% - 6 * var(--cwrap-margin)) / 3);
   }
 }
 @media (max-width: 1500px) {
   :root {
-    --outwrap-width: var(--middle-width);
-    --cwrap-width: calc((var(--outwrap-width) - 2 * var(--outwrap-padding) - 4 * var(--cwrap-margin)) / 2);
+    --outwrap-width: 100%;
+    --cwrap-width: calc((100% - 4 * var(--cwrap-margin)) / 2);
   }
 }
 @media (max-width: 1000px) {
   :root {
-    --outwrap-width: var(--small-width);
-    --cwrap-width: calc(var(--outwrap-width) - 2 * var(--outwrap-padding) - 2 * var(--cwrap-margin));
+    --outwrap-width: 100%;
+    --cwrap-width: calc(100% - 2 * var(--cwrap-margin));
   }
 }
 
