@@ -5,12 +5,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
   <title>i2c-DHT12</title>
-  <script src="../../../polyfill/polyfill.js"></script>
-  <script src="../../drivers/i2c-AMG8833.js"></script>
+  <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
+  <script src="node_modules/@chirimen-raspi/chirimen-driver-i2c-amg8833/AMG8833.js"></script>
   <script src="./mainAmg.js"></script>
   <style>
-  
-  
+
+
     table,p {
       color: blue;
       text-align: center;
@@ -32,7 +32,7 @@
 <body>
   <p id="head">AMG8833</p>
   <img src="AMG8833.png" width="400"/>
-  
+
 
 <form id="gain" onchange="changeGainMode(event)">
 <input id="autoGainRadio" type="radio" value="auto"> オート

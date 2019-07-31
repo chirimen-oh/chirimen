@@ -1,0 +1,9 @@
+{
+  "name": "i2c-amg8833-example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@chirimen-raspi/chirimen-driver-i2c-amg8833": "^1.0.0",
+    "@chirimen-raspi/polyfill": "^1.0.1"
+  }
+}

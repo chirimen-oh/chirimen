@@ -1,1 +1,1 @@
-This directory contains drivers and samples that have not been verified officially.
+This directory contains samples that have not been verified officially.
