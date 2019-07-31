@@ -153,15 +153,19 @@ li{
 }
 .linkicon{
   display:block;
-  min-width:80px;
+  width:80px;
   margin-left: 9px;
-  padding: 0 5px;
+  padding: 0 9px;
   overflow: hidden;
   text-align:center;
   border-radius:18px;
   font-weight:bold;
   color:white;
   text-decoration: none;
+}
+.linkwrap .linkicon{
+  min-width:80px;
+  width: auto;
 }
 .schematic{
   background-color:rgb(23, 115, 151);
