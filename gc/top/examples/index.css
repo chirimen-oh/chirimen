@@ -1,0 +1,229 @@
+:root {
+  --large-width: 1500px;
+  --middle-width: 1000px;
+  --small-width: 500px;
+
+  --normal-gap: 10px;
+  --wide-gap: 20px;
+  --outwrap-padding: var(--normal-gap);
+  --cwrap-margin: var(--normal-gap);
+}
+@media (min-width: 1501px) {
+  :root {
+    --outwrap-width: var(--large-width);
+    --cwrap-width: calc((var(--outwrap-width) - 2 * var(--outwrap-padding) - 6 * var(--cwrap-margin)) / 3);
+  }
+}
+@media (max-width: 1500px) {
+  :root {
+    --outwrap-width: var(--middle-width);
+    --cwrap-width: calc((var(--outwrap-width) - 2 * var(--outwrap-padding) - 4 * var(--cwrap-margin)) / 2);
+  }
+}
+@media (max-width: 1000px) {
+  :root {
+    --outwrap-width: var(--small-width);
+    --cwrap-width: calc(var(--outwrap-width) - 2 * var(--outwrap-padding) - 2 * var(--cwrap-margin));
+  }
+}
+
+body{
+  background-color:black;
+  background-image:url("../img/back.jpg");
+  background-attachment: fixed;
+  background-position: center center;
+  background-size:cover;
+}
+*{
+  box-sizing:border-box;
+  padding:0px;
+  margin:0px;
+}
+h1 {
+  font-size: 1.6rem;
+}
+h2 {
+  font-size: 1.4rem;
+}
+h3 {
+  font-size: 1.2rem;
+}
+
+.outwrap{
+  width: var(--outwrap-width);
+  padding: var(--outwrap-padding);
+  margin:0 auto;
+  margin-bottom:20px;
+}
+.index{
+  background-color:rgba(240,240,240,0.8);
+}
+.outgpio{
+  background-color:rgba(192,192,255,0.7);
+}
+.outi2c{
+  background-color:rgba(255,192,192,0.7);
+}
+.outadvanced{
+  background-color:rgba(255,192,255,0.7);
+}
+.rowwrap{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:wrap;
+  width: 100%;
+  margin:0 auto;
+}
+.colwrap{
+  display:flex;
+  flex-direction:column;
+  flex-wrap:wrap;
+  width: 100%;
+  margin:0 auto;
+}
+.topwrap{
+  display:flex;
+  flex-direction:column;
+  flex-wrap:wrap;
+  width: 100%;
+  margin:0 auto;
+  margin-top:10px;
+}
+.twrap{
+  margin:10px;
+  margin-top:10px;
+  display:flex;
+  flex-direction:column;
+  width:var(--row-width);
+  padding:20px;
+  border-radius:10px;
+  background-color:dodgerblue;
+  color:white;
+}
+.twrap a{
+  color:white;
+}
+.twrap a:hover{
+  color:#cccccc;
+}
+.gpio{
+  background-color:dodgerblue;
+}
+.i2c{
+  background-color:deeppink;
+}
+.advanced{
+  background-color:purple;
+}
+.cwrap{
+  position: relative;
+  margin: var(--cwrap-margin);
+  margin-top: var(--cwrap-margin);
+  display:flex;
+  flex-direction:column;
+  width: var(--cwrap-width);
+  padding:20px;
+  background-color:white;
+  border-radius:10px;
+}
+.title{
+  font-size:26px;
+  font-weight:bold;
+/*  border-left: solid 10px black; */
+/*  padding-left:10px; */
+  margin-bottom:10px;
+  color:black;
+}
+.desc{
+  margin-top:10px;
+  font-size:16px;
+  margin-bottom:10px;
+}
+li{
+  margin-left:20px;
+}
+.linkwrap{
+  display:flex;
+  flex-direction:raw;
+  align-items:center;
+  height:36px;
+}
+.linkicon:first-of-type{
+  margin-left:0;
+}
+.linkicon{
+  display:block;
+  min-width:80px;
+  margin-left: 9px;
+  padding: 0 5px;
+  overflow: hidden;
+  text-align:center;
+  border-radius:18px;
+  font-weight:bold;
+  color:white;
+  text-decoration: none;
+}
+.schematic{
+  background-color:rgb(23, 115, 151);
+}
+.local{
+  background-color:rgb(184, 0, 34);
+}
+.jsbin{
+  background-color:rgb(184, 119, 0);
+}
+.api{
+  background-color:rgb(0, 131, 0);
+}
+.note{
+  font-size:80%;
+}
+.cwrap .note {
+  color:green;
+}
+#bwrap{
+  margin:0 auto;
+  display:flex;
+  width:890px;
+  padding:5px;
+  background-color:rgba(0,255,127,0.7);
+}
+#bfooter{
+  font-size:14px;
+  width:560px;
+  text-align:center;
+  color:white;
+  margin:0 auto;
+}
+img{
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+}
+h3{
+  margin-top:10px;
+  font-size:18px;
+}
+.parts, .sumally{
+  font-size:20px;
+}
+.parts:before{
+  margin:0 6px 0 0;
+  content:" ";
+  display:inline-block;
+  width:32px;
+  height:32px;
+  background:url(./img/parts.png);
+  background-size:contain;
+  vertical-align:middle;
+}
+.sumally:before{
+  margin:0 6px 0 0;
+  content:" ";
+  display:inline-block;
+  width:32px;
+  height:32px;
+  background:url(./img/sumally.png);
+  background-size:contain;
+  vertical-align:middle;
+}

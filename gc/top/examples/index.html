@@ -5,206 +5,9 @@
     <meta content="width=device-width, user-scalable=no, initial-scale=1" name="viewport">
     <link href="../img/favicon.ico" rel="shortcut icon"/>
     <title>Examples</title>
-    <style>
-body{
-  background-color:black;
-  background-image:url("../img/back.jpg");
-  background-attachment: fixed;
-  background-position: center center;
-  background-size:cover;
-}
-*{
-  box-sizing:border-box;
-  padding:0px;
-  margin:0px;
-}
-.outwrap{
-  width:890px;
-  padding:10px;
-  margin:0 auto;
-  margin-bottom:20px;
-}
-.index{
-  background-color:rgba(240,240,240,0.8);
-}
-.outgpio{
-  background-color:rgba(192,192,255,0.7);
-}
-.outi2c{
-  background-color:rgba(255,192,192,0.7);
-}
-.outadvanced{
-  background-color:rgba(255,192,255,0.7);
-}
-.rowwrap{
-  display:flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  width:870px;
-  margin:0 auto;
-}
-.colwrap{
-  display:flex;
-  flex-direction:column;
-  flex-wrap:wrap;
-  width:870px;
-  margin:0 auto;
-}
-.topwrap{
-  display:flex;
-  flex-direction:column;
-  flex-wrap:wrap;
-  width:870px;
-  margin:0 auto;
-  margin-top:10px;
-}
-.twrap{
-  margin:10px;
-  margin-top:10px;
-  display:flex;
-  flex-direction:column;
-  width:850px;
-  padding:20px;
-  border-radius:10px;
-  background-color:dodgerblue;
-  color:white;
-}
-.twrap a{
-  color:white;
-}
-.twrap a:hover{
-  color:#cccccc;
-}
-.gpio{
-  background-color:dodgerblue;
-}
-.i2c{
-  background-color:deeppink;
-}
-.advanced{
-  background-color:purple;
-}
-.cwrap{
-  position: relative;
-  margin:10px;
-  margin-top:10px;
-  display:flex;
-  flex-direction:column;
-  width:415px;
-  padding:20px;
-  background-color:white;
-  border-radius:10px;
-}
-.title{
-  font-size:26px;
-  font-weight:bold;
-/*  border-left: solid 10px black; */
-/*  padding-left:10px; */
-  margin-bottom:10px;
-  color:black;
-}
-.desc{
-  margin-top:10px;
-  font-size:16px;
-  margin-bottom:10px;
-}
-li{
-  margin-left:20px;
-}
-.linkwrap{
-  display:flex;
-  flex-direction:raw;
-  align-items:center;
-  height:36px;
-  width:260px;
-}
-.linkicon{
-  display:block;
-  width:80px;
-  overflow: hidden;
-  margin-left:5px;
-  text-align:center;
-  border-radius:18px;
-  font-weight:bold;
-  color:white;
-  text-decoration: none;
-}
-.schematic{
-  background-color:rgb(23, 115, 151);
-}
-.local{
-  background-color:rgb(184, 0, 34);
-}
-.jsbin{
-  background-color:rgb(184, 119, 0);
-}
-.api{
-  background-color:rgb(0, 131, 0);
-}
-.note{
-  font-size:70%;
-  color:green;
-}
-#bwrap{
-  margin:0 auto;
-  display:flex;
-  width:890px;
-  padding:5px;
-  background-color:rgba(0,255,127,0.7);
-}
-#bfooter{
-  font-size:14px;
-  width:560px;
-  text-align:center;
-  color:white;
-  margin:0 auto;
-}
-img{
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
-}
-h3{
-  margin-top:10px;
-  font-size:18px;
-}
-.parts,.sumally{
-  font-size:20px;
-}
-.parts:before{
-  margin:0 6px 0 0;
-  content:" ";
-  display:inline-block;
-  width:32px;
-  height:32px;
-  background:url(./img/parts.png);
-  background-size:contain;
-  vertical-align:middle;
-}
-.sumally:before{
-  margin:0 6px 0 0;
-  content:" ";
-  display:inline-block;
-  width:32px;
-  height:32px;
-  background:url(./img/sumally.png);
-  background-size:contain;
-  vertical-align:middle;
-}
-</style>
-    <script>
-  document.addEventListener("DOMContentLoaded", async () => {
-    const res = await fetch("../../version.txt");
-    document
-      .querySelector("#bfooter").textContent = await res.text();
-
-    if (location.host !== "chirimen.org") return;
-    document
-      .querySelectorAll(".hide-on-production")
-      .forEach(node => node.hidden = true);
-  });
-</script>
-</head>
+    <link rel="stylesheet" href="./index.css">
+    <script src="index.js"></script>
+  </head>
 <body>
 
 <div class="outwrap index">
@@ -240,7 +43,7 @@ h3{
   <div class="colwrap">
     <div class="twrap gpio">
       <h1 id="gpioExamples">GPIO Examples (<a href="https://webapi.link/gpio">API Spec</a>)</h1>
-      <span style="font-size:11px;">Tips: デスクトップのピン配置図を見ながら配線するとミスしにくくなります。 </span>
+      <p>Tips: デスクトップのピン配置図を見ながら配線するとミスしにくくなります。 </p>
     </div>
   </div>
 
@@ -374,11 +177,22 @@ h3{
   <div class="colwrap">
     <div class="twrap i2c">
       <h1 id="i2cExamples">I2C Examples (<a href="https://webapi.link/i2c">API Spec</a>)</h1>
-       <span style="font-size:11px;">Tips: i2cdetectコマンドでI2Cバスの状態を確認するとデバッグがしやすくなります。 </span><code>i2cdetect -y -r 1</code>
+      <p>Tips: 配線とスレーブアドレスの確認には i2cdetect を使いましょう。<br>
+        <a href="../../i2c/i2c-detect/i2cdetectPI.html" target="_blank">ブラウザ上で確認できる I2C Detect ページ</a>
+        / ターミナルでコマンドを使う場合は </span><code>i2cdetect -y -r 1</code>
     </div>
   </div>
 
   <div class="rowwrap">
+    <div class="cwrap" id="I2C-detect">
+      <div class="title">I2C-detect</div>
+      <div class="linkwrap">
+        <a class="linkicon local" href="../../contrib/examples/i2c-detect/i2cdetectPI.html" target="_blank">デモ</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">ウェブアプリ版のi2cdetect機能です。<br>i2cデバイスの接続状態をウェブブラウザ上で見ることができます。</div>
+    </div>
+
     <div class="cwrap" id="I2C-ADT7410">
       <div class="title">I2C-ADT7410</div>
       <div class="linkwrap">
@@ -621,30 +435,33 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
   <div class="colwrap">
     <div class="twrap advanced">
       <h1 id="advanced">Advanced Examples</h1>
-       <span style="font-size:11px;">上級者用・公式な動作が未検証のExample集です。</span>
+      <p>上級者用・公式な動作が未検証のExample集です。</p>
     </div>
   </div>
 
   <div class="rowwrap">
-    <div class="cwrap" id="I2C-canzasi-blink">
-      <div class="title">I2C-canzasi-blink</div>
+    <div class="cwrap" id="I2C-ADS1115">
+      <div class="title">I2C-ADS1115</div>
       <div class="linkwrap">
-        <a class="linkicon schematic" href="../../contrib/examples/i2c-canzasi-blink/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/i2c-canzasi-blink/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-canzasi-blink" target="_blank">JSBin</a>
+        <a class="linkicon schematic" href="../../contrib/examples/i2c-ADS1115/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/i2c-ADS1115/" target="_blank">デモ</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-ads1115" target="_blank">JSBin</a>
       </div>
       <h3 class="sumally">概要</h3>
-      <div class="desc">Arduino経由でI2Cデバイスが作れるオープンソースハードウエア「<a href="https://github.com/tadfmac/Canzasi">Canzasi</a>」の接続例です。<br><span style="font-size:11px">Canzasiを利用するためには、Arduino UNOとCanzasiボード(非売品。オープンソースデータをもとに自作が必要)が必要です。</span></div>
+      <div class="desc">I2C接続の16bitADC（アナログ・デジタルコンバータ）経由で可変抵抗器の値を表示します。</div>
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
         <ul>
-          <li><a href="https://github.com/tadfmac/Canzasi">Canzasi Prot</a> ）x 1</li>
-          <li><a href="https://github.com/tadfmac/Canzasi">Canzasi Wrtr</a> ）x 1</li>
-          <li><a href="https://www.switch-science.com/catalog/789/">Arduino UNO Rev.3</a> x 1</li>
-          <li><a href="https://www.switch-science.com/catalog/1048/">Grove - ジャンパー（メス）ケーブル</a> x 2</li>
+          <li><a href="https://www.switch-science.com/catalog/1138/">ADS1115搭載 16BitADC 4CH 可変ゲインアンプ付き</a> x 1 <span class="note">(端子配置は違いますが<a href="https://www.amazon.co.jp/s/ref=nb_sb_noss_1?field-keywords=ads1115">ジェネリック品</a>があります)</span></li>
+          <li>10kΩ Bカーブ 可変抵抗器 x 1 <span style="font-size:11px">ブレッドボードに直接刺せるタイプのものが必要です。例えば<a href="https://www.switch-science.com/catalog/1039/">これ</a></span></li>
+          <li>1uF コンデンサ x 1</li>
+          <li>ジャンパー（オス・メス）ケーブル x 4</li>
+          <li>ジャンパー（オス・オス）ケーブル x 4</li>
+          <li>ブレッドボード x 1</li>
         </ul>
       </div>
     </div>
+
 
     <div class="cwrap" id="I2C-arduino-steppingMotor">
       <div class="title">I2C-arduino-steppingMotor</div>
@@ -693,6 +510,65 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     </div>
 
 
+    <div class="cwrap" id="I2C-BMP180">
+      <div class="title">I2C-BMP180</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/i2c-BMP180/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/i2c-BMP180/bmp.html" target="_blank">デモ</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-bmp180" target="_blank">JSBin</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続の温度・気圧　複合センサーで取得した値を表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください）</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?keywords=BMP180">BMP180 温度・気圧 センサ ブレイクアウト</a> x 1 </li> (注:BMP280とは異なります。)
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="cwrap" id="I2C-BMP280">
+      <div class="title">I2C-BMP280</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/i2c-BMP280/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/i2c-BMP280/bmp280.html" target="_blank">デモ</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-bmp280" target="_blank">JSBin</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続の温度・気圧　複合センサーで取得した値を表示します。（BMP280は、BMP180とは別のデバイスです）</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?keywords=BMP280">BMP280 温度・気圧 センサ ブレイクアウト</a> x 1 </li> (注:BMP180とは異なります。)
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="cwrap" id="I2C-canzasi-blink">
+      <div class="title">I2C-canzasi-blink</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/i2c-canzasi-blink/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/i2c-canzasi-blink/" target="_blank">デモ</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-canzasi-blink" target="_blank">JSBin</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">Arduino経由でI2Cデバイスが作れるオープンソースハードウエア「<a href="https://github.com/tadfmac/Canzasi">Canzasi</a>」の接続例です。<br><span style="font-size:11px">Canzasiを利用するためには、Arduino UNOとCanzasiボード(非売品。オープンソースデータをもとに自作が必要)が必要です。</span></div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://github.com/tadfmac/Canzasi">Canzasi Prot</a> ）x 1</li>
+          <li><a href="https://github.com/tadfmac/Canzasi">Canzasi Wrtr</a> ）x 1</li>
+          <li><a href="https://www.switch-science.com/catalog/789/">Arduino UNO Rev.3</a> x 1</li>
+          <li><a href="https://www.switch-science.com/catalog/1048/">Grove - ジャンパー（メス）ケーブル</a> x 2</li>
+        </ul>
+      </div>
+    </div>
+
+
     <div class="cwrap" id="I2C-MPU6050">
       <div class="title">I2C-MPU6050</div>
       <div class="linkwrap">
@@ -715,8 +591,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     <div class="cwrap" id="GPIO-HBridge">
       <div class="title">GPIO-HBridge</div>
       <div class="linkwrap">
-        <a class="linkicon schematic" href="../../contrib/examples/gpio-HBridge/HBridge_TB6612FNG.png" target="_blank">回路図 TB6612FNG使用</a>
-        <a class="linkicon schematic" href="../../contrib/examples/gpio-HBridge/HBridge_L298N.png" target="_blank">回路図 L298N使用</a>
+        <a class="linkicon schematic" href="../../contrib/examples/gpio-HBridge/HBridge_TB6612FNG.png" target="_blank">回路図 (TB6612FNG)</a>
+        <a class="linkicon schematic" href="../../contrib/examples/gpio-HBridge/HBridge_L298N.png" target="_blank">回路図 (L298N)</a>
         <a class="linkicon local" href="../../contrib/examples/gpio-HBridge/index.html" target="_blank">デモ</a>
         <a class="linkicon jsbin" href="https://r.chirimen.org/gpio-hbridge" target="_blank">JSBin</a>
       </div>
@@ -748,19 +624,20 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     </div>
 
 
-    <div class="cwrap" id="I2C-BMP180">
-      <div class="title">I2C-BMP180</div>
+    <div class="cwrap" id="I2C-MPU9250">
+      <div class="title">I2C-MPU9250</div>
       <div class="linkwrap">
-        <a class="linkicon schematic" href="../../contrib/examples/i2c-BMP180/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/i2c-BMP180/bmp.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-bmp180" target="_blank">JSBin</a>
+        <a class="linkicon schematic" href="../../contrib/examples/i2c-MPU9250/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/i2c-MPU9250/mpu92.html" target="_blank">デモ</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-mpu9250" target="_blank">JSBin</a>
       </div>
       <h3 class="sumally">概要</h3>
-      <div class="desc">I2C接続の温度・気圧　複合センサーで取得した値を表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください）</div>
+      <div class="desc">I2C接続の３軸ジャイロ＋３軸加速度＋３軸磁気　複合センサーで取得した値を表示します。<br>
+      <span class="note">このセンサーは、MPU6500(３軸ジャイロ＋３軸加速度)とAK8963(３軸磁気)という二つのI2Cセンサが１パッケージに封入された複合センサです。適切に初期化されるとこれら２個のI2Cスレーブデバイスが出現します</span></div>
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
         <ul>
-          <li><a href="https://www.amazon.co.jp/s/?keywords=BMP180">BMP180 温度・気圧 センサ ブレイクアウト</a> x 1 </li> (注:BMP280とは異なります。)
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=MPU9250">MPU9250 ３軸ジャイロ＋３軸加速度＋３軸磁気センサ ブレイクアウト</a> x 1 </li>
           <li>ジャンパー（メス・メス）ケーブル x 4</li>
         </ul>
       </div>
@@ -781,45 +658,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="desc">
         <ul>
           <li>VL53L0X レーザー距離センサー</a> x 1 (<a href="https://www.amazon.co.jp/s/?field-keywords=VL53L0X">amazon</a>, <a href="http://akizukidenshi.com/catalog/g/gM-12590/">秋月通商</a>)</li>
-          <li>ジャンパー（メス・メス）ケーブル x 4</li>
-        </ul>
-      </div>
-    </div>
-
-
-    <div class="cwrap" id="I2C-BMP280">
-      <div class="title">I2C-BMP280</div>
-      <div class="linkwrap">
-        <a class="linkicon schematic" href="../../contrib/examples/i2c-BMP280/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/i2c-BMP280/bmp280.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-bmp280" target="_blank">JSBin</a>
-      </div>
-      <h3 class="sumally">概要</h3>
-      <div class="desc">I2C接続の温度・気圧　複合センサーで取得した値を表示します。（BMP280は、BMP180とは別のデバイスです）</div>
-      <h3 class="parts">使用パーツ</h3>
-      <div class="desc">
-        <ul>
-          <li><a href="https://www.amazon.co.jp/s/?keywords=BMP280">BMP280 温度・気圧 センサ ブレイクアウト</a> x 1 </li> (注:BMP180とは異なります。)
-          <li>ジャンパー（メス・メス）ケーブル x 4</li>
-        </ul>
-      </div>
-    </div>
-
-
-    <div class="cwrap" id="I2C-MPU9250">
-      <div class="title">I2C-MPU9250</div>
-      <div class="linkwrap">
-        <a class="linkicon schematic" href="../../contrib/examples/i2c-MPU9250/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/i2c-MPU9250/mpu92.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-mpu9250" target="_blank">JSBin</a>
-      </div>
-      <h3 class="sumally">概要</h3>
-      <div class="desc">I2C接続の３軸ジャイロ＋３軸加速度＋３軸磁気　複合センサーで取得した値を表示します。<br>
-      <span class="note">このセンサーは、MPU6500(３軸ジャイロ＋３軸加速度)とAK8963(３軸磁気)という二つのI2Cセンサが１パッケージに封入された複合センサです。適切に初期化されるとこれら２個のI2Cスレーブデバイスが出現します</span></div>
-      <h3 class="parts">使用パーツ</h3>
-      <div class="desc">
-        <ul>
-          <li><a href="https://www.amazon.co.jp/s/?field-keywords=MPU9250">MPU9250 ３軸ジャイロ＋３軸加速度＋３軸磁気センサ ブレイクアウト</a> x 1 </li>
           <li>ジャンパー（メス・メス）ケーブル x 4</li>
         </ul>
       </div>
@@ -921,29 +759,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     </div>
 
 
-    <div class="cwrap" id="I2C-ADS1115">
-      <div class="title">I2C-ADS1115</div>
-      <div class="linkwrap">
-        <a class="linkicon schematic" href="../../contrib/examples/i2c-ADS1115/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/i2c-ADS1115/" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/i2c-ads1115" target="_blank">JSBin</a>
-      </div>
-      <h3 class="sumally">概要</h3>
-      <div class="desc">I2C接続の16bitADC（アナログ・デジタルコンバータ）経由で可変抵抗器の値を表示します。</div>
-      <h3 class="parts">使用パーツ</h3>
-      <div class="desc">
-        <ul>
-          <li><a href="https://www.switch-science.com/catalog/1138/">ADS1115搭載 16BitADC 4CH 可変ゲインアンプ付き</a> x 1 <span class="note">(端子配置は違いますが<a href="https://www.amazon.co.jp/s/ref=nb_sb_noss_1?field-keywords=ads1115">ジェネリック品</a>があります)</span></li>
-          <li>10kΩ Bカーブ 可変抵抗器 x 1 <span style="font-size:11px">ブレッドボードに直接刺せるタイプのものが必要です。例えば<a href="https://www.switch-science.com/catalog/1039/">これ</a></span></li>
-          <li>1uF コンデンサ x 1</li>
-          <li>ジャンパー（オス・メス）ケーブル x 4</li>
-          <li>ジャンパー（オス・オス）ケーブル x 4</li>
-          <li>ブレッドボード x 1</li>
-        </ul>
-      </div>
-    </div>
-
-
     <div class="cwrap">
       <div class="title"><a href="https://chirimen.org/chirimen-micro-bit/">CHIRIMEN with micro:bit</a></div>
       <div class="linkwrap">
@@ -974,15 +789,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
-    <div class="cwrap" id="I2C-detect">
-      <div class="title">I2C-detect</div>
-      <div class="linkwrap">
-        <a class="linkicon local" href="../../contrib/examples/i2c-detect/i2cdetectPI.html" target="_blank">デモ</a>
-      </div>
-      <h3 class="sumally">概要</h3>
-      <div class="desc">ウェブアプリ版のi2cdetect機能です。<br>i2cデバイスの接続状態をウェブブラウザ上で見ることができます。</div>
-    </div>
-
 
     <div class="cwrap" id="I2C-AMG8833">
       <div class="title">I2C-AMG8833</div>
@@ -1011,9 +817,5 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
   <div id="bfooter"></div>
 </div>
 
-</body>
-</html> 
-  </head>
-</html> 
-  </head>
+</body> 
 </html>
