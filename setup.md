@@ -69,7 +69,7 @@ https://www.rs-online.com/designspark/raspberry-pi-japanese
 
 `4 Localisation Options` > `I1 Change locale` and select following
 
-en_GB.UTF-8 UTF-8 
+en_GB.UTF-8 UTF-8
 ja_JP.EUC-JP EUC-JP
 ja_JP.UTF-8 UTF-8
 
@@ -81,7 +81,7 @@ change Locale to ja-jp-utf8, and reboot.
 
 > sudo apt-get install ttf-kochi-gothic xfonts-intl-japanese xfonts-intl-japanese-big xfonts-kaname
 
-2) Google of noto font 
+2) Google of noto font
 
 > sudo apt-get install fonts-noto
 
@@ -134,7 +134,7 @@ and select `<了解` and Press Enter. Select
 
 This is all.
 
-> $ sudo reboot 
+> $ sudo reboot
 
 Tentatively, reboot.
 
@@ -179,7 +179,7 @@ Refer to this and enter the following command and reboot.
 > echo 'options bcm2835-v4l2 gst_v4l2src_is_broken=1' | sudo tee -a /etc/modprobe.d/bcm2835-v4l2.conf
 > echo 'bcm2835-v4l2' | sudo tee -a /etc/modules-load.d/modules.conf
 
-After settings 
+After settings
 
 http://akizukidenshi.com/catalog/g/gM-10518/
 http://akizukidenshi.com/catalog/g/gM-10476/
@@ -199,7 +199,6 @@ The following folder is included in the archive
 - gpio : Web GPIO API of example collection. A set of circuit diagram and sample code.
 - i2c  : Web I2C API of example collection. A set of circuit diagram and sample code.
 - polyfill : polyfill of Web GPIO API / Web I2C API.
-- drivers : Driver library of I2C module used from example under i2c folder.
 - top : Local web site which auto start of CHIRIMEN for Raspberry Pi 3.
 
 ### 3-1-2. _gc.zip : archive that deploy to ~/_gc/ (Files that programming learners need not to view)
@@ -272,7 +271,7 @@ Import the following file from Chrome's bookmark manager.
 
 ※Temporary URL
 
-### 3-3-2. Settings of local web site which auto start 
+### 3-3-2. Settings of local web site which auto start
 
 #### 3-3-2-1. Apache settings
 
@@ -301,7 +300,7 @@ change to `<Directory /var/www/>` to `<Directory /home/pi/Desktop/gc/>`
 > sudo apt-get install libapache2-mod-ssl
 
 > cd /etc/apache2/sites-available
-> cp default-ssl.conf vhost-ssl.conf  
+> cp default-ssl.conf vhost-ssl.conf
 > sudo nano vhost-ssl.conf
 
 SSLCertificateFile /home/pi/_gc/srv/crt/server.crt
