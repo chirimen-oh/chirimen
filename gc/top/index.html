@@ -1,116 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-<link rel="shortcut icon" href="./img/favicon.ico" />
-<title>Top</title>
-<style>
-body{
-  background-color:black;
-  background-image:url("./img/back.jpg");
-  background-attachment: fixed;
-  background-position: center center;
-  background-size:cover;
-}
-*{
-  box-sizing:border-box;
-  padding:0px;
-  margin:0px;
-}
-#outwrap{
-  margin:0 auto;
-  display:flex;
-  flex-direction:column;
-}
-#twrap{
-  margin:0 auto;
-  display:flex;
-  flex-direction:row;
-  width:890px;
-  padding:10px;
-  padding-bottom:5px;
-  background-color:rgba(0,255,127,0.7);;
-}
-#left-wrap{
-  width:580px;
-}
-#right-box{
-  width:290px;
-}
-.inbox{
-  margin:0px;
-  padding:10px;
-  overflow: hidden;
-}
-.titlebox{
-  margin:0px;
-  padding:10px;
-  overflow: hidden;
-}
-.inbox:hover{
-  padding:0px;
-  border:solid 10px orange;
-  border-radius:70px;
-}
-#bwrap{
-  margin:0 auto;
-  display:flex;
-  width:890px;
-  padding:5px;
-  background-color:rgba(80,26,53,0.8);
-}
-#bfooter{
-  font-size:14px;
-  width:560px;
-  text-align:center;
-  color:white;
-  margin:0 auto;
-  background-color:green;
-}
-img{
-  display:block;
-  margin-left:auto;
-  margin-right:auto;
-}
-</style>
-</head>
-<script>
-onload=async function(){
-    var res = await fetch("../version.txt");
-    var verStr = await res.text();
-    bfooter.innerText=verStr;
-    
-}
-</script>
-<body>
-<div id="outwrap">
-  <div id="twrap">
-    <div id="left-wrap">
-      <div class="titlebox"><img src="./img/title.png"></div>
-      <div class="inbox">
-        <a href="https://tutorial.chirimen.org/"><img src="./img/tutorial.png"></a>
-        <!--
-        <a href="https://qiita.com/tadfmac/items/82817476615fdc7394b3"><img src="./img/tutorial.png"></a>
-        -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1"
+    />
+    <link rel="shortcut icon" href="./img/favicon.ico" />
+    <title>Top</title>
+    <style>
+      :root {
+        --mian-width: 890px;
+        --main-background-color: rgba(0, 255, 127, 0.7);
+      }
+      body {
+        background-color: black;
+        background-image: url("./img/back.jpg");
+        background-attachment: fixed;
+        background-position: center center;
+        background-size: cover;
+      }
+      * {
+        box-sizing: border-box;
+        padding: 0px;
+        margin: 0px;
+      }
+      #outwrap {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+      }
+      #twrap {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        width: var(--mian-width);
+        padding: 10px;
+        padding-bottom: 5px;
+        background-color: var(--main-background-color);
+      }
+      #left-wrap {
+        width: 580px;
+      }
+      #right-box {
+        width: 290px;
+      }
+      .inbox {
+        margin: 0px;
+        padding: 10px;
+        overflow: hidden;
+      }
+      .titlebox {
+        margin: 0px;
+        padding: 10px;
+        overflow: hidden;
+      }
+      .inbox:hover {
+        padding: 0px;
+        border: solid 10px orange;
+        border-radius: 70px;
+      }
+      #bwrap {
+        margin: 0 auto;
+        display: flex;
+        width: 890px;
+        padding: 5px;
+        background-color: rgba(80, 26, 53, 0.8);
+      }
+      #bfooter {
+        font-size: 14px;
+        font-weight: bold;
+        width: var(--mian-width);
+        text-align: center;
+        color: white;
+        margin: 0 auto;
+        padding: 0 0 0.3em;
+        background-color: var(--main-background-color);
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <script>
+    onload = async function() {
+      var res = await fetch("../version.txt");
+      var verStr = await res.text();
+      var bfooter = document.getElementById("bfooter");
+      bfooter.innerText = verStr;
+    };
+  </script>
+  <body>
+    <div id="outwrap">
+      <div id="twrap">
+        <div id="left-wrap">
+          <div class="titlebox"><img src="./img/title.png" /></div>
+          <div class="inbox">
+            <a href="https://tutorial.chirimen.org/"
+              ><img src="./img/tutorial.png"
+            /></a>
+          </div>
+        </div>
+        <div id="right-wrap">
+          <div class="inbox">
+            <a href="https://github.com/chirimen-oh/chirimen-raspi3"
+              ><img src="./img/github.png"
+            /></a>
+          </div>
+          <div class="inbox">
+            <a href="https://github.com/chirimen-oh/chirimen-raspi3/wiki"
+              ><img src="./img/wiki.png"
+            /></a>
+          </div>
+          <div class="inbox">
+            <a href="./examples/"><img src="./img/examples.png"/></a>
+          </div>
+          <div class="inbox">
+            <a href="https://chirimen.org/"
+              ><img src="./img/chirimen-web.png"
+            /></a>
+          </div>
+        </div>
       </div>
+      <p id="bfooter">CHIRIMEN for Raspberry Pi</p>
     </div>
-    <div id="right-wrap">
-      <div class="inbox">
-        <a href="https://github.com/chirimen-oh/chirimen-raspi3"><img src="./img/github.png"></a>
-      </div>
-      <div class="inbox">
-        <a href="https://github.com/chirimen-oh/chirimen-raspi3/wiki"><img src="./img/wiki.png"></a>
-      </div>
-      <div class="inbox">
-        <a href="./examples/"><img src="./img/examples.png"></a>
-      </div>
-      <div class="inbox">
-        <a href="https://chirimen.org/"><img src="./img/chirimen-web.png"></a>
-      </div>
-    </div>
-  </div>
-  <span id="bfooter"></span>
-</div>
-</body>
+  </body>
 </html>
