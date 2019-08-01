@@ -205,16 +205,13 @@ li{
 #bwrap{
   margin:0 auto;
   display:flex;
-  width:890px;
+  justify-content: center;
   padding:5px;
   background-color:rgba(0,255,127,0.7);
 }
-#bfooter{
+#bwrap > #bfooter{
   font-size:14px;
-  width:560px;
-  text-align:center;
   color:white;
-  margin:0 auto;
 }
 img{
   display:block;
