@@ -2,11 +2,7 @@
 // https://kernel.googlesource.com/pub/scm/utils/i2c-tools/i2c-tools/+/v3.1.2/tools/i2cdetect.c
 // によると、 readmodeの場合はi2c_smbus_read_byteしてるだけなんですね・・
 
-var microBitBle;
-
 var i2cPort;
-
-var readEnable;
 
 main();
 
@@ -39,6 +35,7 @@ async function readData() {
 }
 
 function makeTable() {
+  var tbl = document.createElement("table");
   var addr = 0;
   for (var i = 0; i < 9; i++) {
     var tr = document.createElement("tr");
