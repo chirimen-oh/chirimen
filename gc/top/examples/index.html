@@ -426,24 +426,24 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     </div>
 
     <div class="cwrap" id="I2C-VL53L0X">
-        <div class="title">I2C-VL53L0X</div>
-        <div class="linkwrap">
-          <a class="linkicon schematic" href="../../i2c/i2c-VL53L0X/schematic.png" target="_blank">回路図</a>
-          <a class="linkicon local" href="../../i2c/i2c-VL53L0X/index.html" target="_blank">デモ</a>
-          <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-vl53l0x" target="_blank">JSBin</a>
-          <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-vl53l0x" target="_blank">CSB</a>
-        </div>
-        <h3 class="sumally">概要</h3>
-        <div class="desc">I2C接続のレーザー距離センサーで取得した値を表示します。<br>
-        GP2Y0E03よりも長距離(最長2m)の測定ができます。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください。製品によってはチップ表面に黄色の保護フィルムがついているものがあります。剥して使用してください。）</div>
-        <h3 class="parts">使用パーツ</h3>
-        <div class="desc">
-          <ul>
-            <li>VL53L0X レーザー距離センサー</a> x 1 (<a href="https://www.amazon.co.jp/s/?field-keywords=VL53L0X">amazon</a>, <a href="http://akizukidenshi.com/catalog/g/gM-12590/">秋月通商</a>)</li>
-            <li>ジャンパー（メス・メス）ケーブル x 4</li>
-          </ul>
-        </div>
+      <div class="title">I2C-VL53L0X</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../i2c/i2c-VL53L0X/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../i2c/i2c-VL53L0X/index.html" target="_blank">デモ</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-vl53l0x" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-vl53l0x" target="_blank">CSB</a>
       </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続のレーザー距離センサーで取得した値を表示します。<br>
+        GP2Y0E03よりも長距離(最長2m)の測定ができます。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください。製品によってはチップ表面に黄色の保護フィルムがついているものがあります。剥して使用してください。）</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li>VL53L0X レーザー距離センサー</a> x 1 (<a href="https://www.amazon.co.jp/s/?field-keywords=VL53L0X">amazon</a>, <a href="http://akizukidenshi.com/catalog/g/gM-12590/">秋月通商</a>)</li>
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="cwrap" id="I2C-multi-sensors">
       <div class="title">I2C-multi-sensors</div>
@@ -502,7 +502,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
-
     <div class="cwrap" id="I2C-arduino-steppingMotor">
       <div class="title">I2C-arduino-steppingMotor</div>
       <div class="linkwrap">
@@ -531,7 +530,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
-
     <div class="cwrap" id="I2C-BME280">
       <div class="title">I2C-BME280</div>
       <div class="linkwrap">
@@ -550,7 +548,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-
 
     <div class="cwrap" id="I2C-BMP180">
       <div class="title">I2C-BMP180</div>
@@ -633,6 +630,25 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
+    <div class="cwrap" id="I2C-MPU9250">
+      <div class="title">I2C-MPU9250</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/i2c-MPU9250/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/i2c-MPU9250/index.html" target="_blank">デモ</a>
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-mpu9250" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-mpu9250" target="_blank">CSB</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続の３軸ジャイロ＋３軸加速度＋３軸磁気　複合センサーで取得した値を表示します。<br>
+      <span class="note">このセンサーは、MPU6500(３軸ジャイロ＋３軸加速度)とAK8963(３軸磁気)という二つのI2Cセンサが１パッケージに封入された複合センサです。適切に初期化されるとこれら２個のI2Cスレーブデバイスが出現します</span></div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=MPU9250">MPU9250 ３軸ジャイロ＋３軸加速度＋３軸磁気センサ ブレイクアウト</a> x 1 </li>
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
 
     <div class="cwrap" id="GPIO-HBridge">
       <div class="title">GPIO-HBridge</div>
@@ -670,28 +686,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
-
-    <div class="cwrap" id="I2C-MPU9250">
-      <div class="title">I2C-MPU9250</div>
-      <div class="linkwrap">
-        <a class="linkicon schematic" href="../../contrib/examples/i2c-MPU9250/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/i2c-MPU9250/index.html" target="_blank">デモ</a>
-        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-mpu9250" target="_blank">JSBin</a>
-        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-mpu9250" target="_blank">CSB</a>
-      </div>
-      <h3 class="sumally">概要</h3>
-      <div class="desc">I2C接続の３軸ジャイロ＋３軸加速度＋３軸磁気　複合センサーで取得した値を表示します。<br>
-      <span class="note">このセンサーは、MPU6500(３軸ジャイロ＋３軸加速度)とAK8963(３軸磁気)という二つのI2Cセンサが１パッケージに封入された複合センサです。適切に初期化されるとこれら２個のI2Cスレーブデバイスが出現します</span></div>
-      <h3 class="parts">使用パーツ</h3>
-      <div class="desc">
-        <ul>
-          <li><a href="https://www.amazon.co.jp/s/?field-keywords=MPU9250">MPU9250 ３軸ジャイロ＋３軸加速度＋３軸磁気センサ ブレイクアウト</a> x 1 </li>
-          <li>ジャンパー（メス・メス）ケーブル x 4</li>
-        </ul>
-      </div>
-    </div>
-
-
     <div class="cwrap" id="GPIO-I2C-PWMHBridge-1">
       <div class="title">GPIO-I2C-PWMHBridge その１</div>
       <div class="linkwrap">
@@ -715,7 +709,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
-
     <div class="cwrap" id="GPIO-I2C-PWMHBridge-2">
       <div class="title">GPIO-I2C-PWMHBridge その２</div>
       <div class="linkwrap">
@@ -738,7 +731,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-
 
     <div class="cwrap" id="I2C-NEOPIXEL_I2C">
       <div class="title">I2C-NEOPIXEL_I2C</div>
@@ -764,7 +756,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
-
     <div class="cwrap" id="I2C-PCF8591">
       <div class="title">I2C-PCF8591</div>
       <div class="linkwrap">
@@ -789,7 +780,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-
 
     <div class="cwrap">
       <div class="title"><a href="https://chirimen.org/chirimen-micro-bit/">CHIRIMEN with micro:bit</a></div>
@@ -821,7 +811,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
-
     <div class="cwrap" id="I2C-AMG8833">
       <div class="title">I2C-AMG8833</div>
       <div class="linkwrap">
@@ -840,9 +829,6 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       </div>
     </div>
-
-
-
   </div>
 </div>
 
