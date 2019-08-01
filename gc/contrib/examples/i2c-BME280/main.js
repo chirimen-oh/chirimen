@@ -1,8 +1,6 @@
-"use strict";
+main();
 
-window.addEventListener("load", mainFunction, false);
-
-async function mainFunction() {
+async function main() {
   try {
     var temp = document.getElementById("temp");
     var pres = document.getElementById("pres");

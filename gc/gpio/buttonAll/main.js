@@ -1,10 +1,8 @@
-"use strict";
-
 var portAddrs = [4,5,6,12,13,16,17,18,19,20,21,22,23,24,25,26,27]; // prettier-ignore
 
-window.addEventListener("load", mainFunction, false);
+main(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
 
-async function mainFunction() {
+async function main() {
   var gpioAccess = await navigator.requestGPIOAccess();
   //        console.log("GPIO ready!");
   var ports = [];

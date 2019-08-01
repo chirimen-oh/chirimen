@@ -5,10 +5,12 @@ var portAddrs = [20, 21]; // HブリッジコントローラをつなぐGPIOポ�
 var portPromise;
 var pca9685pwmPromise;
 
-onload = async function() {
+main();
+
+async function main() {
   // ポートを初期化するための非同期関数
   try {
-    console.log("onload");
+    console.log("main");
     var gpioAccess = await navigator.requestGPIOAccess(); // thenの前の関数をawait接頭辞をつけて呼び出します。
     var ports = [];
     var i2cAccess = await navigator.requestI2CAccess();
@@ -27,7 +29,7 @@ onload = async function() {
   } catch (error) {
     console.error("error", error);
   }
-};
+}
 
 async function pwm(ratio) {
   var pca9685pwm = await pca9685pwmPromise;

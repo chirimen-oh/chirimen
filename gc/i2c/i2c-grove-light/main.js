@@ -1,8 +1,6 @@
-"use strict";
+main();
 
-window.addEventListener("load", mainFunction, false);
-
-async function mainFunction() {
+async function main() {
   var head = document.getElementById("head");
   var i2cAccess = await navigator.requestI2CAccess();
   var port = i2cAccess.ports.get(1);

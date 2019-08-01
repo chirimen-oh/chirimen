@@ -1,8 +1,6 @@
-"use strict";
+main();
 
-window.addEventListener("load", mainFunction, false);
-
-async function mainFunction() {
+async function main() {
   var sensor_unit;
   var valelem = document.getElementById("distance");
   try {
