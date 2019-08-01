@@ -1,1 +1,1 @@
-CHIRIMEN for Raspberry Pi 3 emv.version : 18/10/04:20:46:37
+CHIRIMEN for Raspberry Pi 3 env.version : latest online version
