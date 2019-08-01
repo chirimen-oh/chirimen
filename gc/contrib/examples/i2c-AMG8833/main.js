@@ -1,16 +1,19 @@
 var autoGain = false;
-window.addEventListener(
-  "load",
-  function() {
-    initTable();
-    main();
-    tMaxTxt.innerText = tMax;
-    tMinTxt.innerText = tMin;
-    tMaxUI.value = tMax;
-    tMinUI.value = tMin;
-  },
-  false
-);
+var tMax, tMin;
+
+initTable();
+
+var tMaxTxt = document.getElementById("tMaxTxt");
+var tMinTxt = document.getElementById("tMinTxt");
+var tMaxUI = document.getElementById("tMaxUI");
+var tMinUI = document.getElementById("tMinUI");
+
+main();
+
+tMaxTxt.innerText = tMax;
+tMinTxt.innerText = tMin;
+tMaxUI.value = tMax;
+tMinUI.value = tMin;
 
 async function main() {
   try {

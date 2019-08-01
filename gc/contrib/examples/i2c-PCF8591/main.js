@@ -1,4 +1,4 @@
-window.addEventListener("load", main, false);
+main();
 
 var pcfPromise;
 

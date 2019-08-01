@@ -1,38 +1,46 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1"
+    />
+    <title>i2c-BMP280</title>
+    <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
+    <script src="node_modules/@chirimen-raspi/chirimen-driver-i2c-bmp280/BMP280.js"></script>
+    <script src="./main.js" defer></script>
+    <style>
+      table,
+      p {
+        color: blue;
+        text-align: center;
+        font-size: 24px;
+      }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-  <title>i2c-BMP280</title>
-  <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
-  <script src="node_modules/@chirimen-raspi/chirimen-driver-i2c-bmp280/BMP280.js"></script>
-  <script src="./main.js"></script>
-  <style>
-    table,p {
-      color: blue;
-      text-align: center;
-      font-size: 24px;
-    }
+      img {
+        position: absolute;
+        top: 50px;
+        right: 0px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
 
-    img {
-      position: absolute;
-      top: 50px;
-      right: 0px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
-</head>
-
-<body>
-  <p id="head">BMP-280</p>
-  <img src="schematic.png" width="400"/>
-  <table>
-  <tr><td>temperature</td><td id="temp"></td></tr>
-  <tr><td>pressure</td><td id="pres"></td></tr>
-  </table>
-</body>
-
+  <body>
+    <p id="head">BMP-280</p>
+    <img src="schematic.png" width="400" />
+    <table>
+      <tr>
+        <td>temperature</td>
+        <td id="temp"></td>
+      </tr>
+      <tr>
+        <td>pressure</td>
+        <td id="pres"></td>
+      </tr>
+    </table>
+  </body>
 </html>

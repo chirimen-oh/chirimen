@@ -9,7 +9,7 @@
     <title>i2c-arduino-steppingMotor</title>
     <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
     <script src="node_modules/@chirimen-raspi/chirimen-driver-i2c-arduino-stepping-motor/SteppingMotor.js"></script>
-    <script src="./main.js"></script>
+    <script src="./main.js" defer></script>
     <style>
       body {
         background: #246;
@@ -144,6 +144,7 @@
           <td>ステップ数</td>
         </tr>
       </table>
+
       <h4>戻り値</h4>
       <p>Promise&lt;void&gt;</p>
       <h3>abort()</h3>
@@ -175,6 +176,7 @@
           <td>回転速度 (pulse / sec)</td>
         </tr>
       </table>
+
       <h4>戻り値</h4>
       <p>Promise&lt;void&gt;</p>
       <h3>setMinSpeed(speed)</h3>
@@ -201,6 +203,7 @@
           <td>回転速度 (pulse / sec)</td>
         </tr>
       </table>
+
       <h4>戻り値</h4>
       <p>Promise&lt;void&gt;</p>
       <h3>setAccelRate(rate)</h3>
@@ -225,6 +228,7 @@
           <td>加減速レート (msec / kHz)</td>
         </tr>
       </table>
+
       <h4>戻り値</h4>
       <p>Promise&lt;void&gt;</p>
       <h3>enable(ena)</h3>
@@ -245,6 +249,7 @@
           <td>0 または 1</td>
         </tr>
       </table>
+
       <h4>戻り値</h4>
       <p>Promise&lt;void&gt;</p>
       <hr />

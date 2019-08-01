@@ -1,4 +1,4 @@
-window.addEventListener("load", main, false);
+main();
 
 async function main() {
   var head = document.getElementById("head");

@@ -3,9 +3,11 @@
 var portAddrs = [20, 21]; // HブリッジコントローラをつなぐGPIOポート番号
 var portPromise;
 
-onload = async function() {
+main();
+
+async function main() {
   // ポートを初期化するための非同期関数
-  console.log("onload");
+  console.log("main");
   var gpioAccess = await navigator.requestGPIOAccess(); // thenの前の関数をawait接頭辞をつけて呼び出します。
   var ports = [];
 
@@ -17,7 +19,7 @@ onload = async function() {
     ports[i].write(0);
   }
   portPromise = ports;
-};
+}
 
 async function free() {
   var ports = await portPromise;

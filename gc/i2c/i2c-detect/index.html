@@ -29,12 +29,14 @@
 
     var readEnable;
 
-    onload = async function() {
+    main();
+
+    async function main() {
       makeTable();
       var i2cAccess = await navigator.requestI2CAccess();
       i2cPort = i2cAccess.ports.get(1);
       readData();
-    };
+    }
 
     async function readData() {
       for (var i = 0; i < 128; i++) {

@@ -1,4 +1,4 @@
-window.addEventListener("load", main, false);
+main();
 
 async function main() {
   let step = 1600;

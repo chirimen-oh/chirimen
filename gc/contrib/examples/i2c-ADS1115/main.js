@@ -1,17 +1,13 @@
 var rawData = [];
 var voltage = [];
-window.addEventListener(
-  "load",
-  function() {
-    for (var i = 0; i < 4; i++) {
-      rawData[i] = document.getElementById("rawData" + i);
-      voltage[i] = document.getElementById("voltage" + i);
-    }
-    console.log("init0:", rawData, voltage);
-    main();
-  },
-  false
-);
+
+for (var i = 0; i < 4; i++) {
+  rawData[i] = document.getElementById("rawData" + i);
+  voltage[i] = document.getElementById("voltage" + i);
+}
+console.log("init0:", rawData, voltage);
+
+main();
 
 async function main() {
   // Initialize WebI2C
