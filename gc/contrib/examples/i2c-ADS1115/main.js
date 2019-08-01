@@ -8,12 +8,12 @@ window.addEventListener(
       voltage[i] = document.getElementById("voltage" + i);
     }
     console.log("init0:", rawData, voltage);
-    mainFunction();
+    main();
   },
   false
 );
 
-async function mainFunction() {
+async function main() {
   // Initialize WebI2C
   var i2cAccess = await navigator.requestI2CAccess();
   try {

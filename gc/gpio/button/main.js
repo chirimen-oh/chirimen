@@ -1,6 +1,6 @@
 var ledPort, switchPort; // LEDとスイッチの付いているポート
 
-mainFunction(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
+main(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
 
 function ledOnOff(v) {
   if (v === 0) {
@@ -10,7 +10,7 @@ function ledOnOff(v) {
   }
 }
 
-async function mainFunction() {
+async function main() {
   var gpioAccess = await navigator.requestGPIOAccess();
   ledPort = gpioAccess.ports.get(26); // LEDのPort
   await ledPort.export("out");

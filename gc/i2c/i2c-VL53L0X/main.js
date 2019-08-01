@@ -1,6 +1,6 @@
-mainFunction();
+main();
 
-async function mainFunction() {
+async function main() {
   var dist = document.getElementById("dist");
   try {
     var i2cAccess = await navigator.requestI2CAccess();

@@ -1,6 +1,6 @@
-mainFunction();
+main();
 
-async function mainFunction() {
+async function main() {
   var ax = document.getElementById("ax");
   var ay = document.getElementById("ay");
   var az = document.getElementById("az");

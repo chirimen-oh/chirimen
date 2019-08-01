@@ -3,7 +3,7 @@ window.addEventListener(
   "load",
   function() {
     initTable();
-    mainFunction();
+    main();
     tMaxTxt.innerText = tMax;
     tMinTxt.innerText = tMin;
     tMaxUI.value = tMax;
@@ -12,7 +12,7 @@ window.addEventListener(
   false
 );
 
-async function mainFunction() {
+async function main() {
   try {
     var i2cAccess = await navigator.requestI2CAccess();
     var port = i2cAccess.ports.get(1);

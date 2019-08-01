@@ -1,6 +1,6 @@
-mainFunction();
+main();
 
-async function mainFunction() {
+async function main() {
   var head = document.querySelector("#head");
   head.innerHTML = "started";
   try {

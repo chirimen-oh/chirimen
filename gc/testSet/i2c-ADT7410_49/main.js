@@ -1,6 +1,6 @@
-window.addEventListener("load", mainFunction, false);
+window.addEventListener("load", main, false);
 
-async function mainFunction() {
+async function main() {
   var head = document.getElementById("head");
 
   navigator

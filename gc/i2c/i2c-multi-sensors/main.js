@@ -1,6 +1,6 @@
-mainFunction();
+main();
 
-async function mainFunction() {
+async function main() {
   var head1 = document.getElementById("head1");
   var head2 = document.getElementById("head2");
   var i2cAccess = await navigator.requestI2CAccess();

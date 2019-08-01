@@ -1,6 +1,6 @@
-mainFunction();
+main();
 
-async function mainFunction() {
+async function main() {
   var sensor_unit;
   var valelem = document.getElementById("distance");
   try {
