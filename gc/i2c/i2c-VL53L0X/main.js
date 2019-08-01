@@ -1,7 +1,7 @@
 mainFunction();
 
 async function mainFunction() {
-  var head = document.getElementById("head");
+  var dist = document.getElementById("dist");
   try {
     var i2cAccess = await navigator.requestI2CAccess();
     var port = i2cAccess.ports.get(1);
