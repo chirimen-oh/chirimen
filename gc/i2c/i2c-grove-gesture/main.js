@@ -1,7 +1,7 @@
 main();
 
 async function main() {
-  var head = document.querySelector("#head");
+  var head = document.getElementById("head");
   head.innerHTML = "started";
   try {
     var i2cAccess = await navigator.requestI2CAccess();
