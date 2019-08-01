@@ -1,8 +1,6 @@
-"use strict";
+main();
 
-window.addEventListener("load", mainFunction, false);
-
-async function mainFunction() {
+async function main() {
   let step = 1600;
   const head = document.getElementById("head");
   const i2cAccess = await navigator.requestI2CAccess();

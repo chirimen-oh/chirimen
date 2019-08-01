@@ -1,10 +1,12 @@
 // Hブリッジモータードライバの二本の制御端子にそれぞれPCA9685のPWM信号を入力し正逆転と速度コントロールをします。
 var pca9685pwmPromise;
 
-onload = async function() {
+main();
+
+async function main() {
   // ポートを初期化するための非同期関数
   try {
-    console.log("onload");
+    console.log("main");
     var i2cAccess = await navigator.requestI2CAccess();
     var i2cPort = i2cAccess.ports.get(1);
     var pca9685pwm = new PCA9685_PWM(i2cPort, 0x40);
@@ -13,7 +15,7 @@ onload = async function() {
   } catch (error) {
     console.error("error", error);
   }
-};
+}
 
 var direction = 1;
 var ratio = 0;

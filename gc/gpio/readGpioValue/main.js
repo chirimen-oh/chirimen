@@ -1,8 +1,6 @@
-"use strict";
+main(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
 
-window.addEventListener("load", mainFunction, false);
-
-async function mainFunction() {
+async function main() {
   var gpioAccess = await navigator.requestGPIOAccess();
   console.log("GPIO ready!");
   var port = gpioAccess.ports.get(5);
