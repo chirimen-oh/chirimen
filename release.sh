@@ -26,8 +26,8 @@ find "${BASE_DIR}/gc" \
   | xargs -0 \
     -I@ sh -c 'npm --prefix "$(dirname -- "@")" install'
 
-zip -r ${PUBLISH_DIR}/gc.zip ./gc
-zip -r ${PUBLISH_DIR}/_gc.zip ./gc
+zip -r ${PUBLISH_DIR}/gc.zip ./gc/
+zip -r ${PUBLISH_DIR}/_gc.zip ./_gc/
 
 zip --delete ${PUBLISH_DIR}/gc.zip "*__MACOSX*"
 zip --delete ${PUBLISH_DIR}/_gc.zip "*__MACOSX*"
