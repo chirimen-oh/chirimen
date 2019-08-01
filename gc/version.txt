@@ -1,1 +1,1 @@
-CHIRIMEN for Raspberry Pi 3 env.version : latest online version
+CHIRIMEN for Raspberry Pi env.version : 19/08/01 12:25
