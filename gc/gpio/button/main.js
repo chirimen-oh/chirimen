@@ -1,5 +1,3 @@
-"use strict";
-
 var ledPort, switchPort; // LEDとスイッチの付いているポート
 
 window.addEventListener("load", mainFunction, false);

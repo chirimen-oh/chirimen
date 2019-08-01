@@ -1,5 +1,3 @@
-"use strict";
-
 var rawData = [];
 var voltage = [];
 window.addEventListener(

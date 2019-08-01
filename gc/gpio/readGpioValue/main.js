@@ -1,5 +1,3 @@
-"use strict";
-
 window.addEventListener("load", mainFunction, false);
 
 async function mainFunction() {

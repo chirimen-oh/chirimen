@@ -1,4 +1,3 @@
-'use strict';
 onload=function (){
 	mainFunction();
 }

@@ -1,5 +1,3 @@
-"use strict";
-
 mainFunction(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
 
 async function mainFunction() {
