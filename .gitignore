@@ -2,3 +2,4 @@
 .Thumbs.db
 /gc/**/package-lock.json
 gc/i2c/i2c-arduino-steppingMotor/etc/
+/public/
