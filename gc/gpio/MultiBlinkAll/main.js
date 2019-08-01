@@ -1,7 +1,6 @@
-var portPromise = main(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
+var portPromise = main();
 
 async function main() {
-  // ポートを初期化するための非同期関数
   var gpioAccess = await navigator.requestGPIOAccess(); // thenの前の関数をawait接頭辞をつけて呼び出します。
   var ports = [];
   var Vs = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]; // 全 17 ポート

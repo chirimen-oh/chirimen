@@ -1,4 +1,4 @@
-main(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
+main();
 
 async function main() {
   var gpioAccess = await navigator.requestGPIOAccess();

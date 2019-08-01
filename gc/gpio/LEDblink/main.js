@@ -1,15 +1,14 @@
-main(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
+main();
 
 async function main() {
-  // プログラムの本体となる関数、非同期処理のためプログラム全体をasync関数で包みます。
-  var gpioAccess = await navigator.requestGPIOAccess(); // thenの前の関数をawait接頭辞をつけて呼び出します。
-  var port = gpioAccess.ports.get(26);
-  await port.export("out");
+  var gpioAccess = await navigator.requestGPIOAccess(); // GPIO を操作する
+  var port = gpioAccess.ports.get(26); // 26 番ポートを操作する
   var v = 0;
-  while (true) {
-    // 無限ループ
-    await sleep(1000); // 1000ms待機する
-    v ^= 1; // v = v ^ 1 (XOR 演算)の意。　vが1の場合はvが0に、0の場合は1に変化する。1でLED点灯、0で消灯するので、1秒間隔でLEDがON OFFする。
-    port.write(v);
+
+  await port.export("out"); // ポートを出力モードに設定
+  for (;;) {
+    v = v === 0 ? 1 : 0; // ポートの出力値を 0/1 交互に変更
+    port.write(v); // LED を ON/OFF する
+    await sleep(1000); // 繰り返し毎に 1000ms 待機
   }
 }

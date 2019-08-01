@@ -1,10 +1,9 @@
 var portAddrs = [4,5,6,12,13,16,17,18,19,20,21,22,23,24,25,26,27]; // prettier-ignore
 
-main(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
+main();
 
 async function main() {
   var gpioAccess = await navigator.requestGPIOAccess();
-  //        console.log("GPIO ready!");
   var ports = [];
   for (var i = 0; i < portAddrs.length; i++) {
     ports[i] = gpioAccess.ports.get(portAddrs[i]);
@@ -26,11 +25,6 @@ async function main() {
           portAddrs[prt] +
           " val:" +
           v;
-        /**
-				setTimeout(function(){
-					document.getElementById("statusDisp").innerHTML="--";
-					},500);
-				**/
       };
     })(i);
   }
