@@ -8,23 +8,19 @@ Always under construction...
 
 # Version
 
-2018/09/30
+2019/08/01
 
 # How To Setup CHIRIMEN Environment on raspbian
-## Setup Automatically
-Execute [`./setup.sh`](setup.sh) on Raspbian with Desktop.  
-At the end of the script you need to select the dialog with OK. Automatic reboot is successful.  
-(**Note: default passwd will be changed to `rasp`**)
 
-## Setup Manually
-Refer [setup-ja.md](setup-ja.md), or [setup.md](setup.md).
+Execute [`./setup.sh`](setup.sh) on Raspbian with Desktop.
 
 # View top page content of chirimen environment on github
+
 [Access this page](http://chirimen.org/chirimen-raspi3/gc/top/) via github pages.
 
 # Files and Directories
 
-- _gc/
+- \_gc/
   - ... need update ...
 - gc/
   - ... need update ...
@@ -40,16 +36,11 @@ Refer [setup-ja.md](setup-ja.md), or [setup.md](setup.md).
   - automatically generated version timestamp file
 - release.sh
   - script to make release package
-- setup-ja.md
-  - how to setup CHIRIMEN environment document in Japanese
-- setup.md
-  - how to setup CHIRIMEN environment document in English
 - setup.sh
   - setup script to install CHIRIMEN environment on raspbian
 
--
-
 # How To Release
+
 Refer https://github.com/chirimen-oh/chirimen-raspi3/wiki/Release
 
 # Licenses
