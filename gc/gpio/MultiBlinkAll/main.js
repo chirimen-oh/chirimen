@@ -1,8 +1,4 @@
-var portPromise;
-onload = function() {
-  console.log("onload");
-  portPromise = mainFunction();
-};
+var portPromise = mainFunction(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
 
 async function mainFunction() {
   // ポートを初期化するための非同期関数

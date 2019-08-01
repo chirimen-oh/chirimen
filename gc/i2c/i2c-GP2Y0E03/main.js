@@ -1,4 +1,4 @@
-window.addEventListener("load", mainFunction, false);
+mainFunction();
 
 async function mainFunction() {
   var sensor_unit;

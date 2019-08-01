@@ -1,6 +1,6 @@
 var ledPort, switchPort; // LEDとスイッチの付いているポート
 
-window.addEventListener("load", mainFunction, false);
+mainFunction(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
 
 function ledOnOff(v) {
   if (v === 0) {

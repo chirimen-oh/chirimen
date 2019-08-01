@@ -1,4 +1,4 @@
-window.addEventListener("load", mainFunction, false);
+mainFunction(); // 定義したasync関数を実行します（このプログラムのエントリーポイントになっています）
 
 async function mainFunction() {
   var gpioAccess = await navigator.requestGPIOAccess();

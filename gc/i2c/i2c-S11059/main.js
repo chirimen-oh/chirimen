@@ -1,10 +1,4 @@
-window.addEventListener(
-  "load",
-  function() {
-    mainFunction();
-  },
-  false
-);
+mainFunction();
 
 async function mainFunction() {
   var i2cAccess = await navigator.requestI2CAccess();
