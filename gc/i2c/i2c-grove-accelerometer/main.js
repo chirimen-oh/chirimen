@@ -10,7 +10,7 @@ async function main() {
   await groveaccelerometer.init();
   for (;;) {
     try {
-      var values = await roveaccelerometer.read();
+      var values = await groveaccelerometer.read();
       ax.innerHTML = values.x ? values.x : ax.innerHTML;
       ay.innerHTML = values.y ? values.y : ay.innerHTML;
       az.innerHTML = values.z ? values.z : az.innerHTML;
