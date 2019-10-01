@@ -1,5 +1,5 @@
 ////////////////////////////////////////////////////////////
-// 
+//
 // green-chirimen/srv.js
 //
 ////////////////////////////////////////////////////////////
@@ -49,7 +49,7 @@ server.listen(port,()=> {
   obj.ws           : websocket connection
   obj.uid          : client uid (keyと同じなので必要ないような)
 
--------------------------------------------------------- */ 
+-------------------------------------------------------- */
 var connections = new Map;
 
 /* --------------------------------------------------------
@@ -60,9 +60,9 @@ var connections = new Map;
   key: portNumber (Web GPIO)
 
   value         : client uid
--------------------------------------------------------- */ 
+-------------------------------------------------------- */
 // gpioライブラリ 側のcallback利用するので不要
-// var pollingPorts = new Map;  
+// var pollingPorts = new Map;
 
 /* --------------------------------------------------------
 
@@ -77,22 +77,8 @@ var connections = new Map;
   obj.direction   : direction out=0 in=1
   obj.value       : GPIO value is LOW=0 or HIGH=1 or initializing=-1
 
--------------------------------------------------------- */ 
+-------------------------------------------------------- */
 var lockGPIO = new Map;
-
-/* --------------------------------------------------------
-
-  lockI2C: map
-
-  I2C slaveAddressの状態を登録しておくmap。
-  リソースロック状態のslaveAddressのみ登録される。
-
-  key: slaveAddress (Web I2C)
-
-  obj.uid         : client uid
-  
--------------------------------------------------------- */ 
-var lockI2C  = new Map;
 
 /* --------------------------------------------------------
 
@@ -105,25 +91,9 @@ var lockI2C  = new Map;
 
   obj.uid         : client uid
   obj.session     : session id
-  
--------------------------------------------------------- */ 
+
+-------------------------------------------------------- */
 var tempGPIO = new Map;
-
-/* --------------------------------------------------------
-
-  tempI2C: map
-
-  I2C の処理中セッションを一時記録しておくmap。
-  処理中セッションが存在するI2C Addressのみ登録される。
-
-  key: slaveAddress (Web I2C)
-
-  obj.uid         : client uid
-  obj.session     : session id
-  
--------------------------------------------------------- */ 
-
-var tempI2C  = new Map;
 
 /* --------------------------------------------------------
 
@@ -134,12 +104,12 @@ var tempI2C  = new Map;
   obj.connection   : connection object
   obj.u8mes        : message object (Uint8Array)
 
--------------------------------------------------------- */ 
+-------------------------------------------------------- */
 var processQueue = [];
 
 /* --------------------------------------------------------
   main
--------------------------------------------------------- */ 
+-------------------------------------------------------- */
 
 const WebSocket = require('ws');
 const wss = new WebSocket.Server({ server });
@@ -189,11 +159,6 @@ function unlockAllResources(connection){
     tempGPIO.delete(key);
     lockGPIO.delete(key);
   });
-  connection.usingSlaveAddrs.forEach((obj,key)=>{
-    logout("unlockAllResources-i2c:addr="+key);
-    tempI2C.delete(key);
-    lockI2C.delete(key);
-  });
 }
 
 //var polling = setInterval(()=>{
@@ -212,15 +177,15 @@ function processMessage(connection,u8mes){
   logout("processMessage called: id["+connection.uid+"] mes["+u8mes+"]");
 
   //
-  // ToDo: 
+  // ToDo:
   // checkAquirable() で LockだったらRejectする処理の追加。
   // ここに入れるか、doProcessの中でもcheckAquirable()呼んでるのでその判定結果のとことでやるか..
   // Lockだったときは待つ必要がないはずなので、ここでやっちゃった方が効率がいいはずなのだが、
-  // 
+  //
 
   processQueue.push({connection:connection, u8mes:u8mes});
   doProcess();
-} 
+}
 
 function checkAcquirable(connection,u8mes){
 //  var lockI2C = neisw Map;
@@ -248,20 +213,6 @@ function checkAcquirable(connection,u8mes){
       }
     }else{
       logout("x lockGPIO: your uid:"+connection.uid+" handle by:"+lockdata.uid);
-    }
-  }else if((u8mes[3] & 0xf0)== 0x20){ // Web I2C API
-    var lockdata = lockI2C.get(u8mes[4]);
-    if((!lockdata)||(lockdata.uid == connection.uid)){
-      var status = tempI2C.get(u8mes[4]);
-      if(!status){
-        acquire = 3;
-        logout("★ ok(I2C):"+u8mes);
-      }else{
-        acquire = 2;
-        logout("△ wait(I2C):now processing UID:["+status.uid+"] session:["+status.session+"waiting:"+u8mes);
-      }
-    }else{
-      logout("x lockI2C: your uid:"+connection.uid+" handle by:"+lockdata.uid);
     }
   }else{
     logout("invalid message: "+u8mes[1]);
@@ -321,17 +272,6 @@ function doProcess(){
 // GPIO / I2C wrapper
 
 var gpio = require("gpio",{interval:50});
-//var i2c = require('i2c');
-
-const raspi = require('raspi');
-const I2C = require('raspi-i2c').I2C;
-var i2c1 = null;
-raspi.init(() => {
-  i2c1 = new I2C();
-});
-
-
-//var i2c1 = new i2c(0x10,{device: '/dev/i2c-1'});  // 0x10はdummy.気にするな
 
 function createAnswer(header,result){
   var resdata = new Array(4);
@@ -393,8 +333,6 @@ function processOne(connection,u8mes){
 
     if((func & 0xf0)== 0x10){ // Web GPIO API
       temp = tempGPIO;
-    }else if((func & 0xf0)== 0x20){ // Web I2C API
-      temp = tempI2C;
     }
     temp.set(portnum,{uid:connection.uid, session:session});
 
@@ -430,7 +368,7 @@ function processOne(connection,u8mes){
               // [1] session id LSB (0)
               // [2] session id MSB (0)
               // [3] function id (0x14)
-              // [4] Port Number 
+              // [4] Port Number
               // [5] Value (0:LOW 1:HIGH)
               logout("changed:"+portnum+" value:"+val);
               var portdata = lockGPIO.get(portnum);
@@ -521,102 +459,6 @@ function processOne(connection,u8mes){
       temp.delete(portnum);
       ans = createAnswer(u8mes,[1]);
       resolve(ans);
-      break;
-    }
-
-    /////////////////////////////////////////////////////////////////////////
-    //      0x2x     : Web I2C API
-    //         0     : resource    : [4] slaveAddress [5] (1:acquire, 0:free)
-    case 0x20:
-    {
-      var method = u8mes[5];
-      logout("0x20:["+session+"]: addr="+addr+" method="+method);
-      if(method == 1){
-        lockI2C.set(addr,{uid:connection.uid});
-        connection.usingSlaveAddrs.set(addr,addr);  // valueはみてない
-      }else{
-        lockI2C.delete(addr);
-        connection.usingSlaveAddrs.delete(addr);
-      }
-      temp.delete(addr);
-      ans = createAnswer(u8mes,[1]);
-      resolve(ans);
-      break;
-    }
-
-    /////////////////////////////////////////////////////////////////////////
-    //      0x2x     : Web I2C API
-    //         1     : writeBytes  : [4] slaveAddress [5] size [6-] data
-    case 0x21:
-    {
-      var size = u8mes[5];
-      logout("0x21:["+session+"]: addr="+addr+" size="+size+" buff.len"+(u8mes.length-6));
-      if((u8mes.length - 6) != size){
-        temp.delete(addr);
-        processQueue = [];
-        reject("write size is not valid!");
-      }
-      var buffer = new Buffer(size);
-      for(var cnt=0;cnt < size;cnt ++){
-        buffer[cnt] = u8mes[6+cnt];
-      }
-      i2c1.write(addr,buffer,(e)=>{
-        logout("0x22:["+session+"]: addr="+addr+" result: e="+e);
-        var res = 0;
-        if(e == null){
-          res = size;
-        }
-        temp.delete(portnum);
-        ans = createAnswer(u8mes,[res]);
-        resolve(ans);
-      });
-      break;
-    }
-
-    /////////////////////////////////////////////////////////////////////////
-    //      0x2x     : Web I2C API
-    //         2     : readBytes   : [4] slaveAddress [5] readSize
-    case 0x22:
-    {
-      var size = u8mes[5];
-      logout("0x22:["+session+"]: addr="+addr+" size="+size);
-      i2c1.read(addr,size,(e,data)=>{
-        var mes = [0];
-        if(e == null){
-          mes[0]= data.length;
-          for(var cnt=0;cnt < data.length;cnt++){
-            mes.push(data[cnt]);
-          }
-        }
-        logout("0x22:["+session+"]: addr="+addr+" result: e="+e+" size="+mes[0]);
-        temp.delete(portnum);
-        ans = createAnswer(u8mes,mes);
-        resolve(ans);
-      });
-      break;
-    }
-
-    /////////////////////////////////////////////////////////////////////////
-    //      0x2x     : Web I2C API
-    //         3     : readRegister: [4] slaveAddress [5] registerNumber [6] readSize
-    case 0x23:
-    {
-      var register = u8mes[5];
-      var size = u8mes[6];
-      logout("0x23:["+session+"]: addr="+addr+" register="+register+" size="+size);
-      i2c1.read(addr,register,size,(e,data)=>{
-        var mes = [0];
-        if(e == null){
-          mes[0]=data.length;
-          for(var cnt=0;cnt < data.length;cnt++){
-            mes.push(data[cnt]);
-          }
-        }
-        logout("0x23:["+session+"]: addr="+addr+" register="+register+" result: e="+e+" size="+mes[0]);
-        temp.delete(portnum);
-        ans = createAnswer(u8mes,mes);
-        resolve(ans);
-      });
       break;
     }
     default:
