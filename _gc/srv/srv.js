@@ -5,33 +5,31 @@
 ////////////////////////////////////////////////////////////
 
 // logout
-require('date-utils');
-
-function logout(str){
-// /* Log一気に消すときは // 消す。
+function logout(str) {
+  // /* Log一気に消すときは // 消す。
   var dt = new Date();
   var datetime = dt.toFormat("YYYY-MM-DD HH24:MI:SS");
-  console.log(datetime+" : "+str)
-  dt=null;
-// Log一気に消すときは // 消す。 */
+  console.log(datetime + " : " + str);
+  dt = null;
+  // Log一気に消すときは // 消す。 */
 }
 
 // version
-const fs = require('fs');
-var versionStr = fs.readFileSync('../version.txt');
+const fs = require("fs");
+var versionStr = fs.readFileSync("../version.txt");
 logout(versionStr);
 
 ////////////////////////////////////////////////////////////
 // https server
-const https = require('https');
+const https = require("https");
 const port = 33330;
 
 const server = https.createServer({
-  cert: fs.readFileSync('./crt/server.crt'),
-  key: fs.readFileSync('./crt/server.key')
+  cert: fs.readFileSync("./crt/server.crt"),
+  key: fs.readFileSync("./crt/server.key")
 });
 
-server.listen(port,()=> {
+server.listen(port, () => {
   logout("https server started.");
 });
 
@@ -48,7 +46,7 @@ server.listen(port,()=> {
   obj.uid          : client uid (keyと同じなので必要ないような)
 
 -------------------------------------------------------- */
-var connections = new Map;
+var connections = new Map();
 
 /* --------------------------------------------------------
 
@@ -76,7 +74,7 @@ var connections = new Map;
   obj.value       : GPIO value is LOW=0 or HIGH=1 or initializing=-1
 
 -------------------------------------------------------- */
-var lockGPIO = new Map;
+var lockGPIO = new Map();
 
 /* --------------------------------------------------------
 
@@ -91,7 +89,7 @@ var lockGPIO = new Map;
   obj.session     : session id
 
 -------------------------------------------------------- */
-var tempGPIO = new Map;
+var tempGPIO = new Map();
 
 /* --------------------------------------------------------
 
@@ -109,30 +107,37 @@ var processQueue = [];
   main
 -------------------------------------------------------- */
 
-const WebSocket = require('ws');
+const WebSocket = require("ws");
 const wss = new WebSocket.Server({ server });
 
-process.on('unhandledRejection', console.dir);
+process.on("unhandledRejection", console.dir);
 
-wss.on('connection',(ws)=> {
+wss.on("connection", ws => {
   var conn = {};
   conn.ws = ws;
   conn.uid = ws._socket._handle.fd;
   conn.exportedPorts = new Map();
   conn.usingSlaveAddrs = new Map();
-  connections.set(conn.uid,conn);
-  logout("[new connection]uid:"+conn.uid+" clients are: "+(connections.size - 1));
+  connections.set(conn.uid, conn);
+  logout(
+    "[new connection]uid:" +
+      conn.uid +
+      " clients are: " +
+      (connections.size - 1)
+  );
 
-  conn.ws.on('message',(message)=>{
+  conn.ws.on("message", message => {
     var u8mes = new Uint8Array(message);
-    processMessage(conn,u8mes);
+    processMessage(conn, u8mes);
   });
 
-  conn.ws.on('close', ()=> {
+  conn.ws.on("close", () => {
     unlockAllResources(conn);
     connections.delete(conn.uid);
-    logout("[connection closed]uid:"+conn.uid+" clients are: "+connections.size);
-/*
+    logout(
+      "[connection closed]uid:" + conn.uid + " clients are: " + connections.size
+    );
+    /*
     // gpioライブラリ 側のcallback利用するので不要
     pollingPorts.forEach(function (value, key) {
       if(value == conn.uid){
@@ -142,17 +147,15 @@ wss.on('connection',(ws)=> {
 */
   });
 
-  conn.ws.on('error', (error)=> {
-    logout("[connection error]uid:"+conn.uid);
+  conn.ws.on("error", error => {
+    logout("[connection error]uid:" + conn.uid);
     conn.ws.terminate();
   });
-
-
 });
 
-function unlockAllResources(connection){
-  connection.exportedPorts.forEach((obj,key)=>{
-    logout("unlockAllResources-gpio:port="+key);
+function unlockAllResources(connection) {
+  connection.exportedPorts.forEach((obj, key) => {
+    logout("unlockAllResources-gpio:port=" + key);
     obj.unexport();
     tempGPIO.delete(key);
     lockGPIO.delete(key);
@@ -171,8 +174,10 @@ setInterval(()=>{
 },10000);
 */
 
-function processMessage(connection,u8mes){
-  logout("processMessage called: id["+connection.uid+"] mes["+u8mes+"]");
+function processMessage(connection, u8mes) {
+  logout(
+    "processMessage called: id[" + connection.uid + "] mes[" + u8mes + "]"
+  );
 
   //
   // ToDo:
@@ -181,55 +186,67 @@ function processMessage(connection,u8mes){
   // Lockだったときは待つ必要がないはずなので、ここでやっちゃった方が効率がいいはずなのだが、
   //
 
-  processQueue.push({connection:connection, u8mes:u8mes});
+  processQueue.push({ connection: connection, u8mes: u8mes });
   doProcess();
 }
 
-function checkAcquirable(connection,u8mes){
-//  var lockI2C = neisw Map;
-//  var lockGPIO = new Map;
-//  var tempI2C = new Map;
-//  var tempGPIO = new Map;
-//  var processQueue = [];
+function checkAcquirable(connection, u8mes) {
+  //  var lockI2C = neisw Map;
+  //  var lockGPIO = new Map;
+  //  var tempI2C = new Map;
+  //  var tempGPIO = new Map;
+  //  var processQueue = [];
 
-// result : 1,3 -> OK, 0,2 -> WAIT, -1 -> REJECT
+  // result : 1,3 -> OK, 0,2 -> WAIT, -1 -> REJECT
 
-//  console.dir(u8mes);
+  //  console.dir(u8mes);
 
   var acquire = -1;
 
-  if((u8mes[3] & 0xf0)== 0x10){ // Web GPIO API
+  if ((u8mes[3] & 0xf0) == 0x10) {
+    // Web GPIO API
     var lockdata = lockGPIO.get(u8mes[4]);
-    if((!lockdata)||(lockdata.uid == connection.uid)){
+    if (!lockdata || lockdata.uid == connection.uid) {
       var status = tempGPIO.get(u8mes[4]);
-      if(!status){
+      if (!status) {
         acquire = 1;
-        logout("★ ok(GPIO):"+u8mes);
-      }else{
-        logout("△ wait(GPIO):now processing UID:["+status.uid+"] session:["+status.session+"waiting:"+u8mes);
+        logout("★ ok(GPIO):" + u8mes);
+      } else {
+        logout(
+          "△ wait(GPIO):now processing UID:[" +
+            status.uid +
+            "] session:[" +
+            status.session +
+            "waiting:" +
+            u8mes
+        );
         acquire = 0;
       }
-    }else{
-      logout("x lockGPIO: your uid:"+connection.uid+" handle by:"+lockdata.uid);
+    } else {
+      logout(
+        "x lockGPIO: your uid:" + connection.uid + " handle by:" + lockdata.uid
+      );
     }
-  }else{
-    logout("invalid message: "+u8mes[1]);
+  } else {
+    logout("invalid message: " + u8mes[1]);
   }
-  logout("acquire:"+acquire);
+  logout("acquire:" + acquire);
   return acquire;
 }
 
-function doProcess(){
-  return new Promise((resolve,reject)=>{
-    if(processQueue.length){
+function doProcess() {
+  return new Promise((resolve, reject) => {
+    if (processQueue.length) {
       var probj = processQueue[0];
 
       // check Aquirable Resouces
-      var acq = checkAcquirable(probj.connection,probj.u8mes);
-      if((acq & ~0x02) == 0){ // WAIT (aquiable but now processing)
+      var acq = checkAcquirable(probj.connection, probj.u8mes);
+      if ((acq & ~0x02) == 0) {
+        // WAIT (aquiable but now processing)
         logout("WAIT!");
         resolve(null);
-      }else if(acq == -1){    // LOCK (not aquiable)
+      } else if (acq == -1) {
+        // LOCK (not aquiable)
 
         // ToDo :
         // Lockの判定はprocessMessage()でqueueに積む前にやっちゃった方がいい
@@ -239,22 +256,23 @@ function doProcess(){
         // 処理失敗を返さないといけないはずなので、方法要検討
 
         logout("LOCKED!");
-        var ans = createAnswer(probj.u8mes,[0]);
+        var ans = createAnswer(probj.u8mes, [0]);
 
         // Queueの処理実行時に入れ違いでWebSocketが閉じられていることがある。
         // 閉じられていた場合、送信しない。
-        if (probj.connection.ws.readyState === 1){
+        if (probj.connection.ws.readyState === 1) {
           probj.connection.ws.send(ans);
         }
         processQueue.shift();
         resolve(null);
-      }else{                  // OK (aquirable)
-        processOne(probj.connection,probj.u8mes).then((value)=>{
-//          logout("processOne.then() : "+processQueue.length);
+      } else {
+        // OK (aquirable)
+        processOne(probj.connection, probj.u8mes).then(value => {
+          //          logout("processOne.then() : "+processQueue.length);
 
-        // Queueの処理実行時に入れ違いでWebSocketが閉じられていることがある。
-        // 閉じられていた場合、送信しない。
-          if (probj.connection.ws.readyState === 1){
+          // Queueの処理実行時に入れ違いでWebSocketが閉じられていることがある。
+          // 閉じられていた場合、送信しない。
+          if (probj.connection.ws.readyState === 1) {
             probj.connection.ws.send(value);
           }
           value = null;
@@ -269,16 +287,16 @@ function doProcess(){
 ////////////////////////////////////////////////////////////
 // GPIO / I2C wrapper
 
-var gpio = require("gpio",{interval:50});
+var gpio = require("gpio", { interval: 50 });
 
-function createAnswer(header,result){
+function createAnswer(header, result) {
   var resdata = new Array(4);
   resdata[0] = header[0];
   resdata[1] = header[1];
   resdata[2] = header[2];
   resdata[3] = header[3];
 
-  for(var cnt=0;cnt < result.length;cnt++){
+  for (var cnt = 0; cnt < result.length; cnt++) {
     resdata.push(result[cnt]);
   }
   return new Uint8Array(resdata);
@@ -320,154 +338,166 @@ function createAnswer(header,result){
 //         3     : readRegister: [4] read size (!0:OK, 0:NG) [5-] readData
 // -------------------------------------------------------------------------------
 
-
-function processOne(connection,u8mes){
-  return new Promise((resolve,reject)=>{
+function processOne(connection, u8mes) {
+  return new Promise((resolve, reject) => {
     var temp;
-    var session = (u8mes[1] | (u8mes[2] << 8));
+    var session = u8mes[1] | (u8mes[2] << 8);
     var func = u8mes[3];
-    var portnum = addr = u8mes[4];
+    var portnum = (addr = u8mes[4]);
     var ans = [];
 
-    if((func & 0xf0)== 0x10){ // Web GPIO API
+    if ((func & 0xf0) == 0x10) {
+      // Web GPIO API
       temp = tempGPIO;
     }
-    temp.set(portnum,{uid:connection.uid, session:session});
+    temp.set(portnum, { uid: connection.uid, session: session });
 
-    switch(func){
+    switch (func) {
+      /////////////////////////////////////////////////////////////////////////
+      //      0x1x     : Web GPIO API
+      //         0     : export      : [4] Port Number [5] Direction (0:out 1:in)
+      case 0x10: {
+        var direction = u8mes[5];
+        logout(
+          "0x10:[" +
+            session +
+            "]: port=" +
+            portnum +
+            " value=" +
+            value +
+            " direction=" +
+            direction
+        );
+        lockGPIO.set(portnum, {
+          uid: connection.uid,
+          direction: direction,
+          value: -1
+        });
+        var dirStr;
+        if (direction == 1) {
+          // direction:in
+          dirStr = "in";
+        } else {
+          dirStr = "out";
+        }
+        var options = {
+          direction: dirStr,
+          ready: function() {
+            temp.delete(portnum);
+            var portdata = lockGPIO.get(portnum);
+            portdata.exportobj = exportobj;
+            logout(portnum + " dir: " + portdata.direction);
+            lockGPIO.set(portnum, portdata);
+            logout(
+              "export:done: port=" +
+                portnum +
+                " direction=" +
+                portdata.direction
+            );
 
-    /////////////////////////////////////////////////////////////////////////
-    //      0x1x     : Web GPIO API
-    //         0     : export      : [4] Port Number [5] Direction (0:out 1:in)
-    case 0x10:
-    {
-      var direction = u8mes[5];
-      logout("0x10:["+session+"]: port="+portnum+" value="+value+" direction="+direction);
-      lockGPIO.set(portnum,{uid:connection.uid, direction:direction, value:-1});
-      var dirStr;
-      if(direction == 1){  // direction:in
-        dirStr = 'in';
-      }else{
-        dirStr = 'out';
-      }
-      var options = {
-        direction: dirStr,
-        ready: function(){
-          temp.delete(portnum);
-          var portdata = lockGPIO.get(portnum);
-          portdata.exportobj = exportobj;
-          logout(portnum+" dir: "+portdata.direction);
-          lockGPIO.set(portnum,portdata);
-          logout("export:done: port="+portnum+" direction="+portdata.direction);
-
-          if(portdata.direction == 1){
-            portdata.exportobj.on("change",(val)=>{
-              // [0] Change Callback (2)
-              // [1] session id LSB (0)
-              // [2] session id MSB (0)
-              // [3] function id (0x14)
-              // [4] Port Number
-              // [5] Value (0:LOW 1:HIGH)
-              logout("changed:"+portnum+" value:"+val);
-              var portdata = lockGPIO.get(portnum);
-              portdata.value = val;
-              lockGPIO.set(portnum,portdata);
-              var mes = new Uint8Array([2,0,0,0x14,portnum,val]);
-              var conn = connections.get(portdata.uid);
-              conn.ws.send(mes);
-              mes = null;
-            });
-            ans = createAnswer(u8mes,[1]);
-            resolve(ans);
-          }else{
-            //         0     : export      : [4] result (1:OK, 0:NG)
-            ans = createAnswer(u8mes,[1]);
-            resolve(ans);
+            if (portdata.direction == 1) {
+              portdata.exportobj.on("change", val => {
+                // [0] Change Callback (2)
+                // [1] session id LSB (0)
+                // [2] session id MSB (0)
+                // [3] function id (0x14)
+                // [4] Port Number
+                // [5] Value (0:LOW 1:HIGH)
+                logout("changed:" + portnum + " value:" + val);
+                var portdata = lockGPIO.get(portnum);
+                portdata.value = val;
+                lockGPIO.set(portnum, portdata);
+                var mes = new Uint8Array([2, 0, 0, 0x14, portnum, val]);
+                var conn = connections.get(portdata.uid);
+                conn.ws.send(mes);
+                mes = null;
+              });
+              ans = createAnswer(u8mes, [1]);
+              resolve(ans);
+            } else {
+              //         0     : export      : [4] result (1:OK, 0:NG)
+              ans = createAnswer(u8mes, [1]);
+              resolve(ans);
+            }
           }
-        }
-      };
-      var exportobj = gpio.export(portnum,options);
-      connection.exportedPorts.set(portnum,exportobj);
-      break;
-    }
-
-    /////////////////////////////////////////////////////////////////////////
-    //      0x1x     : Web GPIO API
-    //         1     : write       : [4] Port Number [5] Value (0:LOW 1:HIGH)
-    case 0x11:
-    {
-      var portdata = lockGPIO.get(portnum);
-      var value = u8mes[5];
-      logout("0x11:["+session+"]: port="+portnum+" value="+value);
-      if(portdata.direction == 0){ // out
-        if(value > 0){
-          value = 1;
-        }
-        portdata.value = value;       // これは本当はresolveでやった方がいいか?
-        lockGPIO.set(portnum,portdata);
-
-        logout("setValue() : port"+portnum+" value:"+value);
-
-        // setValue()
-        portdata.exportobj.set(value);
-        temp.delete(portnum);
-        ans = createAnswer(u8mes,[1]);
-        resolve(ans);
-      }else{
-        logout("setValue() Error : port["+portnum+"] is now input port.");
+        };
+        var exportobj = gpio.export(portnum, options);
+        connection.exportedPorts.set(portnum, exportobj);
+        break;
       }
-      break;
-    }
 
-    /////////////////////////////////////////////////////////////////////////
-    //      0x1x     : Web GPIO API
-    //         2     : read         : [4] Port Number
-    case 0x12:
-    {
-      logout("0x12:["+session+"]: port="+portnum);
-      var portdata = lockGPIO.get(portnum);
-      if(portdata.direction == 1){ // in
+      /////////////////////////////////////////////////////////////////////////
+      //      0x1x     : Web GPIO API
+      //         1     : write       : [4] Port Number [5] Value (0:LOW 1:HIGH)
+      case 0x11: {
+        var portdata = lockGPIO.get(portnum);
+        var value = u8mes[5];
+        logout("0x11:[" + session + "]: port=" + portnum + " value=" + value);
+        if (portdata.direction == 0) {
+          // out
+          if (value > 0) {
+            value = 1;
+          }
+          portdata.value = value; // これは本当はresolveでやった方がいいか?
+          lockGPIO.set(portnum, portdata);
 
-        // pollingPorts の処理で定期的に読み込んだ値をlockGPIOに保存しておき、
-        // getValueは同期で返せるように作る。
+          logout("setValue() : port" + portnum + " value:" + value);
 
-        temp.delete(portnum);
-        ans = createAnswer(u8mes,[1,portdata.value]);
-        resolve(ans);
-        logout("getValue() : port"+portnum+" value:"+portdata.value);
-
-      }else{
-        temp.delete(portnum);
-        logout("getValue() Error : port["+portnum+"] is now output port.");
+          // setValue()
+          portdata.exportobj.set(value);
+          temp.delete(portnum);
+          ans = createAnswer(u8mes, [1]);
+          resolve(ans);
+        } else {
+          logout("setValue() Error : port[" + portnum + "] is now input port.");
+        }
+        break;
       }
-      break;
-    }
 
-    /////////////////////////////////////////////////////////////////////////
-    //      0x1x     : Web GPIO API
-    //         3     : unexport    : [4] Port Number
-    case 0x13:
-    {
-      logout("0x13:["+session+"]: port="+portnum);
-      var portdata = lockGPIO.get(portnum);
-      portdata.exportobj.removeAllListeners('change');
-      portdata.exportobj.unexport();
-      connection.exportedPorts.delete(portnum);
-      lockGPIO.delete(portnum);
-      temp.delete(portnum);
-      ans = createAnswer(u8mes,[1]);
-      resolve(ans);
-      break;
-    }
-    default:
-      processQueue = [];
-      reject("invalid API Request: ["+func+"]");
-      break;
+      /////////////////////////////////////////////////////////////////////////
+      //      0x1x     : Web GPIO API
+      //         2     : read         : [4] Port Number
+      case 0x12: {
+        logout("0x12:[" + session + "]: port=" + portnum);
+        var portdata = lockGPIO.get(portnum);
+        if (portdata.direction == 1) {
+          // in
+
+          // pollingPorts の処理で定期的に読み込んだ値をlockGPIOに保存しておき、
+          // getValueは同期で返せるように作る。
+
+          temp.delete(portnum);
+          ans = createAnswer(u8mes, [1, portdata.value]);
+          resolve(ans);
+          logout("getValue() : port" + portnum + " value:" + portdata.value);
+        } else {
+          temp.delete(portnum);
+          logout(
+            "getValue() Error : port[" + portnum + "] is now output port."
+          );
+        }
+        break;
+      }
+
+      /////////////////////////////////////////////////////////////////////////
+      //      0x1x     : Web GPIO API
+      //         3     : unexport    : [4] Port Number
+      case 0x13: {
+        logout("0x13:[" + session + "]: port=" + portnum);
+        var portdata = lockGPIO.get(portnum);
+        portdata.exportobj.removeAllListeners("change");
+        portdata.exportobj.unexport();
+        connection.exportedPorts.delete(portnum);
+        lockGPIO.delete(portnum);
+        temp.delete(portnum);
+        ans = createAnswer(u8mes, [1]);
+        resolve(ans);
+        break;
+      }
+      default:
+        processQueue = [];
+        reject("invalid API Request: [" + func + "]");
+        break;
     } // switch()
-
   });
 }
-
-
-
-
