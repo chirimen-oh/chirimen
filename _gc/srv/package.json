@@ -4,8 +4,8 @@
   "description": "server for Web GPIO/I2C API",
   "main": "srv.js",
   "dependencies": {
-    "gpio": "^0.2.7",
+    "gpio": "^0.2.10",
     "i2c-bus": "^5.0.0",
-    "ws": "^3.1.0"
+    "ws": "^7.1.2"
   }
 }
