@@ -88,6 +88,22 @@ var tempGPIO = new Map();
 
 /* --------------------------------------------------------
 
+  tempI2C: map
+
+  I2C の処理中セッションを記録しておくmap。
+  処理中セッションが存在するI2C Addressのみ登録される。
+
+  key: slaveAddress (Web I2C)
+
+  obj.uid         : client uid
+  obj.session     : session id
+
+-------------------------------------------------------- */
+
+var tempI2C = new Map();
+
+/* --------------------------------------------------------
+
   processQueue: array
 
   message処理待ちQueue(FIFO)
@@ -112,7 +128,7 @@ wss.on("connection", ws => {
   conn.ws = ws;
   conn.uid = ws._socket._handle.fd;
   conn.exportedPorts = new Map();
-  conn.usingSlaveAddrs = new Map();
+  conn.usingSlaveAddrs = new Set();
   connections.set(conn.uid, conn);
   logout(
     "[new connection]uid:" +
@@ -148,12 +164,16 @@ wss.on("connection", ws => {
   });
 });
 
-function unlockAllResources(connection) {
-  connection.exportedPorts.forEach((obj, key) => {
+function unlockAllResources({ exportedPorts, usingSlaveAddrs }) {
+  exportedPorts.forEach((obj, key) => {
     logout("unlockAllResources-gpio:port=" + key);
     obj.unexport();
     tempGPIO.delete(key);
     lockGPIO.delete(key);
+  });
+  usingSlaveAddrs.forEach(addr => {
+    logout("unlockAllResources-i2c:addr=" + addr);
+    tempI2C.delete(addr);
   });
 }
 
@@ -185,46 +205,79 @@ function processMessage(connection, u8mes) {
   doProcess();
 }
 
+/**
+ * @returns {(-1|0|1|2|3)} acquire status: -1->REJECT, 0->WAIT, 1->OK, 2->WAIT, 3->OK
+ */
 function checkAcquirable(connection, u8mes) {
-  //  var lockI2C = neisw Map;
-  //  var lockGPIO = new Map;
-  //  var tempI2C = new Map;
-  //  var tempGPIO = new Map;
-  //  var processQueue = [];
-
-  // result : 1,3 -> OK, 0,2 -> WAIT, -1 -> REJECT
-
-  //  console.dir(u8mes);
-
-  var acquire = -1;
-
-  if ((u8mes[3] & 0xf0) == 0x10) {
+  const portNumberOrSlaveAddress = u8mes[4];
+  let acquire = -1;
+  switch (u8mes[3] & 0xf0) {
     // Web GPIO API
-    var lockdata = lockGPIO.get(u8mes[4]);
-    if (!lockdata || lockdata.uid == connection.uid) {
-      var status = tempGPIO.get(u8mes[4]);
-      if (!status) {
-        acquire = 1;
-        logout("★ ok(GPIO):" + u8mes);
-      } else {
+    case 0x10: {
+      const lockdata = lockGPIO.get(portNumberOrSlaveAddress);
+      if (lockdata != null && lockdata.uid !== connection.uid) {
         logout(
-          "△ wait(GPIO):now processing UID:[" +
-            status.uid +
-            "] session:[" +
-            status.session +
-            "waiting:" +
-            u8mes
+          [
+            "x",
+            "lockGPIO:",
+            ["your uid", connection.uid].join(":"),
+            ["handle by", lockdata.uid].join(":")
+          ].join(" ")
+        );
+        break;
+      }
+
+      const status = tempGPIO.get(portNumberOrSlaveAddress);
+      if (status != null) {
+        const { uid, session } = status;
+        logout(
+          [
+            "△",
+            "wait(GPIO):",
+            "now processing",
+            ["UID", `[${uid}]`].join(":"),
+            ["session", `[${session}]`].join(":"),
+            ["waiting", u8mes].join(":")
+          ].join(" ")
         );
         acquire = 0;
+        break;
       }
-    } else {
-      logout(
-        "x lockGPIO: your uid:" + connection.uid + " handle by:" + lockdata.uid
-      );
+
+      logout(["★", "ok(GPIO):", u8mes].join(" "));
+      acquire = 1;
+      break;
     }
-  } else {
-    logout("invalid message: " + u8mes[1]);
+
+    // Web I2C API
+    case 0x20: {
+      const status = tempI2C.get(portNumberOrSlaveAddress);
+      if (status != null) {
+        const { uid, session } = status;
+        logout(
+          [
+            "△",
+            "wait(I2C):",
+            "now processing",
+            ["UID", `[${uid}]`].join(":"),
+            ["session"`${session}`].join(":"),
+            ["waiting", u8mes].join(":")
+          ].join(" ")
+        );
+        acquire = 2;
+        break;
+      }
+
+      logout(["★", "ok(I2C):", u8mes].join(" "));
+      acquire = 3;
+      break;
+    }
+    default: {
+      logout("invalid message: " + u8mes[1]);
+      break;
+    }
   }
+
   logout("acquire:" + acquire);
   return acquire;
 }
@@ -282,7 +335,13 @@ function doProcess() {
 ////////////////////////////////////////////////////////////
 // GPIO / I2C wrapper
 
-var gpio = require("gpio", { interval: 50 });
+const gpio = require("gpio", { interval: 50 });
+const i2c = require("i2c-bus");
+
+let i2c1 = null;
+i2c.openPromisified(1).then(bus => {
+  i2c1 = bus;
+});
 
 function createAnswer(header, result) {
   var resdata = new Array(4);
@@ -338,12 +397,19 @@ function processOne(connection, u8mes) {
     var temp;
     var session = u8mes[1] | (u8mes[2] << 8);
     var func = u8mes[3];
-    var portnum = (addr = u8mes[4]);
+    var portnum = u8mes[4];
     var ans = [];
 
-    if ((func & 0xf0) == 0x10) {
+    switch (func & 0xf0) {
       // Web GPIO API
-      temp = tempGPIO;
+      case 0x10:
+        temp = tempGPIO;
+        break;
+
+      // Web I2C API
+      case 0x20:
+        temp = tempI2C;
+        break;
     }
     temp.set(portnum, { uid: connection.uid, session: session });
 
@@ -487,6 +553,179 @@ function processOne(connection, u8mes) {
         temp.delete(portnum);
         ans = createAnswer(u8mes, [1]);
         resolve(ans);
+        break;
+      }
+
+      /////////////////////////////////////////////////////////////////////////
+      //      0x2x     : Web I2C API
+      //         0     : resource    : [4] slaveAddress [5] (1:acquire, 0:free)
+      case 0x20: {
+        const slaveAddress = u8mes[4];
+        const method = u8mes[5];
+
+        logout(
+          [
+            `0x20:[${session}]:`,
+            `addr=${slaveAddress}`,
+            `method=${method}`
+          ].join(" ")
+        );
+
+        const { usingSlaveAddrs } = connection;
+        switch (method) {
+          // acquire
+          case 1:
+            usingSlaveAddrs.add(slaveAddress);
+            break;
+
+          // free
+          case 0:
+            usingSlaveAddrs.delete(slaveAddress);
+            break;
+        }
+
+        temp.delete(slaveAddress);
+        resolve(createAnswer(u8mes, [1]));
+        break;
+      }
+
+      /////////////////////////////////////////////////////////////////////////
+      //      0x2x     : Web I2C API
+      //         1     : writeBytes  : [4] slaveAddress [5] size [6-] data
+      case 0x21: {
+        if (i2c1 == null) {
+          reject("i2c-1 bus has not been initialized.");
+          break;
+        }
+
+        const slaveAddress = u8mes[4];
+        const size = u8mes[5];
+        const data = u8mes.slice(6);
+
+        logout(
+          [
+            `0x21:[${session}]:`,
+            `addr=${slaveAddress}`,
+            `size=${size}`,
+            `data.length=${data.length}`
+          ].join(" ")
+        );
+
+        if (data.length < size) {
+          temp.delete(addr);
+          processQueue = [];
+          reject("write size is not valid!");
+          break;
+        }
+
+        const buffer = Buffer.from(data.slice(0, size));
+        const responseHandler = ({ bytesWritten } = { bytesWritten: 0 }) => {
+          logout(
+            [
+              `0x21:[${session}]:`,
+              `addr=${slaveAddress}`,
+              `result=${bytesWritten}`
+            ].join(" ")
+          );
+          temp.delete(slaveAddress);
+          resolve(createAnswer(u8mes, [bytesWritten]));
+        };
+
+        i2c1
+          .i2cWrite(slaveAddress, size, buffer)
+          .then(responseHandler)
+          .catch(() => responseHandler());
+        break;
+      }
+
+      /////////////////////////////////////////////////////////////////////////
+      //      0x2x     : Web I2C API
+      //         2     : readBytes   : [4] slaveAddress [5] readSize
+      case 0x22: {
+        if (i2c1 == null) {
+          reject("i2c-1 bus has not been initialized.");
+          break;
+        }
+
+        const slaveAddress = u8mes[4];
+        const readSize = u8mes[5];
+
+        logout(
+          [
+            `0x22:[${session}]:`,
+            `addr=${slaveAddress}`,
+            `readSize=${readSize}`
+          ].join(" ")
+        );
+
+        const responseHandler = ({ bytesRead, buffer } = { bytesRead: 0 }) => {
+          const array =
+            bytesRead > 0 ? Array.from(buffer.slice(0, bytesRead)) : [];
+
+          logout(
+            [
+              `0x22:[${session}]:`,
+              `addr=${slaveAddress}`,
+              `result=${bytesRead}`
+            ].join(" ")
+          );
+          temp.delete(slaveAddress);
+          resolve(createAnswer(u8mes, [bytesRead, ...array]));
+        };
+
+        i2c1
+          .i2cRead(slaveAddress, readSize, new Buffer(readSize))
+          .then(responseHandler)
+          .catch(() => responseHandler());
+        break;
+      }
+
+      /////////////////////////////////////////////////////////////////////////
+      //      0x2x     : Web I2C API
+      //         3     : readRegister: [4] slaveAddress [5] registerNumber [6] readSize
+      case 0x23: {
+        if (i2c1 == null) {
+          reject("i2c-1 bus has not been initialized.");
+          break;
+        }
+
+        const slaveAddress = u8mes[4];
+        const registerNumber = u8mes[5];
+        const readSize = u8mes[6];
+
+        logout(
+          [
+            `0x23:[${session}]:`,
+            `addr=${slaveAddress}`,
+            `register=${registerNumber}`,
+            `readSize=${readSize}`
+          ].join(" ")
+        );
+
+        const responseHandler = ({ bytesRead, buffer } = { bytesRead: 0 }) => {
+          const array =
+            bytesRead > 0 ? Array.from(buffer.slice(0, bytesRead)) : [];
+
+          logout(
+            [
+              `0x23:[${session}]:`,
+              `addr=${slaveAddress}`,
+              `result=${bytesRead}`
+            ].join(" ")
+          );
+          temp.delete(slaveAddress);
+          resolve(createAnswer(u8mes, [bytesRead, ...array]));
+        };
+
+        i2c1
+          .readI2cBlock(
+            slaveAddress,
+            registerNumber,
+            readSize,
+            new Buffer(readSize)
+          )
+          .then(responseHandler)
+          .catch(() => responseHandler());
         break;
       }
       default:

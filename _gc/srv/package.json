@@ -5,6 +5,7 @@
   "main": "srv.js",
   "dependencies": {
     "gpio": "^0.2.7",
+    "i2c-bus": "^5.0.0",
     "ws": "^3.1.0"
   }
 }
