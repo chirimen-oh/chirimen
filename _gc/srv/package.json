@@ -4,7 +4,6 @@
   "description": "server for Web GPIO/I2C API",
   "main": "srv.js",
   "dependencies": {
-    "date-utils": "^1.2.21",
     "gpio": "^0.2.7",
     "ws": "^3.1.0"
   }

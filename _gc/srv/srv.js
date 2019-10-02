@@ -6,12 +6,7 @@
 
 // logout
 function logout(str) {
-  // /* Log一気に消すときは // 消す。
-  var dt = new Date();
-  var datetime = dt.toFormat("YYYY-MM-DD HH24:MI:SS");
-  console.log(datetime + " : " + str);
-  dt = null;
-  // Log一気に消すときは // 消す。 */
+  console.log([new Date().toLocaleString(), str].join(" : "));
 }
 
 // version
