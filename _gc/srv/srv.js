@@ -260,7 +260,7 @@ function checkAcquirable(connection, u8mes) {
             "wait(I2C):",
             "now processing",
             ["UID", `[${uid}]`].join(":"),
-            ["session"`${session}`].join(":"),
+            ["session", `${session}`].join(":"),
             ["waiting", u8mes].join(":")
           ].join(" ")
         );
