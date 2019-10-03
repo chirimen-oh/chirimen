@@ -612,7 +612,7 @@ function processOne(connection, u8mes) {
         );
 
         if (data.length < size) {
-          temp.delete(addr);
+          temp.delete(slaveAddress);
           processQueue = [];
           reject("write size is not valid!");
           break;
