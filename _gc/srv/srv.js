@@ -674,7 +674,7 @@ function processOne(connection, u8mes) {
         };
 
         i2c1
-          .i2cRead(slaveAddress, readSize, new Buffer(readSize))
+          .i2cRead(slaveAddress, readSize, Buffer.allocUnsafe(readSize))
           .then(responseHandler)
           .catch(() => responseHandler());
         break;
@@ -722,7 +722,7 @@ function processOne(connection, u8mes) {
             slaveAddress,
             registerNumber,
             readSize,
-            new Buffer(readSize)
+            Buffer.allocUnsafe(readSize)
           )
           .then(responseHandler)
           .catch(() => responseHandler());
