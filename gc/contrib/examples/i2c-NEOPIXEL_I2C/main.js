@@ -9,6 +9,7 @@ async function main() {
     var i2cAccess = await navigator.requestI2CAccess();
     var i2cPort = i2cAccess.ports.get(1);
     var npix = new NEOPIXEL_I2C(i2cPort, 0x41);
+    // npix.init() の引数には連結接続する LED の数を指定する
     await npix.init(128);
     console.log("init end");
     npixPromise = npix;
