@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1"
+    />
+    <title>i2c-INA219</title>
+    <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
+    <script src="node_modules/@chirimen-raspi/chirimen-driver-i2c-ina219/INA219.js"></script>
+    <script src="./main.js" defer></script>
+    <style>
+      table,
+      p {
+        color: blue;
+        text-align: center;
+        font-size: 24px;
+      }
+
+      img {
+        position: absolute;
+        top: 50px;
+        right: 0px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p id="head">INA219</p>
+    <img src="INA219schematic.png" width="600" />
+    <table>
+      <tr>
+        <td>Bus Current [mA]</td>
+        <td id="current"></td>
+      </tr>
+      <tr>
+        <td>Power [mW]</td>
+        <td id="power"></td>
+      </tr>
+      <tr>
+        <td>Shunt voltage [mV]</td>
+        <td id="shunt"></td>
+      </tr>
+      <tr>
+        <td>Voltage [V]</td>
+        <td id="voltage"></td>
+      </tr>
+      <tr>
+        <td>Supply Voltage [V]</td>
+        <td id="supply_voltage"></td>
+      </tr>
+    </table>
+  </body>
+</html>
