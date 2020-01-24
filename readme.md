@@ -13,7 +13,7 @@ Execute [`./setup.sh`](setup.sh) on Raspbian with Desktop.
 
 # View top page content of chirimen environment on github
 
-[Access this page](http://chirimen.org/chirimen-raspi3/gc/top/) via github pages.
+[Access this page](http://chirimen.org/chirimen/gc/top/) via github pages.
 
 # Files and Directories
 
