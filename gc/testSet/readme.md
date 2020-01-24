@@ -1,6 +1,6 @@
 This directory stores test software for testing CHIRIMEN.
 
-However, many test parts are examples itselfs. In addition, the circuit for testing, as described at https://github.com/chirimen-oh/chirimen-raspi3/issues/24 , is required.
+However, many test parts are examples itselfs. In addition, the circuit for testing, as described at https://github.com/chirimen-oh/chirimen/issues/24 , is required.
 
 Meanwhile, the implementations added under this directory are mainly modified examples to avoid collision of I2C addres.
 
