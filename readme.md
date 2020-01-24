@@ -1,14 +1,11 @@
-# CHIRIMEN for Raspberry Pi 3
+# CHIRIMEN for Raspberry Pi
 
-`CHIRIMEN for Raspberry Pi 3` is an IoT programing/prototyping environment for bigenners.
+`CHIRIMEN for Raspberry Pi` is an IoT programing/prototyping environment for bigenners.
 
 ![wallpaper](_gc/wallpaper/wallpaper-720P.png)
 
 Always under construction...
 
-# Version
-
-2019/08/01
 
 # How To Setup CHIRIMEN Environment on raspbian
 
@@ -33,7 +30,7 @@ Execute [`./setup.sh`](setup.sh) on Raspbian with Desktop.
 
 # How To Release
 
-Refer https://github.com/chirimen-oh/chirimen-raspi3/wiki/Release
+Refer https://github.com/chirimen-oh/chirimen/wiki/Release
 
 # Licenses
 
