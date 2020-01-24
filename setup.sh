@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # cd /home/pi/
-# wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/setup.sh
+# wget https://raw.githubusercontent.com/chirimen-oh/chirimen/master/setup.sh
 # ./setup.sh
 #
 # 一時的にスリープを無効
