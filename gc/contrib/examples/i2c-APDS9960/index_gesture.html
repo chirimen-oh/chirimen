@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1"
+    />
+    <title>i2c-APDS9960</title>
+    <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
+    <script src="node_modules/@chirimen-raspi/chirimen-driver-i2c-apds9960/APDS9960.js"></script>
+    <script src="./main_gesture.js" defer></script>
+    <style>
+      table,
+      p {
+        color: blue;
+        text-align: center;
+        font-size: 24px;
+      }
+
+      img {
+        position: absolute;
+        top: 50px;
+        right: 0px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p id="head">APDS9960 gesture</p>
+    <img src="APDS9960schematic.png" width="400" />
+    <table>
+      <tr>
+        <td>Gesture</td>
+        <td id="Gesture"></td>
+      </tr>
+    </table>
+  </body>
+</html>
