@@ -6,7 +6,7 @@
   }
 
   function errLog(error) {
-    console.error(typeof error === "string" ? error : error.toString());
+    console.error(error);
   }
 
   var bone = (() => {
@@ -38,7 +38,7 @@
           this.waitQueue = [];
         };
         this.wss.onerror = (error) => {
-          errLog(error.message);
+          errLog(error);
           errLog(
             [
               "Node.jsプロセスとの接続に失敗しました。",
