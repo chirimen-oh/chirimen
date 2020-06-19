@@ -38,7 +38,7 @@
           this.waitQueue = [];
         };
         this.wss.onerror = (error) => {
-          errLog(error);
+          errLog(error.message);
           errLog(
             [
               "Node.jsプロセスとの接続に失敗しました。",
