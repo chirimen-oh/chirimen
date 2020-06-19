@@ -360,11 +360,10 @@
   function printReadError(portNumber, slaveAddress) {
     errLog(
       [
-        `I2C-${portNumber}`,
-        `(アドレス: 0x${slaveAddress.toString(16)})`,
+        `i2c-${portNumber}(アドレス: 0x${slaveAddress.toString(16)})`,
         "からの値の取得に失敗しました。",
         "デバイスが正しく認識されており、アドレスに誤りがないことを確認してください。",
-      ].join(" ")
+      ].join("")
     );
   }
 
