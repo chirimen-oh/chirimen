@@ -5,8 +5,8 @@
     // console.log("info: "+str);
   }
 
-  function errLog(str) {
-    console.log("error: " + str);
+  function errLog(error) {
+    console.error(typeof error === "string" ? error : error.toString());
   }
 
   var bone = (() => {
@@ -38,7 +38,14 @@
           this.waitQueue = [];
         };
         this.wss.onerror = (error) => {
-          errLog("ws error: " + error);
+          errLog(error);
+          errLog(
+            [
+              "Node.jsプロセスとの接続に失敗しました。",
+              "CHIRIMEN for Raspberry Piやその互換環境でのみ実行可能です。",
+              "https://r.chirimen.org/tutorial",
+            ].join("\n")
+          );
           var length = this.waitQueue ? this.waitQueue.length : 0;
           for (var cnt = 0; cnt < length; cnt++) {
             if (typeof this.waitQueue[cnt] === "function") {
@@ -90,7 +97,15 @@
 
       receive: function (mes) {
         if (!(mes instanceof Uint8Array)) {
-          errLog("type error: Please using with Uint8Array buffer.");
+          errLog(new TypeError("Please using with Uint8Array buffer."));
+          errLog(
+            new TypeError(
+              [
+                "Uint8Array以外を受信しました。",
+                "Node.jsのプロセスに何らかの内部的な問題が生じている可能性があります。",
+              ].join("")
+            )
+          );
           return;
         }
         var session = (mes[1] & 0x00ff) | (mes[2] << 8);
@@ -104,7 +119,15 @@
           func(data);
           this.queue.delete(session);
         } else {
-          errLog("func type error: session=" + session + " func=" + func);
+          errLog(new TypeError("session=" + session + " func=" + func));
+          errLog(
+            new TypeError(
+              [
+                "受信処理の実行に失敗しました。",
+                "何らかの内部的な問題が生じている可能性があります。",
+              ].join("")
+            )
+          );
         }
       },
 
@@ -120,7 +143,15 @@
 
       onEvent: function (data) {
         if (!(data instanceof Uint8Array)) {
-          errLog("type error: Please using with Uint8Array buffer.");
+          errLog(new TypeError("Please using with Uint8Array buffer."));
+          errLog(
+            new TypeError(
+              [
+                "Uint8Array以外を受信しました。",
+                "Node.jsのプロセスに何らかの内部的な問題が生じている可能性があります。",
+              ].join("")
+            )
+          );
           return;
         }
 
@@ -244,6 +275,12 @@
         bone.send(0x10, data).then(
           (result) => {
             if (result[0] == 0) {
+              errLog(
+                [
+                  `GPIO${this.portNumber}への接続に失敗しました。`,
+                  "他のウィンドウ/タブなど別のプロセスが既に同じピン番号を使用している可能性があります。",
+                ].join("")
+              );
               reject("GPIOPort(" + this.portNumber + ").export() error");
             } else {
               resolve();
@@ -262,6 +299,7 @@
         bone.send(0x12, data).then(
           (result) => {
             if (result[0] == 0) {
+              errLog(`GPIO${this.portNumber}から値の取得に失敗しました。`);
               reject("GPIOPort(" + this.portNumber + ").read() error");
             } else {
               resolve(result[1]);
@@ -280,6 +318,7 @@
         bone.send(0x11, data).then(
           (result) => {
             if (result[0] == 0) {
+              errLog(`GPIO${this.portNumber}に値の設定に失敗しました。`);
               reject("GPIOPort(" + this.portNumber + ").write() error");
             } else {
               resolve();
@@ -299,6 +338,7 @@
         bone.send(0x13, data).then(
           (result) => {
             if (result[0] == 0) {
+              errLog(`GPIO${this.portNumber}の開放に失敗しました。`);
               reject("GPIOPort(" + this.portNumber + ").unexport() error");
             } else {
               resolve();
@@ -316,6 +356,28 @@
   // I2CAccess
 
   var i2cPorts = [1];
+
+  function printReadError(portNumber, slaveAddress) {
+    errLog(
+      [
+        `I2C-${portNumber}`,
+        `(アドレス: 0x${slaveAddress.toString(16)})`,
+        "からの値の取得に失敗しました。",
+        "デバイスが正しく認識されており、アドレスに誤りがないことを確認してください。",
+      ].join(" ")
+    );
+  }
+
+  function printWriteError(portNumber, slaveAddress) {
+    errLog(
+      [
+        `I2C-${portNumber}`,
+        `(アドレス: 0x${slaveAddress.toString(16)})`,
+        "への値の書き込みに失敗しました。",
+        "デバイスが正しく認識されており、アドレスに誤りがないことを確認してください。",
+      ].join(" ")
+    );
+  }
 
   var I2CAccess = function () {
     this.init();
@@ -384,6 +446,7 @@
               infoLog("I2CSlaveDevice.init() result OK");
               resolve(this);
             } else {
+              errLog(`I2C-${this.portNumber}への接続に失敗しました。`);
               errLog("I2CSlaveDevice.init() result NG");
               reject("I2CSlaveDevice.init() result NG:");
             }
@@ -405,6 +468,7 @@
             if (readSize == 1) {
               resolve(result[1]);
             } else {
+              printReadError(this.portNumber, this.slaveAddress);
               reject("read8() readSize unmatch : " + readSize);
             }
           },
@@ -429,6 +493,7 @@
               var res = res_l + (res_h << 8);
               resolve(res);
             } else {
+              printReadError(this.portNumber, this.slaveAddress);
               reject("read16() readSize unmatch : " + readSize);
             }
           },
@@ -456,6 +521,7 @@
           (result) => {
             infoLog("I2CSlaveDevice.write8() result value=" + result);
             if (result[0] != size) {
+              printWriteError(this.portNumber, this.slaveAddress);
               reject(
                 "I2CSlaveAddress(" + this.slaveAddress + ").write8():error"
               );
@@ -490,6 +556,7 @@
           (result) => {
             infoLog("I2CSlaveDevice.write16() result value=" + result);
             if (result[0] != size) {
+              printWriteError(this.portNumber, this.slaveAddress);
               reject(
                 "I2CSlaveAddress(" + this.slaveAddress + ").write16():error"
               );
@@ -514,6 +581,7 @@
             if (readSize == 1) {
               resolve(result[1]);
             } else {
+              printReadError(this.portNumber, this.slaveAddress);
               reject("readByte() readSize unmatch : " + readSize);
             }
           },
@@ -539,6 +607,7 @@
               buffer.shift(); // readSizeを削除
               resolve(buffer);
             } else {
+              printReadError(this.portNumber, this.slaveAddress);
               reject("readBytes() readSize unmatch : " + readSize);
             }
           },
@@ -558,6 +627,7 @@
           (result) => {
             infoLog("I2CSlaveDevice.writeByte() result" + result);
             if (result[0] != size) {
+              printWriteError(this.portNumber, this.slaveAddress);
               reject(
                 "I2CSlaveAddress(" + this.slaveAddress + ").writeByte():error"
               );
@@ -590,6 +660,7 @@
               resbuffer.shift(); // readSizeを削除
               resolve(resbuffer);
             } else {
+              printWriteError(this.portNumber, this.slaveAddress);
               reject("writeBytes() writeSize unmatch : " + result[0]);
             }
           },

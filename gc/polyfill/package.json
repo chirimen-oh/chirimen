@@ -1,6 +1,6 @@
 {
   "name": "@chirimen-raspi/polyfill",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "main": "polyfill.js",
   "publishConfig": {
     "access": "public"
