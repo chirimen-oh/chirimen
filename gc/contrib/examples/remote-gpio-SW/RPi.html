@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      content="width=device-width, user-scalable=no, initial-scale=1"
+      name="viewport"
+    />
+    <title>Remote Switch Transmitter</title>
+    <script src="https://chirimen.org/chirimen/gc/polyfill/polyfill.js"></script>
+    <script src="https://chirimen.org/remote-connection/js/RelayServer.js"></script>
+    <script src="./RPi.js" defer></script>
+    <style>
+      p {
+        color: blue;
+        text-align: center;
+        font-size: 24px;
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Remote Switch Transmitter</p>
+    <div id="message"></div>
+    <img height="400px" src="./schematic.png" />
+  </body>
+</html>

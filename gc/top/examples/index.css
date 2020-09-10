@@ -81,6 +81,9 @@ h3 {
 .outadvanced{
   background-color:rgba(255,192,255,0.7);
 }
+.outremote{
+  background-color:rgba(192,255,255,0.7);
+}
 .rowwrap{
   display:flex;
   flex-direction:row;
@@ -128,6 +131,9 @@ h3 {
 }
 .advanced{
   background-color:purple;
+}
+.remote{
+  background-color:brown;
 }
 .cwrap{
   position: relative;

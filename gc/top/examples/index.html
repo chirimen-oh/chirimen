@@ -24,6 +24,7 @@
         <li><a href="#gpioExamples">Basic GPIO Examples</a>
         <li><a href="#i2cExamples">Basic I2C Examples</a>
         <li><a href="#advanced">Advanced Examples</a>
+        <li><a href="#remote">Remote Examples</a>
       </ul>
       <h3>アイコンの説明</h3>
       <dl>
@@ -1083,6 +1084,175 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     
   </div>
 </div>
+
+
+<div class="outwrap outgpio">
+  <div class="colwrap">
+    <div class="twrap remote">
+      <h1 id="remote">Remote Examples リモートコントロールのサンプルです</h1>
+      <p>Note: <a target="_blank" href="https://chirimen.org/remote-connection/">relayServer.js</a> を使用しています。</p>
+    </div>
+  </div>
+
+  <div class="rowwrap">
+    <div class="cwrap" id="REMOTE-LED">
+      <div class="title">REMOTE-LED</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/remote-gpio-LED/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-gpio-LED/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-gpio-LED/pc.html" target="_blank">デモ(PC側)</a>
+        <!--
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-blink" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-gpio-blink" target="_blank">CSB</a>
+        -->
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">LEDをリモートからオンオフします。LEDの代わりにMOSFETを使ってモーターを制御することもできます</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li>LED x 1</li>
+          <li>抵抗（100Ω〜470Ω） x 1<BR>(220Ωのカラーコード:赤赤茶金)</li>
+          <li>ジャンパー（オス・メス）ケーブル x 2</li>
+          <li>ブレッドボード x 1</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="cwrap" id="REMOTE-HBridge">
+      <div class="title">REMOTE-HBridge</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/remote-gpio-HBridge/HBridge_TB6612FNG.png" target="_blank">回路図 (TB6612FNG)</a>
+        <a class="linkicon schematic" href="../../contrib/examples/remote-gpio-HBridge/HBridge_L298N.png" target="_blank">回路図 (L298N)</a>
+        <a class="linkicon schematic" href="../../contrib/examples/remote-gpio-HBridge/HBridge_TA7291P.png" target="_blank">回路図 (TA7291P)</a>
+      </div>
+      <div class="linkwrap">
+        <a class="linkicon local" href="../../contrib/examples/remote-gpio-HBridge/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-gpio-HBridge/pc.html" target="_blank">デモ(PC側)</a>
+        <!--
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-hbridge" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-hbridge" target="_blank">CSB</a>
+        -->
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">リモートからGPIO接続のH-BridgeモータドライバでDCモータを正転・逆転制御します。</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+      <ul>
+        <li>TB6612FNGを使用する場合
+        <ul>
+          <li><a href="https://www.switch-science.com/catalog/3586/">TB6612FNG ブレイクアウト</a> x 1 </li>
+          <li>ジャンパー（メス・オス）ケーブル x 4</li>
+          <li>ジャンパー（オス・オス）ケーブル x 3</li>
+          <li>ブレッドボード x 1</li>
+          <li>DCモータ(6V) x 1</li>
+          <li>モータ用電源(6V) x 1</li>
+        </ul>
+        <li>L298Nを使用する場合
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?field-keywords=L298N">L298N搭載モータドライバ基板</a> x 1 </li>
+          <li>ジャンパー（メス・オス）ケーブル x 3</li>
+          <li>ジャンパーピン（モータードライバに付属） x 1</li>
+          <li>DCモータ(6V) x 1</li>
+          <li>モータ用電源(6V) x 1</li>
+          <li><span class="note">モータの電源が6V未満のものの場合、モータ電源(+12V)からロジック電源を供給するジャンパピン(GNDと+12V端子付近にある)を外し+5V端子にロジック電源を供給する</span></li>
+        </ul>
+        <li>TA7291Pを使用する場合
+        <ul>
+          <li><a href="https://www.switch-science.com/catalog/1691/">モータドライバIC TA7291P</a> x 1 </li>
+          <li>ブレッドボード x 1</li>
+          <li>ジャンパー 必要数</li>
+          <li>DCモータ(6V) x 1</li>
+          <li>コンデンサ(0.1μF) x 1</li>
+          <li>モータ用電源(6V) x 1</li>
+        </ul>
+       </ul>
+      </div>
+    </div>
+    
+    <div class="cwrap" id="REMOTE-SW">
+      <div class="title">REMOTE-SW</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/remote-gpio-SW/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-gpio-SW/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-gpio-SW/pc.html" target="_blank">デモ(PC側)</a>
+        <!--
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-gpio-button" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-button" target="_blank">CSB</a>
+        -->
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">タクトスイッチを押した状態をリモートからモニタ出来ます。タクトスイッチの代わりに人感センサーやセンサーマット等のON/OFF型センサーを使うと遠隔監視システムができます。おまけとしてGPIOに繋いだLEDも点灯させています。</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li>タクトスイッチ x 1</li>
+          <li>LED x 1</li>
+          <li>抵抗（100Ω〜470Ω） x 1<BR>(220Ωのカラーコード:赤赤茶金)</li>
+          <li>ジャンパー（オス・メス）ケーブル x 4</li>
+          <li>ブレッドボード x 1</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cwrap" id="REMOTE-I2C-SHT30">
+      <div class="title">REMOTE-I2C-SHT30</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/remote-i2c-SHT30/SHT30schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-i2c-SHT30/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-i2c-SHT30/pc.html" target="_blank">デモ(PC側)</a>
+        <!--
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-sht30" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-sht30" target="_blank">CSB</a>
+        -->
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続の温度・湿度センサーSHT30の値を表示します。</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s?k=SHT30">SHT30ブレークアウトボード</a> x 1 <span class="note"></li>
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cwrap" id="REMOTE-I2C-PCA9685">
+      <div class="title">REMOTE-I2C-PCA9685</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/remote-i2c-PCA9685/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-i2c-PCA9685/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-i2c-PCA9685/pc.html" target="_blank">デモ(PC側)</a>
+        
+        <!--
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-pca9685" target="_blank">JSBin</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-pca9685" target="_blank">CSB</a>
+        -->
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続のPWMドライバー経由でサーボモーターを駆動します。（RaspberryからPWMドライバーをI2C接続し、 PWMドライバとサーボモータ、外部電源を接続します。詳細は回路図を参照ください）</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.switch-science.com/catalog/961/">PCA9685搭載16チャネル PWM/サーボ ドライバー (I2C接続)</a> x 1　<span class="note">(<a href="https://www.amazon.co.jp/s/?field-keywords=PCA9685">互換品</a>もあり)</span></li>
+          <li><a href="http://akizukidenshi.com/catalog/g/gM-08761/">マイクロサーボ SG-90</a> x 1</li>
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+        上記に加え、外部電源確保のため下記 1. あるいは 2. が必要になります。
+        <ol>
+          <li><a href="http://akizukidenshi.com/catalog/g/gP-03087/">電池BOX(4本用)</a> x 1 <span style="font-size:11px">(※電池BOXを利用する場合、PCA9685サーボドライバとの接続用に電池BOX側の電源ケーブルの終端をメスに加工する等の工夫が必要です)</span></li>
+          <li><a href="http://akizukidenshi.com/catalog/g/gK-10972/">「電源用マイクロUSBコネクタDIP化キット</a> x 1」+「ブレッドボード x 1」「USB Micro B端子-標準A端子のケーブル x 1」+「スマホ用5V充電器 x 1」+ 「ジャンパー（メス・オス）ケーブル x 2」 </li>
+        </ol>
+      </div>
+    </div>
+
+    
+    
+  </div>
+</div>
+
+
 
 <div id="bwrap">
   <div id="bfooter"></div>
