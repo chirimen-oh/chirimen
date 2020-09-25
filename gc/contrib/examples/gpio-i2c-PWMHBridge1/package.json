@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/chirimen-driver-i2c-pca9685-pwm": "^1.0.0",
+    "@chirimen/pca9685-pwm": "latest",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }

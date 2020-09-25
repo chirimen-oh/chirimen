@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/chirimen-driver-i2c-mlx90614": "^1.0.0",
+    "@chirimen/mlx90614": "latest",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/chirimen-driver-i2c-adt7410": "^1.0.0",
-    "@chirimen-raspi/chirimen-driver-i2c-grove-light": "^1.0.0",
+    "@chirimen/adt7410": "latest",
+    "@chirimen/grove-light": "latest",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }

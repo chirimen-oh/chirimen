@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/chirimen-driver-i2c-ak8963": "^1.0.0",
-    "@chirimen-raspi/chirimen-driver-i2c-mpu6500": "^1.0.0",
+    "@chirimen/ak8963": "latest",
+    "@chirimen/mpu6500": "latest",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }

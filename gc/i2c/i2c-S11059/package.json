@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/chirimen-driver-i2c-s11059": "^1.0.0",
+    "@chirimen/s11059": "latest",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }

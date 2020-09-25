@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/chirimen-driver-i2c-vl53l0x": "^1.0.0",
+    "@chirimen/vl53l0x": "latest",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }

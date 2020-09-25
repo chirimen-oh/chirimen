@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/chirimen-driver-i2c-mpu6050": "^1.0.0",
+    "@chirimen/mpu6050": "latest",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }

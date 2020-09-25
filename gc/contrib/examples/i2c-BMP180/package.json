@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/chirimen-driver-i2c-bmp180": "^1.0.0",
+    "@chirimen/bmp180": "latest",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }

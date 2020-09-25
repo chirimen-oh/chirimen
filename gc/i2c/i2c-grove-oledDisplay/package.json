@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@chirimen-raspi/chirimen-driver-i2c-grove-oled-display": "^1.0.0",
+    "@chirimen/grove-oled-display": "latest",
     "@chirimen-raspi/polyfill": "^1.0.1"
   }
 }
