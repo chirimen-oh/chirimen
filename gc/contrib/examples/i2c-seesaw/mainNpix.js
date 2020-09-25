@@ -20,48 +20,48 @@ async function main() {
   try {
     var i2cAccess = await navigator.requestI2CAccess();
     var port = i2cAccess.ports.get(1);
-    var ss = new seesaw(port);
-  	await ss.init();
-  	
-  	// initNeopixelを呼んだ後はそのポートに切り替わる
-  	await ss.initNeopixel(portA,pixels,false); // portAを選択
-  	await ss.fillPixels(10,10,10); // 指定色で塗りつぶす。(リセット直後は0,0,0)
-  	await ss.showPixels();
-  	
-	await sleep(500);
-  	
-  	// setPixel()で、1ピクセルずつ設定する例
-  	for ( var i = 0 ; i < pat0.length ; i++ ){
-	  	await ss.setPixel(pat0[i],0,0,32);
-  	}
-  	await ss.showPixels();
-  	
-  	await ss.initNeopixel(portB,pixels,false); // ここでportBを選択
-  	// 別ポートに同じパターンを出したいなら、切り替え前のsetPixel(s)の状態が継承できる
-  	await ss.showPixels();
-	await sleep(2000);
-  	
-  	await ss.fillPixels(10,0,0);
-  	await ss.showPixels();
-  	
-	await sleep(500);
-  	
-  	
-  	var pattern;
-  	var startHue=0;
+    var ss = new Seesaw(port);
+    await ss.init();
+
+    // initNeopixelを呼んだ後はそのポートに切り替わる
+    await ss.initNeopixel(portA,pixels,false); // portAを選択
+    await ss.fillPixels(10,10,10); // 指定色で塗りつぶす。(リセット直後は0,0,0)
+    await ss.showPixels();
+
+  await sleep(500);
+
+    // setPixel()で、1ピクセルずつ設定する例
+    for ( var i = 0 ; i < pat0.length ; i++ ){
+      await ss.setPixel(pat0[i],0,0,32);
+    }
+    await ss.showPixels();
+
+    await ss.initNeopixel(portB,pixels,false); // ここでportBを選択
+    // 別ポートに同じパターンを出したいなら、切り替え前のsetPixel(s)の状態が継承できる
+    await ss.showPixels();
+  await sleep(2000);
+
+    await ss.fillPixels(10,0,0);
+    await ss.showPixels();
+
+  await sleep(500);
+
+
+    var pattern;
+    var startHue=0;
     while (1) {
-	  	await ss.initNeopixel(portA,pixels,false); // portAを選択
-	  	pattern = getRainbowPattern(startHue);
-	  	await ss.setPixels(0,pattern);
-	  	await ss.showPixels();
-    	
-	  	await ss.initNeopixel(portB,pixels,false);
-	  	pattern = getFixedPattern(startHue);
-	  	await ss.setPixels(0,pattern);
-	  	await ss.showPixels();
-    	await sleep(500);
-    	
-    	startHue += 30;
+      await ss.initNeopixel(portA,pixels,false); // portAを選択
+      pattern = getRainbowPattern(startHue);
+      await ss.setPixels(0,pattern);
+      await ss.showPixels();
+
+      await ss.initNeopixel(portB,pixels,false);
+      pattern = getFixedPattern(startHue);
+      await ss.setPixels(0,pattern);
+      await ss.showPixels();
+      await sleep(500);
+
+      startHue += 30;
     }
   } catch (error) {
     console.error("error", error);
@@ -71,31 +71,31 @@ async function main() {
 var s = 1;
 var v = 0.07;
 function getRainbowPattern(startHue){
-	if (!startHue){
-		startHue = 0;
-	}
-	var pat = [];
-	for ( var i = 0 ; i < pixels ; i++ ){
-		var h = (Math.floor(360 * (i / pixels)) + startHue) % 360 ;
-		var color = hsvToRgb(h, s , v);
-		pat.push(color);
-	}
-	return ( pat );
+  if (!startHue){
+    startHue = 0;
+  }
+  var pat = [];
+  for ( var i = 0 ; i < pixels ; i++ ){
+    var h = (Math.floor(360 * (i / pixels)) + startHue) % 360 ;
+    var color = hsvToRgb(h, s , v);
+    pat.push(color);
+  }
+  return ( pat );
 }
 
 function getFixedPattern(hue){
-	var pat = [];
-	var color;
-	for ( var i = 0 ; i < pat1.length ; i++ ){
-		if ( pat1[i]==1 ){
-			color = hsvToRgb(hue+180, s , v);
-			pat.push(color);
-		} else {
-			color = hsvToRgb(hue, s , v);
-			pat.push(color);
-		}
-	}
-	return ( pat );
+  var pat = [];
+  var color;
+  for ( var i = 0 ; i < pat1.length ; i++ ){
+    if ( pat1[i]==1 ){
+      color = hsvToRgb(hue+180, s , v);
+      pat.push(color);
+    } else {
+      color = hsvToRgb(hue, s , v);
+      pat.push(color);
+    }
+  }
+  return ( pat );
 }
 
 // from https://qiita.com/hachisukansw/items/633d1bf6baf008e82847
