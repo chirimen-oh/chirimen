@@ -15,10 +15,10 @@
     <div class="twrap">
       <h1>Examples!</h1>
       <p class="hide-on-production">
-        <a href="https://r.chirimen.org/examples">このページの最新版はchirimen.orgにあります。</a>
+        <a href="https://r.chirimen.org/examples">このページの最新版は chirimen.org にあります。</a>
       </p>
       <p>
-        CHIRIMEN for Raspberry Pi 3 対応デバイスのドライバ・回路図・サンプルコードをセットにした Example 集です。
+        CHIRIMEN for Raspberry Pi 対応デバイスのドライバ・回路図・サンプルコードをセットにした Example 集です。
       </p>
       <ul>
         <li><a href="#gpioExamples">Basic GPIO Examples</a>
@@ -45,7 +45,7 @@
   <div class="colwrap">
     <div class="twrap gpio">
       <h1 id="gpioExamples">GPIO Examples (<a href="https://webapi.link/gpio">API Spec</a>)</h1>
-      <p>Tips: デスクトップのピン配置図を見ながら配線するとミスしにくくなります。 </p>
+      <p>Tips: デスクトップのピン配置図を見ながら配線するとミスしにくくなります。</p>
     </div>
   </div>
 
@@ -64,7 +64,7 @@
       <div class="desc">
         <ul>
           <li>LED x 1</li>
-          <li>抵抗（100Ω〜470Ω） x 1<BR>(220Ωのカラーコード:赤赤茶金)</li>
+          <li>抵抗（100Ω〜470Ω） x 1<br>(220Ωのカラーコード:赤赤茶金)</li>
           <li>ジャンパー（オス・メス）ケーブル x 2</li>
           <li>ブレッドボード x 1</li>
         </ul>
@@ -86,7 +86,7 @@
         <ul>
           <li>タクトスイッチ x 1</li>
           <li>LED x 1</li>
-          <li>抵抗（100Ω〜470Ω） x 1<BR>(220Ωのカラーコード:赤赤茶金)</li>
+          <li>抵抗（100Ω〜470Ω） x 1<br>(220Ωのカラーコード:赤赤茶金)</li>
           <li>ジャンパー（オス・メス）ケーブル x 4</li>
           <li>ブレッドボード x 1</li>
         </ul>
@@ -165,7 +165,7 @@
         <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-buttonall" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
-      <div class="desc">大量のタクトスイッチの入力を得ます。GPIO4, 5, 6はPull Up, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27はPull Downであることに注意してタクトスイッチを接続します。</div>
+      <div class="desc">大量のタクトスイッチの入力を得ます。GPIO 4, 5, 6 は Pull Up, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27 は Pull Down であることに注意してタクトスイッチを接続します。</div>
       <h3 class="parts">使用パーツ</h3>
       <div class="desc">
       Note: 下記はすべてのポートにスイッチをつけた場合　必要に応じて省略してください。
@@ -186,7 +186,7 @@
     <div class="twrap i2c">
       <h1 id="i2cExamples">I2C Examples (<a href="https://webapi.link/i2c">API Spec</a>)</h1>
       <p>Tips: 配線とスレーブアドレスの確認には i2cdetect を使いましょう。<br>
-        <a href="../../i2c/i2c-detect/index.html" target="_blank">ブラウザ上で確認できる I2C Detect ページ</a>
+        <a href="../../i2c/i2c-detect/index.html" target="_blank">ブラウザ上で確認できる I2C Detect</a>
         / ターミナルでコマンドを使う場合は </span><code>i2cdetect -y -r 1</code>
     </div>
   </div>
@@ -899,8 +899,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon local" href="../../contrib/examples/i2c-BH1750/index.html" target="_blank">デモ</a>
         <!--
         <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-bh1750" target="_blank">JSBin</a>
-        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-bh1750" target="_blank">CSB</a>
         -->
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-bh1750" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の照度センサーBH1750の値を表示します。</div>
@@ -920,8 +920,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon local" href="../../contrib/examples/i2c-TCS34725/index.html" target="_blank">デモ</a>
         <!--
         <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-tcs34725" target="_blank">JSBin</a>
-        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-tcs34725" target="_blank">CSB</a>
         -->
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-tcs34725" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の色センサーTCS34725の値を表示します。</div>
@@ -941,8 +941,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon local" href="../../contrib/examples/i2c-VL53L1X/index.html" target="_blank">デモ</a>
         <!--
         <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-vl53l1x" target="_blank">JSBin</a>
-        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-vl53l1x" target="_blank">CSB</a>
         -->
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-vl53l1x" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続のレーザー距離センサーで取得した値を表示します。<br>
@@ -963,8 +963,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon local" href="../../contrib/examples/i2c-INA219/index.html" target="_blank">デモ</a>
         <!--
         <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-ina219" target="_blank">JSBin</a>
-        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-ina219" target="_blank">CSB</a>
         -->
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-ina219" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続のDC電流センサーINA219で取得した値を表示します。<br>
@@ -988,8 +988,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon local" href="../../contrib/examples/i2c-MLX90614/index.html" target="_blank">デモ</a>
         <!--
         <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-mlx90614" target="_blank">JSBin</a>
-        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-mlx90614" target="_blank">CSB</a>
         -->
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-mlx90614" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の赤外線温度センサーMLX90614で取得した値を表示します。<br>
@@ -1011,8 +1011,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon local" href="../../contrib/examples/i2c-APDS9960/index_gesture.html" target="_blank">デモ (ジェスチャー)</a>
         <!--
         <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-mlx90614" target="_blank">JSBin</a>
-        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-mlx90614" target="_blank">CSB</a>
         -->
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-mlx90614" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">近接・環境光・ジェスチャーセンサーAPDS9960で取得した値を表示します。</div>
@@ -1032,8 +1032,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon local" href="../../contrib/examples/i2c-seesaw/index.html" target="_blank">デモ</a>
         <!--
         <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-seesaw" target="_blank">JSBin</a>
-        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-seesaw" target="_blank">CSB</a>
         -->
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-seesaw" target="_blank">CSB</a>
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の多機能インターフェースボードseesawを使用します。<br>
