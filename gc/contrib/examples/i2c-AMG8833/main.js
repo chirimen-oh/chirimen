@@ -19,7 +19,7 @@ async function main() {
   try {
     var i2cAccess = await navigator.requestI2CAccess();
     var port = i2cAccess.ports.get(1);
-    var amg8833 = new AMG8833(port, 0x68);
+    var amg8833 = new AMG8833(port, 0x68);　// 初期値 0x69 のモデルもあるので注意！
     await amg8833.init();
     while (1) {
       var tImage = await amg8833.readData();
