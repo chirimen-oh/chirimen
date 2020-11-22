@@ -6,6 +6,7 @@ async function main() {
 
   await port.export("out"); // ポートを出力モードに設定
 
+  console.log("test");
   // 無限ループ
   while (true) {
     // 1秒間隔で LED が点滅します。
