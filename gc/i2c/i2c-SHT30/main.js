@@ -14,4 +14,4 @@ async function main() {
     humidityDisplay.innerHTML = `${humidity.toFixed(2)} %`;
     await sleep(500);
   }
-}
+} //html(とその中のpollyfill)でSHT30とsleepは宣言してるので動く
