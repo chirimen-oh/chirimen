@@ -1,5 +1,9 @@
 {
   "name": "i2c-sht30-example",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@chirimen-raspi/polyfill": "latest",
+    "@chirimen/sht30": "latest"
+  }
 }
