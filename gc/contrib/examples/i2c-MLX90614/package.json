@@ -4,6 +4,6 @@
   "private": true,
   "dependencies": {
     "@chirimen/mlx90614": "latest",
-    "@chirimen-raspi/polyfill": "^1.0.1"
+    "@chirimen-raspi/polyfill": "latest"
   }
 }
