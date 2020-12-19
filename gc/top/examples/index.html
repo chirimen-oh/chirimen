@@ -829,8 +829,8 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">WebBluetooth経由で、micro:bitの内蔵センサーやGPIO, I2C端子を使います。<br>
-        Raspberry Pi3のChromiumブラウザ上で動くウェブアプリから、WebGPIO, WebI2C準拠のAPIでmicro:bitの端子を利用します。<br>
-        このように、ワイヤレスのCHIRIMEN環境といえるものになっており、CHIRIMEN for Raspberry Pi3 (Raspberry Pi3のGPIO,I2C端子)とも同時に利用できます。<br>
+        Raspberry PiのChromiumブラウザ上で動くウェブアプリから、WebGPIO, WebI2C準拠のAPIでmicro:bitの端子を利用します。<br>
+        このように、ワイヤレスのCHIRIMEN環境といえるものになっており、CHIRIMEN for Raspberry Pi (Raspberry PiのGPIO,I2C端子)とも同時に利用できます。<br>
         ウェアラブルデバイスのプロトタイピングも可能でしょう。<br>
         詳しくは<a href="https://r.chirimen.org/microbit" target="_blank">CHIRIMEN with micro:bitのページ</a>を参照してください。</div>
       <h3 class="parts">使用パーツ</h3>
@@ -1078,6 +1078,28 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
     </div>
 
 
+    <div class="cwrap" id="I2C-CCS811">
+      <div class="title">I2C-CCS811</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="https://chirimen.org/chirimen-drivers/raspi-examples/ccs811/CCS811schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="https://chirimen.org/chirimen-drivers/raspi-examples/ccs811/" target="_blank">デモ</a>
+        <a class="linkicon codesandbox" href="https://codesandbox.io/s/github/chirimen-oh/chirimen-drivers/tree/master/docs/raspi-examples/ccs811" target="_blank">CSB</a>
+        <!--
+        <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-seesawNpix" target="_blank">JSBin</a>
+        -->
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続のCO2, TVOCセンサCS811を使用します。</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li>CS811 ブレークアウト基板</a> x 1 (<a href="https://www.switch-science.com/catalog/3298/">switch science</a>, <a href="https://www.amazon.co.jp/dp/B086HCSM6N/">amazon</a>)</li>
+          <li>ジャンパー（メス・メス）ケーブル x 5</li>
+        </ul>
+      </div>
+    </div>
+
+
 
   </div>
 </div>
@@ -1096,7 +1118,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="title">REMOTE-LED</div>
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/remote-gpio-LED/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/remote-gpio-LED/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-gpio-LED/RPi.html" target="_blank">デモ(RPi側)</a>
         <a class="linkicon local" href="../../contrib/examples/remote-gpio-LED/pc.html" target="_blank">デモ(PC側)</a>
         <a class="linkicon codesandbox" href="https://codesandbox.io/s/github/chirimen-oh/chirimen/tree/master/gc/contrib/examples/remote-gpio-LED" target="_blank">CSB</a>
       </div>
@@ -1122,7 +1144,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <a class="linkicon schematic" href="../../contrib/examples/remote-gpio-HBridge/HBridge_TA7291P.png" target="_blank">回路図 (TA7291P)</a>
       </div>
       <div class="linkwrap">
-        <a class="linkicon local" href="../../contrib/examples/remote-gpio-HBridge/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-gpio-HBridge/RPi.html" target="_blank">デモ(RPi側)</a>
         <a class="linkicon local" href="../../contrib/examples/remote-gpio-HBridge/pc.html" target="_blank">デモ(PC側)</a>
         <a class="linkicon codesandbox" href="https://codesandbox.io/s/github/chirimen-oh/chirimen/tree/master/gc/contrib/examples/remote-gpio-HBridge" target="_blank">CSB</a>
       </div>
@@ -1166,7 +1188,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="title">REMOTE-SW</div>
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/remote-gpio-SW/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/remote-gpio-SW/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-gpio-SW/RPi.html" target="_blank">デモ(RPi側)</a>
         <a class="linkicon local" href="../../contrib/examples/remote-gpio-SW/pc.html" target="_blank">デモ(PC側)</a>
         <a class="linkicon codesandbox" href="https://codesandbox.io/s/github/chirimen-oh/chirimen/tree/master/gc/contrib/examples/remote-gpio-SW" target="_blank">CSB</a>
       </div>
@@ -1188,7 +1210,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="title">REMOTE-I2C-SHT30</div>
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/remote-i2c-SHT30/SHT30schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/remote-i2c-SHT30/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-i2c-SHT30/RPi.html" target="_blank">デモ(RPi側)</a>
         <a class="linkicon local" href="../../contrib/examples/remote-i2c-SHT30/pc.html" target="_blank">デモ(PC側)</a>
         <a class="linkicon codesandbox" href="https://codesandbox.io/s/github/chirimen-oh/chirimen/tree/master/gc/contrib/examples/remote-i2c-SHT30" target="_blank">CSB</a>
       </div>
@@ -1207,7 +1229,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="title">REMOTE-I2C-PCA9685</div>
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/remote-i2c-PCA9685/schematic.png" target="_blank">回路図</a>
-        <a class="linkicon local" href="../../contrib/examples/remote-i2c-PCA9685/RPi.html" target="_blank">デモ(RPi3側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-i2c-PCA9685/RPi.html" target="_blank">デモ(RPi側)</a>
         <a class="linkicon local" href="../../contrib/examples/remote-i2c-PCA9685/pc.html" target="_blank">デモ(PC側)</a>
         <a class="linkicon codesandbox" href="https://codesandbox.io/s/github/chirimen-oh/chirimen/tree/master/gc/contrib/examples/remote-i2c-PCA9685" target="_blank">CSB</a>
       </div>

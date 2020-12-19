@@ -40,9 +40,10 @@
           await this.i2cSlave.write8(0x01,0x04);
           await this.i2cSlave.write8(0x00,0x10);
           await this.i2cSlave.write8(0xfe,0x64);
-          await this.i2cSlave.write8(0x00,0x00);
-          await this.i2cSlave.write8(0x06,0x00);
-          await this.i2cSlave.write8(0x07,0x00);
+//          await this.i2cSlave.write8(0x00,0x00);
+          await this.i2cSlave.write8(0x00,0b00100000); // 2020/12/06 改良：mode0レジスタでオートインクリメントモードをONにし、レジスタ書き込みタイムラグを最小にすることでビクつきを解消する
+//          await this.i2cSlave.write8(0x06,0x00); // このコードは蛇足かな
+//          await this.i2cSlave.write8(0x07,0x00);
           await this.sleep(300);
           if ( !noSetZero ){
             for ( var servoPort = 0 ; servoPort < 16 ; servoPort ++ ){
@@ -91,8 +92,9 @@
       var tickL = (ticks & 0xff);
 
       var pwm = Math.round(portStart + servoPort * portInterval);
-      await this.i2cSlave.write8(pwm + 1, tickH);
-      await this.i2cSlave.write8(pwm, tickL);
+//      await this.i2cSlave.write8(pwm + 1, tickH); // これら二つのレジスタ書き込みのタイムラグがビクつきの原因
+//      await this.i2cSlave.write8(pwm, tickL);
+      await this.i2cSlave.writeBytes([pwm , tickL , tickH]); // 2020/12/06 オートインクリメントを利用し一気に書き込む
     }
   };
 
