@@ -1,7 +1,8 @@
 #!/bin/bash
 #
 # cd /home/pi/
-# wget https://rawgit.com/chirimen-oh/chirimen-raspi3/master/setup.sh
+# wget -O setup.sh https://raw.githubusercontent.com/chirimen-oh/chirimen/master/setup.sh
+# chmod 777 setup.sh
 # ./setup.sh
 #
 # 一時的にスリープを無効
@@ -65,6 +66,7 @@ sudo apt install -y /tmp/code.deb
 
 
 # 日本語設定
+# デフォルトの設定が en_GB.UTF-8 になっている
 sudo sed 's/#\sen_GB\.UTF-8\sUTF-8/en_GB\.UTF-8 UTF-8/g' /etc/locale.gen |\
     sudo tee /tmp/locale && sudo cat /tmp/locale |\
     sudo tee /etc/locale.gen && sudo rm -f /tmp/locale
