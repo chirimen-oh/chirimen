@@ -267,13 +267,13 @@ EOF'
 sudo a2ensite vhost-ssl
 sudo a2enmod ssl
 sudo systemctl restart apache2
-grep '--enable-experimental-web-platform-features' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop
+grep -- '--enable-experimental-web-platform-features' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop
 if [ $? = 1 ]; then
     sudo sed 's/Exec=\/usr\/bin\/x-www-browser\s%u/Exec=\/usr\/bin\/x-www-browser --enable-experimental-web-platform-features %u/g' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop |\
         sudo tee /tmp/xbrowser && sudo cat /tmp/xbrowser |\
         sudo tee /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop && sudo rm -f /tmp/xbrowser
 fi
-grep '--enable-experimental-web-platform-features' /usr/share/applications/chromium-browser.desktop
+grep -- '--enable-experimental-web-platform-features' /usr/share/applications/chromium-browser.desktop
 if [ $? = 1 ]; then
     sudo sed 's/Exec=chromium-browser/Exec=chromium-browser --enable-experimental-web-platform-features/g' /usr/share/applications/chromium-browser.desktop |\
         sudo tee /tmp/chbrowser && sudo cat /tmp/chbrowser |\
