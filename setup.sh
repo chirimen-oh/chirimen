@@ -17,7 +17,9 @@ if [ $? -ge 1 ]; then
         sudo tee /boot/cmdline.txt && sudo rm -f /tmp/cmdline
 fi
 
-sudo cp /etc/xdg/lxsession/LXDE-pi/autostart /etc/xdg/lxsession/LXDE-pi/autostart.orig
+if [ ! -f /etc/xdg/lxsession/LXDE-pi/autostart.orig ]; then
+    sudo cp /etc/xdg/lxsession/LXDE-pi/autostart /etc/xdg/lxsession/LXDE-pi/autostart.orig
+fi
 sudo sh -c "cat << EOF > /etc/xdg/lxsession/LXDE-pi/autostart
 @lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
@@ -35,7 +37,9 @@ http://ftp.tsukuba.wide.ad.jp/Linux/raspbian/raspbian/
 http://ftp.yz.yamagata-u.ac.jp/pub/linux/raspbian/raspbian/
 http://raspbian.raspberrypi.org/raspbian/
 EOF"
-sudo cp /etc/apt/sources.list /etc/apt/sources.list.orig
+if [ ! -f /etc/apt/sources.list.orig ]; then
+    sudo cp /etc/apt/sources.list /etc/apt/sources.list.orig
+fi
 sudo sh -c "cat << EOF > /etc/apt/sources.list
 deb mirror+file:/etc/apt/mirrors.txt buster main contrib non-free rpi
 EOF"
@@ -164,7 +168,8 @@ sleep 120s
 # Apache設定
 if [ ! -f /etc/apache2/sites-available/000-default.conf.orig ]; then
     sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf.orig
-    sudo sh -c 'cat << EOF > /etc/apache2/sites-available/000-default.conf
+fi
+sudo sh -c 'cat << EOF > /etc/apache2/sites-available/000-default.conf
 <VirtualHost *:80>
         ServerAdmin webmaster@localhost
         DocumentRoot /home/pi/Desktop/gc
@@ -173,7 +178,6 @@ if [ ! -f /etc/apache2/sites-available/000-default.conf.orig ]; then
         CustomLog \${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
 EOF'
-fi
 if [ ! -f /etc/apache2/apache2.conf.orig ]; then
     sudo cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf.orig
 fi
