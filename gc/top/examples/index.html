@@ -229,7 +229,7 @@
       </div>
       <h3 class="sumally">概要</h3>
       <div class="desc">I2C接続の温度センサー「ADT7410」を用いて温度を計測し表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください。 <br>
-        <span>詳しくは、<a href="https://tutorial.chirimen.org/raspberrypi/ja/section2">チュートリアル2</a>を参照ください。</span><br>
+        <span>詳しくは、<a href="https://r.chirimen.org/tutorial2">チュートリアル2</a>を参照ください。</span><br>
         <span style="font-size:11px;">※ジャンパー（メス・メス）ケーブルに直接刺すために、パッケージに付属の細ピンヘッダではなく標準サイズのピンヘッダを付けてください）</span><br>
       </div>
       <h3 class="parts">使用パーツ</h3>
@@ -535,7 +535,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="linkwrap">
         <a class="linkicon schematic" href="../../contrib/examples/i2c-arduino-steppingMotor/schematic.png" target="_blank">回路図</a>
         <a class="linkicon local" href="../../contrib/examples/i2c-arduino-steppingMotor/index.html" target="_blank">デモ</a>
-        <a class="linkicon api" href="../../i2c/i2c-arduino-steppingMotor/api.html" target="_blank">API</a>
+        <a class="linkicon api" href="../../contrib/examples/i2c-arduino-steppingMotor/api.html" target="_blank">API</a>
         <a class="linkicon jsbin" href="https://r.chirimen.org/jsbin-i2c-arduino-steppingmotor" target="_blank">JSBin</a>
         <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-arduino-steppingmotor" target="_blank">CSB</a>
       </div>
@@ -788,7 +788,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         <ul>
           <li>ATTINY85 x 1 </li>
           <li>I2Cレベルコンバータ x 1 </li>
-          <li>Neopixel LEDモジュール(<a href="https://www.amazon.co.jp/dp/B01MYT6JH9/">テープ</a>や<a href="https://www.amazon.co.jp/dp/B07CHDBW38/">マトリクス</a>、<a href="https://www.amazon.co.jp/dp/B07926DQWQ/">リング</a>などがあります。LED150連程度までのものに対応) x 1</li>
+          <li>Neopixel LEDモジュール(<a href="https://www.amazon.co.jp/dp/B01MYT6JH9/">テープ</a>や<a href="https://www.amazon.co.jp/dp/B074Z221XV">マトリクス</a>、<a href="https://www.switch-science.com/catalog/1537/">リング</a>などがあります。LED150連程度までのものに対応) x 1</li>
           <li>10KΩ抵抗 x 1</li>
           <li>0.1μFセラミックコンデンサ x 1</li>
           <li>配線・ブレッドボード類 x 1式 </li>
@@ -838,7 +838,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <h4>単体で使う場合(内蔵センサ・ボタン・LEDを使う)</h4>
         <ul>
           <li><a href="https://www.amazon.co.jp/dp/B07L2KXWGH">micro:bit</a> x 1　<br>(<a href="https://www.amazon.co.jp/dp/B074N6D55L/">電池ボックスやUSBケーブルセット品</a>)</li>
-          <li>電源: USBバッテリや、<a href="https://www.amazon.co.jp/dp/B07BT82BDS/">micro:bit用電池ボックス</a>等</li>
+          <li>電源: USBバッテリや、<a href="https://eleshop.jp/shop/g/gJ2J312/">micro:bit用電池ボックス</a>等</li>
         </ul>
       <h4>micro:bitのGPIO Port0,1,2を使う場合</h4>
         <ul>
@@ -846,7 +846,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
         </ul>
       <h4>Port3以上を使う場合</h4>
         <ul>
-          <li>micro:bit用ブレークアウトボード <br>例：<a href="https://www.amazon.co.jp/dp/B079T5P3QC">(1)</a>,<a href="https://www.amazon.co.jp/dp/B07GT4D8GS">(2)</a>,<a href="https://www.amazon.co.jp/dp/B07K7L61CK">(3)</a></li>
+          <li>micro:bit用ブレークアウトボード <br>例：<a href="https://www.marutsu.co.jp/pc/i/839841/">(1)</a>,<a href="https://www.sengoku.co.jp/mod/sgk_cart/detail.php?code=EEHD-56JR">(2)</a>,<a href="https://www.switch-science.com/catalog/3181/">(3)</a></li>
         </ul>
       </div>
     </div>
@@ -1092,7 +1092,7 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       <div class="desc">I2C接続のCO2, TVOCセンサCS811を使用します。</div>
       <h4> 注意事項</h4>
       <div class="desc">
-      <a href="https://research.itplants.com/?p=2041" target="_blank">参照1</a>や、<a href="https://learn.adafruit.com/adafruit-ccs811-air-quality-sensor/raspberry-pi-wiring-test" target="_blank">参照2</a>にあるようにCCS811はI2Cのビットレートを下げないと動きません。(I2Cのクロックストレッチとよばれる仕様にRaspberry Piのチップが対応していないためとのこと)<br>
+      <a href="https://research.itplants.com/?p=2041" target="_blank">参照1</a>や、<a href="https://learn.adafruit.com/adafruit-ccs811-air-quality-sensor/python-circuitpython" target="_blank">参照2</a>にあるようにCCS811はI2Cのビットレートを下げないと動きません。(I2Cのクロックストレッチとよばれる仕様にRaspberry Piのチップが対応していないためとのこと)<br>
       CHIRIMEN for Raspberry Pi 環境(RaspbianにCHIRIMEN用環境設定を入れたもの)に以下の変更をしてください。
       <code>/boot/config.txt</code>の末尾の設定を、<code>dtparam=i2c_baudrate=10000</code>　に変更（デフォルトより一桁少なく）してリブートします。<br>
       <font size="-2">サイドエフェクトとして、他に接続しているI2Cデバイスがある場合、そちらの通信速度も低下します。大量のデータを送受信するタイプのデバイスですと速度低下の影響があるかもしれません。</font>
