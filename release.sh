@@ -24,7 +24,7 @@ find "${BASE_DIR}/gc" \
   -name package.json \
   -print0 \
   | xargs -0 \
-    -I@ sh -c 'npm --prefix "$(dirname -- "@")" install'
+    -I@ sh -c 'npm --prefix "$(dirname -- "@")" install --production'
 
 zip -r ${PUBLISH_DIR}/gc.zip ./gc/
 zip -r ${PUBLISH_DIR}/_gc.zip ./_gc/
