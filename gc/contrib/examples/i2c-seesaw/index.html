@@ -8,15 +8,15 @@
     />
     <title>i2c-seesaw</title>
     <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
-    <script src="node_modules/@chirimen/seesaw/seesaw.js"></script>
+    <script src="node_modules/@chirimen/seesaw/index.js"></script>
     <script src="./main.js" defer></script>
     <style>
       span {
         color: black;
         font-size: 24px;
       }
-      td{
-      width:80px;
+      td {
+        width: 80px;
       }
       table,
       p {
@@ -43,30 +43,42 @@
     <span>Digital Out</span>
     <table border="1">
       <tr>
-        <td>P10</td><td>P11</td><td>P14</td><td>P15</td>
+        <td>P10</td>
+        <td>P11</td>
+        <td>P14</td>
+        <td>P15</td>
       </tr>
       <tr>
-        <td id="tdP10"></td><td id="tdP11"></td><td id="tdP14"></td><td id="tdP15"></td>
+        <td id="tdP10"></td>
+        <td id="tdP11"></td>
+        <td id="tdP14"></td>
+        <td id="tdP15"></td>
       </tr>
     </table>
 
     <span>Digital In</span>
     <table border="1">
       <tr>
-        <td>P9</td><td>P24</td><td>P25</td>
+        <td>P9</td>
+        <td>P24</td>
+        <td>P25</td>
       </tr>
       <tr>
-        <td id="tdP9"></td><td id="tdP24"></td><td id="tdP25"></td>
+        <td id="tdP9"></td>
+        <td id="tdP24"></td>
+        <td id="tdP25"></td>
       </tr>
     </table>
 
     <span>Analog In/Out</span>
     <table border="1">
       <tr>
-        <td>ADC5</td><td>PWM6</td>
+        <td>ADC5</td>
+        <td>PWM6</td>
       </tr>
       <tr>
-        <td id="tdP5"></td><td id="tdP6"></td>
+        <td id="tdP5"></td>
+        <td id="tdP6"></td>
       </tr>
     </table>
   </body>
