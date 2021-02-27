@@ -1,7 +1,3 @@
 .DS_Store
 .Thumbs.db
-/_gc/**/node_modules/
-/_gc/**/package-lock.json
-/gc/**/package-lock.json
-/gc/i2c/i2c-arduino-steppingMotor/etc/
-/public/
+node_modules/
