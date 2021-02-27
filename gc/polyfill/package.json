@@ -4,5 +4,12 @@
   "main": "polyfill.js",
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "maked": " dtsmake -s polyfill.js"
+  },
+  "devDependencies": {
+    "dtsmake": "^0.0.10",
+    "tern": "^0.24.3"
   }
 }
