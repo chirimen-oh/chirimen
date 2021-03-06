@@ -34,7 +34,7 @@
 
       /**
        * @function
-       * 初期化処理
+       * GPIO 初期化処理
        * @param {*} serverURL WebSocket サーバーURL
        */
       init: function (serverURL) {
@@ -86,7 +86,7 @@
 
       /**
        * @function
-       * データ送信処理
+       * GPIO データ送信処理
        * @param {*} func 送信先アドレス
        * @param {*} data 送信処理
        */
@@ -122,7 +122,7 @@
 
       /**
        * @function
-       * データ受信処理
+       * GPIO データ受信処理
        * @param {*} mes 受信メッセージ
        */
        receive: function (mes) {
@@ -163,7 +163,7 @@
 
       /**
        * @function
-       * イベント登録処理
+       * GPIO イベント登録処理
        * @param {*} f 登録アドレス
        * @param {*} port ポート番号
        * @param {*} func 登録バッファ
@@ -175,7 +175,7 @@
 
       /**
        * @function
-       * イベント削除処理
+       * GPIO イベント削除処理
        * @param {*} f 登録アドレス
        * @param {*} port ポート番号
        * @param {*} func 登録バッファ
@@ -186,7 +186,7 @@
       },
 
       /**
-       * イベント発生時処理
+       * GPIO イベント発生時処理
        * @param {*} data データ
        */
        onEvent: function (data) {
@@ -287,7 +287,7 @@
    GPIOAccess.prototype = {
     /**
      * @function
-     * 初期化処理
+     * GPIOAccess 初期化処理
      * ポート情報マッピング
      */
     init: function () {
@@ -319,7 +319,7 @@
    GPIOPort.prototype = {
     /**
      * @function
-     * 初期化処理
+     * GPIO 初期化処理
      * @param {*} portNumber ポート番号
      * ポート情報マッピング
      */
@@ -381,7 +381,7 @@
 
     /**
      * @function
-     * 読み取り処理
+     * GPIO 読み取り処理
      */
      read: function () {
       return new Promise((resolve, reject) => {
@@ -405,7 +405,7 @@
 
     /**
      * @function
-     * 書き込み処理
+     * GPIO 書き込み処理
      * @param {*} value 書き込みデータ
      */
      write: function (value) {
@@ -430,7 +430,7 @@
 
     /**
      * @function
-     * 状態変化処理
+     * GPIO 状態変化処理
      */
     onchange: null,
 
@@ -515,7 +515,7 @@
    I2CAccess.prototype = {
     /**
      * @function
-     * 初期化処理
+     * I2CAccess 初期化処理
      * ポート情報マッピング
      */
     init: function () {
@@ -544,7 +544,7 @@
    I2CPort.prototype = {
     /**
      * @function
-     * 初期化処理
+     * I2C 初期化処理
      * @param {*} portNumber ポート番号
      * ポート情報マッピング
      */
@@ -556,7 +556,7 @@
 
     /**
      * @function
-     * ポート open 処理
+     * I2C ポート open 処理
      * @param {*} slaveAddress スレーブアドレス
      */
      open: function (slaveAddress) {
@@ -842,7 +842,7 @@
 
     /**
      * @function
-     *　I2C 1 byte 書き込み処理
+     *　I2C 1byte 書き込み処理
      * @param {*} value 書き込み値
      * @return {*} 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
@@ -873,7 +873,7 @@
 
     /**
      * @function
-     *　I2C 1 byte 書き込み処理
+     *　I2C 1byte 書き込み処理
      * @param {*} buffer 書き込み値
      * @return {*} 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
@@ -912,6 +912,11 @@
   // navigator
 
   if (!navigator.requestI2CAccess) {
+    /**
+     * @function
+     *　navigator requestI2CAccess 割当処理
+     * @return {*} 割当結果
+     */
     navigator.requestI2CAccess = function () {
       return new Promise(function (resolve, reject) {
         //      console.dir(bone);
@@ -930,7 +935,12 @@
   }
 
   if (!navigator.requestGPIOAccess) {
-    navigator.requestGPIOAccess = function () {
+    /**
+     * @function
+     *　navigator requestGPIOAccess 割当処理
+     * @return {*} 割当結果
+     */
+     navigator.requestGPIOAccess = function () {
       return new Promise(function (resolve, reject) {
         //      console.dir(bone);
         bone
