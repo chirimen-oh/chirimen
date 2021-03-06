@@ -1,15 +1,27 @@
 (function () {
   var serverURL = "wss://localhost:33330/";
 
+  /**
+   * ログ情報出力
+   * @param {*} str 出力文字列
+   */
   function infoLog(str) {
     // console.log("info: "+str);
   }
 
+  /**
+   * エラーログログ情報出力
+   * @param {*} error エラー情報
+   */
   function errLog(error) {
     console.error(error);
   }
 
   var bone = (() => {
+    /**
+     * TBD
+     *
+     */
     function router() {}
     router.prototype = {
       wss: null,
@@ -19,6 +31,12 @@
       waitQueue: null,
       status: 0, // 0: init 1: wait connection 2: connected
       session: 0,
+
+      /**
+       * @function
+       * 初期化処理
+       * @param {*} serverURL WebSocket サーバーURL
+       */
       init: function (serverURL) {
         infoLog("bone.init()");
         this.waitQueue = new Array();
@@ -65,7 +83,14 @@
           }
         };
       },
-      send: function (func, data) {
+
+      /**
+       * @function
+       * データ送信処理
+       * @param {*} func 送信先アドレス
+       * @param {*} data 送信処理
+       */
+       send: function (func, data) {
         return new Promise((resolve, reject) => {
           if (!(data instanceof Uint8Array)) {
             reject("type error: Please using with Uint8Array buffer.");
@@ -95,7 +120,12 @@
         });
       },
 
-      receive: function (mes) {
+      /**
+       * @function
+       * データ受信処理
+       * @param {*} mes 受信メッセージ
+       */
+       receive: function (mes) {
         if (!(mes instanceof Uint8Array)) {
           errLog(new TypeError("Please using with Uint8Array buffer."));
           errLog(
@@ -131,17 +161,35 @@
         }
       },
 
-      registerEvent: function (f, port, func) {
+      /**
+       * @function
+       * イベント登録処理
+       * @param {*} f 登録アドレス
+       * @param {*} port ポート番号
+       * @param {*} func 登録バッファ
+       */
+       registerEvent: function (f, port, func) {
         var key = (f << 8) | port;
         this.onevents.set(key, func);
       },
 
-      removeEvent: function (f, port) {
+      /**
+       * @function
+       * イベント削除処理
+       * @param {*} f 登録アドレス
+       * @param {*} port ポート番号
+       * @param {*} func 登録バッファ
+       */
+       removeEvent: function (f, port) {
         var key = (f << 8) | port;
         this.onevents.delete(key);
       },
 
-      onEvent: function (data) {
+      /**
+       * イベント発生時処理
+       * @param {*} data データ
+       */
+       onEvent: function (data) {
         if (!(data instanceof Uint8Array)) {
           errLog(new TypeError("Please using with Uint8Array buffer."));
           errLog(
@@ -171,7 +219,11 @@
         }
       },
 
-      waitConnection: function (func) {
+      /**
+       * @function
+       * GPIO接続待ち処理
+       */
+       waitConnection: function () {
         return new Promise((resolve, reject) => {
           if (this.status == 2) {
             resolve();
@@ -195,11 +247,12 @@
     return rt;
   })();
 
-  //////////////////////////////////////////////////////////////////////////
-  // GPIOAccess
-  // Raspberry Pi GPIO Port Number
-
-  // todo: add portName and pinName
+  /** 
+   * GPIOAccess
+   * Raspberry Pi GPIO Port Number
+   * 
+   * TODO: add portName and pinName
+   * */
   var gpioPorts = [
     4,
     17,
@@ -220,11 +273,22 @@
     21,
   ];
 
+  /**
+   * GPIOAccess 関数定義
+   */
   var GPIOAccess = function () {
     this.init();
   };
 
-  GPIOAccess.prototype = {
+  /**
+   * GPIOAccess 関数継承
+   */
+   GPIOAccess.prototype = {
+    /**
+     * @function
+     * 初期化処理
+     * ポート情報マッピング
+     */
     init: function () {
       this.ports = new Map();
       for (var cnt = 0; cnt < gpioPorts.length; cnt++) {
@@ -236,12 +300,28 @@
     onchange: null,
   };
 
-  var GPIOPort = function (portNumber) {
+  /**
+   * @function
+   * GPIOAccess 関数継承
+   * @param {*} portNumber ポート番号定義
+   * ポート番号定義
+   */
+   var GPIOPort = function (portNumber) {
     infoLog("GPIOPort:" + portNumber);
     this.init(portNumber);
   };
 
-  GPIOPort.prototype = {
+  /**
+   * GPIOAccess 関数継承
+   * ポート番号初期化
+   * ポート番号初期化
+   */
+   GPIOPort.prototype = {
+    /**
+     * @function
+     * 初期化処理
+     * ポート情報マッピング
+     */
     init: function (portNumber) {
       this.portNumber = portNumber;
       this.portName = "";
@@ -252,7 +332,12 @@
       this.onchange = null;
     },
 
-    export: function (direction) {
+    /**
+     * @function
+     * GPIOポート接続処理
+     * @param {*} direction 入出力方向情報
+     */
+     export: function (direction) {
       return new Promise((resolve, reject) => {
         var dir = -1;
         if (direction === "out") {
@@ -292,7 +377,12 @@
         );
       });
     },
-    read: function () {
+
+    /**
+     * @function
+     * 読み取り処理
+     */
+     read: function () {
       return new Promise((resolve, reject) => {
         infoLog("read: Port:" + this.portNumber);
         var data = new Uint8Array([this.portNumber]);
@@ -311,7 +401,13 @@
         );
       });
     },
-    write: function (value) {
+
+    /**
+     * @function
+     * 書き込み処理
+     * @param {*} value 書き込みデータ
+     */
+     write: function (value) {
       return new Promise((resolve, reject) => {
         infoLog("write: Port:" + this.portNumber + " value=" + value);
         var data = new Uint8Array([this.portNumber, value]);
@@ -330,8 +426,19 @@
         );
       });
     },
+
+    /**
+     * @function
+     * 状態変化処理
+     */
     onchange: null,
-    unexport: function () {
+
+
+    /**
+     * @function
+     * GPIOポート開放処理
+     */
+     unexport: function () {
       return new Promise((resolve, reject) => {
         infoLog("unexport: Port:" + this.portNumber);
         var data = new Uint8Array([this.portNumber, value]);
@@ -357,6 +464,12 @@
 
   var i2cPorts = [1];
 
+  /**
+   *　I2C 読み込みエラー処理
+   * @param {*} portNumber ポート番号
+   * @param {*} slaveAddress スレーブアドレス
+   * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+   */
   function printReadError(portNumber, slaveAddress) {
     errLog(
       [
@@ -367,7 +480,13 @@
     );
   }
 
-  function printWriteError(portNumber, slaveAddress) {
+  /**
+   *　I2C 書き込みエラー処理
+   * @param {*} portNumber ポート番号
+   * @param {*} slaveAddress スレーブアドレス
+   * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+   */
+   function printWriteError(portNumber, slaveAddress) {
     errLog(
       [
         `I2C-${portNumber}`,
