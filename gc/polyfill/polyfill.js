@@ -274,6 +274,7 @@
   ];
 
   /**
+   * @function
    * GPIOAccess 関数定義
    */
   var GPIOAccess = function () {
@@ -302,8 +303,8 @@
 
   /**
    * @function
-   * GPIOAccess 関数継承
-   * @param {*} portNumber ポート番号定義
+   * GPIOPort 定義
+   * @param {*} portNumber ポート番号
    * ポート番号定義
    */
    var GPIOPort = function (portNumber) {
@@ -312,14 +313,14 @@
   };
 
   /**
-   * GPIOAccess 関数継承
-   * ポート番号初期化
+   * GPIOPort 関数継承
    * ポート番号初期化
    */
    GPIOPort.prototype = {
     /**
      * @function
      * 初期化処理
+     * @param {*} portNumber ポート番号
      * ポート情報マッピング
      */
     init: function (portNumber) {
@@ -465,6 +466,7 @@
   var i2cPorts = [1];
 
   /**
+   * @function
    *　I2C 読み込みエラー処理
    * @param {*} portNumber ポート番号
    * @param {*} slaveAddress スレーブアドレス
@@ -481,6 +483,7 @@
   }
 
   /**
+   * @function
    *　I2C 書き込みエラー処理
    * @param {*} portNumber ポート番号
    * @param {*} slaveAddress スレーブアドレス
@@ -497,11 +500,24 @@
     );
   }
 
-  var I2CAccess = function () {
+  /**
+   * @function
+   * I2CAccess 関数定義
+   */
+   var I2CAccess = function () {
     this.init();
   };
 
-  I2CAccess.prototype = {
+  /**
+   * @function
+   * I2CAccess 継承
+   */
+   I2CAccess.prototype = {
+    /**
+     * @function
+     * 初期化処理
+     * ポート情報マッピング
+     */
     init: function () {
       this.ports = new Map();
       for (var cnt = 0; cnt < i2cPorts.length; cnt++) {
@@ -511,17 +527,39 @@
     ports: new Map(),
   };
 
+  /**
+   * @function
+   * I2CPort 定義
+   * @param {*} portNumber ポート番号定義
+   * ポート番号定義
+   */
   function I2CPort(portNumber) {
     this.init(portNumber);
   }
 
-  I2CPort.prototype = {
+  /**
+   * I2CPort 関数継承
+   * ポート番号初期化
+   */
+   I2CPort.prototype = {
+    /**
+     * @function
+     * 初期化処理
+     * @param {*} portNumber ポート番号
+     * ポート情報マッピング
+     */
     init: function (portNumber) {
       this.portNumber = portNumber;
     },
 
     portNumber: 0,
-    open: function (slaveAddress) {
+
+    /**
+     * @function
+     * ポート open 処理
+     * @param {*} slaveAddress スレーブアドレス
+     */
+     open: function (slaveAddress) {
       return new Promise((resolve, reject) => {
         new I2CSlaveDevice(this.portNumber, slaveAddress).then(
           (i2cslave) => {
@@ -535,6 +573,14 @@
     },
   };
 
+  /**
+   * @function
+   *　I2C スレーブデバイス初期化処理
+   * @param {*} portNumber ポート番号
+   * @param {*} slaveAddress スレーブアドレス
+   * @return {*} ポート、デバイス初期化結果
+   * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+   */
   function I2CSlaveDevice(portNumber, slaveAddress) {
     return new Promise((resolve, reject) => {
       this.init(portNumber, slaveAddress).then(
@@ -548,11 +594,26 @@
     });
   }
 
+  /**
+   * @function
+   *　I2C スレーブデバイス初期化処理　継承
+   * @param {*} portNumber ポート番号
+   * @param {*} slaveAddress スレーブアドレス
+   * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+   */
   I2CSlaveDevice.prototype = {
     portNumber: null,
     slaveAddress: null,
     slaveDevice: null,
 
+    /**
+     * @function
+     *　I2C スレーブデバイス初期化処理　継承
+     * @param {*} portNumber ポート番号
+     * @param {*} slaveAddress スレーブアドレス
+     * @return {*} ポート、デバイス初期化結果
+     * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+     */
     init: function (portNumber, slaveAddress) {
       return new Promise((resolve, reject) => {
         this.portNumber = portNumber;
@@ -576,6 +637,13 @@
       });
     },
 
+    /**
+     * @function
+     *　I2C 8bit 読み込み処理
+     * @param {*} registerNumber 読み込み番号
+     * @return {*} 読み込み結果
+     * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+     */
     read8: function (registerNumber) {
       return new Promise((resolve, reject) => {
         var data = new Uint8Array([this.slaveAddress, registerNumber, 1]);
@@ -597,6 +665,13 @@
       });
     },
 
+    /**
+     * @function
+     *　I2C 16bit 読み込み処理
+     * @param {*} registerNumber 読み込み番号
+     * @return {*} 読み込み結果
+     * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+     */
     read16: function (registerNumber) {
       return new Promise((resolve, reject) => {
         infoLog("I2CSlaveDevice.read16() registerNumber=" + registerNumber);
@@ -622,6 +697,14 @@
       });
     },
 
+    /**
+     * @function
+     *　I2C 8bit 書き込み処理
+     * @param {*} registerNumber 書き込み番号
+     * @param {*} registerNumber 書き込み値
+     * @return {*} 書き込み結果
+     * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+     */
     write8: function (registerNumber, value) {
       return new Promise((resolve, reject) => {
         infoLog(
@@ -654,6 +737,14 @@
       });
     },
 
+    /**
+     * @function
+     *　I2C 16bit 書き込み処理
+     * @param {*} registerNumber 書き込み番号
+     * @param {*} registerNumber 書き込み値
+     * @return {*} 書き込み結果
+     * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+     */
     write16: function (registerNumber, value) {
       return new Promise((resolve, reject) => {
         infoLog(
@@ -689,6 +780,12 @@
       });
     },
 
+    /**
+     * @function
+     *　I2C 1byte 読み込み処理
+     * @return {*} 読み込み結果
+     * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+     */
     readByte: function () {
       return new Promise((resolve, reject) => {
         var data = new Uint8Array([this.slaveAddress, 1]);
@@ -710,6 +807,13 @@
       });
     },
 
+    /**
+     * @function
+     *　I2C n byte 読み込み処理
+     * @param {*} length 読み込みバイト長
+     * @return {*} 読み込み結果
+     * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+     */
     readBytes: function (length) {
       return new Promise((resolve, reject) => {
         if (typeof length !== "number" || length > 127) {
@@ -736,6 +840,13 @@
       });
     },
 
+    /**
+     * @function
+     *　I2C 1 byte 書き込み処理
+     * @param {*} value 書き込み値
+     * @return {*} 書き込み結果
+     * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+     */
     writeByte: function (value) {
       return new Promise((resolve, reject) => {
         infoLog("I2CSlaveDevice.writeByte() value=" + value);
@@ -760,6 +871,13 @@
       });
     },
 
+    /**
+     * @function
+     *　I2C 1 byte 書き込み処理
+     * @param {*} buffer 書き込み値
+     * @return {*} 書き込み結果
+     * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
+     */
     writeBytes: function (buffer) {
       return new Promise((resolve, reject) => {
         if (buffer.length == null) {
