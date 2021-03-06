@@ -4,5 +4,11 @@
   "main": "polyfill.js",
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "doc": " jsdoc polyfill.js"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.6.6"
   }
 }
