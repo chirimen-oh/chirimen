@@ -6,10 +6,12 @@
     "access": "public"
   },
   "scripts": {
-    "maked": " dtsmake -s polyfill.js"
+    "maked": " dtsmake -s polyfill.js",
+    "doc": "rm -rf out/ && jsdoc polyfill.js"
   },
   "devDependencies": {
     "dtsmake": "^0.0.10",
-    "tern": "^0.24.3"
+    "tern": "^0.24.3",
+    "jsdoc": "^3.6.6"
   }
 }

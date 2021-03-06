@@ -1,3 +1,9 @@
+# System Files
 .DS_Store
-.Thumbs.db
-node_modules/
+Thumbs.db
+
+# dependencies
+/node_modules
+
+# jsdoc
+/out
