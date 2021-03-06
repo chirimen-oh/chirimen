@@ -90,7 +90,7 @@
        * @param {*} func 送信先アドレス
        * @param {*} data 送信処理
        */
-       send: function (func, data) {
+      send: function (func, data) {
         return new Promise((resolve, reject) => {
           if (!(data instanceof Uint8Array)) {
             reject("type error: Please using with Uint8Array buffer.");
@@ -125,7 +125,7 @@
        * GPIO データ受信処理
        * @param {*} mes 受信メッセージ
        */
-       receive: function (mes) {
+      receive: function (mes) {
         if (!(mes instanceof Uint8Array)) {
           errLog(new TypeError("Please using with Uint8Array buffer."));
           errLog(
@@ -168,7 +168,7 @@
        * @param {*} port ポート番号
        * @param {*} func 登録バッファ
        */
-       registerEvent: function (f, port, func) {
+      registerEvent: function (f, port, func) {
         var key = (f << 8) | port;
         this.onevents.set(key, func);
       },
@@ -180,7 +180,7 @@
        * @param {*} port ポート番号
        * @param {*} func 登録バッファ
        */
-       removeEvent: function (f, port) {
+      removeEvent: function (f, port) {
         var key = (f << 8) | port;
         this.onevents.delete(key);
       },
@@ -189,7 +189,7 @@
        * GPIO イベント発生時処理
        * @param {*} data データ
        */
-       onEvent: function (data) {
+      onEvent: function (data) {
         if (!(data instanceof Uint8Array)) {
           errLog(new TypeError("Please using with Uint8Array buffer."));
           errLog(
@@ -223,7 +223,7 @@
        * @function
        * GPIO接続待ち処理
        */
-       waitConnection: function () {
+      waitConnection: function () {
         return new Promise((resolve, reject) => {
           if (this.status == 2) {
             resolve();
@@ -284,7 +284,7 @@
   /**
    * GPIOAccess 関数継承
    */
-   GPIOAccess.prototype = {
+  GPIOAccess.prototype = {
     /**
      * @function
      * GPIOAccess 初期化処理
@@ -307,7 +307,7 @@
    * @param {*} portNumber ポート番号
    * ポート番号定義
    */
-   var GPIOPort = function (portNumber) {
+  var GPIOPort = function (portNumber) {
     infoLog("GPIOPort:" + portNumber);
     this.init(portNumber);
   };
@@ -316,7 +316,7 @@
    * GPIOPort 関数継承
    * ポート番号初期化
    */
-   GPIOPort.prototype = {
+  GPIOPort.prototype = {
     /**
      * @function
      * GPIO 初期化処理
@@ -489,7 +489,7 @@
    * @param {*} slaveAddress スレーブアドレス
    * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
    */
-   function printWriteError(portNumber, slaveAddress) {
+  function printWriteError(portNumber, slaveAddress) {
     errLog(
       [
         `I2C-${portNumber}`,
@@ -504,7 +504,7 @@
    * @function
    * I2CAccess 関数定義
    */
-   var I2CAccess = function () {
+  var I2CAccess = function () {
     this.init();
   };
 
@@ -512,7 +512,7 @@
    * @function
    * I2CAccess 継承
    */
-   I2CAccess.prototype = {
+  I2CAccess.prototype = {
     /**
      * @function
      * I2CAccess 初期化処理
@@ -559,7 +559,7 @@
      * I2C ポート open 処理
      * @param {*} slaveAddress スレーブアドレス
      */
-     open: function (slaveAddress) {
+    open: function (slaveAddress) {
       return new Promise((resolve, reject) => {
         new I2CSlaveDevice(this.portNumber, slaveAddress).then(
           (i2cslave) => {
