@@ -3,7 +3,7 @@
 
   /**
    * ログ情報出力
-   * @param {*} str 出力文字列
+   * @param str 出力文字列
    */
   function infoLog(str) {
     // console.log("info: "+str);
@@ -11,7 +11,7 @@
 
   /**
    * エラーログログ情報出力
-   * @param {*} error エラー情報
+   * @param error エラー情報
    */
   function errLog(error) {
     console.error(error);
@@ -35,7 +35,7 @@
       /**
        * @function
        * GPIO 初期化処理
-       * @param {*} serverURL WebSocket サーバーURL
+       * @param serverURL WebSocket サーバーURL
        */
       init: function (serverURL) {
         infoLog("bone.init()");
@@ -87,8 +87,8 @@
       /**
        * @function
        * GPIO データ送信処理
-       * @param {*} func 送信先アドレス
-       * @param {*} data 送信処理
+       * @param func 送信先アドレス
+       * @param data 送信処理
        */
       send: function (func, data) {
         return new Promise((resolve, reject) => {
@@ -123,7 +123,7 @@
       /**
        * @function
        * GPIO データ受信処理
-       * @param {*} mes 受信メッセージ
+       * @param mes 受信メッセージ
        */
       receive: function (mes) {
         if (!(mes instanceof Uint8Array)) {
@@ -164,9 +164,9 @@
       /**
        * @function
        * GPIO イベント登録処理
-       * @param {*} f 登録アドレス
-       * @param {*} port ポート番号
-       * @param {*} func 登録バッファ
+       * @param f 登録アドレス
+       * @param port ポート番号
+       * @param func 登録バッファ
        */
       registerEvent: function (f, port, func) {
         var key = (f << 8) | port;
@@ -176,9 +176,9 @@
       /**
        * @function
        * GPIO イベント削除処理
-       * @param {*} f 登録アドレス
-       * @param {*} port ポート番号
-       * @param {*} func 登録バッファ
+       * @param f 登録アドレス
+       * @param port ポート番号
+       * @param func 登録バッファ
        */
       removeEvent: function (f, port) {
         var key = (f << 8) | port;
@@ -187,7 +187,7 @@
 
       /**
        * GPIO イベント発生時処理
-       * @param {*} data データ
+       * @param data データ
        */
       onEvent: function (data) {
         if (!(data instanceof Uint8Array)) {
@@ -304,7 +304,7 @@
   /**
    * @function
    * GPIOPort 定義
-   * @param {*} portNumber ポート番号
+   * @param portNumber ポート番号
    * ポート番号定義
    */
   var GPIOPort = function (portNumber) {
@@ -320,7 +320,7 @@
     /**
      * @function
      * GPIO 初期化処理
-     * @param {*} portNumber ポート番号
+     * @param portNumber ポート番号
      * ポート情報マッピング
      */
     init: function (portNumber) {
@@ -336,7 +336,7 @@
     /**
      * @function
      * GPIOポート接続処理
-     * @param {*} direction 入出力方向情報
+     * @param direction 入出力方向情報
      */
      export: function (direction) {
       return new Promise((resolve, reject) => {
@@ -406,7 +406,7 @@
     /**
      * @function
      * GPIO 書き込み処理
-     * @param {*} value 書き込みデータ
+     * @param value 書き込みデータ
      */
      write: function (value) {
       return new Promise((resolve, reject) => {
@@ -468,8 +468,8 @@
   /**
    * @function
    *　I2C 読み込みエラー処理
-   * @param {*} portNumber ポート番号
-   * @param {*} slaveAddress スレーブアドレス
+   * @param portNumber ポート番号
+   * @param slaveAddress スレーブアドレス
    * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
    */
   function printReadError(portNumber, slaveAddress) {
@@ -485,8 +485,8 @@
   /**
    * @function
    *　I2C 書き込みエラー処理
-   * @param {*} portNumber ポート番号
-   * @param {*} slaveAddress スレーブアドレス
+   * @param portNumber ポート番号
+   * @param slaveAddress スレーブアドレス
    * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
    */
   function printWriteError(portNumber, slaveAddress) {
@@ -530,7 +530,7 @@
   /**
    * @function
    * I2CPort 定義
-   * @param {*} portNumber ポート番号定義
+   * @param portNumber ポート番号定義
    * ポート番号定義
    */
   function I2CPort(portNumber) {
@@ -545,7 +545,7 @@
     /**
      * @function
      * I2C 初期化処理
-     * @param {*} portNumber ポート番号
+     * @param portNumber ポート番号
      * ポート情報マッピング
      */
     init: function (portNumber) {
@@ -557,7 +557,7 @@
     /**
      * @function
      * I2C ポート open 処理
-     * @param {*} slaveAddress スレーブアドレス
+     * @param slaveAddress スレーブアドレス
      */
     open: function (slaveAddress) {
       return new Promise((resolve, reject) => {
@@ -576,9 +576,9 @@
   /**
    * @function
    *　I2C スレーブデバイス初期化処理
-   * @param {*} portNumber ポート番号
-   * @param {*} slaveAddress スレーブアドレス
-   * @return {*} ポート、デバイス初期化結果
+   * @param portNumber ポート番号
+   * @param slaveAddress スレーブアドレス
+   * @return ポート、デバイス初期化結果
    * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
    */
   function I2CSlaveDevice(portNumber, slaveAddress) {
@@ -597,8 +597,8 @@
   /**
    * @function
    *　I2C スレーブデバイス初期化処理　継承
-   * @param {*} portNumber ポート番号
-   * @param {*} slaveAddress スレーブアドレス
+   * @param portNumber ポート番号
+   * @param slaveAddress スレーブアドレス
    * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
    */
   I2CSlaveDevice.prototype = {
@@ -609,9 +609,9 @@
     /**
      * @function
      *　I2C スレーブデバイス初期化処理　継承
-     * @param {*} portNumber ポート番号
-     * @param {*} slaveAddress スレーブアドレス
-     * @return {*} ポート、デバイス初期化結果
+     * @param portNumber ポート番号
+     * @param slaveAddress スレーブアドレス
+     * @return ポート、デバイス初期化結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
     init: function (portNumber, slaveAddress) {
@@ -640,8 +640,8 @@
     /**
      * @function
      *　I2C 8bit 読み込み処理
-     * @param {*} registerNumber 読み込み番号
-     * @return {*} 読み込み結果
+     * @param registerNumber 読み込み番号
+     * @return 読み込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
     read8: function (registerNumber) {
@@ -668,8 +668,8 @@
     /**
      * @function
      *　I2C 16bit 読み込み処理
-     * @param {*} registerNumber 読み込み番号
-     * @return {*} 読み込み結果
+     * @param registerNumber 読み込み番号
+     * @return 読み込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
     read16: function (registerNumber) {
@@ -700,9 +700,9 @@
     /**
      * @function
      *　I2C 8bit 書き込み処理
-     * @param {*} registerNumber 書き込み番号
-     * @param {*} registerNumber 書き込み値
-     * @return {*} 書き込み結果
+     * @param registerNumber 書き込み番号
+     * @param registerNumber 書き込み値
+     * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
     write8: function (registerNumber, value) {
@@ -740,9 +740,9 @@
     /**
      * @function
      *　I2C 16bit 書き込み処理
-     * @param {*} registerNumber 書き込み番号
-     * @param {*} registerNumber 書き込み値
-     * @return {*} 書き込み結果
+     * @param registerNumber 書き込み番号
+     * @param registerNumber 書き込み値
+     * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
     write16: function (registerNumber, value) {
@@ -783,7 +783,7 @@
     /**
      * @function
      *　I2C 1byte 読み込み処理
-     * @return {*} 読み込み結果
+     * @return 読み込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
     readByte: function () {
@@ -810,8 +810,8 @@
     /**
      * @function
      *　I2C n byte 読み込み処理
-     * @param {*} length 読み込みバイト長
-     * @return {*} 読み込み結果
+     * @param length 読み込みバイト長
+     * @return 読み込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
     readBytes: function (length) {
@@ -843,8 +843,8 @@
     /**
      * @function
      *　I2C 1byte 書き込み処理
-     * @param {*} value 書き込み値
-     * @return {*} 書き込み結果
+     * @param value 書き込み値
+     * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
     writeByte: function (value) {
@@ -874,8 +874,8 @@
     /**
      * @function
      *　I2C 1byte 書き込み処理
-     * @param {*} buffer 書き込み値
-     * @return {*} 書き込み結果
+     * @param buffer 書き込み値
+     * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
     writeBytes: function (buffer) {
@@ -915,7 +915,7 @@
     /**
      * @function
      *　navigator requestI2CAccess 割当処理
-     * @return {*} 割当結果
+     * @return 割当結果
      */
     navigator.requestI2CAccess = function () {
       return new Promise(function (resolve, reject) {
@@ -938,7 +938,7 @@
     /**
      * @function
      *　navigator requestGPIOAccess 割当処理
-     * @return {*} 割当結果
+     * @return 割当結果
      */
      navigator.requestGPIOAccess = function () {
       return new Promise(function (resolve, reject) {
