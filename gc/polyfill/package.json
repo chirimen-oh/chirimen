@@ -6,7 +6,7 @@
     "access": "public"
   },
   "scripts": {
-    "doc": "rm -rf out/ && jsdoc polyfill.js"
+    "jsdoc": "rm -rf jsdpc/ && jsdoc -d jsdoc polyfill.js"
   },
   "devDependencies": {
     "jsdoc": "^3.6.6"
