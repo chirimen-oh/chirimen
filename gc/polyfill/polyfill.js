@@ -19,8 +19,7 @@
 
   var bone = (() => {
     /**
-     * TBD
-     *
+     * router コンストラクターの関数, class 定義
      */
     function router() {}
     router.prototype = {
@@ -274,7 +273,7 @@
 
   /**
    * @function
-   * GPIOAccess  コンストラクターの関数の定義
+   * GPIOAccess コンストラクターの関数の定義
    */
   var GPIOAccess = function () {
     this.init();
