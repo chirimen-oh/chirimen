@@ -178,7 +178,6 @@
        * GPIO イベント削除処理
        * @param f 登録アドレス
        * @param port ポート番号
-       * @param func 登録バッファ
        */
       removeEvent: function (f, port) {
         var key = (f << 8) | port;
@@ -275,14 +274,14 @@
 
   /**
    * @function
-   * GPIOAccess 関数定義
+   * GPIOAccess  コンストラクターの関数の定義
    */
   var GPIOAccess = function () {
     this.init();
   };
 
   /**
-   * GPIOAccess 関数継承
+   * GPIOAccess class 定義
    */
   GPIOAccess.prototype = {
     /**
@@ -502,7 +501,7 @@
 
   /**
    * @function
-   * I2CAccess 関数定義
+   * I2CAccess コンストラクターの関数の定義
    */
   var I2CAccess = function () {
     this.init();
@@ -510,7 +509,7 @@
 
   /**
    * @function
-   * I2CAccess 継承
+   * I2CAccess class 定義
    */
   I2CAccess.prototype = {
     /**
@@ -701,7 +700,7 @@
      * @function
      *　I2C 8bit 書き込み処理
      * @param registerNumber 書き込み番号
-     * @param registerNumber 書き込み値
+     * @param value 書き込み値
      * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
@@ -741,7 +740,7 @@
      * @function
      *　I2C 16bit 書き込み処理
      * @param registerNumber 書き込み番号
-     * @param registerNumber 書き込み値
+     * @param value 書き込み値
      * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
@@ -873,7 +872,7 @@
 
     /**
      * @function
-     *　I2C 1byte 書き込み処理
+     *　I2C n byte 書き込み処理
      * @param buffer 書き込み値
      * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
