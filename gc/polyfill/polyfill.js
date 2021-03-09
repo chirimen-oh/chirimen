@@ -573,7 +573,7 @@
 
   /**
    * @function
-   *　I2C スレーブデバイス初期化処理
+   *　I2CSlaveDevice コンストラクターの関数の定義
    * @param portNumber ポート番号
    * @param slaveAddress スレーブアドレス
    * @return ポート、デバイス初期化結果
@@ -594,7 +594,7 @@
 
   /**
    * @function
-   *　I2C スレーブデバイス初期化処理　継承
+   * I2CSlaveDevice class 定義
    * @param portNumber ポート番号
    * @param slaveAddress スレーブアドレス
    * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
@@ -606,7 +606,7 @@
 
     /**
      * @function
-     *　I2C スレーブデバイス初期化処理　継承
+     *　I2C スレーブデバイス初期化処理
      * @param portNumber ポート番号
      * @param slaveAddress スレーブアドレス
      * @return ポート、デバイス初期化結果
