@@ -19,24 +19,27 @@
       }
 
       img {
-        position: absolute;
-        top: 50px;
-        right: 0px;
         display: block;
         margin-left: auto;
         margin-right: auto;
       }
+      .sensor {
+        text-align: center;
+        width: 175px;
+        height: 70px;
+        background-color: greenyellow;
+        border: solid 1px black;
+      }
+      .on {
+        background-color: red;
+      }
     </style>
   </head>
-
   <body>
-    <p id="head">VL53L0X</p>
-    <img src="schematic.png" width="400" />
-    <table>
-      <tr>
-        <td>Distance [mm]</td>
-        <td id="dist"></td>
-      </tr>
-    </table>
+    <p></p>
+    <div id="sensor1" class="sensor">
+      <div id="date_minute"></div>
+      <span id="come_time"></span><br /><span id="now_time"></span><br /><span id="spent_time">
+    </div>
   </body>
 </html>
