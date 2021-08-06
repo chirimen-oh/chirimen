@@ -60,9 +60,9 @@ sudo apt-get -y upgrade
 
 # 各種ツールをインストール
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 vim emacs libnss3-tools
+sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 arduino vim emacs libnss3-tools
 # インストール失敗しやすいので2回
-sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 vim emacs libnss3-tools
+sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 arduino vim emacs libnss3-tools
 sudo apt-get -y autoremove
 
 # VS code のインストール
@@ -152,9 +152,6 @@ if [ ! -f /home/pi/gc.zip ]; then
     wget https://r.chirimen.org/gc.zip
 fi
 # chromiumの起動待ちダウンロード
-if [ ! -f /home/pi/arduino-1.8.13-linuxarm.tar.xz ]; then
-    wget https://downloads.arduino.cc/arduino-1.8.13-linuxarm.tar.xz
-fi
 if [ ! -d /home/pi/Desktop/gc/ ]; then
     unzip ./gc.zip -d /home/pi/Desktop
 fi
@@ -285,21 +282,6 @@ do
     certdir=$(dirname ${certDB});
     certutil -A -n "${certname}" -t "TCu,Cu,Tu" -i ${certfile} -d sql:${certdir}
 done
-
-
-# Arduino IDE 追加
-cd /home/pi/
-mkdir /home/pi/Applications/
-if [ ! -d /home/pi/Applications/arduino-1.8.13/ ]; then
-    tar xvf arduino-1.8.13-linuxarm.tar.xz
-    mv arduino-1.8.13 /home/pi/Applications/
-fi
-cd /home/pi/Applications/
-ln -s arduino-1.8.13 arduino
-cd /home/pi/Applications/arduino/
-./install.sh
-rm -f /home/pi/arduino-1.8.13-linuxarm.tar.xz
-cd /home/pi/
 
 # upgradeを保留を解除
 sudo apt-mark auto raspberrypi-ui-mods
