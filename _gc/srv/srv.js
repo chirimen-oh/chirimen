@@ -446,6 +446,9 @@ function processOne(connection, u8mes) {
         const portdata = lockGPIO.get(portnum);
         portdata.exportobj = exportobj;
         logout(portnum + " dir: " + portdata.direction);
+        if (portdata.direction === 1) {
+          portdata.value = portdata.exportobj.readSync();
+        }
         lockGPIO.set(portnum, portdata);
         logout(
           "export:done: port=" + portnum + " direction=" + portdata.direction
