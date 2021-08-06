@@ -27,7 +27,7 @@ sudo sh -c "cat << EOF > /etc/xdg/lxsession/LXDE-pi/autostart
 @xset s off
 @xset -dpms
 @xset s noblank
-@/usr/bin/chromium-browser https://localhost/top --enable-experimental-web-platform-features
+@/usr/bin/chromium-browser https://localhost/top
 EOF"
 
 # aptをmirrorで指定
@@ -45,8 +45,6 @@ deb mirror+file:/etc/apt/mirrors.txt buster main contrib non-free rpi
 EOF"
 sudo apt-get update
 
-# upgradeを保留に変更
-sudo apt-mark hold raspberrypi-ui-mods
 # 必要な項目をインストール
 sudo apt-get install at-spi2-core
 
@@ -157,6 +155,10 @@ mkdir /home/pi/.config/chromium/Default/
 cp /home/pi/_gc/bookmark/Bookmarks /home/pi/.config/chromium/Default/Bookmarks
 pcmanfm --set-wallpaper /home/pi/_gc/wallpaper/wallpaper-720P.png
 
+# Web Bluetooth有効化
+cat << EOF > '/home/pi/.config/chromium/Local State'
+{"browser":{"enabled_labs_experiments":["enable-experimental-web-platform-features"]}}
+EOF
 
 # gc設定
 chromium-browser &
@@ -273,18 +275,6 @@ EOF'
 sudo a2ensite vhost-ssl
 sudo a2enmod ssl
 sudo systemctl restart apache2
-grep -- '--enable-experimental-web-platform-features' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop
-if [ $? = 1 ]; then
-    sudo sed 's/Exec=\/usr\/bin\/x-www-browser\s%u/Exec=\/usr\/bin\/x-www-browser --enable-experimental-web-platform-features %u/g' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop |\
-        sudo tee /tmp/xbrowser && sudo cat /tmp/xbrowser |\
-        sudo tee /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop && sudo rm -f /tmp/xbrowser
-fi
-grep -- '--enable-experimental-web-platform-features' /usr/share/applications/chromium-browser.desktop
-if [ $? = 1 ]; then
-    sudo sed 's/Exec=chromium-browser/Exec=chromium-browser --enable-experimental-web-platform-features/g' /usr/share/applications/chromium-browser.desktop |\
-        sudo tee /tmp/chbrowser && sudo cat /tmp/chbrowser |\
-        sudo tee /usr/share/applications/chromium-browser.desktop && sudo rm -f /tmp/chbrowser
-fi
 
 # 証明書追加
 certfile="/home/pi/_gc/srv/crt/ca.crt"
@@ -295,12 +285,6 @@ do
     certdir=$(dirname ${certDB});
     certutil -A -n "${certname}" -t "TCu,Cu,Tu" -i ${certfile} -d sql:${certdir}
 done
-
-# upgradeを保留を解除
-sudo apt-mark auto raspberrypi-ui-mods
-# 上をアップグレード
-sudo apt-get -y upgrade
-
 
 ####
 # 最後にダイアログをOKにしてrebootして完了
