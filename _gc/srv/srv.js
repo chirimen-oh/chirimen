@@ -21,7 +21,7 @@ const port = 33330;
 
 const server = https.createServer({
   cert: fs.readFileSync("./crt/server.crt"),
-  key: fs.readFileSync("./crt/server.key")
+  key: fs.readFileSync("./crt/server.key"),
 });
 
 server.listen(port, () => {
@@ -123,7 +123,7 @@ const wss = new WebSocket.Server({ server });
 
 process.on("unhandledRejection", console.dir);
 
-wss.on("connection", ws => {
+wss.on("connection", (ws) => {
   var conn = {};
   conn.ws = ws;
   conn.uid = ws._socket._handle.fd;
@@ -137,7 +137,7 @@ wss.on("connection", ws => {
       (connections.size - 1)
   );
 
-  conn.ws.on("message", message => {
+  conn.ws.on("message", (message) => {
     var u8mes = new Uint8Array(message);
     processMessage(conn, u8mes);
   });
@@ -158,7 +158,7 @@ wss.on("connection", ws => {
 */
   });
 
-  conn.ws.on("error", error => {
+  conn.ws.on("error", (error) => {
     logout("[connection error]uid:" + conn.uid);
     conn.ws.terminate();
   });
@@ -171,7 +171,7 @@ function unlockAllResources({ exportedPorts, usingSlaveAddrs }) {
     tempGPIO.delete(key);
     lockGPIO.delete(key);
   });
-  usingSlaveAddrs.forEach(addr => {
+  usingSlaveAddrs.forEach((addr) => {
     logout("unlockAllResources-i2c:addr=" + addr);
     tempI2C.delete(addr);
   });
@@ -221,7 +221,7 @@ function checkAcquirable(connection, u8mes) {
             "x",
             "lockGPIO:",
             ["your uid", connection.uid].join(":"),
-            ["handle by", lockdata.uid].join(":")
+            ["handle by", lockdata.uid].join(":"),
           ].join(" ")
         );
         break;
@@ -237,7 +237,7 @@ function checkAcquirable(connection, u8mes) {
             "now processing",
             ["UID", `[${uid}]`].join(":"),
             ["session", `[${session}]`].join(":"),
-            ["waiting", u8mes].join(":")
+            ["waiting", u8mes].join(":"),
           ].join(" ")
         );
         acquire = 0;
@@ -261,7 +261,7 @@ function checkAcquirable(connection, u8mes) {
             "now processing",
             ["UID", `[${uid}]`].join(":"),
             ["session", `${session}`].join(":"),
-            ["waiting", u8mes].join(":")
+            ["waiting", u8mes].join(":"),
           ].join(" ")
         );
         acquire = 2;
@@ -315,7 +315,7 @@ function doProcess() {
         resolve(null);
       } else {
         // OK (aquirable)
-        processOne(probj.connection, probj.u8mes).then(value => {
+        processOne(probj.connection, probj.u8mes).then((value) => {
           //          logout("processOne.then() : "+processQueue.length);
 
           // Queueの処理実行時に入れ違いでWebSocketが閉じられていることがある。
@@ -339,7 +339,7 @@ const gpio = require("gpio", { interval: 50 });
 const i2c = require("i2c-bus");
 
 let i2c1 = null;
-i2c.openPromisified(1).then(bus => {
+i2c.openPromisified(1).then((bus) => {
   i2c1 = bus;
 });
 
@@ -432,7 +432,7 @@ function processOne(connection, u8mes) {
         lockGPIO.set(portnum, {
           uid: connection.uid,
           direction: direction,
-          value: -1
+          value: -1,
         });
         var dirStr;
         if (direction == 1) {
@@ -443,7 +443,7 @@ function processOne(connection, u8mes) {
         }
         var options = {
           direction: dirStr,
-          ready: function() {
+          ready: function () {
             temp.delete(portnum);
             var portdata = lockGPIO.get(portnum);
             portdata.exportobj = exportobj;
@@ -457,7 +457,7 @@ function processOne(connection, u8mes) {
             );
 
             if (portdata.direction == 1) {
-              portdata.exportobj.on("change", val => {
+              portdata.exportobj.on("change", (val) => {
                 // [0] Change Callback (2)
                 // [1] session id LSB (0)
                 // [2] session id MSB (0)
@@ -480,7 +480,7 @@ function processOne(connection, u8mes) {
               ans = createAnswer(u8mes, [1]);
               resolve(ans);
             }
-          }
+          },
         };
         var exportobj = gpio.export(portnum, options);
         connection.exportedPorts.set(portnum, exportobj);
@@ -567,7 +567,7 @@ function processOne(connection, u8mes) {
           [
             `0x20:[${session}]:`,
             `addr=${slaveAddress}`,
-            `method=${method}`
+            `method=${method}`,
           ].join(" ")
         );
 
@@ -607,7 +607,7 @@ function processOne(connection, u8mes) {
             `0x21:[${session}]:`,
             `addr=${slaveAddress}`,
             `size=${size}`,
-            `data.length=${data.length}`
+            `data.length=${data.length}`,
           ].join(" ")
         );
 
@@ -624,7 +624,7 @@ function processOne(connection, u8mes) {
             [
               `0x21:[${session}]:`,
               `addr=${slaveAddress}`,
-              `result=${bytesWritten}`
+              `result=${bytesWritten}`,
             ].join(" ")
           );
           temp.delete(slaveAddress);
@@ -654,7 +654,7 @@ function processOne(connection, u8mes) {
           [
             `0x22:[${session}]:`,
             `addr=${slaveAddress}`,
-            `readSize=${readSize}`
+            `readSize=${readSize}`,
           ].join(" ")
         );
 
@@ -666,7 +666,7 @@ function processOne(connection, u8mes) {
             [
               `0x22:[${session}]:`,
               `addr=${slaveAddress}`,
-              `result=${bytesRead}`
+              `result=${bytesRead}`,
             ].join(" ")
           );
           temp.delete(slaveAddress);
@@ -698,7 +698,7 @@ function processOne(connection, u8mes) {
             `0x23:[${session}]:`,
             `addr=${slaveAddress}`,
             `register=${registerNumber}`,
-            `readSize=${readSize}`
+            `readSize=${readSize}`,
           ].join(" ")
         );
 
@@ -710,7 +710,7 @@ function processOne(connection, u8mes) {
             [
               `0x23:[${session}]:`,
               `addr=${slaveAddress}`,
-              `result=${bytesRead}`
+              `result=${bytesRead}`,
             ].join(" ")
           );
           temp.delete(slaveAddress);
