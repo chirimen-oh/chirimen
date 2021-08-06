@@ -69,7 +69,8 @@ var connections = new Map();
   obj.value       : GPIO value is LOW=0 or HIGH=1 or initializing=-1
 
 -------------------------------------------------------- */
-var lockGPIO = new Map();
+/** @type {Map<number, { uid: string, direction: 0 | 1, value: -1 | 0 | 1, exportobj: import("onoff").Gpio }>} */
+const lockGPIO = new Map();
 
 /* --------------------------------------------------------
 
@@ -335,7 +336,7 @@ function doProcess() {
 ////////////////////////////////////////////////////////////
 // GPIO / I2C wrapper
 
-const gpio = require("gpio", { interval: 50 });
+const Gpio = require("onoff").Gpio;
 const i2c = require("i2c-bus");
 
 let i2c1 = null;
@@ -434,55 +435,48 @@ function processOne(connection, u8mes) {
           direction: direction,
           value: -1,
         });
-        var dirStr;
-        if (direction == 1) {
-          // direction:in
-          dirStr = "in";
-        } else {
-          dirStr = "out";
-        }
-        var options = {
-          direction: dirStr,
-          ready: function () {
-            temp.delete(portnum);
-            var portdata = lockGPIO.get(portnum);
-            portdata.exportobj = exportobj;
-            logout(portnum + " dir: " + portdata.direction);
-            lockGPIO.set(portnum, portdata);
-            logout(
-              "export:done: port=" +
-                portnum +
-                " direction=" +
-                portdata.direction
-            );
+        const dirStr = direction === 1 ? "in" : "out";
+        const exportobj = new Gpio(
+          portnum,
+          dirStr,
+          dirStr === "in" ? "both" : undefined
+        );
 
-            if (portdata.direction == 1) {
-              portdata.exportobj.on("change", (val) => {
-                // [0] Change Callback (2)
-                // [1] session id LSB (0)
-                // [2] session id MSB (0)
-                // [3] function id (0x14)
-                // [4] Port Number
-                // [5] Value (0:LOW 1:HIGH)
-                logout("changed:" + portnum + " value:" + val);
-                var portdata = lockGPIO.get(portnum);
-                portdata.value = val;
-                lockGPIO.set(portnum, portdata);
-                var mes = new Uint8Array([2, 0, 0, 0x14, portnum, val]);
-                var conn = connections.get(portdata.uid);
-                conn.ws.send(mes);
-                mes = null;
-              });
-              ans = createAnswer(u8mes, [1]);
-              resolve(ans);
-            } else {
-              //         0     : export      : [4] result (1:OK, 0:NG)
-              ans = createAnswer(u8mes, [1]);
-              resolve(ans);
-            }
-          },
-        };
-        var exportobj = gpio.export(portnum, options);
+        temp.delete(portnum);
+        const portdata = lockGPIO.get(portnum);
+        portdata.exportobj = exportobj;
+        logout(portnum + " dir: " + portdata.direction);
+        lockGPIO.set(portnum, portdata);
+        logout(
+          "export:done: port=" + portnum + " direction=" + portdata.direction
+        );
+
+        if (portdata.direction == 1) {
+          portdata.exportobj.watch((err, val) => {
+            if (err) throw err;
+
+            // [0] Change Callback (2)
+            // [1] session id LSB (0)
+            // [2] session id MSB (0)
+            // [3] function id (0x14)
+            // [4] Port Number
+            // [5] Value (0:LOW 1:HIGH)
+            logout("changed:" + portnum + " value:" + val);
+            var portdata = lockGPIO.get(portnum);
+            portdata.value = val;
+            lockGPIO.set(portnum, portdata);
+            var mes = new Uint8Array([2, 0, 0, 0x14, portnum, val]);
+            var conn = connections.get(portdata.uid);
+            conn.ws.send(mes);
+            mes = null;
+          });
+          ans = createAnswer(u8mes, [1]);
+          resolve(ans);
+        } else {
+          //         0     : export      : [4] result (1:OK, 0:NG)
+          ans = createAnswer(u8mes, [1]);
+          resolve(ans);
+        }
         connection.exportedPorts.set(portnum, exportobj);
         break;
       }
@@ -504,11 +498,14 @@ function processOne(connection, u8mes) {
 
           logout("setValue() : port" + portnum + " value:" + value);
 
-          // setValue()
-          portdata.exportobj.set(value);
-          temp.delete(portnum);
-          ans = createAnswer(u8mes, [1]);
-          resolve(ans);
+          portdata.exportobj
+            .write(value)
+            .then(() => {
+              temp.delete(portnum);
+              ans = createAnswer(u8mes, [1]);
+              resolve(ans);
+            })
+            .catch(reject);
         } else {
           logout("setValue() Error : port[" + portnum + "] is now input port.");
         }
@@ -546,7 +543,7 @@ function processOne(connection, u8mes) {
       case 0x13: {
         logout("0x13:[" + session + "]: port=" + portnum);
         var portdata = lockGPIO.get(portnum);
-        portdata.exportobj.removeAllListeners("change");
+        portdata.exportobj.unwatchAll();
         portdata.exportobj.unexport();
         connection.exportedPorts.delete(portnum);
         lockGPIO.delete(portnum);
