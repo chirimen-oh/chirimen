@@ -59,9 +59,10 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 
 # 各種ツールをインストール
-sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs npm apache2 vim emacs libnss3-tools
+curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 vim emacs libnss3-tools
 # インストール失敗しやすいので2回
-sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs npm apache2 vim emacs libnss3-tools
+sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 vim emacs libnss3-tools
 sudo apt-get -y autoremove
 
 # VS code のインストール
@@ -92,13 +93,8 @@ sudo raspi-config nonint do_configure_keyboard jp
 # Wi-Fi設定
 sudo raspi-config nonint do_wifi_country JP
 
-# node.jsのインストール
-sudo npm install n -g
-sudo n 12.20.0
-PATH=$PATH
-sudo npm i eslint prettier -g
-
 # VS code extension
+sudo npm i eslint prettier -g
 /usr/share/code/bin/code --install-extension dbaeumer.vscode-eslint
 /usr/share/code/bin/code --install-extension esbenp.prettier-vscode
 
