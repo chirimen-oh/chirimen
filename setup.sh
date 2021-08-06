@@ -60,14 +60,10 @@ sudo apt-get -y upgrade
 
 # 各種ツールをインストール
 curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 arduino vim emacs libnss3-tools
+sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 arduino code vim emacs libnss3-tools
 # インストール失敗しやすいので2回
-sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 arduino vim emacs libnss3-tools
+sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs apache2 arduino code vim emacs libnss3-tools
 sudo apt-get -y autoremove
-
-# VS code のインストール
-wget -O /tmp/code.deb 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-armhf'
-sudo apt install -y /tmp/code.deb
 
 
 # 日本語設定
@@ -95,8 +91,8 @@ sudo raspi-config nonint do_wifi_country JP
 
 # VS code extension
 sudo npm i eslint prettier -g
-/usr/share/code/bin/code --install-extension dbaeumer.vscode-eslint
-/usr/share/code/bin/code --install-extension esbenp.prettier-vscode
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension esbenp.prettier-vscode
 
 # JSのデフォルトをVS codeに
 cat << EOF > /home/pi/.config/mimeapps.list
