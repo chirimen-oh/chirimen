@@ -22,6 +22,7 @@ cp ${PUBLISH_DIR}/version.txt ${BASE_DIR}/gc/version.txt
 
 find "${BASE_DIR}/gc" \
   -name package.json \
+  -not -path '*/node_modules/*' \
   -print0 \
   | xargs -0 \
     -I@ sh -c 'npm --prefix "$(dirname -- "@")" install --production'

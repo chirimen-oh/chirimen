@@ -27,7 +27,7 @@ sudo sh -c "cat << EOF > /etc/xdg/lxsession/LXDE-pi/autostart
 @xset s off
 @xset -dpms
 @xset s noblank
-@/usr/bin/chromium-browser https://localhost/top --enable-experimental-web-platform-features
+@/usr/bin/chromium-browser https://localhost/top
 EOF"
 
 # aptをmirrorで指定
@@ -45,8 +45,6 @@ deb mirror+file:/etc/apt/mirrors.txt buster main contrib non-free rpi
 EOF"
 sudo apt-get update
 
-# upgradeを保留に変更
-sudo apt-mark hold raspberrypi-ui-mods
 # 必要な項目をインストール
 sudo apt-get install at-spi2-core
 
@@ -59,15 +57,17 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 
 # 各種ツールをインストール
-sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs npm apache2 vim emacs libnss3-tools
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get -y install fonts-noto-cjk uim uim-mozc nodejs apache2 arduino code vim emacs libnss3-tools
 # インストール失敗しやすいので2回
-sudo apt-get -y install ttf-kochi-gothic fonts-noto uim uim-mozc nodejs npm apache2 vim emacs libnss3-tools
+sudo apt-get -y install fonts-noto-cjk uim uim-mozc nodejs apache2 arduino code vim emacs libnss3-tools
 sudo apt-get -y autoremove
 
-# VS code のインストール
-wget -O /tmp/code.deb 'https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-armhf'
-sudo apt install -y /tmp/code.deb
+# Node.jsのバージョンの差異による不具合を防ぐ目的
+sudo apt-mark hold nodejs
 
+# 利用者のNode.jsのバージョン管理目的
+sudo npm i n -g
 
 # 日本語設定
 # デフォルトの設定が en_GB.UTF-8 になっている
@@ -92,17 +92,29 @@ sudo raspi-config nonint do_configure_keyboard jp
 # Wi-Fi設定
 sudo raspi-config nonint do_wifi_country JP
 
-# node.jsのインストール
-sudo npm install n -g
-sudo n 12.20.0
-PATH=$PATH
+# VSCode extension
 sudo npm i eslint prettier -g
+code --install-extension MS-CEINTL.vscode-language-pack-ja
+code --install-extension dbaeumer.vscode-eslint
+code --install-extension esbenp.prettier-vscode
 
-# VS code extension
-/usr/share/code/bin/code --install-extension dbaeumer.vscode-eslint
-/usr/share/code/bin/code --install-extension esbenp.prettier-vscode
+# VSCode設定
+mkdir -p /home/pi/.config/Code/User
+cat << EOF > /home/pi/.config/Code/User/settings.json
+{
+  "editor.fontFamily": "'Noto Sans Mono CJK JP', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}
+EOF
+mkdir -p /home/pi/.vscode
+cat << EOF > /home/pi/.vscode/argv.json
+{
+  "locale": "ja"
+}
+EOF
 
-# JSのデフォルトをVS codeに
+# JSのデフォルトをVSCodeに
 cat << EOF > /home/pi/.config/mimeapps.list
 [Added Associations]
 application/javascript=code.desktop;
@@ -148,6 +160,10 @@ mkdir /home/pi/.config/chromium/Default/
 cp /home/pi/_gc/bookmark/Bookmarks /home/pi/.config/chromium/Default/Bookmarks
 pcmanfm --set-wallpaper /home/pi/_gc/wallpaper/wallpaper-720P.png
 
+# Web Bluetooth有効化
+cat << EOF > '/home/pi/.config/chromium/Local State'
+{"browser":{"enabled_labs_experiments":["enable-experimental-web-platform-features"]}}
+EOF
 
 # gc設定
 chromium-browser &
@@ -156,9 +172,6 @@ if [ ! -f /home/pi/gc.zip ]; then
     wget https://r.chirimen.org/gc.zip
 fi
 # chromiumの起動待ちダウンロード
-if [ ! -f /home/pi/arduino-1.8.13-linuxarm.tar.xz ]; then
-    wget https://downloads.arduino.cc/arduino-1.8.13-linuxarm.tar.xz
-fi
 if [ ! -d /home/pi/Desktop/gc/ ]; then
     unzip ./gc.zip -d /home/pi/Desktop
 fi
@@ -267,18 +280,6 @@ EOF'
 sudo a2ensite vhost-ssl
 sudo a2enmod ssl
 sudo systemctl restart apache2
-grep -- '--enable-experimental-web-platform-features' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop
-if [ $? = 1 ]; then
-    sudo sed 's/Exec=\/usr\/bin\/x-www-browser\s%u/Exec=\/usr\/bin\/x-www-browser --enable-experimental-web-platform-features %u/g' /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop |\
-        sudo tee /tmp/xbrowser && sudo cat /tmp/xbrowser |\
-        sudo tee /usr/share/raspi-ui-overrides/applications/lxde-x-www-browser.desktop && sudo rm -f /tmp/xbrowser
-fi
-grep -- '--enable-experimental-web-platform-features' /usr/share/applications/chromium-browser.desktop
-if [ $? = 1 ]; then
-    sudo sed 's/Exec=chromium-browser/Exec=chromium-browser --enable-experimental-web-platform-features/g' /usr/share/applications/chromium-browser.desktop |\
-        sudo tee /tmp/chbrowser && sudo cat /tmp/chbrowser |\
-        sudo tee /usr/share/applications/chromium-browser.desktop && sudo rm -f /tmp/chbrowser
-fi
 
 # 証明書追加
 certfile="/home/pi/_gc/srv/crt/ca.crt"
@@ -289,27 +290,6 @@ do
     certdir=$(dirname ${certDB});
     certutil -A -n "${certname}" -t "TCu,Cu,Tu" -i ${certfile} -d sql:${certdir}
 done
-
-
-# Arduino IDE 追加
-cd /home/pi/
-mkdir /home/pi/Applications/
-if [ ! -d /home/pi/Applications/arduino-1.8.13/ ]; then
-    tar xvf arduino-1.8.13-linuxarm.tar.xz
-    mv arduino-1.8.13 /home/pi/Applications/
-fi
-cd /home/pi/Applications/
-ln -s arduino-1.8.13 arduino
-cd /home/pi/Applications/arduino/
-./install.sh
-rm -f /home/pi/arduino-1.8.13-linuxarm.tar.xz
-cd /home/pi/
-
-# upgradeを保留を解除
-sudo apt-mark auto raspberrypi-ui-mods
-# 上をアップグレード
-sudo apt-get -y upgrade
-
 
 ####
 # 最後にダイアログをOKにしてrebootして完了
