@@ -1,4 +1,4 @@
-(function () {
+(() => {
   var serverURL = "wss://localhost:33330/";
 
   /**
@@ -36,7 +36,7 @@
        * GPIO 初期化処理
        * @param serverURL WebSocket サーバーURL
        */
-      init: function (serverURL) {
+      init: (serverURL) => {
         infoLog("bone.init()");
         this.waitQueue = new Array();
         this.queue = new Map();
@@ -89,7 +89,7 @@
        * @param func 送信先アドレス
        * @param data 送信処理
        */
-      send: function (func, data) {
+      send: (func, data) => {
         return new Promise((resolve, reject) => {
           if (!(data instanceof Uint8Array)) {
             reject("type error: Please using with Uint8Array buffer.");
@@ -124,7 +124,7 @@
        * GPIO データ受信処理
        * @param mes 受信メッセージ
        */
-      receive: function (mes) {
+      receive: (mes) => {
         if (!(mes instanceof Uint8Array)) {
           errLog(new TypeError("Please using with Uint8Array buffer."));
           errLog(
@@ -167,7 +167,7 @@
        * @param port ポート番号
        * @param func 登録バッファ
        */
-      registerEvent: function (f, port, func) {
+      registerEvent: (f, port, func) => {
         var key = (f << 8) | port;
         this.onevents.set(key, func);
       },
@@ -178,7 +178,7 @@
        * @param f 登録アドレス
        * @param port ポート番号
        */
-      removeEvent: function (f, port) {
+      removeEvent: (f, port) => {
         var key = (f << 8) | port;
         this.onevents.delete(key);
       },
@@ -187,7 +187,7 @@
        * GPIO イベント発生時処理
        * @param data データ
        */
-      onEvent: function (data) {
+      onEvent: (data) => {
         if (!(data instanceof Uint8Array)) {
           errLog(new TypeError("Please using with Uint8Array buffer."));
           errLog(
@@ -221,7 +221,7 @@
        * @function
        * GPIO接続待ち処理
        */
-      waitConnection: function () {
+      waitConnection: () => {
         return new Promise((resolve, reject) => {
           if (this.status == 2) {
             resolve();
@@ -245,37 +245,21 @@
     return rt;
   })();
 
-  /** 
+  /**
    * GPIOAccess
    * Raspberry Pi GPIO Port Number
-   * 
+   *
    * TODO: add portName and pinName
    * */
   var gpioPorts = [
-    4,
-    17,
-    18,
-    27,
-    22,
-    23,
-    24,
-    25,
-    5,
-    6,
-    12,
-    13,
-    19,
-    16,
-    26,
-    20,
-    21,
+    4, 17, 18, 27, 22, 23, 24, 25, 5, 6, 12, 13, 19, 16, 26, 20, 21,
   ];
 
   /**
    * @function
    * GPIOAccess コンストラクターの関数の定義
    */
-  var GPIOAccess = function () {
+  var GPIOAccess = () => {
     this.init();
   };
 
@@ -288,7 +272,7 @@
      * GPIOAccess 初期化処理
      * ポート情報マッピング
      */
-    init: function () {
+    init: () => {
       this.ports = new Map();
       for (var cnt = 0; cnt < gpioPorts.length; cnt++) {
         this.ports.set(gpioPorts[cnt], new GPIOPort(gpioPorts[cnt]));
@@ -305,7 +289,7 @@
    * @param portNumber ポート番号
    * ポート番号定義
    */
-  var GPIOPort = function (portNumber) {
+  var GPIOPort = (portNumber) => {
     infoLog("GPIOPort:" + portNumber);
     this.init(portNumber);
   };
@@ -321,7 +305,7 @@
      * @param portNumber ポート番号
      * ポート情報マッピング
      */
-    init: function (portNumber) {
+    init: (portNumber) => {
       this.portNumber = portNumber;
       this.portName = "";
       this.pinName = "";
@@ -336,7 +320,7 @@
      * GPIOポート接続処理
      * @param direction 入出力方向情報
      */
-     export: function (direction) {
+    export: (direction) => {
       return new Promise((resolve, reject) => {
         var dir = -1;
         if (direction === "out") {
@@ -381,7 +365,7 @@
      * @function
      * GPIO 読み取り処理
      */
-     read: function () {
+    read: () => {
       return new Promise((resolve, reject) => {
         infoLog("read: Port:" + this.portNumber);
         var data = new Uint8Array([this.portNumber]);
@@ -406,7 +390,7 @@
      * GPIO 書き込み処理
      * @param value 書き込みデータ
      */
-     write: function (value) {
+    write: (value) => {
       return new Promise((resolve, reject) => {
         infoLog("write: Port:" + this.portNumber + " value=" + value);
         var data = new Uint8Array([this.portNumber, value]);
@@ -432,12 +416,11 @@
      */
     onchange: null,
 
-
     /**
      * @function
      * GPIOポート開放処理
      */
-     unexport: function () {
+    unexport: () => {
       return new Promise((resolve, reject) => {
         infoLog("unexport: Port:" + this.portNumber);
         var data = new Uint8Array([this.portNumber, value]);
@@ -502,7 +485,7 @@
    * @function
    * I2CAccess コンストラクターの関数の定義
    */
-  var I2CAccess = function () {
+  var I2CAccess = () => {
     this.init();
   };
 
@@ -516,7 +499,7 @@
      * I2CAccess 初期化処理
      * ポート情報マッピング
      */
-    init: function () {
+    init: () => {
       this.ports = new Map();
       for (var cnt = 0; cnt < i2cPorts.length; cnt++) {
         this.ports.set(i2cPorts[cnt], new I2CPort(i2cPorts[cnt]));
@@ -539,14 +522,14 @@
    * I2CPort 関数継承
    * ポート番号初期化
    */
-   I2CPort.prototype = {
+  I2CPort.prototype = {
     /**
      * @function
      * I2C 初期化処理
      * @param portNumber ポート番号
      * ポート情報マッピング
      */
-    init: function (portNumber) {
+    init: (portNumber) => {
       this.portNumber = portNumber;
     },
 
@@ -557,7 +540,7 @@
      * I2C ポート open 処理
      * @param slaveAddress スレーブアドレス
      */
-    open: function (slaveAddress) {
+    open: (slaveAddress) => {
       return new Promise((resolve, reject) => {
         new I2CSlaveDevice(this.portNumber, slaveAddress).then(
           (i2cslave) => {
@@ -612,7 +595,7 @@
      * @return ポート、デバイス初期化結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
-    init: function (portNumber, slaveAddress) {
+    init: (portNumber, slaveAddress) => {
       return new Promise((resolve, reject) => {
         this.portNumber = portNumber;
         this.slaveAddress = slaveAddress;
@@ -642,7 +625,7 @@
      * @return 読み込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
-    read8: function (registerNumber) {
+    read8: (registerNumber) => {
       return new Promise((resolve, reject) => {
         var data = new Uint8Array([this.slaveAddress, registerNumber, 1]);
         bone.send(0x23, data).then(
@@ -670,7 +653,7 @@
      * @return 読み込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
-    read16: function (registerNumber) {
+    read16: (registerNumber) => {
       return new Promise((resolve, reject) => {
         infoLog("I2CSlaveDevice.read16() registerNumber=" + registerNumber);
         var data = new Uint8Array([this.slaveAddress, registerNumber, 2]);
@@ -703,7 +686,7 @@
      * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
-    write8: function (registerNumber, value) {
+    write8: (registerNumber, value) => {
       return new Promise((resolve, reject) => {
         infoLog(
           "I2CSlaveDevice.write8() registerNumber=" + registerNumber,
@@ -743,7 +726,7 @@
      * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
-    write16: function (registerNumber, value) {
+    write16: (registerNumber, value) => {
       return new Promise((resolve, reject) => {
         infoLog(
           "I2CSlaveDevice.write16() registerNumber=" + registerNumber,
@@ -784,7 +767,7 @@
      * @return 読み込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
-    readByte: function () {
+    readByte: () => {
       return new Promise((resolve, reject) => {
         var data = new Uint8Array([this.slaveAddress, 1]);
         bone.send(0x22, data).then(
@@ -812,7 +795,7 @@
      * @return 読み込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
-    readBytes: function (length) {
+    readBytes: (length) => {
       return new Promise((resolve, reject) => {
         if (typeof length !== "number" || length > 127) {
           reject("readBytes() readSize error : " + length);
@@ -845,7 +828,7 @@
      * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
-    writeByte: function (value) {
+    writeByte: (value) => {
       return new Promise((resolve, reject) => {
         infoLog("I2CSlaveDevice.writeByte() value=" + value);
         var size = 1;
@@ -876,7 +859,7 @@
      * @return 書き込み結果
      * TODO: master-slave => main-sub になっているので、いずれ変えるべき？
      */
-    writeBytes: function (buffer) {
+    writeBytes: (buffer) => {
       return new Promise((resolve, reject) => {
         if (buffer.length == null) {
           reject("readBytes() parameter error : " + buffer);
@@ -915,8 +898,8 @@
      *　navigator requestI2CAccess 割当処理
      * @return 割当結果
      */
-    navigator.requestI2CAccess = function () {
-      return new Promise(function (resolve, reject) {
+    navigator.requestI2CAccess = () => {
+      return new Promise((resolve, reject) => {
         //      console.dir(bone);
         bone
           .waitConnection()
@@ -938,8 +921,8 @@
      *　navigator requestGPIOAccess 割当処理
      * @return 割当結果
      */
-     navigator.requestGPIOAccess = function () {
-      return new Promise(function (resolve, reject) {
+    navigator.requestGPIOAccess = () => {
+      return new Promise((resolve, reject) => {
         //      console.dir(bone);
         bone
           .waitConnection()
@@ -965,7 +948,7 @@
  * @return {Promise} A promise to be resolved after ms milliseconds later.
  */
 function sleep(ms) {
-  return new Promise(function (resolve) {
+  return new Promise((resolve) => {
     setTimeout(resolve, ms);
   });
 }
