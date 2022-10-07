@@ -5,7 +5,7 @@ var ports = [];
 main();
 
 async function main() {
-  var relay = RelayServer("achex", "chirimenSocket");
+  var relay = RelayServer("chirimentest", "chirimenSocket");
   channel = await relay.subscribe("chirimenHBridge");
   document.getElementById("message").innerText =
     "connected : achex : chirimenSocket : chirimenHBridge";

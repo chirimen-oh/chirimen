@@ -4,7 +4,7 @@ var LEDport, SWport;
 main();
 
 async function main() {
-	var relay = RelayServer("achex", "chirimenSocket" );
+	var relay = RelayServer("chirimentest", "chirimenSocket" );
 	channel = await relay.subscribe("chirimenSW");
 	document.getElementById("message").innerText="connected : achex : chirimenSocket : chirimenSW";
 	
