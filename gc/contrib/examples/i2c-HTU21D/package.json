@@ -1,0 +1,9 @@
+{
+  "name": "i2c-htu21d-example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@chirimen/htu21d": "latest",
+    "@chirimen-raspi/polyfill": "latest"
+  }
+}
