@@ -10,9 +10,9 @@ async function main() {
   while (true) {
     // 1秒間隔で LED が点滅します。
     await port.write(1); // LED を点灯
-    await sleep(1000); // 1000 ms (1秒) 待機
+    await sleep(500); // 1000 ms (1秒) 待機
     await port.write(0); // LED を消灯
-    await sleep(1000); // 1000 ms (1秒) 待機
+    await sleep(500); // 1000 ms (1秒) 待機
   }
 }
 
