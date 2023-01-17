@@ -7,9 +7,6 @@
       content="width=device-width, user-scalable=no, initial-scale=1"
     />
     <title>i2c-HT16K33</title>
-    <script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
-    <script src="node_modules/@chirimen/ht16k33/index.js"></script>
-    <script src="./main.js" defer></script>
     <style>
       table,
       p {
@@ -30,12 +27,14 @@
   </head>
 
   <body>
-    <p id="head">HT16K33</p>
+  <h3>HT16K33を使用したマトリクスLEDモジュールのサンプル群
+  <ul>
+  <li><a href="index_main.html">8x8マトリクスLED (adafruit及びその互換品)</a>
+  <li><a href="index_7seg.html">7セグメントLED
+  <li><a href="index_14seg.html">14セグメントLED
+  <li><a href="index_16x8.html">16x8セグメントLED
+  <li><a href="index_8x8aitendo.html">8x8セグメントLED (aitendo製)
+  </ul>
     <img src="HT16K33schematic.png" width="400" />
-    <table>
-      <tr>
-        <td id="message"></td>
-      </tr>
-    </table>
   </body>
 </html>
