@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+</head>
+<script type="module" src="https://chirimen.org/remote-connection/js/beta/RelayServerGlobal.js"></script>
+<script src="pc.js"></script>
+<body>
+<h3 id="deviceTitle">Remote Camera Example - Display</h3>
+
+<input type="button" onclick="takeImage()" value="Take Image"></input>
+
+<table border="1">
+<tr><td><img id="remoteImage" src="null" width="320" height="320" ></td></tr>
+<tr><td id="timeTD">---</td></tr>
+</table>
+<div id="messageDiv"></div>
+</body>
+</html>
