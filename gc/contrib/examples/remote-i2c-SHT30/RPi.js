@@ -11,9 +11,9 @@ async function main() {
 	await sht.init();
 	
 	// webSocketリレーの初期化
-	var relay = RelayServer("achex", "chirimenSocket" );
+	var relay = RelayServer("chirimentest", "chirimenSocket" );
 	channel = await relay.subscribe("chirimenSHT");
-	msgDiv.innerText="achex web socketリレーサービスに接続しました";
+	msgDiv.innerText=" web socketリレーサービスに接続しました";
 	channel.onmessage = transmitSensorData;
 }
 

@@ -4,9 +4,9 @@ var port;
 main();
 
 async function main() {
-	var relay = RelayServer("achex", "chirimenSocket" );
+	var relay = RelayServer("chirimentest", "chirimenSocket" );
 	channel = await relay.subscribe("chirimenLED");
-	document.getElementById("message").innerText="connected : achex : chirimenSocket : chirimenLED";
+	document.getElementById("message").innerText="connected :  : chirimenSocket : chirimenLED";
 	channel.onmessage = controlLED;
 	
 	var gpioAccess = await navigator.requestGPIOAccess(); // GPIO を操作する

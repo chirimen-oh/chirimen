@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>GPIO-HBridge</title>
+</head>
+<body>
+<script src="node_modules/@chirimen-raspi/polyfill/polyfill.js"></script>
+<script src="main.js" defer></script>
+<h1>GPIO A4988 Stepper Motor drive</h1>
+<!-- http://www.kaltpost.de/?page_id=12 -->
+<p>Connect A4988 Motor Driver to GPIO 26,19</p>
+<input type="button" onclick="fwd()" value="FOWARD"></input>
+<input type="button" onclick="rev()" value="REVERSE"></input>
+<input type="range" onchange="setSteps()" min="10" max="200" value="100" id="stepsInput"></input> <span id="spepVal">steps:100</span>
+<div>
+<table>
+<img src="a4988.png" height="400">
+</div>
+</body>
+</html>

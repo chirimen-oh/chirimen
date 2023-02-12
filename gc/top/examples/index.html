@@ -187,7 +187,7 @@
       <h1 id="i2cExamples">I2C Examples (<a href="https://webapi.link/i2c">API Spec</a>)</h1>
       <p>Tips: 配線とスレーブアドレスの確認には i2cdetect を使いましょう。<br>
         <a href="../../i2c/i2c-detect/index.html" target="_blank">ブラウザ上で確認できる I2C Detect</a>
-        / ターミナルでコマンドを使う場合は </span><code>i2cdetect -y -r 1</code>
+        / ターミナルでコマンドを使う場合は </span><code>i2cdetect -y 1</code> <!-- i2cdetect -y -r 1 -->
     </div>
   </div>
 
@@ -1126,6 +1126,114 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
       </div>
     </div>
 
+    <div class="cwrap" id="GPIO-A4988">
+      <div class="title">GPIO-A4988</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/gpio-A4988/a4988.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/gpio-A4988/" target="_blank">デモ</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-a4988" target="_blank">CSB</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">GPIO接続のステッピングモータコントローラA4988でステッピングモータ(２相バイポーラ)をコントロールします。<span style="color:red">ステッピングモータは停止中も常に電流が流れているため容易に加熱します。火傷に注意！</span></div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?keywords=A4988">A4988でステッピングモータコントローラモジュール</a> x 1 </li>
+          <li>２相バイポーラステッピングモータ (<a href="https://wakamatsu.co.jp/biz/products/detail.php?product_id=62020023">例１</a>、<a href="https://akizukidenshi.com/catalog/g/gP-06578/">例2</a>)</li>
+          <li>ステッピングモータ用　電源<br>（モータのスペックに応じて（巻き線抵抗値と電流値等を基に）選択してください）</li>
+          <li>ブレッドボード</li>
+          <li>ジャンパーケーブル</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cwrap" id="I2C-HTU21D">
+      <div class="title">I2C-HTU21D</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/i2c-HTU21D/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/i2c-HTU21D/" target="_blank">デモ</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-htu21d" target="_blank">CSB</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続の温度・湿度　複合センサーで取得した値を表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください）</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.amazon.co.jp/s/?keywords=HTU21D">HTU21D 温度・湿度 センサ ブレイクアウト</a> x 1 </li>
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="cwrap" id="I2C-SCD40">
+      <div class="title">I2C-SCD40</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/i2c-SCD40/schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/i2c-SCD40/" target="_blank">デモ</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-scd40" target="_blank">CSB</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続のCO2センサーで取得した値を表示します。（このセンサーは4本のピンヘッダ経由で接続します。あらかじめピンヘッダをハンダ付けしておいてください）</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li><a href="https://www.switch-science.com/products/7169">SCD40 CO2 センサ ブレイクアウト</a> x 1 </li>
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cwrap" id="OTHERS-CAMERA">
+      <div class="title">OTHERS-CAMERA</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="https://projects.raspberrypi.org/ja-JP/projects/getting-started-with-picamera/1" target="_blank">接続方法</a>
+        <a class="linkicon codesandbox" href="https://developer.mozilla.org/ja/docs/Web/API/Media_Capture_and_Streams_API/Taking_still_photos" target="_blank">API説明</a>
+        <a class="linkicon local" href="https://yari-demos.prod.mdn.mozit.cloud/ja/docs/Web/API/Media_Capture_and_Streams_API/Taking_still_photos/_sample_.demo.html" target="_blank">デモ</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">Raspberry Pi専用カメラモジュールは、Chromiumのカメラデバイスとして認識され、WebRTCのgetUserMedia() APIで使用可能です。<br>接続方法の2ページ目(Raspberry Pi Configuration)まで実施すると、デモが動作します。</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li>Raspberry Piカメラモジュール　x 1 (<a href="https://www.amazon.co.jp/dp/B073RCXGQS/">例1</a>、<a href="https://www.amazon.co.jp/dp/B086MK17K5/">例2</a>、<a href="https://www.amazon.co.jp/dp/B08HVRB59N/">例3</a>)</li>
+          <li>カメラ接続ケーブル(カメラモジュールに同梱されていると思います)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cwrap" id="I2C-HT16K33">
+      <div class="title">I2C-HT16K33</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="../../contrib/examples/i2c-HT16K33/HT16K33schematic.png" target="_blank">回路図</a>
+        <a class="linkicon local" href="../../contrib/examples/i2c-HT16K33/index.html" target="_blank">デモ(8x8マトリクスLED-adafruit及び互換品)</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-ht16k33" target="_blank">CSB</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">I2C接続のマトリクスLEDモジュール</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li>
+          <ul>HT16K33搭載LEDモジュール x 1 (以下のいずれか)
+            <li><a href="https://www.switch-science.com/products/1493">8x8マトリクスLED-adafruit</a>
+            <li><a href="https://ja.aliexpress.com/item/32886174149.html">8x8マトリクスLED-adafruit互換品(keyestudio)
+            <li><a href="https://www.aitendo.com/product/14540">7セグメントLED
+              <a class="linkicon local" href="../../contrib/examples/i2c-HT16K33_led_7seg/index.html" target="_blank" style="display:inline">デモ</a>
+              <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-ht16k33_7seg" target="_blank" style="display:inline">CSB</a>
+            <li><a href="https://www.aitendo.com/product/20812">14セグメントLED
+              <a class="linkicon local" href="../../contrib/examples/i2c-HT16K33_led_14seg/index.html" target="_blank" style="display:inline">デモ</a>
+              <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-ht16k33_14seg" target="_blank" style="display:inline">CSB</a>
+            <li><a href="https://www.aitendo.com/product/16658">16x8マトリクスLED
+              <a class="linkicon local" href="../../contrib/examples/i2c-HT16K33_led_16x8/index.html" target="_blank" style="display:inline">デモ</a>
+              <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-ht16k33_16x8" target="_blank" style="display:inline">CSB</a>
+            <li><a href="https://www.aitendo.com/product/12822">8x8マトリクスLED-aitendo
+              <a class="linkicon local" href="../../contrib/examples/i2c-HT16K33_led_8x8aitendo/index.html" target="_blank" style="display:inline">デモ</a>
+              <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-ht16k33_8x8aitendo" target="_blank" style="display:inline">CSB</a>
+          </ul>
+          <li>ジャンパー（メス・メス）ケーブル x 4</li>
+        </ul>
+      </div>
+    </div>
 
 
   </div>
@@ -1274,6 +1382,25 @@ I2C対応デジタルカラーセンサモジュールS11059-02DT</a> x 1 <span 
           <li><a href="https://akizukidenshi.com/catalog/g/gP-03087/">電池BOX(4本用)</a> x 1 <span style="font-size:11px">(※電池BOXを利用する場合、PCA9685サーボドライバとの接続用に電池BOX側の電源ケーブルの終端をメスに加工する等の工夫が必要です)</span></li>
           <li><a href="https://akizukidenshi.com/catalog/g/gK-10972/">「電源用マイクロUSBコネクタDIP化キット</a> x 1」+「ブレッドボード x 1」「USB Micro B端子-標準A端子のケーブル x 1」+「スマホ用5V充電器 x 1」+ 「ジャンパー（メス・オス）ケーブル x 2」 </li>
         </ol>
+      </div>
+    </div>
+
+    <div class="cwrap" id="REMOTE-OTHERS-CAMERA">
+      <div class="title">REMOTE-OTHERS-CAMERA</div>
+      <div class="linkwrap">
+        <a class="linkicon schematic" href="https://projects.raspberrypi.org/ja-JP/projects/getting-started-with-picamera/1" target="_blank">カメラ接続方法</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-others-camera/RPi.html" target="_blank">デモ(RPi側)</a>
+        <a class="linkicon local" href="../../contrib/examples/remote-others-camera/pc.html" target="_blank">デモ(PC側)</a>
+        <a class="linkicon codesandbox" href="https://r.chirimen.org/csb-remote-others-camera" target="_blank">CSB</a>
+      </div>
+      <h3 class="sumally">概要</h3>
+      <div class="desc">リモートからカメラ画像の撮影指示と表示を行います</div>
+      <h3 class="parts">使用パーツ</h3>
+      <div class="desc">
+        <ul>
+          <li>Raspberry Piカメラモジュール　x 1 (<a href="https://www.amazon.co.jp/dp/B073RCXGQS/">例1</a>、<a href="https://www.amazon.co.jp/dp/B086MK17K5/">例2</a>、<a href="https://www.amazon.co.jp/dp/B08HVRB59N/">例3</a>)</li>
+          <li>カメラ接続ケーブル(カメラモジュールに同梱されていると思います)</li>
+        </ul>
       </div>
     </div>
 

@@ -4,9 +4,9 @@ var LEDport, SWport;
 main();
 
 async function main() {
-	var relay = RelayServer("achex", "chirimenSocket" );
+	var relay = RelayServer("chirimentest", "chirimenSocket" );
 	channel = await relay.subscribe("chirimenSW");
-	document.getElementById("message").innerText="connected : achex : chirimenSocket : chirimenSW";
+	document.getElementById("message").innerText="connected :  : chirimenSocket : chirimenSW";
 	
 	var gpioAccess = await navigator.requestGPIOAccess(); // GPIO を操作する
 	LEDport = gpioAccess.ports.get(26); // 26 番ポートを操作する

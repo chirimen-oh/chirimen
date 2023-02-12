@@ -1,0 +1,9 @@
+{
+  "name": "i2c-ht16k33-example",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@chirimen-raspi/polyfill": "latest",
+    "@chirimen/ht16k33": "^1.0.1"
+  }
+}
